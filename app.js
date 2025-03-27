@@ -18,6 +18,7 @@ const usermodels = require('./models/usermodels');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 let club=require('./routes/Club.js');
+let event=require('./routes/Event.js')
 
 
 require('dotenv').config();
@@ -52,6 +53,7 @@ app.use(cors());
 require("./config/google_oauth_config");
 app.use("/auth", authRouter);
 app.use("/club",club)
+app.use("/event",event)
 
 
 
