@@ -389,7 +389,7 @@ app.get('/form',isLoggedIn, (req, res) => {
 });
 
 // Event details route 
-app.get('/event',  (req, res) => {
+app.get('/events',  (req, res) => {
   res.render('Anwesha Event/Carnival', { title: 'Event Page' });
 });
 
@@ -403,6 +403,10 @@ app.get('/eventcoding',  (req, res) => {
 app.get('/eventdance',  (req, res) => {
   res.render('Anwesha Event/flash clash', { title: 'Event Page' });
 });
+
+app.get('/event',(req,res)=>{
+    res.render('Events');
+})
 
 // Event details renewable route
 
