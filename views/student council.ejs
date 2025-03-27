@@ -40,7 +40,7 @@
 		   <li><a href="/clubs">Clubs</a></li>
 		   <li><a href="/faculty">Mentors</a></li>
 		   <li><a href="/gallery">Event Gallary</a></li>
-		  <% if(isLoggedIn){ %>
+		  <% if(!isLoggedIn){ %>
         <li id="login-btn"><a href="/login" class="loginButton">Login</a></li>  
       <% } %> 
 	   </ul>
@@ -66,7 +66,7 @@
     <h1>STUDENT COUNCIL</h1>
     <h2>WELCOME YOU</h2>
     <p>Join us to explore the real worlds hand on hand experience and amazing fun activity.</p>
-    <a href="/form">
+    <a href="/eventPage">
       <button class="styled-button">
         Register For Anwesha 2.0
         <div class="inner-button">
