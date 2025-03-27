@@ -40,7 +40,7 @@
 		   <li><a href="/clubs">Clubs</a></li>
 		   <li><a href="/faculty">Mentors</a></li>
 		   <li><a href="/gallery">Event Gallary</a></li>
-		  <% if(isLoggedIn){ %>
+		  <% if(!isLoggedIn){ %>
         <li id="login-btn"><a href="/login" class="loginButton">Login</a></li>  
       <% } %> 
 	   </ul>
@@ -66,7 +66,11 @@
     <h1>STUDENT COUNCIL</h1>
     <h2>WELCOME YOU</h2>
     <p>Join us to explore the real worlds hand on hand experience and amazing fun activity.</p>
-    <a href="/form">
+<<<<<<< HEAD
+    <a href="/event">
+=======
+    <a href="/eventPage">
+>>>>>>> 0dd51f09090cbaf3e984859489465f1f65360ead
       <button class="styled-button">
         Register For Anwesha 2.0
         <div class="inner-button">
@@ -85,16 +89,25 @@
 </div>
 </section>
     <section>
-      <iframe
-      src="https://lu.ma/embed/event/evt-2oWeNFz78US9HIo/simple"
-      width="600"
-      height="450"
-      frameborder="0"
-      style="border: 1px solid #bfcbda88; border-radius: 4px;"
-      allowfullscreen=""
-      aria-hidden="false"
-      tabindex="0"
-    ></iframe>
+      <div style="position: relative; width: 100%; padding-top: 30%; overflow: hidden;">
+        <h2>For Every Details at your Finger tip Register to our Update channel!!</h2>
+        <iframe
+          src="https://lu.ma/embed/event/evt-2oWeNFz78US9HIo/simple"
+          style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #bfcbda88;
+            border-radius: 4px;
+          "
+          frameborder="0"
+          allowfullscreen=""
+          aria-hidden="false"
+          tabindex="0"
+        ></iframe>
+      </div>
 </section>
 
 
