@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const connectdb = require('./config/db');  // Using CommonJS `require`
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 const Razorpay = require('razorpay');
 const user = require('./models/usermodels');
 const authRouter = require("./routes/auth");
@@ -19,11 +19,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 
-dotenv.config();
+require('dotenv').config();
 connectdb();
 
 const app = express();
-const PORT =  4000;
+const PORT = 4000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -503,8 +503,12 @@ app.get('/payment', (req, res) => {
   res.render('payment', { title: 'PaymentPage' });{ title: 'Payment Page' };
 });
 
-app.get("/eventPage",(req,res)=>{
-  res.render("Events");
+app.get("/eventPage",isLoggedIn,(req,res)=>{
+  res.render("Events",{isLoggedIn:true});
+})
+
+app.get("/userPage",isLoggedIn,(req,res)=>{
+  res.render("user");
 })
 
   
@@ -559,6 +563,7 @@ app.get("/eventPage",(req,res)=>{
 // });
 
 
+// const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
