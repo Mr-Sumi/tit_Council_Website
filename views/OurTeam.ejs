@@ -1,0 +1,663 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/stylesheet/navbaar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <style>
+    @font-face {
+        font-family: Gilroy-Bold;
+        src: url(/Fonts/Gilroy-Bold.ttf);
+    }
+    @font-face {
+        font-family: Bristone;
+        src: url(/Fonts/Bristone.ttf);
+    }
+    @font-face {
+        font-family:Bebrush;
+        src: url(/Fonts/Bebrush.otf);
+    }
+    
+    body{
+        color: #fff;
+        text-align: center;
+        animation: pageOpen 2s;
+    }
+    body::-webkit-scrollbar{
+    display: none;
+  }
+    .main{
+        background-color: black;
+        border-radius: 10px;
+    }
+    .container{
+        margin-top: 9vh;
+    }
+    @keyframes pageOpen {
+        0% {
+            transform: scaleX(0);
+        }
+        100% {
+            transform: scaleX(1);
+        }
+    }
+
+    .team-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        animation: fadeIn 2s;
+        overflow: hidden;
+        padding: 25px;
+    }
+    .team-grid-head {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        animation: fadeIn 2s;
+        overflow: hidden;
+        border-bottom: 2px solid wheat;
+        margin: 15px;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    .heading-bearer{
+        border-bottom: 2px solid ;
+        padding: 15px;
+
+    }
+    .heading-bearer mar{
+        margin-top: .3rem;
+    }
+    .heading-bearer h1{
+        font-size: 3rem;
+        font-family: Gilroy-Bold;
+    }
+
+    @media  (min-width: 200px) and (max-width: 1200px){
+        .heading-bearer{
+        border-bottom: 2px solid ;
+        padding: 15px;
+    }
+    .heading-bearer h1{
+        margin-top: 10px;
+        font-size: 3rem;
+        font-family: Gilroy-Bold;
+    }
+    }
+
+
+    @keyframes scaleUp {
+        0% {
+            transform: scale(0.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /*social-button*/
+    
+    .social-button{
+        background-color: transparent;
+        border-top: 2px solid whitesmoke;
+        padding-top: 10px;
+        margin-top: 5px;
+        text-align: center;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    /* Wrapper */
+    .icon-button {
+        background-color: white;
+        border-radius: 50%;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 2.0rem;
+        height: 3rem;
+        line-height: 3rem;
+        margin: 0 5px;
+        position: relative;
+        text-align: center;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+        width: 3rem;
+    }
+
+    /* Circle */
+    .icon-button span {
+        border-radius: 0;
+        display: block;
+        height: 0;
+        left: 50%;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+                transition: all 0.3s;
+        width: 0;
+    }
+    .icon-button:hover span {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 3.6rem;
+        margin: -1.5rem;
+    }
+    .twitter span {
+        background-color: #4099ff;
+    }
+    .facebook span {
+        background-color: #3B5998;
+    }
+    .linkedin span {
+        background-color: #0077b5;
+    }
+    .instagram span {
+    background-color: #bc2a8d;
+    }
+    .github span {
+    background-color: #333;
+    }
+
+    /* Icons */
+    .icon-button i {
+        background: none;
+        color: white;
+        height: 0.7rem;
+        left: 0;
+        line-height: 3rem;
+        position: absolute;
+        top: 0;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+                transition: all 0.3s;
+        width: 3rem;
+        z-index: 10;
+    }
+    .icon-button .fa-twitter {
+        color: #4099ff;
+    }
+    .icon-button .fa-facebook {
+        color: #3B5998;
+    }
+    .icon-button .fa-linkedin {
+        color: #0077b5;
+    }
+    .icon-button .fa-instagram {
+        color: #4099ff;
+    }
+    .icon-button .fa-github {
+        color: #333;
+    }
+    .icon-button:hover .fa-twitter,
+    .icon-button:hover .fa-facebook,
+    .icon-button:hover .fa-linkedin,
+    .icon-button:hover .fa-instagram,
+    .icon-button:hover .fa-github{
+        color: white;
+    }
+
+  
+        .flip-card {
+            background-color: transparent;
+            width: 20vw;
+            height: 40vh;
+            perspective: 1000px;
+            font-family: Gilroy-black;
+            margin: 50px;
+        }
+
+        .title {
+            font-size: 1.5em;
+            font-weight: 900;
+            text-align: center;
+            margin: 0;
+            font-family: bristone;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 1rem;
+        }
+
+        .flip-card-front {
+            background-color: #2b2929;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flip-card-front img{
+            height: 25vh;
+            align-self: center;
+            border-radius: 50%;
+        }
+
+        .flip-card-back {
+            background-color: #585353;
+            color: black;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .flip-card-front h3 {
+            color: #faf5f5;
+            animation: fadeIn 2s;
+            font-size: 1.6rem;
+            font-family: Gilroy-Bold;
+            margin-top: 5px;
+        }
+
+        .flip-card-back p {
+            color: #cebcbc;
+            font-size: 1.1rem;
+            animation: fadeIn 2s;
+            font-style: oblique;
+            font-weight: 500;
+            font-family: Bristone;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .heading1{
+            text-align: center;
+            border-bottom: 5px solid rgb(176, 164, 164);
+            margin-bottom: 15px;
+            background-color: #8EC5FC;
+            background-image: linear-gradient(62deg, #8EC5FC 10%, #E0C3FC 100%);
+            padding: 10px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .heading1 h1{
+            font-family: Bebrush;
+            letter-spacing: 3px;
+            color: rgb(20, 20, 20);
+            font-size: 0.8rem;
+
+        }
+
+        @media  (min-width: 400px) and (max-width: 1200px){
+            .heading1{
+                font-size: 0.8rem;
+            }
+            .flip-card{
+                width: 80vw;
+                align-items: center;
+                margin: 20px;
+            }
+            .flip-card-front, .flip-card-back {
+                width: 80vw;
+                text-align: center;
+                align-items: center;
+            }
+
+            .flip-card-front img{
+                border-radius: 50%;
+                height: 33vh;
+                align-self: center;
+            }
+        }
+
+        @media  (min-width: 200px) and (max-width: 399px){
+            .heading1{
+                font-size: 0.8rem;
+            }
+            .flip-card{
+                width: 90vw;
+                align-items: center;
+                margin: 10px;
+            }
+            .flip-card-front, .flip-card-back {
+                width: 90vw;
+                text-align: center;
+                align-items: center;
+            }
+
+            .flip-card-front img{
+                border-radius: 50%;
+                height: 30vh;
+                align-self: center;
+            }
+        }
+
+        footer {
+        text-align: center;
+        background-color: #393636;
+        color: #ffffff;
+        padding: 15px;
+        margin-top: 50px;
+        width: 100%;
+    }
+    
+</style>
+</head>
+<body>
+
+    
+	<script>
+		window.addEventListener("load" , function(){
+		  const loader = document.getElementById("preloader");
+		  loader.style= "display:none;";
+		});
+	  </script>
+	  
+	  
+	  <!--Loader for website-->
+	  <div class="socket" id="preloader">
+		<div class="glitch-container">
+		Student Council
+		  <span>Student Council</span>
+		  <span>Student Council</span>
+		</div>
+	  </div>
+
+
+    <div class="navSlide">
+        <div class="icon">
+         <i class="ri-close-large-line"></i>
+        </div>
+         <ul class="NavLinks">
+           <li><a href="/">Home</a></li>
+           <li><a href="/members">Members</a></li>
+           <li><a href="/clubs">Clubs</a></li>
+           <li><a href="/faculty">Mentors</a></li>
+           <li><a href="/gallery">Event Gallary</a></li>
+           <li><a href="/login" class="loginButton">Login</a></li>   
+       </ul>
+       </div>
+    <nav>
+        <div class="logo">
+            <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
+            <h1>STUDENT COUNCIL</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/members">Members</a></li>
+            <li><a href="/clubs">Clubs</a></li>
+            <li><a href="/faculty">Mentors</a></li>
+            <li><a href="/gallery">Event Gallary</a></li>
+            <i class="ri-menu-line"></i>
+        </ul>
+    </nav>
+<div class="main">
+    <div class="container">
+        <div class="heading-bearer mar"><h1>OFFICE BEARER HEAD</h1></div>
+
+        <div class="team-grid-head">
+            
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="/image folder/club members/Prabhat kumar.jpg" alt="Prabhat kumar">
+                            <h3>Prabhat kumar</h3>   
+                        </div>
+                        <div class="flip-card-back">
+                            <p>President</p>
+                            <div class="social-button">
+                                <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                                <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                                <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                                <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="/image folder/club members/TIKESH KARDATE (1) - Tikesh Kardate.jpg" alt="Tikesh Kardate">
+                            <h3>Tikesh Kardate</h3>    
+                        </div>
+                        <div class="flip-card-back">
+                            <p>General Secretary</p>
+                            <div class="social-button">
+                                <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                                <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                                <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                                <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+
+        <div class="heading-bearer"><h1>OFFICE BEARER</h1></div>
+        <div class="team-grid">
+
+          <!-- Team Member 1 -->
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="/image folder/club members/sahil bhaiya.jpg" alt="Sahil Kumar">
+                    <h3>Sahil Kumar</h3>   
+                </div>
+                <div class="flip-card-back">
+                    <p>Club Advisor</p>
+                    <div class="social-button">
+                        <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                        <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                        <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                        <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <!-- Team Member 2 -->
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="/image folder/club members/sHRUTI did.jpg" alt="Shruti Sarawagi">
+                    <h3>Shruti Sarawagi</h3>
+                </div>
+                <div class="flip-card-back">
+                    <p>Chief Committee Officer</p>
+                    <div class="social-button">
+                        <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                        <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                        <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                        <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <!--Team Member 3-->
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="/image folder/club members/adnam alam.jpg" alt="Adnan Alam">
+                    <h3>Adnan Alam</h3>
+                </div>
+                <div class="flip-card-back">
+                    <p>Assistant Chief Committee Officer</p>
+                    <div class="social-button">
+                        <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                        <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                        <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                        <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <!--Team Member 4-->
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="/image folder/club members/Harsh Raj Singh.jpg" alt="Harsh Raj Singh">
+                    <h3>Harsh Raj Singh</h3>
+                </div>
+                <div class="flip-card-back">
+                    <p>Inter College Relationship officer</p>
+                    <div class="social-button">
+                        <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                        <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                        <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                        <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+         
+                     </div>
+                </div>
+            </div>
+        </div>
+
+          <!--Team Member 5-->
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="/image folder/club members/vedant - Vedant Singh.jpg" alt="Vedant Singh">
+                    <h3>Vedant Singh</h3>
+                </div>
+                <div class="flip-card-back">
+                    <p>Academic Council Officer</p>
+                    <div class="social-button">
+                        <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                        <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                        <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                        <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <!--Team Member 6-->
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="/image folder/club members/Screenshot_20241030_124309 - Harsh Katare.jpg" alt="Harsh Katare">
+                    <h3>Harsh Katare</h3>
+                </div>
+                <div class="flip-card-back">
+                    <p>Public Relationship Officer</p>
+                    <div class="social-button">
+                        <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                        <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                        <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                        <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <!--Team Member 7-->
+          <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="/image folder/club members/priyanshu bhaiya.jpg" alt="Priyanshu Patel">
+                    <h3>Priyanshu Patel</h3>
+                </div>
+                <div class="flip-card-back">
+                    <p>Club Editor</p>
+                    <div class="social-button">
+                        <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                        <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                        <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                        <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <!--Team Member 8-->
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="/image folder/club members/IMG20240627163440 - Laher Chouksey.jpg" alt="Laher Choukse">
+                    <h3>Laher Chouksey</h3>
+                </div>
+                <div class="flip-card-back">
+                    <p>Assistant Academic Council Officer</p>
+                    <div class="social-button">
+                        <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                        <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                        <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                        <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <!--Team Member 9-->
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="/image folder/club members/Aditi sisodia.jpg" alt="Aditi Sisodia">
+                    <h3>Aditi Sisodia</h3>
+                </div>
+                <div class="flip-card-back">
+                    <p>Women Empowerment Officer</p>
+                    <div class="social-button">
+                        <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                        <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                        <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                        <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+</div>
+<!-- Footer Section -->
+<footer>
+    <a href="/Dev">
+        <button class="button">Developer team</button>      
+      </a>
+</footer>
+<script src="javascript/navbaar.js"></script>
+</body>
+</html>

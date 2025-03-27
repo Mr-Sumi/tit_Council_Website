@@ -1,0 +1,290 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEEE STUDENT CHAPTER</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <link rel="stylesheet" href="stylesheet/navbaar.css">
+    <style>
+        body{
+            background-color: black;
+            color: #dfcaca;
+            padding: 15px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            border: 2px solid white;
+            border-radius: 10px;
+            position: relative;
+        }
+        body::-webkit-scrollbar{
+        display: none;
+      }
+        .profile-box{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            border-bottom: 2px solid;
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+
+        }
+        .image{
+            border-radius: 50%;
+            height: 200px;
+        }
+        .title-box{
+            padding-left: 25px;
+        }
+        @media (max-width: 576px){
+            .image{
+                height: 100px;
+            }
+            .heading-drone{
+                font-size: 22px;
+            }
+            .para{
+                font-size: 12px;
+            }
+        }
+
+        .follow-us-section{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: baseline;
+        }
+        button{
+        background: transparent;
+        position: relative;
+        padding: 5px 15px;
+        display: flex;
+        align-items: center;
+        font-size: 17px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        border: 2px solid white;
+        border-radius: 25px;
+        outline: none;
+        overflow: hidden;
+        color: white;
+        transition: color 0.3s 0.1s ease-out;
+        text-align: center;
+        padding: 12px;
+        padding-left: 20px;
+        padding-right: 20px;
+        }
+
+        button span {
+        margin: 10px;
+        }
+
+        button::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        content: "";
+        border-radius: 50%;
+        display: block;
+        width: 20em;
+        height: 20em;
+        left: -5em;
+        text-align: center;
+        transition: box-shadow 0.5s ease-out;
+        z-index: -1;
+        border: 2px solid white;
+        }
+
+        button:hover {
+        color: red;
+        border: 1px solid black;
+        }
+
+        button:hover::before {
+        box-shadow: inset 0 0 0 10em black;
+        }
+
+        .club-bearer{
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 5px;
+            border-top: 2px solid ;
+            display: flex;
+            align-items: center;
+            align-self: center;
+            justify-content: center;
+            
+        }
+
+        .club-bearer-card{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 96%;
+            padding: 15px;
+            flex-wrap: wrap;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+
+        }
+
+        .club-bearer-card-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            text-align: center;
+        }
+        .heading{
+            font-size: 18px;
+
+        }
+        .span{
+            font-size: 12px;
+            font-family: 'Times New Roman', Times, serif;
+            
+        }
+        .mission{
+            background-image: url("image folder/blob-scene-haikei.png");
+            background-size: cover;
+            background-position: center;
+            width: 98%;
+            padding: 10px;
+
+        }
+        .mission-section{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            text-align: left;
+            overflow: hidden;
+        }
+        .vision-section{
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            text-align: right;
+            overflow: hidden;
+            
+        }
+        .mission-heading{
+            font-size: 30px;
+            border-bottom: 2px solid;
+            width: 65%;
+        }
+        .vision-heading{
+            font-size: 30px;
+            border-bottom: 2px solid;
+            width: 65%;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #2a2a45;
+            color: #ddd;
+            padding: 15px;
+            margin-top: 10px;
+            width: 95%;
+        }
+        footer p {
+            margin: 5px 0;
+        }  
+    </style>
+</head>
+<body>
+    <div class="navSlide">
+        <div class="icon">
+         <i class="ri-close-large-line"></i>
+        </div>
+         <ul class="NavLinks">
+           <li><a href="/">Home</a></li>
+           <li><a href="/members">Members</a></li>
+           <li><a href="/clubs">Clubs</a></li>
+           <li><a href="/faculty">Mentors</a></li>
+           <li><a href="/gallery">Event Gallary</a></li>
+           <li><a href="/login" class="loginButton">Login</a></li>   
+       </ul>
+       </div>
+    <nav>
+        <div class="logo">
+            <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
+            <h1>STUDENT COUNCIL</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/members">Members</a></li>
+            <li><a href="/clubs">Clubs</a></li>
+            <li><a href="/faculty">Mentors</a></li>
+            <li><a href="/gallery">Event Gallary</a></li>
+            <i class="ri-menu-line"></i>
+        </ul>
+    </nav>
+
+
+    <div class="profile-box">
+        <img class="image" src="/image folder/Club logos/IEEE Student Chapter.png" alt="IEEE STUDENT CHAPTER">
+        <div class="title-box">
+            <h1 class="heading-drone">IEEE STUDENT CHAPTER</h1>
+            <p class="para">Do what u can , where u are , with what u have..!</p>
+        </div>
+    </div>
+
+    <div class="follow-us-section">
+        <h4>Follow us on Instagram for updates and exclusive content from the CULTRUL CLUB!</h4>
+        <a href="Instagram.com/evclub.titbhopal"><button class="btn">INSTAGRAM</button></a>
+    </div>
+
+    <div class="club-bearer"><h1 class="heading-drone">CLUB BEARER</h1></div>
+
+    <div class="club-bearer-card">
+        <div class="club-bearer-card-content">
+            <img class="image" src="/image folder/club members/Nishant Manjhi.jpg" alt="Nishant Manjhi">
+            <h1 class="heading">Nishant Manjhi</h1>
+            <span class="span">CO-ORDINATOR</span>
+        </div>
+
+        <div class="club-bearer-card-content">
+            <img class="image" src="/image folder/Club logos/IEEE Student Chapter.png" alt="Shivendra Singh Parihar">
+            <h1 class="heading">Shivendra Singh Parihar</h1>
+            <span class="span">SECERATRY</span>
+        </div>
+
+        <div class="club-bearer-card-content">
+            <img class="image" src="/image folder/Club logos/IEEE Student Chapter.png" alt="Riya Soni">
+            <h1 class="heading">Riya Soni</h1>
+            <span class="span">ASST. SECERATRY</span>
+        </div>
+    </div>
+
+    <div class="mission">
+        <div class="mission-secion">
+            <h3 class="mission-heading">THE MISSION</h3>
+            <p>To arrange for regular events in the campus specifically dealing with latest technologies. To work towards motivating and inspiring more students to become members. To increase the Membership Retention, though creating awarness about the benefits of IEEE. To organize programmes with a special focus on fostering technical awareness and understanding among young professionals. To kindle the interest of the students and empowering them to takeup new papers and novel and socially relevant projects.</p>
+        </div>
+        <div class="vision-section">
+            <h3 class="vision-heading">THE VISION</h3>
+            <p>The primary purpose of IEEE student chapter is to Inspire, Enable, Empower and Energize our student members to enhance their technical interests by providing them a platform to show case their skills through interactions.</p>
+        </div>
+    </div>
+
+    <div class="recent-event">Recent Event Section ............................
+        ..............................................................
+        ................................</div>
+
+
+    <footer>
+        <p>&copy; 2024 STUDENT COUNCIL TIT. All rights reserved.</p>
+    </footer>
+    <script src="javascript/navbaar.js"></script>
+</body>
+</html>

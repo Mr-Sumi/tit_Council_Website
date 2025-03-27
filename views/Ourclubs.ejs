@@ -1,0 +1,416 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Clubs</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <link rel="stylesheet" href="/stylesheet/navbaar.css">
+    <link rel="stylesheet" href="/stylesheet/Student.css">
+    <style>
+        @font-face {
+    font-family: Bristone;
+    src: url(/Fonts/Bristone.ttf);
+  }
+  @font-face {
+    font-family: Gilroy-black;
+    src: url(/Fonts/Gilroy-Black.ttf);
+  }
+     @font-face {
+        font-family:GilroyMedium ;
+        src: url(/Fonts/Gilroy-Medium.ttf);
+     }
+       @font-face {
+            font-family: Bebrush;
+            src: url(/Fonts/Bebrush.otf);
+        }
+        @font-face {
+            font-family: Affectsides;
+            src: url(/Fonts/Affectsides.ttf);
+        }
+            body{
+                color: #fff;
+                text-align: center;
+                padding: 10 px;
+                animation: pageLoad 2s;
+                border: 2px solid white;
+                border-radius: 10px;
+                position: relative;
+            }
+            body::-webkit-scrollbar{
+        display: none;
+      }
+
+            @keyframes pageLoad {
+                0% {
+                    transform: scale(0.5);
+                    opacity: 0;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+
+            .container{
+                background-color: black;
+                margin-top: 11vh;
+                border-top-right-radius: 12px;
+                border-top-left-radius: 12px;
+            }
+            .card {
+                width: 210px;
+                height: 210px;
+                background: transparent;
+                border-radius: 50%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                align-self: center;
+                color: rgb(0, 0, 0);
+                transition: 0.2s ease-in-out;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                animation: scaleUp 1s;
+                flex-wrap: wrap;
+                overflow: hidden;
+            }
+
+            @keyframes scaleUp {
+                0% {
+                    transform: scale(0.5);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            .img {
+                height: 210px;
+                position: absolute;
+                transition: 0.2s ease-in-out;
+                z-index: 1;
+                border-radius: 50%;
+                padding: 5px;
+                animation: fadeIn 1s;
+                
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            .textBox {
+                opacity: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
+                transition: 0.2s ease-in-out;
+                z-index: 2;
+                background-color: white;
+                padding: 8px;
+                width: 80%;
+                border-radius: 40px;
+                animation: slideUp 1s;
+            }
+
+            @keyframes slideUp {
+                0% {
+                    transform: translateY(50px);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+
+            .textBox > .text {
+                font-weight: bold;
+            }
+
+            .textBox > .head {
+                font-size: 20px;
+            }
+
+            .card:hover > .textBox {
+                opacity: 1;
+            }
+
+            .card:hover > .img {
+                height: 65%;
+                filter: blur(7px);
+                animation: anim 3s infinite;
+            }
+            .heading{
+                padding: 1vw;
+                font-family:Bebrush ;
+            }
+            .heading h1{
+                letter-spacing: 1px;
+                font-weight: 100;
+            }
+            @keyframes anim {
+                0% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-20px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+
+            .card:hover {
+                transform: scale(1.04) rotate(-1deg);
+            }
+
+            .club-grid{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                grid-gap: 40px;
+                animation: fadeIn 2s;
+                align-items: center;
+                justify-content: center;
+                align-self: center;
+                flex-wrap: wrap;
+            }
+
+            @media (max-width: 1200px) {
+                .club-grid {
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                }
+            }
+
+            .heading{
+                border-bottom: 2px solid;
+                margin-bottom: 20px;
+            }
+
+    </style>
+</head>
+<body>
+
+    
+    <script>
+        window.addEventListener("load" , function(){
+          const loader = document.getElementById("preloader");
+          loader.style= "display:none;";
+        });
+      </script>
+
+  <!--Loader for website-->
+  <div class="socket" id="preloader">
+    <div class="glitch-container">
+      Student Council
+      <span>Student Council</span>
+      <span>Student Council</span>
+    </div>
+  </div>
+
+    <div class="navSlide">
+        <div class="icon">
+         <i class="ri-close-large-line"></i>
+        </div>
+         <ul class="NavLinks">
+           <li><a href="/">Home</a></li>
+           <li><a href="/members">Members</a></li>
+           <li><a href="/clubs">Clubs</a></li>
+           <li><a href="/faculty">Mentors</a></li>
+           <li><a href="/gallery">Event Gallary</a></li>
+           <li><a href="/login" class="loginButton">Login</a></li>   
+       </ul>
+       </div>
+    <nav>
+        <div class="logo">
+            <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
+            <h1>STUDENT COUNCIL</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/members">Members</a></li>
+            <li><a href="/clubs">Clubs</a></li>
+            <li><a href="/faculty">Mentors</a></li>
+            <li><a href="/gallery">Event Gallary</a></li>
+            <i class="ri-menu-line"></i>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="heading"><h1>OUR CLUBS & SOCITIES</h1></div>
+        
+        <div class="club-grid">
+        
+            <a href="/coding">
+                <div class="card">
+                    <img class="img" src="/image folder/Club logos/Coding club.png" alt="CODING CLUB">
+                    <div class="textBox">
+                        <p class="text head">CODING CLUB</p>
+                    </div>
+                </div>
+            </a>
+
+        <a href="/drone">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/DRONE SOCIETY.png" alt="DRONE SOCIETY">
+                <div class="textBox">
+                    <p class="text head">DRONE SOCIETY</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="media">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/Media Fusion.png" alt="MEDIA FUSION">
+                <div class="textBox">
+                    <p class="text head">MEDIA FUSION</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="Cultrul">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/CULTURAL & EvENT.png" alt="CULTURAL CLUB">
+                <div class="textBox">
+                    <p class="text head">CULTURAL CLUB</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/Robotics">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/RObOTICS CLUB.png" alt="ROBOTICS CLUB">
+                <div class="textBox">
+                    <p class="text head">ROBOTICS CLUB</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/entrepreneurship">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/ENTREpRENEURSHIp.png" alt="ENTREpRENEURSHIp">
+                <div class="textBox">
+                    <p class="text head">ENTREPRENEURSHIP CLUB</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/Literary">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/LITERARY Club.png" alt="LITERARY CLUB">
+                <div class="textBox">
+                    <p class="text head">LITERARY CLUB</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/Renewable">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/RENEwAbLE ENERGY.png" alt="RENEWABL ENERGY CLUB">
+                <div class="textBox">
+                    <p class="text head">RENEWABL ENERGY CLUB</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/Disipline">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/DISCIpLINE.png" alt="DISCIPLINE CLUB">
+                <div class="textBox">
+                    <p class="text head">DISCIPLINE CLUB</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/Alimni">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/Alumni Relation.png" alt="ALUMNI RELATION COMMITTEE">
+                <div class="textBox">
+                    <p class="text head">ALUMNI RELATION COMMITTEE</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/Tech">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/Tech WIZARDs.png" alt="TECH WIZARDS">
+                <div class="textBox">
+                    <p class="text head">TECH WIZARDS</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/EV">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/EV.png" alt="EV">
+                <div class="textBox">
+                    <p class="text head">EV CLUB</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/music">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/mUSIC SOCIETY.png" alt="MUSIC SOCIETY">
+                <div class="textBox">
+                    <p class="text head">MUSIC SOCIETY</p>
+                </div>
+            </div>
+        </a>
+
+       
+
+        <a href="/Dance">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/DAnce Club.png" alt="DANCE CLUB">
+                <div class="textBox">
+                    <p class="text head">DANCE CLUB</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/IEEE">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/IEEE Student Chapter.png" alt="IEEE STUDENT CHAPTER">
+                <div class="textBox">
+                    <p class="text head">IEEE STUDENT CHAPTER</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="#">
+            <div class="card">
+                <img class="img" src="/image folder/Club logos/cyber COP.png" alt="CYBER COP">
+                <div class="textBox">
+                    <p class="text head">CYBER COP</p>
+                </div>
+            </div>
+        </a>
+
+        </div>
+    </div>
+
+    
+<!-- Footer Section -->
+<footer>
+    <a href="/Dev">
+        <button class="button">Developer team</button>      
+      </a>
+</footer>
+<script src="javascript/navbaar.js"></script>
+</body>
+</html>

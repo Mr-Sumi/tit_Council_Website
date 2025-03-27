@@ -1,0 +1,124 @@
+@font-face {
+  font-family: GilroyMedium;
+  src: url(/Fonts/Gilroy-Medium.ttf);
+}
+
+@font-face {
+  font-family: Affectsides;
+  src: url(/Fonts/Affectsides.ttf);
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  margin-top: 12vh;
+}
+
+.box {
+  border-bottom: 3px solid wheat;
+  padding-bottom: 0.3rem;
+  align-self: center;
+  text-align: center;
+  margin-bottom: 1.1rem;
+}
+
+.box h1 {
+  font-family: GilroyMedium;
+  font-weight: 500;
+  font-size: 2.8rem;
+  text-align: center; 
+}
+
+.box h1 span {
+  text-align: center;
+  font-family: Affectsides;
+  font-size: 5rem;
+  letter-spacing: 5px;
+}
+
+/* Gallery Styles */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr); /* 4 images in a row for larger screens */
+    gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* For images in the gallery */
+.gallery img {
+    width: 100%;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    -webkit-transition: transform 0.3s, box-shadow 0.3s;
+    -moz-transition: transform 0.3s, box-shadow 0.3s;
+    -ms-transition: transform 0.3s, box-shadow 0.3s;
+    -o-transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effects */
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Grid - Tablet & Smaller Screens */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 images in a row for medium-sized screens (tablets) */
+    }
+}
+
+@keyframes fadeInPopUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+    -webkit-transform: scale(0.3);
+    -moz-transform: scale(0.3);
+    -ms-transform: scale(0.3);
+    -o-transform: scale(0.3);
+}
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeInFloating 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: hidden;
+}
+
+.popup img {
+  max-width: 90%;
+  max-height: 90%;
+  border: 5px solid white;
+  border-radius: 10px;
+  animation: fadeInFloating 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.popup .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  animation: fadeInFloating 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}

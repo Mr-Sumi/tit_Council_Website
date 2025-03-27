@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration for Anwesha 2.0</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <link rel="stylesheet" href="stylesheet/navbaar.css">
+    <link rel="stylesheet" href="/stylesheet/Student.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1b1b32;
+            color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+        body::-webkit-scrollbar{
+        display: none;
+      }
+        .container {
+            max-width: 600px;
+            margin-top: 12vh;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            background: linear-gradient(135deg, #ff8e53, #e54d4d);
+            color: #fff;
+            padding: 40px 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.4em;
+        }
+        .form-section {
+            background-color: #2a2a45;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+        .form-section h2 {
+            color: #ffd700;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            background-color: #f4f4f9;
+            font-size: 1em;
+            color: #333;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, select:focus {
+            outline: none;
+            box-shadow: 0px 0px 5px 2px rgba(255, 204, 0, 0.5);
+        }
+        
+        footer {
+            text-align: center;
+            background-color: #2a2a45;
+            color: #ddd;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+        
+        /* Payment button*/
+
+
+        .Btn {
+            width: 40%;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
+            background-size: 250%;
+            background-position: left;
+            color: #ffd277;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition-duration: 1s;
+            overflow: hidden;
+            margin-top: 15px;
+            }
+
+            .Btn::before {
+            position: absolute;
+            content: "Proceed For PAYMENT";
+            color: #ffd277;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 97%;
+            height: 90%;
+            border-radius: 8px;
+            transition-duration: 1s;
+            background-color: rgba(0, 0, 0, 0.842);
+            background-size: 200%;
+            }
+
+            .Btn:hover {
+            background-position: right;
+            transition-duration: 1s;
+            }
+
+            .Btn:hover::before {
+            background-position: right;
+            transition-duration: 1s;
+            }
+
+            .Btn:active {
+            transform: scale(0.95);
+            }
+            /* Developer Button */ 
+            .button {
+            --main-color: rgb(255, 255, 255);
+            --main-bg-color: rgba(0, 0, 0, 0.36);
+            --pattern-color: rgba(239, 239, 239, 0.073);
+
+            /* change this rotation value */
+            filter: hue-rotate(0deg);
+
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5rem;
+            background: radial-gradient(
+                circle,
+                var(--main-bg-color) 0%,
+                rgba(0, 0, 0, 0) 95%
+                ),
+                linear-gradient(var(--pattern-color) 1px, transparent 1px),
+                linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+            background-size:
+                cover,
+                15px 15px,
+                15px 15px;
+            background-position:
+                center center,
+                center center,
+                center center;
+            border-image: radial-gradient(
+                circle,
+                var(--main-color) 0%,
+                rgba(255, 0, 0, 0.638) 100%
+                )
+                1;
+            border-width: 1px 0 1px 0;
+            color: var(--main-color);
+            padding: 1rem 3rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            transition: background-size 0.2s ease-in-out;
+            }
+
+            .button:hover {
+            background-size:
+                cover,
+                10px 10px,
+                10px 10px;
+            }
+            .button:active {
+            filter: hue-rotate(250deg);
+            }
+
+
+    </style>
+</head>
+<body>
+
+    
+	<script>
+		window.addEventListener("load" , function(){
+		  const loader = document.getElementById("preloader");
+		  loader.style= "display:none;";
+		});
+	  </script>
+	  
+	  
+	  <!--Loader for website-->
+	  <div class="socket" id="preloader">
+		<div class="glitch-container">
+		Student Council
+		  <span>Student Council</span>
+		  <span>Student Council</span>
+		</div>
+	  </div>
+
+    <div class="navSlide">
+        <div class="icon">
+         <i class="ri-close-large-line"></i>
+        </div>
+         <ul class="NavLinks">
+           <li><a href="/">Home</a></li>
+           <li><a href="/members">Members</a></li>
+           <li><a href="/clubs">Clubs</a></li>
+           <li><a href="/faculty">Mentors</a></li>
+           <li><a href="/gallery">Event Gallary</a></li>
+           <li><a href="/login" class="loginButton">Login</a></li>   
+       </ul>
+       </div>
+    <nav>
+        <div class="logo">
+            <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
+            <h1>STUDENT COUNCIL</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/members">Members</a></li>
+            <li><a href="/clubs">Clubs</a></li>
+            <li><a href="/faculty">Mentors</a></li>
+            <li><a href="/gallery">Event Gallary</a></li>
+            <i class="ri-menu-line"></i>
+        </ul>
+    </nav>
+
+<div class="container">
+    <!-- Header Section -->
+    <header>
+        <h1>Register for ANWESHA 2.0 </h1>
+        <p>Be part of an exciting day filled with innovation, creativity, and teamwork!</p>
+    </header>
+
+    <!-- Registration Form Section -->
+    <section class="form-section">
+        <h2>Registration Form</h2>
+        <form id="payment-form" method="post" action="/create/orderId">
+
+            <!-- College -->
+            <div class="form-group">
+                <label for="college">College</label>
+                <input type="text" id="college" name="college" required>
+            </div>
+
+            <!-- Event Name -->
+            <div class="form-group">
+                <label for="events">Events List</label>
+                <select id="events" name="events" onchange="updateParticipantsOption()" required>
+                    <option value="">Select Event</option>
+                    <option value="ROBO RACE">ROBO RACE</option>
+                    <option value="ROBO WAR">ROBO WAR</option>
+                    <option value="UInovate (Hackthon)">UInovate (Hackthon)</option>
+                    <option value="CODE CLASH 3.0">CODE CLASH 3.0</option>
+                    <option value="FREE FIRE">FREE FIRE</option>
+                    <option value="BGMI">BGMI</option>
+                    <option value="MUSICAL CHAIR">MUSICAL CHAIR</option>
+                    <option value="RENEWABLE MODEL SHOWCASE">RENEWABLE MODEL SHOWCASE</option>
+                    <option value="DUMCHARADE">DUMCHARADE</option>
+                    <option value="OPEN MIC">OPEN MIC</option>
+                    <option value="STORY TELLING">STORY TELLING</option>
+                    <option value="CORPORATE CHALLENGE SHOWDOWN">CORPORATE CHALLENGE SHOWDOWN</option>
+                    <option value="ENTREPRENEURSHIP SALES STALL">ENTREPRENEURSHIP SALES STALL</option>
+                    <option value="ESCAPE ROOM/ BUSINESS">ESCAPE ROOM/ BUSINESS</option>
+                    <option value="ENTREPRENEURIAL MEME CONTEST">ENTREPRENEURIAL MEME CONTEST</option>
+                    <option value="RUNNING COMPETITION/ MARATHON">RUNNING COMPETITION/ MARATHON</option>
+                    <option value="TUG OF WAR">TUG OF WAR</option>
+                    <option value="DEBATE COMPETITION">DEBATE COMPETITION</option>
+                    <option value="TECHNICAL PRESENTATION">TECHNICAL PRESENTATION</option>
+                    <option value="CRAFT CARNIVAL/ POSTER MAKING, SLOGAN WRITING">CRAFT CARNIVAL/ POSTER MAKING, SLOGAN WRITING</option>
+                    <option value="SCREEN TO SPEECH">SCREEN TO SPEECH</option>
+                    <option value="OUT OF BOX">OUT OF BOX</option>
+                    <option value="FLASH CLASH OF STYLES: THE DANCE FACE-OFF">FLASH CLASH OF STYLES: THE DANNCE FACE-OFF</option>
+                    <option value="TECH THEME TREASURE HUNT">TECH THEME TREASURE HUNT</option>
+                    <option value="SKYHIGH SNAP AND SOLVE">SKYHIGH SNAP AND SOLVE</option>
+                    <option value="HOVERHUNT">HOVERHUNT</option>
+                    <option value="TECHNICAL QUIZ">TECHNICAL QUIZ</option>
+                </select>
+            </div>
+
+            <!-- Sub-Event (for Craft Carnival) -->
+            <div class="form-group" id="carnivalSubOptions" style="display: none;">
+                <label for="subEvent">Choose Sub-Event</label>
+                <select id="subEvent" name="subEvent">
+                    <option value="">Select Sub-Event</option>
+                    <option value="Poster Making">Poster Making</option>
+                    <option value="Slogan Writing">Slogan Writing</option>
+                </select>
+            </div>
+
+            <!-- NUMBER OF PARTICIPANTS -->
+            <div class="form-group">
+                <label for="number">Number of Participants</label>
+                <select id="number" name="number" onchange="displayParticipantDetails()" required>
+                    <option value="">Select </option>
+                </select>
+            </div>
+
+            <div id="participantsDetails"></div>
+
+            <!-- Submit Button  -->
+            <button class="Btn" id="rzp-button1">
+            </button>
+        </form>
+    </section>
+</div>
+
+<!-- Footer Section -->
+<footer>
+    <a href="/Dev">
+        <button class="button">Developer team</button>      
+      </a>
+</footer>
+<script>
+
+    let price=0;
+    
+
+    // Define max participants for each event and labels
+    const eventMaxParticipants = {
+        "ROBO RACE": ["SQUAD"],
+        "ROBO WAR": ["SQUAD"],
+        "UInovate (Hackthon)": ["DUO", "TRIO", "SQUAD-4-MEMBER"],
+        "CODE CLASH 3.0": ["SOLO"],
+        "FREE FIRE": ["SOLO", "SQUAD-4-MEMBER"],
+        "BGMI": ["SOLO", "SQUAD-4-MEMBER"],
+        "MUSICAL CHAIR": ["SOLO"],
+        "RENEWABLE MODEL SHOWCASE": ["SOLO"],
+        "DUMCHARADE": ["SOLO","DUO", "TRIO", "SQUAD-4-MEMBER"],
+        "OPEN MIC": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER"],
+        "STORY TELLING": ["SOLO"],
+        "CORPORATE CHALLENGE SHOWDOWN": ["DUO","TRIO", "SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
+        "ENTREPRENEURSHIP SALES STALL": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
+        "ESCAPE ROOM/ BUSINESS": ["DUO", "TRIO", "SQUAD-4-MEMBER"],
+        "ENTREPRENEURIAL MEME CONTEST": ["SOLO", "DUO"],
+        "RUNNING COMPETITION/ MARATHON": ["SOLO"],
+        "TUG OF WAR": ["DUO", "SQUAD-4-MEMBER"],
+        "DEBATE COMPETITION": ["SQUAD-4-MEMBER"],
+        "TECHNICAL PRESENTATION": ["SOLO", "SQUAD-4-MEMBER"],
+        "CRAFT CARNIVAL/ POSTER MAKING, SLOGAN WRITING": ["SOLO"],
+        "SCREEN TO SPEECH" : ["SOLO"],
+        "OUT OF BOX" : ["SOLO"],
+        "FLASH CLASH OF STYLES: THE DANCE FACE-OFF": ["SOLO", "DUO", "SQUAD-4-MEMBER"],
+        "TEASERQUEST": ["SQUAD-4-MEMBER"],
+        "SKYHIGH SNAP AND SOLVE": ["SOLO", "DUO", "TRIO"],
+        "HOVERHUNT": ["SOLO"],
+        "TECHNICAL QUIZ": ["SOLO"],
+        // Add more events with their max participants here
+    };
+
+    function updateParticipantsOption() {
+        const eventSelect = document.getElementById("events");
+        const numberSelect = document.getElementById("number");
+        const selectedEvent = eventSelect.value;
+        const carnivalSubOptions = document.getElementById("carnivalSubOptions");
+
+        // Clear current options in the "Number of Participants" dropdown
+        numberSelect.innerHTML = '<option value="">Select</option>';
+
+        // Show sub-options for "Carnival Craft" only
+        if (selectedEvent === "CARNIVAL CRAFT/ POSTER MAKING, SLOGAN WRITING") {
+            carnivalSubOptions.style.display = "block";
+        } else {
+            carnivalSubOptions.style.display = "none";
+        }
+
+        // Populate the dropdown based on the selected event's participant options
+        if (eventMaxParticipants[selectedEvent]) {
+            const participantOptions = eventMaxParticipants[selectedEvent];
+            participantOptions.forEach(option => {
+                const newOption = document.createElement("option");
+                newOption.value = option.toLowerCase(); // use lowercase for value
+                newOption.textContent = option;
+                numberSelect.appendChild(newOption);
+            });
+        }
+    }
+
+    // Define number of participants options
+    function displayParticipantDetails() {
+        const numberSelect = document.getElementById("number").value;
+        const participantsDetails = document.getElementById("participantsDetails");
+
+        // Clear previous participant details
+        participantsDetails.innerHTML = "";
+
+        // Show fields based on participant type
+        if (numberSelect === "solo") {
+            participantsDetails.innerHTML = `
+                <div class="form-section">
+                    <h3>Participant Information</h3>
+                    <div class="form-group">
+                        <label for="soloName">Name</label>
+                        <input type="text" id="soloName" name="soloName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="soloEnrollment">Enrollment Number</label>
+                        <input type="text" id="soloEnrollment" name="soloEnrollment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="soloEmail">Email ID</label>
+                        <input type="email" id="soloEmail" name="soloEmail" required>
+                    </div>
+                </div>
+            `;
+        } else if (numberSelect === "duo") {
+            participantsDetails.innerHTML = `
+                <div class="form-section">
+                    <h3>Team Leader Information</h3>
+                    <div class="form-group">
+                        <label for="leaderName">Name</label>
+                        <input type="text" id="leaderName" name="leaderName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderEnrollment">Enrollment Number</label>
+                        <input type="text" id="leaderEnrollment" name="leaderEnrollment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderEmail">Email ID</label>
+                        <input type="email" id="leaderEmail" name="leaderEmail" required>
+                    </div>
+                    <h3>Team Member Information</h3>
+                    <div class="form-group">
+                        <label for="memberName">Name</label>
+                        <input type="text" id="memberName" name="memberName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="memberEnrollment">Enrollment Number</label>
+                        <input type="text" id="memberEnrollment" name="memberEnrollment" required>
+                    </div>
+                </div>
+            `;
+        } else if (numberSelect === "trio") {
+            participantsDetails.innerHTML = `
+                <div class="form-section">
+                    <h3>Team Leader Information</h3>
+                    <div class="form-group">
+                        <label for="leaderName">Name</label>
+                        <input type="text" id="leaderName" name="leaderName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderEnrollment">Enrollment Number</label>
+                        <input type="text" id="leaderEnrollment" name="leaderEnrollment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderEmail">Email ID</label>
+                        <input type="email" id="leaderEmail" name="leaderEmail" required>
+                    </div>
+                    <h3>Team Members Information</h3>
+                    <div class="form-group">
+                        <label for="memberName">Name of Member 1</label>
+                        <input type="text" id="memberName" name="memberName" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="memberEnrollment">Enrollment Number of Member 1</label>
+                        <input type="text" id="memberEnrollment" name="memberEnrollment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="memberName">Name of Member 2</label>
+                        <input type="text" id="memberName" name="memberName" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="memberEnrollment">Enrollment Number of Member 2</label>
+                        <input type="text" id="memberEnrollment" name="memberEnrollment" required>
+                    </div>
+                </div>
+            `;
+        }
+        else if (numberSelect === "squad-4-member") {
+            participantsDetails.innerHTML = `
+                <div class="form-section">
+                    <h3>Team Leader Information</h3>
+                    <div class="form-group">
+                        <label for="leaderName">Name</label>
+                        <input type="text" id="leaderName" name="leaderName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderEnrollment">Enrollment Number</label>
+                        <input type="text" id="leaderEnrollment" name="leaderEnrollment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderEmail">Email ID</label>
+                        <input type="email" id="leaderEmail" name="leaderEmail" required>
+                    </div>
+                    <h3>Additional Team Members</h3>
+                    <div class="form-group">
+                        <label for="memberName">Name of Member 1</label>
+                        <input type="text" id="memberName" name="memberName" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="memberEnrollment">Enrollment Number of Member 1</label>
+                        <input type="text" id="memberEnrollment" name="memberEnrollment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="memberName">Name of Member 2</label>
+                        <input type="text" id="memberName" name="memberName" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="memberEnrollment">Enrollment Number of Member 2</label>
+                        <input type="text" id="memberEnrollment" name="memberEnrollment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="memberName">Name of Member 3</label>
+                        <input type="text" id="memberName" name="memberName" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="memberEnrollment">Enrollment Number of Member 3</label>
+                        <input type="text" id="memberEnrollment" name="memberEnrollment" required>
+                    </div>
+                </div>
+            `;
+        }
+        else if (numberSelect === "squad-5-member") {
+            participantsDetails.innerHTML = `
+                <div class="form-section">
+                    <h3>Team Leader Information</h3>
+                    <div class="form-group">
+                        <label for="leaderName">Name</label>
+                        <input type="text" id="leaderName" name="leaderName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderEnrollment">Enrollment Number</label>
+                        <input type="text" id="leaderEnrollment" name="leaderEnrollment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="leaderEmail">Email ID</label>
+                        <input type="email" id="leaderEmail" name="leaderEmail" required>
+                    </div>
+                    
+                    <h3>Additional Team Members</h3>
+                    <div class="form-group">
+                        <label for="memberName">Name of Member 1</label>
+                        <input type="text" id="memberName" name="memberName" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="memberEnrollment">Enrollment Number of Member 1</label>
+                        <input type="text" id="memberEnrollment" name="memberEnrollment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="memberName">Name of Member 2</label>
+                        <input type="text" id="memberName" name="memberName" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="memberEnrollment">Enrollment Number of Member 2</label>
+                        <input type="text" id="memberEnrollment" name="memberEnrollment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="memberName">Name of Member 3</label>
+                        <input type="text" id="memberName" name="memberName" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="memberEnrollment">Enrollment Number of Member 3</label>
+                        <input type="text" id="memberEnrollment" name="memberEnrollment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="memberName">Name of Member 4</label>
+                        <input type="text" id="memberName" name="memberName" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="memberEnrollment">Enrollment Number of Member 4</label>
+                        <input type="text" id="memberEnrollment" name="memberEnrollment" required>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    // find prices
+    
+    function findPrices() {
+        if(selectedEvent=="ROBO RACE" || selectedEvent=="ROBO WAR")
+    price=300;
+    else if(selectedEvent=="uiNOVATION(Hackthons)")
+    price=200;
+   else if(selectedEvent=="CODE CLASH")
+    price=75;
+    else if((selectedEvent=="FREE FIRE" || selectedEvent=="BGMI") && numberSelect=="SOLO")
+        price=50;
+    else if((selectedEvent=="FREE FIRE" || selectedEvent=="BGMI") && numberSelect=="SQUAD-4-MEMBER")
+    prize=200;
+    else if(selectedEvent=="MUSICAL CHAIR")
+    price=20;
+    else if(selectedEvent=="RENEWABLE MODEL SHOWCASE")
+    price=50;
+    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" ) && numberSelect=="SOLO")
+    price=20;
+    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" ) && numberSelect=="DUO")
+    price=40;
+    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" ) && numberSelect=="TRIO")
+    price=60;
+    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" )&& numberSelect=="SQUAD-4-MEMBER")
+    price=80;
+    else if(selectedEvent=="CORPORATE CHALLENGE SHOWDOWN" && numberSelect=="SOLO")
+    price=100;
+    else if(selectedEvent=="CORPORATE CHALLENGE SHOWDOWN")
+    price=200;
+    else if(selectedEvent=="ENTREPRENEURSHIP SALES STALL" && numberSelect=="SOLO")
+    price=50;
+    else if(selectedEvent="ENTREPRENEURSHIP SALES STALL")
+    price=200;
+    else if(selectedEvent=="ESCAPE ROOM/ BUSINESS" && numberSelect=="DUO")
+    price=100;
+    else if(selectedEvent=="ESCAPE ROOM/ BUSINESS")
+    price=200
+    else if(selectedEvent=="ENTREPRENEURIAL MEME CONTEST" && numberSelect=="SOLO")
+    price=50;
+    else if(selectedEvent=="ENTREPRENEURIAL MEME CONTEST")
+    price=100;
+    else if(selectedEvent=="RUNNING COMPETITION/ MARATHON")
+        price=30;
+        else if(selectedEvent=="TUG OF WAR" && numberSelect=="DUO")
+        price=200;
+    else if(selectedEvent=="  TUG OF WAR")
+    price=400;
+    else if(selectedEvent=="TECHNICAL PRESENTATION" && numberSelect=="DUO")
+    price=50;
+    else if(selectedEvent=="TECHNICAL PRESENTATION")
+    price=30;
+    else if(selectedEvent=="CRAFT CARNIVAL/ POSTER MAKING, SLOGAN WRITING")
+    price=30;
+    else if(selectedEvent=="FLASH CLASH OF STYLES: THE DANCE FACE-OFF" && numberSelect=="SOLO")
+    price=50;
+    else if(selectedEvent=="FLASH CLASH OF STYLES: THE DANCE FACE-OFF" && numberSelect=="DUO")
+    price=100;
+    else if(selectedEvent=="FLASH CLASH OF STYLES: THE DANCE FACE-OFF" && numberSelect=="SQUAD-4-MEMBER")
+    price=150;
+    else if(selectedEvent=="TEASERQUEST")
+        price=200;
+    else if(selectedEvent=="HOVERHUNT")
+    price=30;
+    else if(selectedEvent=="TECHNICAL QUIZ")
+    price=20;
+
+    }
+
+
+    
+</script>
+  <script>
+    document.getElementById('rzp-button1').onclick = function(e) {
+      axios.post('/create/orderId')
+        .then(function (response) {
+          var options = {
+            "key": "<%= process.env.RAZORPAY_KEY_ID %>",
+            "amount": response.data.amount,
+            "currency": response.data.currency,
+            "name": "TECHNOCRATS",
+            "description": "Transaction",
+            "image": "https://i.pinimg.com/236x/2a/b2/aa/2ab2aa6a99c6589636ff051f46c14ea3.jpg",
+            "order_id": response.data.id,
+            "handler": function(response) {
+              axios.post('/api/payment/verify', {
+                razorpayOrderId: response.razorpay_order_id,
+                razorpayPaymentId: response.razorpay_payment_id,
+                signature: response.razorpay_signature
+              })
+              .then(function (response) {
+                alert('Payment verified successfully');
+              })
+              .catch(function (error) {
+                console.error(error);
+              });
+            },
+            "prefill": {
+              "name": "Krishna Jadhav",
+              "email": "kj4241808@gmail.com@gmail.com",
+              "contact": "8989655811"
+            },
+            "notes": {
+              "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+              "color": "#000099"
+            }
+          };
+          var rzp1 = new Razorpay(options);
+          rzp1.on('payment.failed', function(response) {
+            alert('Payment Failed');
+          });
+          rzp1.open();
+          e.preventDefault();
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    };
+  </script>
+<script src="javascript/navbaar.js"></script>
+ </body>
+</html>

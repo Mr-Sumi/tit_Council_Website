@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Events</title>
+    <link rel="stylesheet" href="/stylesheet/Student.css">
+    <link rel="stylesheet" href="/stylesheet/navbaar.css">
+    <style>
+       /* Import Custom Fonts */
+            @font-face {
+                font-family: Bebrush;
+                src: url(/Fonts/Bebrush.otf);
+            }
+
+            @font-face {
+                font-family: Gilroy-Black;
+                src: url(/Fonts/Gilroy-Black.ttf);
+            }
+
+            @font-face {
+                font-family: Bristone;
+                src: url(/Fonts/Bristone.ttf);
+            }
+
+            /* Global Styling */
+            body {
+                background: linear-gradient(256deg, #FFDEE9 0%, #B5FFFC 100%);
+            }
+
+            /* Event Container */
+            .event-space {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 10px;
+                gap: 22px;
+                align-items: center;
+                min-height: 100vh;
+                justify-content: center;
+            }
+
+            /* Flip Card */
+            .flip-card {
+                background-color: transparent;
+                width: 250px;
+                height: 250px;
+                perspective: 1000px; /* Adds depth effect */
+                font-family: sans-serif;
+                /* box-shadow:  1vw 1vw 50px black; */
+            }
+
+            .title {
+                font-size: 1.2rem;
+                font-weight: 500;
+                text-align: center;
+                margin: 0;
+                font-family: Bristone;
+                margin-bottom: 1vw;
+            }
+
+            .flip-card-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                transition: transform 0.8s;
+                transform-style: preserve-3d;
+            }
+
+            .flip-card:hover .flip-card-inner {
+                transform: rotateY(180deg);
+            }
+
+            /* Front & Back Styling */
+            .flip-card-front,
+            .flip-card-back {
+                box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                /* border: 1px solid rgb(0, 0, 0); */
+                border-radius: 1rem;
+                overflow: hidden;
+            }
+
+            .flip-card-front {
+                background: linear-gradient(256deg, #FFDEE9 0%, #B5FFFC 100%);
+                color: black;
+                z-index: 2; /* Ensures it's on top initially */
+                padding: 1vw;
+            }
+
+            .flip-card-back {
+                background: linear-gradient(256deg, #FFDEE9 0%, #B5FFFC 100%);
+                color: white;
+                transform: rotateY(180deg);
+                z-index: 1;
+            }
+
+            .flip-card-back img {
+                width: 100%;
+                border: 1px solid black; /* Proper border syntax */
+            }
+
+            /* Heading Styling */
+            .heading1 {
+                text-align: center;
+                margin-bottom: 15px;
+                padding: 10px;
+                font-size: 2rem;
+                margin-top: 5.2vw;
+                font-family: Bebrush;
+                letter-spacing: 3px;
+                color: rgb(20, 20, 20);
+            }
+
+            /* Responsive Font Size for Heading */
+            @media (min-width: 200px) and (max-width: 999px) {
+                .heading1 {
+                    font-size: 0.8rem;
+                }
+            }
+
+
+    </style>
+</head>
+<body>
+    <div class="navSlide">
+		<div class="icon">
+		 <i class="ri-close-large-line"></i>
+		</div>
+		 <ul class="NavLinks">
+		   <li><a href="/">Home</a></li>
+		   <li><a href="/members">Members</a></li>
+		   <li><a href="/clubs">Clubs</a></li>
+		   <li><a href="/faculty">Faculty</a></li>
+		   <li><a href="/gallery">Event Gallary</a></li>
+		   <li><a href="/login" class="loginButton">Login</a></li>   
+	   </ul>
+	   </div>
+  <nav>
+    <div class="logo">
+        <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
+        <h1>STUDENT COUNCIL</h1>
+    </div>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/members">Members</a></li>
+        <li><a href="/clubs">Clubs</a></li>
+        <li><a href="/faculty">Faculty</a></li>
+        <li><a href="/gallery">Event Gallary</a></li>
+		<i class="ri-menu-line"></i>
+    </ul>
+   
+</nav>
+    <div class="heading1">
+        <h1>SAFRON SUNDOWN</h1>
+    </div>
+    <div class="event-space">
+        <!-- Event-Start -->
+        <a href="/eventdance">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p class="title">Clash of Style <br/> The Dance Faceoff</p>
+                        <p >Click To Explore </p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Clash of Style.png" alt="" class="">
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/eventcoding">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p class="title">CODE CLASH 3.O</p>
+                        <p>Click To Explore </p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/CODECLASH.png" alt="" class="">
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/bgmi">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p class="title">BATTLE GROUNDS MOBILE INDIA BGMI</p>
+                        <p>Click To Explore </p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/BGMI.png" alt="" class="">
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/dumb">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p class="title">DUMB CHARADES</p>
+                        <p>Click To Explore </p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/DUMB CHARADES.png" alt="" class="">
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/meme">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p class="title">Entre preneurial Meme contest</p>
+                        <p>Click To Explore </p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Entrepreneurial meme contest.png" alt="" class="">
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/escape">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p class="title">Escape Room Business Crisis </p>
+                        <p>Click To Explore </p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Escaperoom.png" alt="" class="">
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/race">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+                        <p class="title">Robo Race</p>
+                        <p>Click To Explore </p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Robo Race P3.png" alt="" class="">
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/freefire">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p class="title">Free Fire</p>
+                        <p>Click To Explore </p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Free Fire.png" alt="" class="">
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="#">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p class="title">HoverHunt</p>
+                        <p>Click To Explore </p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Hoverhunt.png" alt="" class="">
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/corporate">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p class="title">CORPORATE CHALLENGES<br/></p>
+                        <p>Click To Explore </p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/JOIN THE CORPORATE CHALLENGES.png" alt="" class="">
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/chair">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Musical Chair P2.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Musical Chair</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/mic">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Open Mic.jpg" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Open Mic</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="#">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Out of the box.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Out of the box</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/modelshowcase">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Renewable model showcase.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Renewable Model showcase</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/war">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/ROBOWAR.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">ROBO WAR</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/running">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Running COMPETITION.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Running Competition</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="#">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Sky high ig post.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Sky High Snap and Solve</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/story">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Story Telling.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Story Telling</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/presentation">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Techincal Presentation.jpg" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Techincal Presentation</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/Quiz">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Techincal Quiz.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Techincal Quiz</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/TEASERQUEST">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Treasure Quest.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Treasure Quest</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="/tug">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/TUG OF WAR.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Tug of War</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="#">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Debate Contest.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Debate Contest</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="#">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/poster making.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Poster Making</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+        <!-- Event-Start -->
+        <a href="#">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-back">
+                        <img src="/image folder/Posters/Screen to speech.png" alt="" class="">
+                    </div>
+                    <div class="flip-card-front">
+                        <p class="title">Screen to Speech</p>
+                        <p>Click To Explore </p>
+                    </div>
+                </div>
+            </div>
+         </a>
+        <!--Event End-->
+
+</div>
+
+    <script src="javascript/navbaar.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENT COUNCIL</title>
+    <link rel="stylesheet" href="/stylesheet/Student.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/stylesheet/navbaar.css">
+    <script src="https://kit.fontawesome.com/a85c40c7f4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+
+	<script>
+		window.addEventListener("load" , function(){
+		  const loader = document.getElementById("preloader");
+		  loader.style= "display:none;";
+		});
+	  </script>
+	  
+	  
+	  <!--Loader for website-->
+	  <div class="socket" id="preloader">
+		<div class="glitch-container">
+		Student Council
+		  <span>Student Council</span>
+		  <span>Student Council</span>
+		</div>
+	  </div>
+
+  <div class="navSlide">
+		<div class="icon">
+		 <i class="ri-close-large-line"></i>
+		</div>
+		 <ul class="NavLinks">
+		   <li><a href="/">Home</a></li>
+		   <li><a href="/members">Members</a></li>
+		   <li><a href="/clubs">Clubs</a></li>
+		   <li><a href="/faculty">Mentors</a></li>
+		   <li><a href="/gallery">Event Gallary</a></li>
+		  <% if(isLoggedIn){ %>
+        <li id="login-btn"><a href="/login" class="loginButton">Login</a></li>  
+      <% } %> 
+	   </ul>
+	   </div>
+  <nav>
+    <div class="logo">
+        <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
+        <h1>STUDENT COUNCIL </h1>
+    </div>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/members">Members</a></li>
+        <li><a href="/clubs">Clubs</a></li>
+        <li><a href="/faculty">Mentors</a></li>
+        <li><a href="/gallery">Event Gallary</a></li>
+        <li id="login-btn"><a href="/login" id="login-btn">Login</a></li>   
+		    <i class="ri-menu-line"></i>
+    </ul>
+</nav>
+<section class="header">
+   
+  <div class="text-box">
+    <h1>STUDENT COUNCIL</h1>
+    <h2>WELCOME YOU</h2>
+    <p>Join us to explore the real worlds hand on hand experience and amazing fun activity.</p>
+    <a href="/form">
+      <button class="styled-button">
+        Register For Anwesha 2.0
+        <div class="inner-button">
+          <svg id="Arrow" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" height="30px" width="30px" class="icon">
+            <defs>
+              <linearGradient y2="100%" x2="100%" y1="0%" x1="0%" id="iconGradient">
+                <stop style="stop-color:#FFFFFF;stop-opacity:1" offset="0%"></stop>
+                <stop style="stop-color:#AAAAAA;stop-opacity:1" offset="100%"></stop>
+              </linearGradient>
+            </defs>
+            <path fill="url(#iconGradient)" d="M4 15a1 1 0 0 0 1 1h19.586l-4.292 4.292a1 1 0 0 0 1.414 1.414l6-6a.99.99 0 0 0 .292-.702V15c0-.13-.026-.26-.078-.382a.99.99 0 0 0-.216-.324l-6-6a1 1 0 0 0-1.414 1.414L24.586 14H5a1 1 0 0 0-1 1z"></path>
+          </svg>
+        </div>
+      </button>
+    </a>
+</div>
+</section>
+    <section>
+      <iframe
+      src="https://lu.ma/embed/event/evt-2oWeNFz78US9HIo/simple"
+      width="600"
+      height="450"
+      frameborder="0"
+      style="border: 1px solid #bfcbda88; border-radius: 4px;"
+      allowfullscreen=""
+      aria-hidden="false"
+      tabindex="0"
+    ></iframe>
+</section>
+
+
+<footer>
+    <a href="/Dev">
+      <button class="button">Developer team</button>      
+    </a>
+</footer>
+
+
+    <script src="javascript/navbaar.js"></script>
+<script>
+  const navSilde = document.querySelector(".navSlide");
+  const HomeIcon = document.querySelector("nav .nav-links i"); 
+  const closeIcon = document.querySelector(".navSlide .icon i")
+  HomeIcon.addEventListener("click",()=>{
+    navSilde.style.right = "0%"
+    // console.log("hello");
+  })
+  closeIcon.addEventListener("click",()=>{
+    navSilde.style.right = "-100%"
+  })
+</script>
+
+<script>
+  // Check if the user is logged in when the page loads
+window.onload = function() {
+  checkLoginStatus();
+};
+
+// Check login status by sending a request to the server
+function checkLoginStatus() {
+  fetch('/current_user')
+    .then(response => response.json())
+    .then(data => {
+      if (data.loggedIn) {
+        document.getElementById('login-btn').classList.add('hidden'); // Hide login button
+        document.getElementById('profile-menu').classList.remove('hidden'); // Show profile menu
+      } else {
+        document.getElementById('login-btn').classList.remove('hidden'); // Show login button
+        document.getElementById('profile-menu').classList.add('hidden'); // Hide profile menu
+      }
+    })
+    .catch(error => {
+      console.error('Error checking login status:', error);
+    });
+}
+
+// Handle logout
+function logout() {
+  fetch('/logout')
+    .then(response => response.json())
+    .then(() => {
+      // After logout, refresh the page to reset UI
+      window.location.reload();
+    })
+    .catch(error => {
+      console.error('Error logging out:', error);
+    });
+}
+
+// Navigate to login page
+function loginPage() {
+  window.location.href = '/login';  // Redirect to login page
+}
+
+
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+</html>
