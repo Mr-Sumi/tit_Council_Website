@@ -5,6 +5,8 @@ const usermodels = require('../models/usermodels');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+
+
 app.post("/register", (req, res) => {
   let { username, enrollment, email, dob, phone} = req.body;
  // console.log(username, enrollment, email, dob, phone);
