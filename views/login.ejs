@@ -547,8 +547,14 @@
     sign_in_btn.addEventListener("click", () => {
       container.classList.remove("sign-up-mode");
     });
-  </script>
-
+    
+    document.querySelector('form').addEventListener('submit', function(event) {
+      const email = document.querySelector('input[name=email]').value;
+      if (/^[^a-zA-Z0-9]/.test(email)) {
+          event.preventDefault();
+          alert('Email cannot start with a symbol.');
+      }
+  });
 
 
   </script>

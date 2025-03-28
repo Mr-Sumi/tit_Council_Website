@@ -11,6 +11,12 @@ const Payment = require('./models/payment.js');
 const bodyParser = require('body-parser'); 
 const cookieParser = require("cookie-parser");
 const usermodels = require('./models/usermodels');
+<<<<<<< HEAD
+=======
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { isLoggedIn } = require("./middleware/isLoggedIn");
+>>>>>>> 83d2f3c15f5e18f4379a8d94e7e03d9430d9cdcf
 let club=require('./routes/Club.js');
 let event=require('./routes/Event.js')
 
@@ -18,7 +24,12 @@ require('dotenv').config();
 connectdb();
 
 const app = express();
+<<<<<<< HEAD
  let PORT=process.env.PORT ||4000;
+=======
+// let PORT=process.env.PORT ||4000;
+const PORT = 3000;
+>>>>>>> 83d2f3c15f5e18f4379a8d94e7e03d9430d9cdcf
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -99,28 +110,6 @@ app.post('/current_user', (req, res) => {
   }
 });
 
-
-
-// Middleware done.
-const isLoggedIn = (req, res, next) => {
-  try {
-    if (!req.cookies.token || req.cookies.token === "") {
-      return res.redirect("/login");
-    }
-    const data = jwt.verify(req.cookies.token, process.env.JWT_TOKEN);
-    req.user = data;
-    next();
-  } catch (error) {
-    console.error("Authentication error:", error.message);
-    return res.redirect("/login");
-  }
-};
-
-
-
-
-
-
 // Home route
 app.get('/', (req, res) => {
   res.render('student council', { isLoggedIn : true });
@@ -171,8 +160,48 @@ app.get("/userPage",isLoggedIn,(req,res)=>{
 
   
 
+// app.get('/error', (req, res) => {
+//   res.render('error', { title: 'error:404' });
+// });
 
-// const PORT = process.env.PORT || 3000;
+
+// app.use((req, res, next) => {
+//   res.status(404).render('error', { title: 'Page Not Found' });
+// });
+
+
+// app.post('/create/orderId', async (req, res) => {
+//   const options = {
+//     amount: `${200}` * 100, 
+//     currency: "INR",
+//   };
+//   try {
+//     const order = await razorpay.orders.create(options);
+//     res.send(order);
+
+//     await Payment.create({
+//       orderId: order.id,
+//       amount: order.amount/100,
+//       currency: order.currency,
+//       status: 'pending',
+//     });
+//   } catch (error) {
+//     res.status(500).send('Error creating order');
+//   }
+// });
+
+// app.post('/api/payment/verify', async (req, res) => {
+//   const { razorpayOrderId, razorpayPaymentId, signature } = req.body;
+//   const crypto = require('crypto');
+//   const generatedSignature = crypto
+//     .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
+//     .update(`${razorpayOrderId}|${razorpayPaymentId}`)
+//     .digest('hex');
+
+//   if (generatedSignature === signature) {
+//     await Payment.findOneAndUpdate(
+//       { orderId: razorpayOrderId },
+//       { paymentId: razorpayPaymentId, signature, status
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
