@@ -94,9 +94,7 @@ app.post('/api/payment/verify', async (req, res) => {
     .update(`${razorpayOrderId}|${razorpayPaymentId}`)
     .digest('hex');
 
-  // Verify if the generated signature matches the Razorpay signature
   if (generatedSignature === signature) {
-    // Update payment status in the database
     await Payment.findOneAndUpdate(
       { orderId: razorpayOrderId },
       { paymentId: razorpayPaymentId, signature, status: 'completed' }
