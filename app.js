@@ -21,18 +21,12 @@ const { isLoggedIn } = require("./middleware/isLoggedIn");
 let club=require('./routes/Club.js');
 let event=require('./routes/Event.js')
 
-
 require('dotenv').config();
 connectdb();
 
 const app = express();
-<<<<<<< HEAD
-let PORT=process.env.PORT ||4000;
-=======
 
- let PORT=process.env.PORT ||4000;
-// const PORT = 3000;
->>>>>>> 0688bd218f9fc2f8acc76def0fed1895e3aef317
+let PORT=process.env.PORT ||4000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
