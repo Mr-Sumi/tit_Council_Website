@@ -17,16 +17,16 @@ const cookieParser = require("cookie-parser");
 const usermodels = require('./models/usermodels');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { isLoggedIn } = require("./middleware/isLoggedIn");
 let club=require('./routes/Club.js');
 let event=require('./routes/Event.js')
-
 
 require('dotenv').config();
 connectdb();
 
 const app = express();
-let PORT=process.env.PORT ||4000;
-// const PORT = 3000;
+// let PORT=process.env.PORT ||4000;
+const PORT = 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -95,9 +95,7 @@ app.post('/api/payment/verify', async (req, res) => {
     .update(`${razorpayOrderId}|${razorpayPaymentId}`)
     .digest('hex');
 
-  // Verify if the generated signature matches the Razorpay signature
   if (generatedSignature === signature) {
-    // Update payment status in the database
     await Payment.findOneAndUpdate(
       { orderId: razorpayOrderId },
       { paymentId: razorpayPaymentId, signature, status: 'completed' }
@@ -115,93 +113,6 @@ app.post('/current_user', (req, res) => {
     res.json({ loggedIn: false });
   }
 });
-
-
-app.post("/register", (req, res) => {
-  let { username, enrollment, email, dob, phone} = req.body;
- // console.log(username, enrollment, email, dob, phone);
-
-  bcrypt.genSalt(11, (err, salt) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Error generating salt");
-    }
-    bcrypt.hash(dob, salt, async (err, hash) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send("Error hashing password");
-      }
-      try {
-        let user = await usermodels.create({
-          username,
-          enrollment,
-          email,
-          dob: hash,
-          phone,
-          // password: hash,
-        });
-        let token = jwt.sign({ username, enrollment, dob }, process.env.JWT_TOKEN);
-        res.cookie("token", token, { httpOnly: true, secure: true });
-        res.redirect("/");
-      } catch (err) {
-        console.error(err);
-        return res.status(500).send("Error creating user");
-      }
-    });
-  });
-});
-
-// login User
-app.post("/login", async (req, res) => {
-  try {
-    const { enrollment, dob } = req.body;
-    const user = await usermodels.findOne({ enrollment });
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
-    const isPasswordValid = await bcrypt.compare(dob, user.dob);
-    if (!isPasswordValid) {
-      return res.status(401).send("Invalid credentials");
-    }
-    const token = jwt.sign(
-      { enrollment: user.enrollment, dob: user.dob },
-      process.env.JWT_TOKEN, 
-      { expiresIn: "6h" }
-    );
-    res.cookie("token", token, { httpOnly: true });
-    res.status(200).redirect("/");
-  } catch (error) {
-    console.error("Error during login:", error.message);
-    res.status(500).send("An error occurred while processing your request");
-  }
-});
-
-
-// Middleware done.
-const isLoggedIn = (req, res, next) => {
-  try {
-    if (!req.cookies.token || req.cookies.token === "") {
-      return res.redirect("/login");
-    }
-    const data = jwt.verify(req.cookies.token, process.env.JWT_TOKEN);
-    req.user = data;
-    next();
-  } catch (error) {
-    console.error("Authentication error:", error.message);
-    return res.redirect("/login");
-  }
-};
-
-// Logout karne ke liye.
-app.get("/logout",(req,res) => {
-  res.cookie("token","");
-  res.clearCookie("token");
-  res.redirect("/");
-})
-
-
-
-
 
 // Home route
 app.get('/', (req, res) => {
@@ -262,8 +173,48 @@ app.get("/userPage",isLoggedIn,(req,res)=>{
 
   
 
+// app.get('/error', (req, res) => {
+//   res.render('error', { title: 'error:404' });
+// });
 
-// const PORT = process.env.PORT || 3000;
+
+// app.use((req, res, next) => {
+//   res.status(404).render('error', { title: 'Page Not Found' });
+// });
+
+
+// app.post('/create/orderId', async (req, res) => {
+//   const options = {
+//     amount: `${200}` * 100, 
+//     currency: "INR",
+//   };
+//   try {
+//     const order = await razorpay.orders.create(options);
+//     res.send(order);
+
+//     await Payment.create({
+//       orderId: order.id,
+//       amount: order.amount/100,
+//       currency: order.currency,
+//       status: 'pending',
+//     });
+//   } catch (error) {
+//     res.status(500).send('Error creating order');
+//   }
+// });
+
+// app.post('/api/payment/verify', async (req, res) => {
+//   const { razorpayOrderId, razorpayPaymentId, signature } = req.body;
+//   const crypto = require('crypto');
+//   const generatedSignature = crypto
+//     .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
+//     .update(`${razorpayOrderId}|${razorpayPaymentId}`)
+//     .digest('hex');
+
+//   if (generatedSignature === signature) {
+//     await Payment.findOneAndUpdate(
+//       { orderId: razorpayOrderId },
+//       { paymentId: razorpayPaymentId, signature, status
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
