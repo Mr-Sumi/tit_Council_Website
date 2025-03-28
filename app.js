@@ -11,12 +11,9 @@ const Payment = require('./models/payment.js');
 const bodyParser = require('body-parser'); 
 const cookieParser = require("cookie-parser");
 const usermodels = require('./models/usermodels');
-<<<<<<< HEAD
-=======
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { isLoggedIn } = require("./middleware/isLoggedIn");
->>>>>>> 83d2f3c15f5e18f4379a8d94e7e03d9430d9cdcf
 let club=require('./routes/Club.js');
 let event=require('./routes/Event.js')
 
@@ -24,12 +21,7 @@ require('dotenv').config();
 connectdb();
 
 const app = express();
-<<<<<<< HEAD
  let PORT=process.env.PORT ||4000;
-=======
-// let PORT=process.env.PORT ||4000;
-const PORT = 3000;
->>>>>>> 83d2f3c15f5e18f4379a8d94e7e03d9430d9cdcf
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
