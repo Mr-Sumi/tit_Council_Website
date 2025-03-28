@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        unique: true,
     },
     enrollment: {
         type: String,
@@ -32,13 +31,8 @@ const userSchema = new mongoose.Schema({
         unique: true,
         validate: [validator.isMobilePhone, 'Invalid phone number format'],
       },
-    // password: {
-    //     type: String,
-    //     required: true,
-    // },
 }, { timestamps: true }); 
 
 userSchema.plugin(plm);
 
-// Export the model
 module.exports = model('User', userSchema);

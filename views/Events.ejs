@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Events</title>
-    <link rel="stylesheet" href="/stylesheet/Student.css">
-    <link rel="stylesheet" href="/stylesheet/navbaar.css">
+    <link rel="stylesheet" href="../stylesheet/Student.css">
+    <link rel="stylesheet" href="../stylesheet/navbaar.css">
     <style>
        /* Import Custom Fonts */
             @font-face {
@@ -128,10 +128,43 @@
                 }
             }
 
+            /*Pre-loader*/
+            
+            #videoLoader {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 9999;
+            }
 
+            video {
+                width: 80%;
+                max-width: 800px;
+            }
     </style>
+    <script>
+        setTimeout(() => {
+        document.getElementById('videoLoader').style.display = 'none';
+        document.getElementById("mainContent").style.display = "block";
+        }, 4000);
+    </script>
 </head>
 <body>
+
+    
+
+    <div id="videoLoader">
+        <video autoplay muted id="loadingVideo">
+            <source src="/Videos/STUDENT COUNCIL X CORE COMMITTE.mp4" type="video/mp4" alt="Pre-loader">
+        </video>
+    </div>
+    <div id="mainContent">
     <div class="navSlide">
 		<div class="icon">
 		 <i class="ri-close-large-line"></i>
@@ -165,7 +198,7 @@
     </div>
     <div class="event-space">
         <!-- Event-Start -->
-        <a href="/eventdance">
+        <a href="/event/eventdance">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -181,7 +214,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/eventcoding">
+        <a href="/event/eventcoding">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -197,7 +230,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/bgmi">
+        <a href="/event/bgmi">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -213,7 +246,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/dumb">
+        <a href="/event/dumb">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -229,7 +262,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/meme">
+        <a href="/event/meme">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -245,7 +278,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/escape">
+        <a href="/event/escape">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -261,7 +294,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/race">
+        <a href="/event/race">
             <div class="flip-card">
                 <div class="flip-card-inner">
 
@@ -278,7 +311,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/freefire">
+        <a href="/event/freefire">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -310,7 +343,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/corporate">
+        <a href="/event/corporate">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -326,7 +359,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/chair">
+        <a href="/event/chair">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-back">
@@ -342,7 +375,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/mic">
+        <a href="/event/mic">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-back">
@@ -374,7 +407,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/modelshowcase">
+        <a href="/event/modelshowcase">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-back">
@@ -390,7 +423,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/war">
+        <a href="/event/war">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-back">
@@ -406,7 +439,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/running">
+        <a href="/event/running">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-back">
@@ -438,7 +471,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/story">
+        <a href="/event/story">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-back">
@@ -454,7 +487,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/presentation">
+        <a href="/event/presentation">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-back">
@@ -470,7 +503,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/Quiz">
+        <a href="event/Quiz">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-back">
@@ -486,7 +519,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/TEASERQUEST">
+        <a href="/event/TEASERQUEST">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-back">
@@ -502,7 +535,7 @@
         <!--Event End-->
 
         <!-- Event-Start -->
-        <a href="/tug">
+        <a href="/event/tug">
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-back">
@@ -566,7 +599,8 @@
         <!--Event End-->
 
 </div>
+</div>
 
-    <script src="javascript/navbaar.js"></script>
+    <script src="../javascript/navbaar.js"></script>
 </body>
 </html>
