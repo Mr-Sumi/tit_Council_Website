@@ -17,6 +17,7 @@ const cookieParser = require("cookie-parser");
 const usermodels = require('./models/usermodels');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { isLoggedIn } = require("./middleware/isLoggedIn");
 let club=require('./routes/Club.js');
 let event=require('./routes/Event.js')
 
@@ -25,8 +26,7 @@ require('dotenv').config();
 connectdb();
 
 const app = express();
- let PORT=process.env.PORT ||4000;
-// const PORT = 3000;
+let PORT=process.env.PORT ||4000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -113,28 +113,6 @@ app.post('/current_user', (req, res) => {
     res.json({ loggedIn: false });
   }
 });
-
-
-
-// Middleware done.
-const isLoggedIn = (req, res, next) => {
-  try {
-    if (!req.cookies.token || req.cookies.token === "") {
-      return res.redirect("/login");
-    }
-    const data = jwt.verify(req.cookies.token, process.env.JWT_TOKEN);
-    req.user = data;
-    next();
-  } catch (error) {
-    console.error("Authentication error:", error.message);
-    return res.redirect("/login");
-  }
-};
-
-
-
-
-
 
 // Home route
 app.get('/', (req, res) => {
