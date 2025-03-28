@@ -452,7 +452,7 @@
 
 
 			<div class="signin-signup">
-				<form action="/login" class="sign-in-form signin" method="POST">
+				<form action="/auth/login" class="sign-in-form signin" method="POST">
 					<h2 class="title">Sign in</h2>
 					<div class="input-field">
 						<i class="fas fa-user"></i>
@@ -471,7 +471,7 @@
 
 
 
-				<form action="/register" class="sign-up-form" method="POST">
+				<form action="/auth/register" class="sign-up-form" method="POST">
 					<h2 class="title">Sign up</h2>
 					<div class="input-field">
 						<i class="fas fa-user"></i>
@@ -493,13 +493,8 @@
 						<i class="fas fa-calendar-days"></i>
 						<input type="text" placeholder="Date Of Birth" required="/required" name="dob" />
           </div>
-          <!-- <div class="input-field" id="password">
-						<!-- <i class="fas fa-calendar-days"></i> -->
-            <!-- <i class="ri-lock-line"></i> -->
-						<!-- <input type="password" placeholder="DOB without / & -" required="/required" name="password" />
-          </div> --> -->
           <p class="password_section">*your Date of Birth is your password in formate DD/MM/YYYY *</p>
-					<input type="submit" class="btn" value="Sign up" />
+					<input type="submit" class="btn" value="Sign up" placeholder="DD/MM/YYYY" />
 				</form>
 			</div>
 		</div>
