@@ -148,16 +148,16 @@
                 max-width: 800px;
             }
     </style>
+    <script>
+        setTimeout(() => {
+        document.getElementById('videoLoader').style.display = 'none';
+        document.getElementById("mainContent").style.display = "block";
+        }, 4000);
+    </script>
 </head>
 <body>
 
-    <script>
-        const video = document.getElementById("loadingVideo");
-        video.onended = function() {
-        document.getElementById("videoLoader").style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-        };
-    </script>
+    
 
     <div id="videoLoader">
         <video autoplay muted id="loadingVideo">

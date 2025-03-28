@@ -25,7 +25,8 @@ require('dotenv').config();
 connectdb();
 
 const app = express();
-let PORT=process.env.PORT ||4000;
+// let PORT=process.env.PORT ||4000;
+const PORT = 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -94,9 +95,7 @@ app.post('/api/payment/verify', async (req, res) => {
     .update(`${razorpayOrderId}|${razorpayPaymentId}`)
     .digest('hex');
 
-  // Verify if the generated signature matches the Razorpay signature
   if (generatedSignature === signature) {
-    // Update payment status in the database
     await Payment.findOneAndUpdate(
       { orderId: razorpayOrderId },
       { paymentId: razorpayPaymentId, signature, status: 'completed' }
