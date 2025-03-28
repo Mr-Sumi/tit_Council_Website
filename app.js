@@ -25,12 +25,9 @@ require('dotenv').config();
 connectdb();
 
 const app = express();
-<<<<<<< HEAD
-let PORT =  8080;
-=======
+
  let PORT=process.env.PORT ||4000;
 // const PORT = 3000;
->>>>>>> 6890ae21508568cd7f1cbe295f638aa7a359b29c
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -199,7 +196,6 @@ app.get("/userPage",isLoggedIn,(req,res)=>{
 
   
 
-<<<<<<< HEAD
 // app.get('/error', (req, res) => {
 //   res.render('error', { title: 'error:404' });
 // });
@@ -241,19 +237,7 @@ app.get("/userPage",isLoggedIn,(req,res)=>{
 //   if (generatedSignature === signature) {
 //     await Payment.findOneAndUpdate(
 //       { orderId: razorpayOrderId },
-//       { paymentId: razorpayPaymentId, signature, status: 'completed' }
-//     );
-//     res.send('Payment verified successfully');
-//   } else {
-//     res.status(400).send('Payment verification failed');
-//   }
-// });
-
-// PORT= process.env.PORT;
-=======
-
-// const PORT = process.env.PORT || 3000;
->>>>>>> 6890ae21508568cd7f1cbe295f638aa7a359b29c
+//       { paymentId: razorpayPaymentId, signature, status
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
