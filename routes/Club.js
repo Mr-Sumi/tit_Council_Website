@@ -1,19 +1,18 @@
-let express= require('express');
-
-let app= express();
+let express = require('express');
+let app = express();
 
 app.get('/coding', (req, res) => {
-    res.render('Coding club', { title: 'Coding Club Page' });
-  });
+  res.render('Coding club', { title: 'Coding Club Page' });
+});
   
-  app.get('/Quiz ', (req, res) => {
-    res.render('Anwesha Event/Technical Quiz ', { title: 'Quiz Page' });
-  })
+app.get('/Quiz ', (req, res) => {
+  res.render('Anwesha Event/Technical Quiz ', { title: 'Quiz Page' });
+})
   
   // Drone Club route
-  app.get('/drone',  (req, res) => {
-    res.render('drone club', { title: 'Drone Club Page' });
-  });
+app.get('/drone',  (req, res) => {
+  res.render('drone club', { title: 'Drone Club Page' });
+});
   
   // Media Fusion route
   app.get('/media', (req, res) => {
