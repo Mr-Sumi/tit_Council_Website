@@ -23,7 +23,7 @@ dotenv.config();
 connectdb();
 
 const app = express();
-const PORT =  4000;
+let PORT =  8080;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -554,7 +554,7 @@ app.get("/eventPage",(req,res)=>{
 //   }
 // });
 
-
+// PORT= process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
