@@ -30,178 +30,206 @@
             font-family: Affectsides;
             src: url(/Fonts/Affectsides.ttf);
         }
-            body{
-                color:black;
+            body {
+                background-color: white;
+                color: #2a2a45;
+                font-family: GilroyMedium, sans-serif;
                 text-align: center;
-                padding: 10 px;
-                animation: pageLoad 2s;
-                border: 2px solid white;
-                border-radius: 10px;
+                animation: pageLoad 1s ease;
+            }
+            body::-webkit-scrollbar {
+                display: none;
+            }
+            .container {
+                margin-top: 10vh;
+                padding: 0 5vw;
+            }
+            .heading {
+                margin: 2rem auto 5rem;
+                position: relative;
+                width: fit-content;
+            }
+            .heading h1 {
+                font-family: Bebrush;
+                font-size: 3.2vw;
+                letter-spacing: 0.8vw;
+                color: #2a2a45;
+                font-weight: 400;
+                margin: 0;
+                padding: 0.5rem 0;
                 position: relative;
             }
-            body::-webkit-scrollbar{
-        display: none;
-      }
-
-            @keyframes pageLoad {
-                0% {
-                    transform: scale(0.5);
-                    opacity: 0;
-                }
-                100% {
-                    transform: scale(1);
-                    opacity: 1;
-                }
+            .heading h1::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: #2a2a45;
             }
-
-            .container{
-                background-color:white;
-                margin-top: 11vh;
-                border-top-right-radius: 12px;
-                border-top-left-radius: 12px;
+            .club-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+                /* padding: 2rem 0; */
+                width: 100%;
             }
             .card {
-                width: 210px;
-                height: 210px;
+                width: 200px;
+                height: 200px;
+                flex: 0 0 auto;
                 background: transparent;
                 border-radius: 50%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                align-self: center;
-                color: rgb(0, 0, 0);
-                transition: 0.2s ease-in-out;
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                animation: scaleUp 1s;
-                flex-wrap: wrap;
+                position: relative;
                 overflow: hidden;
+                transition: all 0.4s ease;
+                box-shadow: 0 4px 15px rgba(42, 42, 69, 0.08);
             }
-
-            @keyframes scaleUp {
-                0% {
-                    transform: scale(0.5);
-                }
-                100% {
-                    transform: scale(1);
-                }
-            }
-
             .img {
-                height: 210px;
-                position: absolute;
-                transition: 0.2s ease-in-out;
-                z-index: 1;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
                 border-radius: 50%;
-                padding: 5px;
-                animation: fadeIn 1s;
-                
+                transition: all 0.4s ease;
             }
-
-            @keyframes fadeIn {
-                0% {
-                    opacity: 0;
-                }
-                100% {
-                    opacity: 1;
-                }
-            }
-
             .textBox {
-                opacity: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 100%;
+                background: rgba(42, 42, 69, 0.9);
                 display: flex;
-                flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 15px;
-                transition: 0.2s ease-in-out;
-                z-index: 2;
-                background-color:black;
-                padding: 1vw 0.5vw;
-                width:fit-content;
-                border-radius: 10px;
-                animation: slideUp 1s;
+                border-radius: 50%;
+                opacity: 0;
+                transition: all 0.4s ease;
             }
-
-            @keyframes slideUp {
-                0% {
-                    transform: translateY(50px);
-                    opacity: 0;
-                }
-                100% {
-                    transform: translateY(0);
-                    opacity: 1;
-                }
-            }
-
-            .textBox > .text {
-                font-weight: bold;
+            .text {
+                font-family: Gilroy-black;
                 color: white;
+                font-size: 1.2rem;
+                padding: 1rem;
+                text-align: center;
             }
-
-            .textBox > .head {
-                font-size: 20px;
+            .card:hover {
+                transform: translateY(-5px);
             }
-
-            .card:hover > .textBox {
+            .card:hover .img {
+                transform: scale(1.1);
+                filter: blur(3px);
+            }
+            .card:hover .textBox {
                 opacity: 1;
             }
-
-            .card:hover > .img {
-                height: 65%;
-                filter: blur(7px);
-                animation: anim 3s infinite;
+            a {
+                text-decoration: none;
+                color: inherit;
             }
-            .heading{
-                padding: 1vw;
-                font-family:Bebrush ;
-            }
-            .heading h1{
-                letter-spacing: 1px;
-                font-weight: 100;
-            }
-            @keyframes anim {
-                0% {
-                    transform: translateY(0);
-                }
-
-                50% {
-                    transform: translateY(-20px);
-                }
-
-                100% {
-                    transform: translateY(0);
-                }
-            }
-
-            .card:hover {
-                transform: scale(1.04) rotate(-1deg);
-            }
-
-            .club-grid{
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-                grid-gap: 40px;
-                animation: fadeIn 2s;
-                align-items: center;
-                justify-content: center;
-                align-self: center;
-                flex-wrap: wrap;
-            }
-
             @media (max-width: 1200px) {
-                .club-grid {
-                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                .card {
+                    width: 180px;
+                    height: 180px;
                 }
             }
-
-            .heading{
-                border-bottom: 2px solid;
-                margin-bottom: 20px;
+            @media (max-width: 992px) {
+                .card {
+                    width: 160px;
+                    height: 160px;
+                }
+            }
+            @media (max-width: 768px) {
+                .card {
+                    width: 150px;
+                    height: 150px;
+                }
+            }
+            @media (max-width: 576px) {
+                .card {
+                    width: 140px;
+                    height: 140px;
+                }
+            }
+            @keyframes pageLoad {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            footer {
+                text-align: center;
+                background-color: #23233e;
+                color: #ddd;
+                padding: 15px;
+                width: 100%;
+            }
+            .button {
+                padding: 8px 20px;
+                font-family: GilroyMedium;
+                font-size: 16px;
+                color: white;
+                background: transparent;
+                border: 2px solid white;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .button:hover {
+                background-color: white;
+                color: #23233e;
+            }
+            /* Developer Team Button Styles */
+            .dev-team-wrapper {
+                text-align: center;
+                margin: 2rem 0;
             }
 
+            .button {
+                position: relative;
+                display: inline-block;
+                padding: 12px 24px;
+                background: transparent;
+                border: 2px solid white;
+                color: white;
+                font-family: GilroyMedium;
+                font-size: 16px;
+                text-decoration: none;
+                cursor: pointer;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .button-text {
+                position: relative;
+                z-index: 2;
+            }
+
+            .button-pattern {
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: white;
+                transition: all 0.3s ease;
+                z-index: 1;
+            }
+
+            .button:hover .button-pattern {
+                left: 0;
+            }
+
+            .button:hover {
+                color: #23233e;
+            }
     </style>
 </head>
 <body>
@@ -414,4 +442,5 @@
 </footer>
 <script src="javascript/navbaar.js"></script>
 </body>
+</html>
 </html>

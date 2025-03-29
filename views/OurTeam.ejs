@@ -20,362 +20,253 @@
         src: url(/Fonts/Bebrush.otf);
     }
     
-    body{
-        color:black;
+    body {
         background-color: white;
+        color: #2a2a45;
+        font-family: GilroyMedium, sans-serif;
         text-align: center;
-        animation: pageOpen 2s;
     }
-    body::-webkit-scrollbar{
+    body::-webkit-scrollbar {
     display: none;
-  }
-    .main{
-        background-color: white;
-        border-radius: 10px;
     }
-    .container{
-        margin-top: 9vh;
+    .container {
+        margin-top: 8vh;
+        padding: 0 3vw;
     }
-    @keyframes pageOpen {
-        0% {
-            transform: scaleX(0);
-        }
-        100% {
-            transform: scaleX(1);
-        }
+    .heading-bearer {
+        margin: 2rem auto;
+        position: relative;
+        width: fit-content;
+        padding-bottom: 1rem;
     }
-
+    .heading-bearer h1 {
+        font-family: Bebrush;
+        font-size: 3.2vw;
+        letter-spacing: 0.8vw;
+        color: #2a2a45;
+        margin-top:6vw;
+        font-weight: 400;
+    }
+    .heading-bearer::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #2a2a45;
+    }
     .team-grid {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
-        animation: fadeIn 2s;
-        overflow: hidden;
-        padding: 25px;
+        justify-content: center;
+        gap: 2rem;
+        padding: 1rem;
+        animation: fadeIn 1s ease;
     }
-    .team-grid-head {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        animation: fadeIn 2s;
-        overflow: hidden;
-        /* border-bottom: 2px solid wheat; */
-        margin: 15px;
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-    .heading-bearer{
-        /* border-bottom: 2px solid ; */
-        padding: 1vw;
-        border-bottom: 2px solid black;
-        border-top: 2px solid black;
-        height: fit-content;
-    }
-    .heading-bearer mar{
-        /* font-family: Bebrush; */
-        margin-top: .3rem;
-    }
-    .heading-bearer h1{
-        font-size: 2rem;
-        font-family: Bebrush;
-        font-weight: 400;
-        letter-spacing: 1vw;
-      
-    }
-
-    @media  (min-width: 200px) and (max-width: 1200px){
-        .heading-bearer{
-      
-        padding: 15px;
-    }
-    .heading-bearer h1{
-        margin-top: 10px;
-        font-size: 3rem;
-        font-family: Gilroy-Bold;
-    }
-    }
-
-
-    @keyframes scaleUp {
-        0% {
-            transform: scale(0.5);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-
-    /*social-button*/
-    
-    .social-button{
+    .flip-card {
         background-color: transparent;
-        /* border-top: 2px solid whitesmoke; */
-        padding-top: 10px;
-        margin-top: 5px;
-        text-align: center;
-        margin-left: 15px;
-        margin-right: 15px;
+        width: 300px;
+        height: 380px;
+        perspective: 1000px;
+        margin: 1rem;
     }
-
-    /* Wrapper */
-    .icon-button {
-        background-color: white;
-        border-radius: 50%;
-        cursor: pointer;
-        display: inline-block;
-        font-size: 2.0rem;
-        height: 3rem;
-        line-height: 3rem;
-        margin: 0 5px;
+    .flip-card-inner {
         position: relative;
+        width: 100%;
+        height: 100%;
         text-align: center;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-            -ms-user-select: none;
-                user-select: none;
-        width: 3rem;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
     }
-
-    /* Circle */
-    .icon-button span {
-        border-radius: 0;
-        display: block;
-        height: 0;
-        left: 50%;
-        margin: 0;
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
         position: absolute;
-        top: 50%;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-            -o-transition: all 0.3s;
-                transition: all 0.3s;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(42, 42, 69, 0.08);
+    }
+    .flip-card-front {
+        background-color: #f8f9fa;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .flip-card-front img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #2a2a45;
+        box-shadow: 0 4px 15px rgba(42, 42, 69, 0.15);
+        margin-bottom: 1rem;
+    }
+    .flip-card-front h3 {
+        font-family: Gilroy-Bold;
+        font-size: 1.4rem;
+        color: #2a2a45;
+        margin: 0.5rem 0;
+    }
+    .flip-card-back {
+        background-color: #2a2a45;
+        color: white;
+        transform: rotateY(180deg);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .flip-card-back p {
+        font-family: GilroyMedium;
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    .social-button {
+        display: flex;
+        gap: 0.8rem;
+        margin-top: 1rem;
+    }
+    .icon-button {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    .icon-button i {
+        font-size: 1.2rem;
+        z-index: 1;
+        transition: color 0.3s ease;
+    }
+    .icon-button span {
+        position: absolute;
         width: 0;
+        height: 0;
+        opacity: 0;
+        border-radius: 50%;
+        transition: all 0.3s ease;
     }
     .icon-button:hover span {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 3.6rem;
-        margin: -1.5rem;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
     }
-    .twitter span {
-        background-color: #4099ff;
-    }
-    .facebook span {
-        background-color: #3B5998;
-    }
-    .linkedin span {
-        background-color: #0077b5;
-    }
-    .instagram span {
-    background-color: #bc2a8d;
-    }
-    .github span {
-    background-color: #333;
-    }
-
-    /* Icons */
-    .icon-button i {
-        background: none;
-        color: white;
-        height: 0.7rem;
-        left: 0;
-        line-height: 3rem;
-        position: absolute;
-        top: 0;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-            -o-transition: all 0.3s;
-                transition: all 0.3s;
-        width: 3rem;
-        z-index: 10;
-    }
-    .icon-button .fa-twitter {
-        color: #4099ff;
-    }
-    .icon-button .fa-facebook {
-        color: #3B5998;
-    }
-    .icon-button .fa-linkedin {
-        color: #0077b5;
-    }
-    .icon-button .fa-instagram {
-        color: #4099ff;
-    }
-    .icon-button .fa-github {
-        color: #333;
-    }
-    .icon-button:hover .fa-twitter,
-    .icon-button:hover .fa-facebook,
-    .icon-button:hover .fa-linkedin,
-    .icon-button:hover .fa-instagram,
-    .icon-button:hover .fa-github{
+    .twitter span { background-color: #4099ff; }
+    .facebook span { background-color: #3B5998; }
+    .linkedin span { background-color: #0077b5; }
+    .instagram span { background-color: #bc2a8d; }
+    .github span { background-color: #333; }
+    .icon-button:hover i {
         color: white;
     }
-
-  
+    @media (max-width: 1024px) {
+        .heading-bearer h1 {
+            font-size: 4vw;
+        }
+        
         .flip-card {
-            background-color: transparent;
-            width: 20vw;
-            height: 40vh;
-            perspective: 1000px;
-            font-family: Gilroy-black;
-            margin: 50px;
+            width: 280px;
+            height: 360px;
         }
-
-        .title {
-            font-size: 1.5em;
-            font-weight: 900;
-            text-align: center;
-            margin: 0;
-            font-family: bristone;
+    }
+    @media (max-width: 768px) {
+        .container {
+            margin-top: 6vh;
         }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
+        
+        .heading-bearer h1 {
+            font-size: 5vw;
+            letter-spacing: 0.6vw;
         }
-
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
+        
+        .flip-card {
+            width: 260px;
+            height: 340px;
+            margin: 0.8rem;
         }
-
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            /* border: 1px solid rgb(0, 0, 0); */
-            border-radius: 1rem;
+        
+        .flip-card-front img {
+            width: 160px;
+            height: 160px;
         }
-
-        .flip-card-front {
-            background-color:rgb(245, 245, 245);
-            color: black;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+    }
+    @media (max-width: 576px) {
+        .container {
+            margin-top: 5vh;
+            padding: 0 2vw;
         }
-
-        .flip-card-front img{
-            height: 25vh;
-            align-self: center;
-            border-radius: 50%;
+        
+        .heading-bearer h1 {
+            font-size: 6vw;
+            letter-spacing: 0.4vw;
+            margin-top: 15vw;
         }
-
-        .flip-card-back {
-            background-color:rgb(245, 244, 244);
-            color: black;
-            transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        
+        .flip-card {
+            width: 90vw;
+            height: 380px;
+            margin: 0.5rem;
         }
-        .flip-card-front h3 {
-            color:black;
-            animation: fadeIn 2s;
-            font-size: 1.6rem;
-            font-family: Gilroy-Bold;
-            margin-top: 5px;
+        
+        .flip-card-front img {
+            width: 200px;
+            height: 200px;
         }
-
-        .flip-card-back p {
-            color: #1d1d1d;
-            font-size: 1.1rem;
-            animation: fadeIn 2s;
-            font-style: oblique;
-            font-weight: 500;
-            font-family: Bristone;
-            align-items: center;
-            justify-content: center;
-
+        
+        .team-grid {
+            gap: 1rem;
         }
-
-        .heading1{
-            text-align: center;
-            border-bottom: 5px solid rgb(176, 164, 164);
-            margin-bottom: 15px;
-            background-color: #8EC5FC;
-            background-image: linear-gradient(62deg, #8EC5FC 10%, #E0C3FC 100%);
-            padding: 10px;
-            border-bottom-right-radius: 20px;
-            border-bottom-left-radius: 20px;
-        }
-
-        .heading1 h1{
-            font-family: Bebrush;
-            letter-spacing: 3px;
-            color: rgb(20, 20, 20);
-            font-size: 0.8rem;
-
-        }
-
-        @media  (min-width: 400px) and (max-width: 1200px){
-            .heading1{
-                font-size: 0.8rem;
-            }
-            .flip-card{
-                width: 80vw;
-                align-items: center;
-                margin: 20px;
-            }
-            .flip-card-front, .flip-card-back {
-                width: 80vw;
-                text-align: center;
-                align-items: center;
-            }
-
-            .flip-card-front img{
-                border-radius: 50%;
-                height: 33vh;
-                align-self: center;
-            }
-        }
-
-        @media  (min-width: 200px) and (max-width: 399px){
-            .heading1{
-                font-size: 0.8rem;
-            }
-            .flip-card{
-                width: 90vw;
-                align-items: center;
-                margin: 10px;
-            }
-            .flip-card-front, .flip-card-back {
-                width: 90vw;
-                text-align: center;
-                align-items: center;
-            }
-
-            .flip-card-front img{
-                border-radius: 50%;
-                height: 30vh;
-                align-self: center;
-            }
-        }
-
-        footer {
+    }
+    /* Footer and Button Styles */
+    footer {
         text-align: center;
-        background-color:black;
-        color:black;
+        background-color: #23233e;
+        color: #ddd;
         padding: 15px;
-        margin-top: 50px;
         width: 100%;
     }
-    
+
+    .button {
+        background: linear-gradient(to right, #2a2a45, #23233e);
+        color: white;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-family: GilroyMedium;
+        font-size: 16px;
+        box-shadow: 0 4px 15px rgba(42, 42, 69, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(42, 42, 69, 0.3);
+        background: linear-gradient(to right, #23233e, #2a2a45);
+    }
+
+    a {
+        text-decoration: none;
+        color: black  /* This will keep the text color same as its parent */
+    }
+
+    /* If you want to specifically target social media links */
+    .social-button a {
+        text-decoration: none;
+    }
 </style>
 </head>
 <body>
