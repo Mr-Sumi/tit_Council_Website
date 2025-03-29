@@ -26,24 +26,26 @@
 
             /* Global Styling */
             body {
+                margin: 0;
+                padding: 0;
                 background: linear-gradient(256deg, #FFDEE9 0%, #B5FFFC 100%);
+                min-height: 100vh;
             }
 
             /* Event Container */
             .event-space {
-                display: flex;
-                flex-wrap: wrap;
-                margin: 10px;
-                gap: 22px;
-                align-items: center;
-                min-height: 100vh;
-                justify-content: center;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 2rem;
+                padding: 2rem;
+                max-width: 1400px;
+                margin: 0 auto;
             }
 
             /* Flip Card */
             .flip-card {
                 background-color: transparent;
-                width: 250px;
+                width: 100%;
                 height: 250px;
                 perspective: 1000px; /* Adds depth effect */
                 font-family: sans-serif;
@@ -56,7 +58,7 @@
                 text-align: center;
                 margin: 0;
                 font-family: Bristone;
-                margin-bottom: 1vw;
+                margin-bottom: 1rem;
             }
 
             .flip-card-inner {
@@ -94,7 +96,7 @@
                 background: linear-gradient(256deg, #FFDEE9 0%, #B5FFFC 100%);
                 color: black;
                 z-index: 2; /* Ensures it's on top initially */
-                padding: 1vw;
+                padding: 1rem;
             }
 
             .flip-card-back {
@@ -106,53 +108,118 @@
 
             .flip-card-back img {
                 width: 100%;
-                border: 1px solid black; /* Proper border syntax */
+                height: 100%;
+                object-fit: cover;
             }
 
             /* Heading Styling */
             .heading1 {
                 text-align: center;
-                margin-bottom: 15px;
-                padding: 10px;
-                font-size: 2rem;
-                margin-top: 5.2vw;
+                padding: 2rem 0;
+                margin-top: 6rem;
+                margin-bottom: 2rem;
+            }
+
+            .heading1 h1 {
                 font-family: Bebrush;
+                font-size: 3.5rem;
                 letter-spacing: 3px;
                 color: rgb(20, 20, 20);
+                margin: 0;
+            }
+
+            .heading1 h3 {
+                font-family: Bristone;
+                font-size: 1.8rem;
+                margin-top: 0.5rem;
             }
 
             /* Responsive Font Size for Heading */
-            @media (min-width: 200px) and (max-width: 999px) {
-                .heading1 {
-                    font-size: 0.8rem;
+            @media (max-width: 768px) {
+                .heading1 h1 {
+                    font-size: 2.5rem;
+                }
+
+                .heading1 h3 {
+                    font-size: 1.4rem;
+                }
+
+                .event-space {
+                    padding: 1rem;
+                    gap: 1rem;
                 }
             }
 
-            /*Pre-loader*/
+            /Pre-loader/
             
             #videoLoader {
                 position: fixed;
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 100%;
-                background: black;
+                height: 100vh;
+                z-index: 9999;
+                background: #000;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                z-index: 9999;
+                opacity: 1;
+                transition: opacity 0.5s ease-out;
+            }
+
+            #mainContent {
+                display: none;
+                opacity: 0;
+                transition: opacity 0.5s ease-in;
+            }
+
+            #loadingVideo {
+                width: 90%;
+                height: 90vh;
+                max-width: 1200px;
+                object-fit: contain;
             }
 
             video {
                 width: 80%;
                 max-width: 800px;
             }
+
+            /* Add this class for fade out animation */
+            .fade-out {
+                opacity: 0 !important;
+            }
+
+            /* Add this class for fade in animation */
+            .fade-in {
+                opacity: 1 !important;
+            }
     </style>
     <script>
-        setTimeout(() => {
-        document.getElementById('videoLoader').style.display = 'none';
-        document.getElementById("mainContent").style.display = "block";
-        }, 4000);
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('loadingVideo');
+            const loader = document.getElementById('videoLoader');
+            const mainContent = document.getElementById('mainContent');
+
+            // Initialize main content
+            mainContent.style.display = 'block';
+
+            // Video end handler
+            video.addEventListener('ended', handleTransition);
+
+            // Fallback handler
+            setTimeout(() => {
+                if (!video.ended) handleTransition();
+            }, 5000);
+
+            function handleTransition() {
+                loader.classList.add('fade-out');
+                mainContent.classList.add('fade-in');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }
+        });
     </script>
 </head>
 <body>
@@ -160,8 +227,8 @@
     
 
     <div id="videoLoader">
-        <video autoplay muted id="loadingVideo">
-            <source src="/Videos/STUDENT COUNCIL X CORE COMMITTE.mp4" type="video/mp4" alt="Pre-loader">
+        <video autoplay muted playsinline id="loadingVideo">
+            <source src="/Videos/STUDENT COUNCIL X CORE COMMITTE.mp4" type="video/mp4">
         </video>
     </div>
     <div id="mainContent">
@@ -195,6 +262,7 @@
 </nav>
     <div class="heading1">
         <h1>SAFRON SUNDOWN</h1>
+        <h3>Phase-2</h3>
     </div>
     <div class="event-space">
         <!-- Event-Start -->
@@ -569,7 +637,7 @@
         <!-- Event-Start -->
         <a href="#">
             <div class="flip-card">
-                <div class="flip-card-inner">
+                <div class="flip-card-inner"> 
                     <div class="flip-card-back">
                         <img src="/image folder/Posters/poster making.png" alt="" class="">
                     </div>
