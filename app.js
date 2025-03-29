@@ -150,50 +150,20 @@ app.get("/userPage",isLoggedIn,(req,res)=>{
 })
 
 
-  
+<<<<<<< HEAD
+app.get('/error', (req, res) => {
+  res.render('error', { title: 'error:404' });
+});
 
-// app.get('/error', (req, res) => {
-//   res.render('error', { title: 'error:404' });
-// });
+app.use((req, res, next) => {
+  res.status(404).render('error', { title: 'Page Not Found' });
+  next();
+});
 
 
-// app.use((req, res, next) => {
-//   res.status(404).render('error', { title: 'Page Not Found' });
-// });
+=======
 
-
-// app.post('/create/orderId', async (req, res) => {
-//   const options = {
-//     amount: `${200}` * 100, 
-//     currency: "INR",
-//   };
-//   try {
-//     const order = await razorpay.orders.create(options);
-//     res.send(order);
-
-//     await Payment.create({
-//       orderId: order.id,
-//       amount: order.amount/100,
-//       currency: order.currency,
-//       status: 'pending',
-//     });
-//   } catch (error) {
-//     res.status(500).send('Error creating order');
-//   }
-// });
-
-// app.post('/api/payment/verify', async (req, res) => {
-//   const { razorpayOrderId, razorpayPaymentId, signature } = req.body;
-//   const crypto = require('crypto');
-//   const generatedSignature = crypto
-//     .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
-//     .update(`${razorpayOrderId}|${razorpayPaymentId}`)
-//     .digest('hex');
-
-//   if (generatedSignature === signature) {
-//     await Payment.findOneAndUpdate(
-//       { orderId: razorpayOrderId },
-//       { paymentId: razorpayPaymentId, signature, status
+>>>>>>> e55b385a8b5927894a7ff0a9bf8732bcfcd01757
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
