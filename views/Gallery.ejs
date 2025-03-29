@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Gallery</title>
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/stylesheet/Gallery.css">
@@ -11,25 +12,7 @@
     <link rel="stylesheet" href="/stylesheet/Student.css">
 </head>
 <body>
-
-	<script>
-		window.addEventListener("load" , function(){
-		  const loader = document.getElementById("preloader");
-		  loader.style= "display:none;";
-		});
-	  </script>
-	  
-	  
-	  <!--Loader for website-->
-	  <div class="socket" id="preloader">
-		<div class="glitch-container">
-		Student Council
-		  <span>Student Council</span>
-		  <span>Student Council</span>
-		</div>
-	  </div>
-
-
+    <%- include('partials/preloader') %>
 
     <div class="navSlide">
         <div class="icon">
@@ -95,6 +78,8 @@
             <button class="button">Developer team</button>      
         </a>
     </footer>
+
+    <script src="/javascript/preloader.js"></script>
 
     <script src="/javascript/navbaar.js"></script>
 

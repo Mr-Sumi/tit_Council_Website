@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Team</title>
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/stylesheet/navbaar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -271,23 +272,7 @@
 </head>
 <body>
 
-    
-	<script>
-		window.addEventListener("load" , function(){
-		  const loader = document.getElementById("preloader");
-		  loader.style= "display:none;";
-		});
-	  </script>
-	  
-	  
-	  <!--Loader for website-->
-	  <div class="socket" id="preloader">
-		<div class="glitch-container">
-		Student Council
-		  <span>Student Council</span>
-		  <span>Student Council</span>
-		</div>
-	  </div>
+    <%- include('partials/preloader') %>
 
 
     <div class="navSlide">
@@ -515,5 +500,6 @@
       </a>
 </footer>
 <script src="javascript/navbaar.js"></script>
+<script src="/javascript/preloader.js"></script>
 </body>
 </html>

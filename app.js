@@ -39,7 +39,7 @@ app.use(session({
 
 app.use(cookieParser());
 
-
+app.use(express.static('public')); 
 app.use("/auth", authRouter);
 app.use("/club",club)
 app.use("/event",event)

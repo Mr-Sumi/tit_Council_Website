@@ -1,0 +1,292 @@
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.loader-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+/* Enhanced loader ring with perfect alignment */
+.loader-ring {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-ring::before,
+.loader-ring::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 4px solid transparent;
+    border-radius: 50%;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.loader-ring::before {
+    border-top-color: #4ecdc4;
+    border-right-color: #4ecdc4;
+    animation-name: spinnerOne;
+    z-index: 1;
+}
+
+.loader-ring::after {
+    border-bottom-color: #ff3366;
+    border-left-color: #ff3366;
+    animation-name: spinnerTwo;
+    z-index: 1;
+}
+
+/* Refined logo container */
+.logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px; /* Increased size for better visibility */
+    height: 90px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    z-index: 2;
+    animation: pulseLogo 2s ease-in-out infinite;
+    padding: 15px; /* Added padding for logo spacing */
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+/* Enhanced text container positioning */
+.loader-text-container {
+    position: relative;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    margin-top: 20px;
+}
+
+.loader-text {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    overflow: hidden;
+}
+
+.loader-text span {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealText 0.5s forwards;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Progress bar refinements */
+.loading-progress {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #4ecdc4, #ff3366);
+    animation: loadProgress 2s ease-in-out forwards;
+    box-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+}
+
+/* Loading status refinements */
+.loading-status {
+    position: absolute;
+    bottom: -35px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Refined animations */
+@keyframes spinnerOne {
+    0% { 
+        transform: rotate(0deg); 
+        border-width: 4px;
+    }
+    50% { 
+        transform: rotate(180deg);
+        border-width: 2px;
+    }
+    100% { 
+        transform: rotate(360deg);
+        border-width: 4px;
+    }
+}
+
+@keyframes spinnerTwo {
+    0% { 
+        transform: rotate(0deg);
+        border-width: 4px;
+    }
+    50% { 
+        transform: rotate(-180deg);
+        border-width: 2px;
+    }
+    100% { 
+        transform: rotate(-360deg);
+        border-width: 4px;
+    }
+}
+
+@keyframes pulseLogo {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+}
+
+@keyframes revealText {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loadProgress {
+    0% { 
+        width: 0%;
+        opacity: 0.5;
+    }
+    50% { 
+        opacity: 1;
+    }
+    100% { 
+        width: 100%;
+        opacity: 0.8;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Letter animation delays */
+.loader-text span:nth-child(1) { animation-delay: 0.1s; }
+.loader-text span:nth-child(2) { animation-delay: 0.2s; }
+.loader-text span:nth-child(3) { animation-delay: 0.3s; }
+.loader-text span:nth-child(4) { animation-delay: 0.4s; }
+.loader-text span:nth-child(5) { animation-delay: 0.5s; }
+.loader-text span:nth-child(6) { animation-delay: 0.6s; }
+.loader-text span:nth-child(7) { animation-delay: 0.7s; }
+.loader-text span:nth-child(8) { animation-delay: 0.8s; }
+.loader-text span:nth-child(9) { animation-delay: 0.9s; }
+.loader-text span:nth-child(10) { animation-delay: 1s; }
+.loader-text span:nth-child(11) { animation-delay: 1.1s; }
+.loader-text span:nth-child(12) { animation-delay: 1.2s; }
+.loader-text span:nth-child(13) { animation-delay: 1.3s; }
+.loader-text span:nth-child(14) { animation-delay: 1.4s; }
+.loader-text span:nth-child(15) { animation-delay: 1.5s; }
+
+/* Smooth fade out */
+.preloader.fade-out {
+    animation: fadeOut 0.8s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.1);
+        visibility: hidden;
+    }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .loader-ring {
+        width: 120px;
+        height: 120px;
+    }
+
+    .logo-container {
+        width: 70px;
+        height: 70px;
+        padding: 12px;
+    }
+
+    .loader-text span {
+        font-size: 18px;
+    }
+
+    .loader-text-container {
+        padding: 12px 24px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .loader-ring {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo-container {
+        width: 60px;
+        height: 60px;
+        padding: 10px;
+    }
+
+    .loader-text span {
+        font-size: 16px;
+    }
+} 

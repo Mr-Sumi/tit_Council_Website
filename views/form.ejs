@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration for Anwesha 2.0</title>
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet"/>
@@ -192,24 +193,7 @@
     </style>
 </head>
 <body>
-
-    
-	<script>
-		window.addEventListener("load" , function(){
-		  const loader = document.getElementById("preloader");
-		  loader.style= "display:none;";
-		});
-	  </script>
-	  
-	  
-	  <!--Loader for website-->
-	  <div class="socket" id="preloader">
-		<div class="glitch-container">
-		Student Council
-		  <span>Student Council</span>
-		  <span>Student Council</span>
-		</div>
-	  </div>
+    <%- include('partials/preloader') %>
 
     <div class="navSlide">
         <div class="icon">
@@ -334,8 +318,10 @@
     <a href="/Dev">
         <button class="button">Developer team</button>      
       </a>
-</footer>
-<script>
+        </footer>
+
+        <script src="/javascript/preloader.js"></script>
+        <script>
 
     let price=0;
     
