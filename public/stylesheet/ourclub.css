@@ -1,0 +1,217 @@
+@font-face {
+    font-family: Bristone;
+    src: url(/Fonts/Bristone.ttf);
+  }
+  @font-face {
+    font-family: Gilroy-black;
+    src: url(/Fonts/Gilroy-Black.ttf);
+  }
+     @font-face {
+        font-family:GilroyMedium ;
+        src: url(/Fonts/Gilroy-Medium.ttf);
+     }
+       @font-face {
+            font-family: Bebrush;
+            src: url(/Fonts/Bebrush.otf);
+        }
+        @font-face {
+            font-family: Affectsides;
+            src: url(/Fonts/Affectsides.ttf);
+        }
+            body {
+                background-color: white;
+                color: #2a2a45;
+                font-family: GilroyMedium, sans-serif;
+                text-align: center;
+                animation: pageLoad 1s ease;
+            }
+            body::-webkit-scrollbar {
+                display: none;
+            }
+            /* Add this to a separate CSS file: public/stylesheet/clubs.css */
+:root {
+    --primary-color: #2a2a45;
+    --accent-color: #fff;
+    --hover-bg: rgba(42, 42, 69, 0.9);
+    --shadow-color: rgba(42, 42, 69, 0.08);
+}
+
+/* Container Styles */
+.container {
+    margin-top: 2rem;
+    padding: 2rem 0;
+    min-height: 100vh;
+    background-color: white;
+    text-align: center;
+}
+
+/* Heading Styles */
+.heading {
+    margin: 2rem auto 4rem;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading h1 {
+    font-family: 'Bebrush', sans-serif;
+    font-size: clamp(2rem, 3.2vw, 3.5rem);
+    letter-spacing: 0.8vw;
+    color: var(--primary-color);
+    font-weight: 400;
+    margin: 0 auto;
+    padding: 0.5rem 0;
+    position: relative;
+    text-align: center;
+    width: fit-content;
+}
+
+.heading h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    animation: lineReveal 0.8s ease forwards 0.5s;
+}
+
+/* Club Grid - Updated */
+.club-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 200px);
+    gap: 2rem;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1200px;
+}
+
+/* Card Styles - Keep size consistent */
+.card {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    transform: translateY(30px);
+    opacity: 0;
+    animation: cardReveal 0.6s ease forwards;
+}
+
+.card:nth-child(n) {
+    animation-delay: calc(0.1s * var(--i));
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.textBox {
+    position: absolute;
+    inset: 0;
+    background: var(--hover-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text {
+    font-family: 'Gilroy-black', sans-serif;
+    color: var(--accent-color);
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    padding: 1rem;
+    text-align: center;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effects */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card:hover .img {
+    transform: scale(1.1);
+}
+
+.card:hover .textBox {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.card:hover .text {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes lineReveal {
+    to {
+        transform: translateX(-50%) scaleX(1);
+    }
+}
+
+@keyframes cardReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Updated Responsive Design */
+@media (max-width: 1200px) {
+    .club-grid {
+        grid-template-columns: repeat(4, 200px);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .club-grid {
+        grid-template-columns: repeat(3, 200px);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .club-grid {
+        grid-template-columns: repeat(2, 200px);
+        gap: 1rem;
+    }
+    .heading {
+        margin: 1.5rem auto 3rem;
+    }
+    
+    .heading h1 {
+        font-size: 2rem;
+        letter-spacing: 0.5vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .club-grid {
+        grid-template-columns: repeat(2, 150px);
+        gap: 1rem;
+    }
+    .card {
+        width: 150px;
+        height: 150px;
+    }
+}
