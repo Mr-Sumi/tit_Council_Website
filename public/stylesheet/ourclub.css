@@ -85,7 +85,7 @@
 /* Club Grid - Updated */
 .club-grid {
     display: grid;
-    grid-template-columns: repeat(6, 200px);
+    grid-template-columns: repeat(5, 200px);
     gap: 2rem;
     justify-content: center;
     margin: 0 auto;
