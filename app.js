@@ -1,33 +1,27 @@
 const express = require('express');
 const path = require('path');
-const connectdb = require('./config/db');  // Using CommonJS `require`
-// const dotenv = require('dotenv');
+const connectdb = require('./config/db'); 
+const dotenv = require('dotenv');
 const Razorpay = require('razorpay');
 const user = require('./models/usermodels');
 const authRouter = require("./routes/auth");
-const passport = require('passport');
-const plm=require('passport-local-mongoose');
 const session=require('express-session');
 const localStrategy = require('passport-local').Strategy;
 const Payment = require('./models/payment.js');
 const bodyParser = require('body-parser'); 
-const cors = require('cors');
-passport.use(new localStrategy(user.authenticate()));
 const cookieParser = require("cookie-parser");
 const usermodels = require('./models/usermodels');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { isLoggedIn } = require("./middleware/isLoggedIn");
 let club=require('./routes/Club.js');
 let event=require('./routes/Event.js')
-
 
 require('dotenv').config();
 connectdb();
 
 const app = express();
-
  let PORT=process.env.PORT ||4000;
-// const PORT = 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -42,17 +36,10 @@ app.use(session({
   saveUninitialized: false,  
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(cookieParser());
 
-passport.serializeUser(user.serializeUser());
-passport.deserializeUser(user.deserializeUser());
 
-app.use(cors());  
-
-require("./config/google_oauth_config");
 app.use("/auth", authRouter);
 app.use("/club",club)
 app.use("/event",event)
@@ -115,28 +102,6 @@ app.post('/current_user', (req, res) => {
   }
 });
 
-
-
-// Middleware done.
-const isLoggedIn = (req, res, next) => {
-  try {
-    if (!req.cookies.token || req.cookies.token === "") {
-      return res.redirect("/login");
-    }
-    const data = jwt.verify(req.cookies.token, process.env.JWT_TOKEN);
-    req.user = data;
-    next();
-  } catch (error) {
-    console.error("Authentication error:", error.message);
-    return res.redirect("/login");
-  }
-};
-
-
-
-
-
-
 // Home route
 app.get('/', (req, res) => {
   res.render('student council', { isLoggedIn : true });
@@ -165,10 +130,7 @@ app.get('/gallery', (req, res) => {
   res.render('Gallery', { title: 'Gallery Page' });
 });
 
-// Coding Club route
 
-
-// Developer route
 app.get('/Dev',  (req, res) => {
   res.render('Dev team', { title: 'Developer Page' });
 });
@@ -178,12 +140,6 @@ app.get('/form',isLoggedIn, (req, res) => {
   res.render('form', { title: 'Form Page' });
 });
 
-// Event details route 
-
-
-app.get('/payment', (req, res) => {
-  res.render('payment', { title: 'PaymentPage' });{ title: 'Payment Page' };
-});
 
 app.get("/eventPage",isLoggedIn,(req,res)=>{
   res.render("Events",{isLoggedIn:true});
