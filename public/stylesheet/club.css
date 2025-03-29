@@ -129,14 +129,14 @@
             
         }
         .mission{
-            background-image: url("/image folder/blob-scene-haikei.png");
+            background-color: white;
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
             width: 100%;
             padding: 10px;
             margin-top: 10vh;
-            color: white;
+            color:black;
         }
         .mission-section{
             display: flex;
