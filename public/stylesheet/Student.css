@@ -230,44 +230,59 @@ body::-webkit-scrollbar {
 
 .president-image-container {
     position: relative;
-    height: 360px;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
     overflow: hidden;
-    opacity: 0;
-    transform: translateX(-50px);
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    border-radius: 50%;
-
+    transition: transform 0.3s ease;
 }
 
 .president-image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
-.image-pattern {
+.president-social-links {
     position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle,
-        var(--main-bg-color) 0%,
-        rgba(0, 0, 0, 0) 95%
-    );
-    mix-blend-mode: overlay;
-    clip-path: polygon(
-        0 10%,
-        10% 0,
-        90% 0,
-        100% 10%,
-        100% 90%,
-        90% 100%,
-        10% 100%,
-        0 90%
-    );
+    bottom: -60px;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    transition: bottom 0.3s ease;
+}
+
+.president-image-container:hover .president-social-links {
+    bottom: 0;
+}
+
+.president-image-container:hover img {
+    transform: scale(1.05);
+}
+
+.president-social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 107, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.president-social-links a:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
 .president-details {
@@ -319,9 +334,23 @@ body::-webkit-scrollbar {
     max-width: 100%;
 }
 
-/* Hover Effects */
-.president-image-container:hover img {
-    transform: scale(1.02);
+/* Update president info styles */
+.president-info {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.president-info h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-family: 'GilroyMedium', sans-serif;
+}
+
+.president-info h3 {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    font-family: 'GilroyMedium', sans-serif;
 }
 
 /* Animation Classes */
@@ -368,12 +397,23 @@ body::-webkit-scrollbar {
     }
 
     .president-image-container {
-        height: 60vh;
+        width: 250px;
+        height: 250px;
     }
 
     .president-details {
         padding: 4rem 2rem;
         text-align: center;
+    }
+
+    .president-social-links {
+        padding: 10px;
+    }
+
+    .president-social-links a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
 }
 
@@ -383,25 +423,31 @@ body::-webkit-scrollbar {
     }
 
     .president-image-container {
-        height: 50vh;
+        margin-bottom: 30px;
     }
 
     .president-details {
         padding: 3rem 1.5rem;
     }
+
+    .president-social-links {
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+    }
 }
 
 @media (max-width: 480px) {
     .president-image-container {
-        height: 40vh;
+        width: 200px;
+        height: 200px;
     }
 
-    .president-details {
-        padding: 2rem 1rem;
+    .president-social-links a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
     }
 }
-
-
 
 .footer {
   background: #171717;
@@ -826,75 +872,205 @@ h2 {
 .revealed {
   opacity: 1;
   transform: translateY(0);
+  -webkit-animation: fadeInUp 0.6s ease-in-out;
   animation: fadeInUp 0.6s ease-in-out;
+
 }
 
 
-/* Team Section */
+/* Team Section Styles */
 .team-section {
-  background: #000000;
-  padding: 80px 20px;
-  text-align: center;
-  border-bottom: 2px solid #5b5656;
-  border-top: 2px solid #5b5656;
-
+    background: var(--bg-dark);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
 }
 
 .section-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fcfcfc;
-  margin-bottom: 30px;
+    font-family: 'GilroyMedium', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
 }
 
-.team-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--accent-color);
 }
 
-.team-member {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 250px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: transform 0.5s ease, opacity 0.5s ease;
+/* Deputies Container */
+.deputies-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.team-member img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
+/* Deputy Card */
+.deputy-card {
+    flex: 1;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 107, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
-.team-member h3 {
-  font-size: 1.2rem;
-  color: #333;
-  font-weight: bold;
+.deputy-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 40px rgba(255, 107, 0, 0.1);
 }
 
-.team-member p {
-  font-size: 1rem;
-  color: #777;
+/* Profile Section */
+.profile-section {
+    padding: 30px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 107, 0, 0.1);
 }
 
+.profile-section img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color);
+    padding: 5px;
+    margin-bottom: 20px;
+    transition: transform 0.4s ease;
+}
+
+.deputy-card:hover img {
+    transform: scale(1.05);
+}
+
+.profile-section h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    font-family: 'GilroyMedium', sans-serif;
+}
+
+.profile-section .role {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* Message Section */
+.message-section {
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.02);
+    position: relative;
+}
+
+.message-section h4 {
+    color: var(--accent-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-family: 'GilroyMedium', sans-serif;
+}
+
+.message-section p {
+    color: var(--primary-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Social Icons */
 .social-icons {
-  margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 .social-icons a {
-  font-size: 1.2rem;
-  color: #007bff;
-  margin: 0 5px;
-  transition: color 0.3s;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 107, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #0056b3;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .deputies-container {
+        padding: 0 30px;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 992px) {
+    .deputies-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .deputy-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-section {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        margin-bottom: 40px;
+    }
+
+    .profile-section img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .message-section {
+        padding: 20px;
+    }
+}
+
+/* Add these variables to your :root */
+:root {
+    --primary-color: #ffffff;
+    --accent-color: #ff6b00;
+    --bg-dark: #171717;
+    --text-secondary: rgba(255, 255, 255, 0.7);
 }
