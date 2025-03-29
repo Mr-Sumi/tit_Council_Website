@@ -14,184 +14,267 @@
             font-family: Bebrush;
             src: url(/Fonts/Bebrush.otf);
         }
-        .main{
-            background-color: black;
-           border-radius: 10px;
-           width: 100%;
+        @font-face {
+            font-family: GilroyMedium;
+            src: url(/Fonts/GilroyMedium.ttf);
         }
-        body{
-            font-family: GilroyMed;
+
+        body {
+            font-family: GilroyMedium;
             overflow-x: hidden;
-            border: 2px solid white;
-            position: relative;
+            background: #000000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
         }
-        body::-webkit-scrollbar{
-        display: none;
-      }
-      .main{
-            background-color: black;
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .main {
             margin-top: 11vh;
+            background-color: #000000;
             border-top-right-radius: 12px;
             border-top-left-radius: 12px;
-            }
-        .heading{
-            color: white;
+        }
+
+        .heading {
             text-align: center;
-            padding:1vw;
+            padding: 2rem 1rem;
         }
-        .heading h1{
-            /* margin-bottom: 20px; */
-            font-weight: 100;
-            font-size: 2vw;
-            position: relative;
-            font-family: Bristone;
+
+        .heading h1 {
+            font-family: Bebrush;
+            font-size: 3rem;
             letter-spacing: 5px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid wheat;
+            color: #fff;
+            display: inline-block;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #07aa92;
+            margin: 0;
         }
-        .card-container{
+
+        .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            justify-content: space-between;
-            align-self: center;
-            gap: 18px;
-            /* display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            grid-gap:80px;
-            align-items: center;
-            justify-content: center; */
-            width: 100%;
-            margin-top:2vw;
-            padding: 1vw;
-            background-color: rgb(0, 0, 0); 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
         }
-         
-            .card-client {
-            background: #000000;
-            height: 55vh;
-            overflow: hidden;
+
+        .card-client {
+            background: rgb(40, 40, 40);
+            min-height: 420px;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* gap: 1.5vw; */
-            /* border: 4px solid #7cdacc; */
-            /* box-shadow: 0 6px 10px rgba(207, 212, 222, 1); */
-            border-radius: 10px;
+            border-radius: 15px;
             text-align: center;
             color: #fff;
-            font-family: "Poppins", sans-serif;
-            background-color: rgb(40, 40, 40);
-            transition: all 0.3s ease;
-            }
-           
-            .card-client:hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-client:hover {
             transform: translateY(-10px);
-            }
+            box-shadow: 0 15px 30px rgba(7, 170, 146, 0.2);
+        }
 
-            .user-picture {
-            /* overflow: hidden; */
-            object-fit: cover;
-            width: 200px;
-            height: 200px;
-            border: 2px solid #07aa92;
+        .user-picture {
+            width: 160px;
+            height: 160px;
+            border: 3px solid #07aa92;
             border-radius: 50%;
-            display: flex;
             overflow: hidden;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 25px;
-            }
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
 
+        .card-client:hover .user-picture {
+            border-color: #fff;
+            transform: scale(1.05);
+        }
 
-            .user-picture img {
+        .user-picture img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            fill: currentColor;
+        }
+
+        .name-client {
+            font-family: Bebrush;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            color: #07aa92;
+            margin: 10px 0 5px;
+            transition: all 0.3s ease;
+            line-height: 1.2;
+            max-width: 90%;
+            word-break: break-word;
+        }
+
+        .line {
+            width: 60%;
+            height: 2px;
+            background-color: #07aa92;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .social-media a {
+            position: relative;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .social-media a:hover {
+            transform: translateY(-5px);
+            background: rgba(7, 170, 146, 0.3);
+            color: #07aa92;
+        }
+
+        .social-media svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .tooltip-social {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #262626;
+            color: #fff;
+            padding: 6px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin-top: 10px;
+            z-index: 100;
+        }
+
+        .tooltip-social::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #262626 transparent;
+        }
+
+        .social-media a:hover .tooltip-social {
+            opacity: 1;
+            visibility: visible;
+            top: calc(100% + 5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .card-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .card-client {
+                min-height: 400px;
+            }
+
+            .user-picture {
+                width: 150px;
+                height: 150px;
             }
 
             .name-client {
-            font-family: Bebrush;
-            font-size: 1.2rem;
-            width: 40%;
-            letter-spacing: 5px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                margin-top: 90px;
             }
 
-            .name-client span {
-            display: block;
-            font-weight: 200;
-            font-size: 40px;
-            }
-            .line{
-                width: 100%;
-                height: 2px;
-                margin: 10px 0px;
-                background-color: #07aa92;
+            .card-client {
+                min-height: 380px;
+                padding: 1.25rem;
             }
 
-            /* .social-media:before {
-            content: " ";
-            display: block;
-            width: 100%;
-            height: 2px;
-            margin: 20px 0;
-            background: #07aa92;
-            } */
-
-            .social-media a {
-            position: relative;
-            margin-right: 15px;
-            text-decoration: none;
-            color: inherit;
+            .user-picture {
+                width: 140px;
+                height: 140px;
             }
 
-            .social-media a:last-child {
-            margin-right: 0;
+            .name-client {
+                font-size: 1.4rem;
+                letter-spacing: 1px;
             }
 
-            .social-media a svg {
-            width: 1.1rem;
-            fill: currentColor;
+            .social-media {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main {
+                margin-top: 80px;
             }
 
-            /*-- Tooltip Social Media --*/
+            .card-client {
+                min-height: 350px;
+                padding: 1rem;
+            }
+
+            .user-picture {
+                width: 130px;
+                height: 130px;
+            }
+
+            .name-client {
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+                margin: 8px 0 4px;
+            }
+
+            .line {
+                margin: 8px 0;
+            }
+
+            .social-media {
+                gap: 10px;
+            .social-media svg {
+                width: 20px;
+                height: 20px;
+            }
+
             .tooltip-social {
-            background: #262626;
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            padding: 0.5rem 0.4rem;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            opacity: 0;
-            pointer-events: none;
-            transform: translate(-50%, -90%);
-            transition: all 0.2s ease;
-            z-index: 1;
+                display: none;
             }
-
-            .tooltip-social:after {
-            content: " ";
-            position: absolute;
-            bottom: 1px;
-            left: 50%;
-            border: solid;
-            border-width: 10px 10px 0 10px;
-            border-color: transparent;
-            transform: translate(-50%, 100%);
-            }
-
-            .social-media a .tooltip-social:after {
-            border-top-color: #262626;
-            }
-
-            .social-media a:hover .tooltip-social {
-            opacity: 1;
-            transform: translate(-50%, -130%);
-}
+        }
     </style>
 </head>
 <body>
