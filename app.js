@@ -149,10 +149,7 @@ app.get("/userPage",isLoggedIn,(req,res)=>{
   res.render("user");
 })
 
-<<<<<<< HEAD
 
-=======
->>>>>>> c19b1615bf9fb5246dc0cc914c087e38489981cf
 app.get('/error', (req, res) => {
   res.render('error', { title: 'error:404' });
 });

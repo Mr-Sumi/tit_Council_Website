@@ -6,10 +6,6 @@ app.get('/coding',isLoggedIn, (req, res) => {
   res.render('Coding club', { title: 'Coding Club Page' });
 });
   
-app.get('/Quiz',isLoggedIn, (req, res) => {
-  res.render('Anwesha Event/Technical Quiz ', { title: 'Quiz Page' });
-})
-  
   // Drone Club route
 app.get('/drone',isLoggedIn, (req, res) => {
   res.render('drone club',{ title: 'Drone Club Page' });

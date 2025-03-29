@@ -112,4 +112,9 @@ app.get('/events',  (req, res) => {
     res.render('Anwesha Event/Free Fire', { title: 'Freefire Page' });
   });
 
+    
+app.get('/Quiz', (req, res) => {
+  res.render('Anwesha Event/Technical Quiz ', { title: 'Quiz Page' });
+})
+
   module.exports = app
