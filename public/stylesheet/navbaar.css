@@ -333,17 +333,25 @@ nav.show {
 
 
  /* Developer Button */ 
+
+ .dev-team-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
  .button {
   --main-color: rgb(255, 255, 255);
   --main-bg-color: rgba(0, 0, 0, 0.36);
   --pattern-color: rgba(239, 239, 239, 0.073);
+  --border-gradient: radial-gradient(circle, var(--main-color) 0%, rgba(255, 0, 0, 0.638) 100%);
 
-  /* change this rotation value */
-  filter: hue-rotate(0deg);
-
+  position: relative;
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 0.5rem;
+  letter-spacing: clamp(0.2rem, 2vw, 0.5rem);
   background: radial-gradient(
       circle,
       var(--main-bg-color) 0%,
@@ -359,29 +367,132 @@ nav.show {
     center center,
     center center,
     center center;
-  border-image: radial-gradient(
-      circle,
-      var(--main-color) 0%,
-      rgba(255, 0, 0, 0.638) 100%
-    )
-    1;
-  border-width: 1px 0 1px 0;
+  border: 0;
   color: var(--main-color);
-  padding: 1rem 3rem;
+  padding: clamp(0.5rem, 2vw, 1rem) clamp(1.5rem, 4vw, 3rem);
   font-weight: 700;
-  font-size: 1.5rem;
-  transition: background-size 0.2s ease-in-out;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  transition: all 0.3s ease;
+  z-index: 1;
 }
 
+/* Gradient border effect */
+.button::before,
+.button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--border-gradient);
+  padding: 1px;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Hover effect */
 .button:hover {
   background-size:
     cover,
     10px 10px,
     10px 10px;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
+
+/* Active effect */
 .button:active {
   filter: hue-rotate(250deg);
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+/* Glowing effect on hover */
+.button::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: var(--border-gradient);
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.button:hover::after {
+  opacity: 0.5;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .button {
+    padding: 0.8rem 2rem;
+    letter-spacing: 0.3rem;
+    background-size:
+      cover,
+      12px 12px,
+      12px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: 0.6rem 1.5rem;
+    letter-spacing: 0.2rem;
+    background-size:
+      cover,
+      10px 10px,
+      10px 10px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .button:active {
+    transform: translateY(2px);
+    filter: hue-rotate(250deg);
+  }
+  
+  .button::after {
+    display: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .button {
+    border: 2px solid var(--main-color);
+    background: var(--main-bg-color);
+  }
+  
+  .button::before,
+  .button::after {
+    display: none;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  
+  .button:hover,
+  .button:active {
+    transform: none;
+  }
+}
+
 /* Footer Section */
 
 footer {
