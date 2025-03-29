@@ -28,7 +28,7 @@ body{
 
 /* Gallery Container */
 .container {
-  margin-top: 200px;
+  margin-top: 0.5vh;
   margin-bottom: 80px;
   padding: 2rem;
   width: 100%;
