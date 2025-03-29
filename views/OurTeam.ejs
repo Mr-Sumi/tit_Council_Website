@@ -21,7 +21,8 @@
     }
     
     body{
-        color: #fff;
+        color:black;
+        background-color: white;
         text-align: center;
         animation: pageOpen 2s;
     }
@@ -29,7 +30,7 @@
     display: none;
   }
     .main{
-        background-color: black;
+        background-color: white;
         border-radius: 10px;
     }
     .container{
@@ -72,15 +73,21 @@
     }
     .heading-bearer{
         /* border-bottom: 2px solid ; */
-        padding: 15px;
-
+        padding: 1vw;
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+        height: fit-content;
     }
     .heading-bearer mar{
+        /* font-family: Bebrush; */
         margin-top: .3rem;
     }
     .heading-bearer h1{
-        font-size: 3rem;
-        font-family: Gilroy-Bold;
+        font-size: 2rem;
+        font-family: Bebrush;
+        font-weight: 400;
+        letter-spacing: 1vw;
+      
     }
 
     @media  (min-width: 200px) and (max-width: 1200px){
@@ -109,7 +116,7 @@
     
     .social-button{
         background-color: transparent;
-        border-top: 2px solid whitesmoke;
+        /* border-top: 2px solid whitesmoke; */
         padding-top: 10px;
         margin-top: 5px;
         text-align: center;
@@ -249,12 +256,12 @@
             height: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            border: 1px solid rgb(0, 0, 0);
+            /* border: 1px solid rgb(0, 0, 0); */
             border-radius: 1rem;
         }
 
         .flip-card-front {
-            background-color: #2b2929;
+            background-color:rgb(245, 245, 245);
             color: black;
             display: flex;
             flex-direction: column;
@@ -269,7 +276,7 @@
         }
 
         .flip-card-back {
-            background-color: #585353;
+            background-color:rgb(245, 244, 244);
             color: black;
             transform: rotateY(180deg);
             display: flex;
@@ -278,7 +285,7 @@
             justify-content: center;
         }
         .flip-card-front h3 {
-            color: #faf5f5;
+            color:black;
             animation: fadeIn 2s;
             font-size: 1.6rem;
             font-family: Gilroy-Bold;
@@ -286,7 +293,7 @@
         }
 
         .flip-card-back p {
-            color: #cebcbc;
+            color: #1d1d1d;
             font-size: 1.1rem;
             animation: fadeIn 2s;
             font-style: oblique;
@@ -362,8 +369,8 @@
 
         footer {
         text-align: center;
-        background-color: #393636;
-        color: #ffffff;
+        background-color:black;
+        color:black;
         padding: 15px;
         margin-top: 50px;
         width: 100%;
@@ -433,6 +440,25 @@
                         </div>
                         <div class="flip-card-back">
                             <p>President</p>
+                            <div class="social-button">
+                                <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
+                                <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>
+                                <a href="#" class="icon-button instagram"><i class="fab fa-instagram"></i><span></span></a>
+                                <a href="#" class="icon-button github"><i class="fab fa-github"></i><span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="/image folder/club members/Prabhat kumar.jpg" alt="Prabhat kumar">
+                            <h3>Shubham Raj</h3>   
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Vice President</p>
                             <div class="social-button">
                                 <a href="#" class="icon-button twitter"><i class="fab fa-twitter"></i><span></span></a>
                                 <a href="#" class="icon-button linkedin"><i class="fab fa-linkedin"></i><span></span></a>

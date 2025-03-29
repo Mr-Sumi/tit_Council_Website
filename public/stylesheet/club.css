@@ -19,8 +19,8 @@
             src: url(/Fonts/Affectsides.ttf);
         }
         body{
-            background-color: black;
-            color: #dfcaca;
+            background-color:white;
+            color: black;
             font-family: sans-serif;
         }
         body::-webkit-scrollbar{
@@ -63,7 +63,7 @@
             }
         }
         .para{
-            color: rgb(191, 191, 191);
+            color:rgb(26, 25, 25);
         }
 
         .follow-us-section{
@@ -113,7 +113,7 @@
             width:fit-content;
             padding: 2vw;
             border-radius: 10px;
-            background-color: rgb(25, 25, 25);
+            background-color: rgb(247, 247, 247);
             text-align: center;
         }
         .heading{
@@ -129,13 +129,14 @@
             
         }
         .mission{
-            background-image: url("/image folder/blob-scene-haikei.png");
+            background-color: #2a2a45;
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
             width: 100%;
             padding: 10px;
             margin-top: 10vh;
+            color:white;
         }
         .mission-section{
             display: flex;
@@ -170,7 +171,7 @@
 
         footer {
             text-align: center;
-            background-color: #2a2a45;
+            background-color: #23233e;
             color: #ddd;
             padding: 15px;
             width: 100%;
