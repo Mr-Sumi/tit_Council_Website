@@ -6,40 +6,41 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { isLoggedIn } = require("../middleware/isLoggedIn");
 
-
-
-app.post("/register", (req, res) => {
+app.post("/register", async(req, res) => {
   let { username, enrollment, email, dob, phone} = req.body;
  // console.log(username, enrollment, email, dob, phone);
-
-  bcrypt.genSalt(11, (err, salt) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Error generating salt");
-    }
-    bcrypt.hash(dob, salt, async (err, hash) => {
+  const user = await usermodels.findOne({ enrollment, email ,phone });
+  if (user) {
+    return res.status(400).send("User already exists");
+  }else{
+    bcrypt.genSalt(11, (err, salt) => {
       if (err) {
         console.error(err);
-        return res.status(500).send("Error hashing password");
+        return res.status(500).send("Error generating salt");
       }
-      try {
-        let user = await usermodels.create({
-          username,
-          enrollment,
-          email,
-          dob: hash,
-          phone,
-          // password: hash,
-        });
-        let token = jwt.sign({ username, enrollment, dob }, process.env.JWT_TOKEN);
-        res.cookie("token", token, { httpOnly: true, secure: true });
-        res.redirect("/");
-      } catch (err) {
-        console.error(err);
-        return res.status(500).send("Error creating user");
-      }
+      bcrypt.hash(dob, salt, async (err, hash) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send("Error hashing password");
+        }
+        try {
+          let user = await usermodels.create({
+            username,
+            enrollment,
+            email,
+            dob: hash,
+            phone,
+          });
+          let token = jwt.sign({ username, enrollment, dob }, process.env.JWT_TOKEN);
+          res.cookie("token", token, { httpOnly: true, secure: true });
+          res.redirect("/");
+        } catch (err) {
+          console.error(err);
+          return res.status(500).send("Error creating user");
+        }
+      });
     });
-  });
+  }
 });
 
 // login User
@@ -67,15 +68,11 @@ app.post("/login", async (req, res) => {
   }
 });
 
-
-
 // Logout karne ke liye.
 app.get("/logout",(req,res) => {
   res.cookie("token","");
   res.clearCookie("token");
   res.redirect("/");
 })
-
-
 
 module.exports = app;
