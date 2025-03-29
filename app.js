@@ -150,7 +150,6 @@ app.get("/userPage",isLoggedIn,(req,res)=>{
 })
 
 
-<<<<<<< HEAD
 app.get('/error', (req, res) => {
   res.render('error', { title: 'error:404' });
 });
@@ -160,10 +159,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-=======
-
->>>>>>> e55b385a8b5927894a7ff0a9bf8732bcfcd01757
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
