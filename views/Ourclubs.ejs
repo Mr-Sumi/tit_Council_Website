@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,228 +10,7 @@
 />
     <link rel="stylesheet" href="/stylesheet/navbaar.css">
     <link rel="stylesheet" href="/stylesheet/Student.css">
-    <style>
-        @font-face {
-    font-family: Bristone;
-    src: url(/Fonts/Bristone.ttf);
-  }
-  @font-face {
-    font-family: Gilroy-black;
-    src: url(/Fonts/Gilroy-Black.ttf);
-  }
-     @font-face {
-        font-family:GilroyMedium ;
-        src: url(/Fonts/Gilroy-Medium.ttf);
-     }
-       @font-face {
-            font-family: Bebrush;
-            src: url(/Fonts/Bebrush.otf);
-        }
-        @font-face {
-            font-family: Affectsides;
-            src: url(/Fonts/Affectsides.ttf);
-        }
-            body {
-                background-color: white;
-                color: #2a2a45;
-                font-family: GilroyMedium, sans-serif;
-                text-align: center;
-                animation: pageLoad 1s ease;
-            }
-            body::-webkit-scrollbar {
-                display: none;
-            }
-            .container {
-                margin-top: 10vh;
-                padding: 0 5vw;
-            }
-            .heading {
-                margin: 2rem auto 5rem;
-                position: relative;
-                width: fit-content;
-            }
-            .heading h1 {
-                font-family: Bebrush;
-                font-size: 3.2vw;
-                letter-spacing: 0.8vw;
-                color: #2a2a45;
-                font-weight: 400;
-                margin: 0;
-                padding: 0.5rem 0;
-                position: relative;
-            }
-            .heading h1::after {
-                content: '';
-                position: absolute;
-                bottom: -10px;
-                left: 0;
-                width: 100%;
-                height: 2px;
-                background: #2a2a45;
-            }
-            .club-grid {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1.5rem;
-                /* padding: 2rem 0; */
-                width: 100%;
-            }
-            .card {
-                width: 200px;
-                height: 200px;
-                flex: 0 0 auto;
-                background: transparent;
-                border-radius: 50%;
-                position: relative;
-                overflow: hidden;
-                transition: all 0.4s ease;
-                box-shadow: 0 4px 15px rgba(42, 42, 69, 0.08);
-            }
-            .img {
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-                border-radius: 50%;
-                transition: all 0.4s ease;
-            }
-            .textBox {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 100%;
-                height: 100%;
-                background: rgba(42, 42, 69, 0.9);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 50%;
-                opacity: 0;
-                transition: all 0.4s ease;
-            }
-            .text {
-                font-family: Gilroy-black;
-                color: white;
-                font-size: 1.2rem;
-                padding: 1rem;
-                text-align: center;
-            }
-            .card:hover {
-                transform: translateY(-5px);
-            }
-            .card:hover .img {
-                transform: scale(1.1);
-                filter: blur(3px);
-            }
-            .card:hover .textBox {
-                opacity: 1;
-            }
-            a {
-                text-decoration: none;
-                color: inherit;
-            }
-            @media (max-width: 1200px) {
-                .card {
-                    width: 180px;
-                    height: 180px;
-                }
-            }
-            @media (max-width: 992px) {
-                .card {
-                    width: 160px;
-                    height: 160px;
-                }
-            }
-            @media (max-width: 768px) {
-                .card {
-                    width: 150px;
-                    height: 150px;
-                }
-            }
-            @media (max-width: 576px) {
-                .card {
-                    width: 140px;
-                    height: 140px;
-                }
-            }
-            @keyframes pageLoad {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            footer {
-                text-align: center;
-                background-color: #23233e;
-                color: #ddd;
-                padding: 15px;
-                width: 100%;
-            }
-            .button {
-                padding: 8px 20px;
-                font-family: GilroyMedium;
-                font-size: 16px;
-                color: white;
-                background: transparent;
-                border: 2px solid white;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-            .button:hover {
-                background-color: white;
-                color: #23233e;
-            }
-            /* Developer Team Button Styles */
-            .dev-team-wrapper {
-                text-align: center;
-                margin: 2rem 0;
-            }
-
-            .button {
-                position: relative;
-                display: inline-block;
-                padding: 12px 24px;
-                background: transparent;
-                border: 2px solid white;
-                color: white;
-                font-family: GilroyMedium;
-                font-size: 16px;
-                text-decoration: none;
-                cursor: pointer;
-                overflow: hidden;
-                transition: all 0.3s ease;
-            }
-
-            .button-text {
-                position: relative;
-                z-index: 2;
-            }
-
-            .button-pattern {
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: white;
-                transition: all 0.3s ease;
-                z-index: 1;
-            }
-
-            .button:hover .button-pattern {
-                left: 0;
-            }
-
-            .button:hover {
-                color: #23233e;
-            }
-    </style>
+    <link rel="stylesheet" href="/stylesheet/ourclub.css">
 </head>
 <body>
 
@@ -280,16 +60,15 @@
     </nav>
 
     <div class="container">
-        <div class="heading"><h1>OUR CLUBS & SOCITIES</h1></div>
+        <div class="heading">
+            <h1>OUR CLUBS & SOCIETIES</h1>
+        </div>
         
         <div class="club-grid">
-        
-            <a href="/club/coding">
-                <div class="card">
-                    <img class="img" src="/image folder/Club logos/Coding club.png" alt="CODING CLUB">
-                    <div class="textBox">
-                        <p class="text head">CODING CLUB</p>
-                    </div>
+            <a href="/club/coding" class="card" style="--i:1">
+                <img class="img" src="/image folder/Club logos/Coding club.png" alt="CODING CLUB">
+                <div class="textBox">
+                    <p class="text">CODING CLUB</p>
                 </div>
             </a>
 
@@ -441,6 +220,6 @@
       </a>
 </footer>
 <script src="javascript/navbaar.js"></script>
+<script src="javascript/clubs.js"></script>
 </body>
-</html>
 </html>
