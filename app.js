@@ -136,12 +136,12 @@ app.get('/Dev',  (req, res) => {
 });
 
 // Form route
-app.get('/form',isLoggedIn, (req, res) => {
+app.get('/form', (req, res) => {
   res.render('form', { title: 'Form Page' });
 });
 
 
-app.get("/eventPage",isLoggedIn,(req,res)=>{
+app.get("/eventPage",(req,res)=>{
   res.render("Events",{isLoggedIn:true});
 })
 
