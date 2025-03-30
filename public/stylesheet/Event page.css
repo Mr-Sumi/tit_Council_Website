@@ -39,6 +39,7 @@
             font-weight: 700;
             background: linear-gradient(45deg, #fff, #ffd700);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             opacity: 0;
             transform: translateY(30px);
@@ -402,7 +403,6 @@ button:focus #smoke > span {
         }
         .event {
             background: rgba(42, 42, 69, 0.5);
-            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             padding: 2rem;

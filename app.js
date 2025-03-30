@@ -150,7 +150,6 @@ app.get('/form', (req, res) => {
 });
 
 
-
 app.get("/eventPage",(req,res)=>{
   res.render("Events",{isLoggedIn:true});
 })
