@@ -15,6 +15,11 @@ body{
   margin: 0;
   padding: 0;
   background-color: #171717;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
 }
 
 /* Reset and Base Styles */
@@ -28,12 +33,15 @@ body{
 
 /* Gallery Container */
 .container {
-  margin-top: 0.5vh;
-  margin-bottom: 80px;
+  margin: 2vh auto 40px;
   padding: 2rem;
   width: 100%;
-  background: var(--bg-dark);
+  max-width: 2000px;
   min-height: 100vh;
+  background: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .box {
@@ -42,6 +50,7 @@ body{
   text-align: center;
   margin-bottom: 3rem;
   width: 100%;
+  max-width: 1200px;
 }
 
 .box h1 {
@@ -62,11 +71,14 @@ body{
 /* Gallery Grid */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Exactly 4 images per row */
+  grid-template-columns: repeat(4, 1fr);
   gap: 25px;
   max-width: 2000px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Gallery Item */
@@ -241,7 +253,11 @@ body{
 
 @media (max-width: 992px) {
   .gallery {
-    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+  }
+  .container {
+    padding: 2rem 1.5rem;
   }
   .gallery-item {
     height: 180px;
@@ -250,7 +266,12 @@ body{
 
 @media (max-width: 768px) {
   .gallery {
-    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+    gap: 15px;
+  }
+  .container {
+    padding: 2rem 1rem;
   }
   .gallery-item {
     height: 160px;
@@ -259,8 +280,12 @@ body{
 
 @media (max-width: 480px) {
   .gallery {
-    grid-template-columns: repeat(1, 1fr); /* 1 item per row */
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 400px;
     gap: 10px;
+  }
+  .container {
+    padding: 1rem;
   }
   .gallery-item {
     height: 200px;

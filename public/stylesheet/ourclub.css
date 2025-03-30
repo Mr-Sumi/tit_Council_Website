@@ -36,25 +36,31 @@
     --shadow-color: rgba(42, 42, 69, 0.08);
 }
 
-/* Container Styles */
+/* Container and Alignment Fixes */
 .container {
-    margin-top: 2rem;
-    padding: 2rem 0;
+    margin: 12vh auto 4rem;
+    padding: 2rem 1rem;
     min-height: 100vh;
     background-color: white;
     text-align: center;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Heading Styles */
+/* Heading Alignment */
 .heading {
     margin: 2rem auto 4rem;
     position: relative;
     width: 100%;
+    max-width: 1200px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .heading h1 {
@@ -82,18 +88,20 @@
     animation: lineReveal 0.8s ease forwards 0.5s;
 }
 
-/* Club Grid - Updated */
+/* Club Grid Centering */
 .club-grid {
     display: grid;
     grid-template-columns: repeat(5, 200px);
     gap: 2rem;
     justify-content: center;
+    align-items: center;
     margin: 0 auto;
     padding: 0;
     max-width: 1200px;
+    width: 100%;
 }
 
-/* Card Styles - Keep size consistent */
+/* Card Centering */
 .card {
     width: 200px;
     height: 200px;
@@ -104,6 +112,7 @@
     transform: translateY(30px);
     opacity: 0;
     animation: cardReveal 0.6s ease forwards;
+    margin: 0 auto;
 }
 
 .card:nth-child(n) {
@@ -175,43 +184,96 @@
     }
 }
 
-/* Updated Responsive Design */
+/* Responsive Adjustments */
 @media (max-width: 1200px) {
+    .container {
+        padding: 2rem 1.5rem;
+    }
+
     .club-grid {
         grid-template-columns: repeat(4, 200px);
         gap: 1.5rem;
+        max-width: 900px;
     }
 }
 
 @media (max-width: 992px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
     .club-grid {
         grid-template-columns: repeat(3, 200px);
         gap: 1.5rem;
+        max-width: 700px;
     }
 }
 
 @media (max-width: 768px) {
+    .container {
+        margin-top: 10vh;
+    }
+
     .club-grid {
         grid-template-columns: repeat(2, 200px);
         gap: 1rem;
+        max-width: 450px;
     }
+
     .heading {
-        margin-top: 5vw;
-    }
-    
-    .heading h1 {
-        font-size: 2rem;
-        letter-spacing: 0.5vw;
+        margin: 1rem auto 3rem;
     }
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 1rem 0.5rem;
+        margin-top: 8vh;
+    }
+
     .club-grid {
         grid-template-columns: repeat(2, 150px);
         gap: 1rem;
+        max-width: 340px;
     }
+
     .card {
         width: 150px;
         height: 150px;
     }
+
+    .heading h1 {
+        font-size: 1.8rem;
+        letter-spacing: 0.3vw;
+    }
+}
+
+/* Center Fix for Very Small Screens */
+@media (max-width: 360px) {
+    .club-grid {
+        grid-template-columns: repeat(2, 140px);
+        gap: 0.8rem;
+        max-width: 300px;
+    }
+
+    .card {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+/* Ensure content stays centered when scrolling */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: white;
 }

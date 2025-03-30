@@ -26,6 +26,12 @@
         color: #2a2a45;
         font-family: GilroyMedium, sans-serif;
         text-align: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
     body::-webkit-scrollbar {
     display: none;
@@ -33,12 +39,19 @@
     .container {
         margin-top: 8vh;
         padding: 0 3vw;
+        width: 100%;
+        max-width: 1400px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .heading-bearer {
         margin: 2rem auto;
         position: relative;
         width: fit-content;
         padding-bottom: 1rem;
+        text-align: center;
     }
     .heading-bearer h1 {
         font-family: Bebrush;
@@ -64,6 +77,8 @@
         gap: 2rem;
         padding: 1rem;
         animation: fadeIn 1s ease;
+        max-width: 1400px;
+        margin: 0 auto;
     }
     .flip-card {
         background-color: transparent;
@@ -174,13 +189,12 @@
         color: white;
     }
     @media (max-width: 1024px) {
-        .heading-bearer h1 {
-            font-size: 4vw;
+        .container {
+            padding: 0 2vw;
         }
         
-        .flip-card {
-            width: 280px;
-            height: 360px;
+        .team-grid {
+            gap: 1.5rem;
         }
     }
     @media (max-width: 768px) {
@@ -188,47 +202,23 @@
             margin-top: 6vh;
         }
         
-        .heading-bearer h1 {
-            font-size: 5vw;
-            letter-spacing: 0.6vw;
-        }
-        
-        .flip-card {
-            width: 260px;
-            height: 340px;
-            margin: 0.8rem;
-        }
-        
-        .flip-card-front img {
-            width: 160px;
-            height: 160px;
+        .team-grid {
+            gap: 1.2rem;
         }
     }
     @media (max-width: 576px) {
         .container {
             margin-top: 5vh;
-            padding: 0 2vw;
-        }
-        
-        .heading-bearer h1 {
-            font-size: 6vw;
-            letter-spacing: 0.4vw;
-            margin-top: 15vw;
-        }
-        
-        .flip-card {
-            width: 90vw;
-            height: 380px;
-            margin: 0.5rem;
-        }
-        
-        .flip-card-front img {
-            width: 200px;
-            height: 200px;
+            padding: 0 1.5vw;
         }
         
         .team-grid {
             gap: 1rem;
+            padding: 0.5rem;
+        }
+        
+        .flip-card {
+            margin: 0.5rem auto;
         }
     }
     /* Footer and Button Styles */
@@ -238,6 +228,8 @@
         color: #ddd;
         padding: 15px;
         width: 100%;
+        box-sizing: border-box;
+        margin-top: auto;
     }
 
     .button {
