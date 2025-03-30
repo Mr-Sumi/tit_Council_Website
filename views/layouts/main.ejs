@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
 <head>
     <!-- ... other head elements ... -->
@@ -11,5 +12,31 @@
 
     <!-- Add SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+=======
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <!-- Add preloader CSS -->
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
+    <!-- Other CSS files -->
+    <link rel="stylesheet" href="/stylesheet/navbaar.css">
+    <link rel="stylesheet" href="/stylesheet/Student.css">
+    <!-- Other head elements -->
+</head>
+<body>
+    <!-- Include preloader -->
+    <%- include('../partials/preloader') %>
+
+    <!-- Your existing layout content -->
+    <%- body %>
+
+    <!-- Add preloader JS -->
+    <script src="/javascript/preloader.js"></script>
+    <!-- Other script files -->
+    <script src="/javascript/student.js"></script>
+    <script src="/javascript/navbaar.js"></script>
+>>>>>>> 52de838cf03b0aa01e66ad2e2483159c58e5f1c3
 </body>
 </html> 

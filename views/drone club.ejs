@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DRONE SOCIETY</title>
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet"
@@ -14,7 +15,8 @@
 </head>
 <body>
 
-    
+    <%- include('partials/preloader') %>
+
     <script>
         window.addEventListener("load" , function(){
           const loader = document.getElementById("preloader");
@@ -112,5 +114,6 @@
         <p>&copy; 2024 STUDENT COUNCIL TIT. All rights reserved.</p>
     </footer>
     <script src="javascript/navbaar.js"></script>
+    <script src="/javascript/preloader.js"></script>
 </body>
 </html>

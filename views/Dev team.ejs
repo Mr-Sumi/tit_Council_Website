@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dev Team</title>
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/stylesheet/navbaar.css">
     <style>
@@ -14,187 +15,271 @@
             font-family: Bebrush;
             src: url(/Fonts/Bebrush.otf);
         }
-        .main{
-            background-color: black;
-           border-radius: 10px;
-           width: 100%;
+        @font-face {
+            font-family: GilroyMedium;
+            src: url(/Fonts/GilroyMedium.ttf);
         }
-        body{
-            font-family: GilroyMed;
+
+        body {
+            font-family: GilroyMedium;
             overflow-x: hidden;
-            border: 2px solid white;
-            position: relative;
+            background: #000000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
         }
-        body::-webkit-scrollbar{
-        display: none;
-      }
-      .main{
-            background-color: black;
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .main {
             margin-top: 11vh;
+            background-color: #000000;
             border-top-right-radius: 12px;
             border-top-left-radius: 12px;
-            }
-        .heading{
-            color: white;
+        }
+
+        .heading {
             text-align: center;
-            padding:1vw;
+            padding: 2rem 1rem;
         }
-        .heading h1{
-            /* margin-bottom: 20px; */
-            font-weight: 100;
-            font-size: 2vw;
-            position: relative;
-            font-family: Bristone;
+
+        .heading h1 {
+            font-family: Bebrush;
+            font-size: 3rem;
             letter-spacing: 5px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid wheat;
+            color: #fff;
+            display: inline-block;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #07aa92;
+            margin: 0;
         }
-        .card-container{
+
+        .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            justify-content: space-between;
-            align-self: center;
-            gap: 18px;
-            /* display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            grid-gap:80px;
-            align-items: center;
-            justify-content: center; */
-            width: 100%;
-            margin-top:2vw;
-            padding: 1vw;
-            background-color: rgb(0, 0, 0); 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
         }
-         
-            .card-client {
-            background: #000000;
-            height: 55vh;
-            overflow: hidden;
+
+        .card-client {
+            background: rgb(40, 40, 40);
+            min-height: 420px;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* gap: 1.5vw; */
-            /* border: 4px solid #7cdacc; */
-            /* box-shadow: 0 6px 10px rgba(207, 212, 222, 1); */
-            border-radius: 10px;
+            border-radius: 15px;
             text-align: center;
             color: #fff;
-            font-family: "Poppins", sans-serif;
-            background-color: rgb(40, 40, 40);
-            transition: all 0.3s ease;
-            }
-           
-            .card-client:hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-client:hover {
             transform: translateY(-10px);
-            }
+            box-shadow: 0 15px 30px rgba(7, 170, 146, 0.2);
+        }
 
-            .user-picture {
-            /* overflow: hidden; */
-            object-fit: cover;
-            width: 200px;
-            height: 200px;
-            border: 2px solid #07aa92;
+        .user-picture {
+            width: 160px;
+            height: 160px;
+            border: 3px solid #07aa92;
             border-radius: 50%;
-            display: flex;
             overflow: hidden;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 25px;
-            }
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
 
+        .card-client:hover .user-picture {
+            border-color: #fff;
+            transform: scale(1.05);
+        }
 
-            .user-picture img {
+        .user-picture img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            fill: currentColor;
+        }
+
+        .name-client {
+            font-family: Bebrush;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            color: #07aa92;
+            margin: 10px 0 5px;
+            transition: all 0.3s ease;
+            line-height: 1.2;
+            max-width: 90%;
+            word-break: break-word;
+        }
+
+        .line {
+            width: 60%;
+            height: 2px;
+            background-color: #07aa92;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .social-media a {
+            position: relative;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .social-media a:hover {
+            transform: translateY(-5px);
+            background: rgba(7, 170, 146, 0.3);
+            color: #07aa92;
+        }
+
+        .social-media svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .tooltip-social {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #262626;
+            color: #fff;
+            padding: 6px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin-top: 10px;
+            z-index: 100;
+        }
+
+        .tooltip-social::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #262626 transparent;
+        }
+
+        .social-media a:hover .tooltip-social {
+            opacity: 1;
+            visibility: visible;
+            top: calc(100% + 5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .card-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .card-client {
+                min-height: 400px;
+            }
+
+            .user-picture {
+                width: 150px;
+                height: 150px;
             }
 
             .name-client {
-            font-family: Bebrush;
-            font-size: 1.2rem;
-            width: 40%;
-            letter-spacing: 5px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                margin-top: 90px;
             }
 
-            .name-client span {
-            display: block;
-            font-weight: 200;
-            font-size: 40px;
-            }
-            .line{
-                width: 100%;
-                height: 2px;
-                margin: 10px 0px;
-                background-color: #07aa92;
+            .card-client {
+                min-height: 380px;
+                padding: 1.25rem;
             }
 
-            /* .social-media:before {
-            content: " ";
-            display: block;
-            width: 100%;
-            height: 2px;
-            margin: 20px 0;
-            background: #07aa92;
-            } */
-
-            .social-media a {
-            position: relative;
-            margin-right: 15px;
-            text-decoration: none;
-            color: inherit;
+            .user-picture {
+                width: 140px;
+                height: 140px;
             }
 
-            .social-media a:last-child {
-            margin-right: 0;
+            .name-client {
+                font-size: 1.4rem;
+                letter-spacing: 1px;
             }
 
-            .social-media a svg {
-            width: 1.1rem;
-            fill: currentColor;
+            .social-media {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main {
+                margin-top: 80px;
             }
 
-            /*-- Tooltip Social Media --*/
+            .card-client {
+                min-height: 350px;
+                padding: 1rem;
+            }
+
+            .user-picture {
+                width: 130px;
+                height: 130px;
+            }
+
+            .name-client {
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+                margin: 8px 0 4px;
+            }
+
+            .line {
+                margin: 8px 0;
+            }
+
+            .social-media {
+                gap: 10px;
+            .social-media svg {
+                width: 20px;
+                height: 20px;
+            }
+
             .tooltip-social {
-            background: #262626;
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            padding: 0.5rem 0.4rem;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            opacity: 0;
-            pointer-events: none;
-            transform: translate(-50%, -90%);
-            transition: all 0.2s ease;
-            z-index: 1;
+                display: none;
             }
-
-            .tooltip-social:after {
-            content: " ";
-            position: absolute;
-            bottom: 1px;
-            left: 50%;
-            border: solid;
-            border-width: 10px 10px 0 10px;
-            border-color: transparent;
-            transform: translate(-50%, 100%);
-            }
-
-            .social-media a .tooltip-social:after {
-            border-top-color: #262626;
-            }
-
-            .social-media a:hover .tooltip-social {
-            opacity: 1;
-            transform: translate(-50%, -130%);
-}
+        }
     </style>
 </head>
 <body>
+    <%- include('partials/preloader') %>
     <div class="navSlide">
         <div class="icon">
          <i class="ri-close-large-line"></i>
@@ -344,44 +429,6 @@
         </div>
     </div>
 
-    <!-- Card 5
-    <div class="card-1">
-        <div class="card-client">
-            <div class="user-picture">
-                <img src="/image folder/club members/IMG_20241031_014414 - Adarsh Raj.jpg" title="Adarsh Raj">
-            </div>
-            <p class="name-client">Adarsh Raj</p>
-            <div class="line"></div>
-            <div class="social-media">
-                <a href="https://x.com/Adarshsrivastw?t=FzrgtJ2fH4Gz9tE60ZXKNg&s=08">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-                        <path d="M 5.9199219 6 L 20.582031 27.375 L 6.2304688 44 L 9.4101562 44 L 21.986328 29.421875 L 31.986328 44 L 44 44 L 28.681641 21.669922 L 42.199219 6 L 39.029297 6 L 27.275391 19.617188 L 17.933594 6 L 5.9199219 6 z M 9.7167969 8 L 16.880859 8 L 40.203125 42 L 33.039062 42 L 9.7167969 8 z"></path>
-                    </svg>
-                    <span class="tooltip-social">Twitter</span>
-                </a>
-                <a href="https://www.instagram.com/adarsh95765/">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
-                    </svg>
-                    <span class="tooltip-social">Instagram</span>
-                </a>
-                <a href="https://github.com/Adarshrajsrivastwa">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0,0,245,245"
-                    style="fill:#FFFFFF;">
-                    <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M17.791,46.836c0.711,-0.306 1.209,-1.013 1.209,-1.836v-5.4c0,-0.197 0.016,-0.402 0.041,-0.61c-0.014,0.004 -0.027,0.007 -0.041,0.01c0,0 -3,0 -3.6,0c-1.5,0 -2.8,-0.6 -3.4,-1.8c-0.7,-1.3 -1,-3.5 -2.8,-4.7c-0.3,-0.2 -0.1,-0.5 0.5,-0.5c0.6,0.1 1.9,0.9 2.7,2c0.9,1.1 1.8,2 3.4,2c2.487,0 3.82,-0.125 4.622,-0.555c0.934,-1.389 2.227,-2.445 3.578,-2.445v-0.025c-5.668,-0.182 -9.289,-2.066 -10.975,-4.975c-3.665,0.042 -6.856,0.405 -8.677,0.707c-0.058,-0.327 -0.108,-0.656 -0.151,-0.987c1.797,-0.296 4.843,-0.647 8.345,-0.714c-0.112,-0.276 -0.209,-0.559 -0.291,-0.849c-3.511,-0.178 -6.541,-0.039 -8.187,0.097c-0.02,-0.332 -0.047,-0.663 -0.051,-0.999c1.649,-0.135 4.597,-0.27 8.018,-0.111c-0.079,-0.5 -0.13,-1.011 -0.13,-1.543c0,-1.7 0.6,-3.5 1.7,-5c-0.5,-1.7 -1.2,-5.3 0.2,-6.6c2.7,0 4.6,1.3 5.5,2.1c1.699,-0.701 3.599,-1.101 5.699,-1.101c2.1,0 4,0.4 5.6,1.1c0.9,-0.8 2.8,-2.1 5.5,-2.1c1.5,1.4 0.7,5 0.2,6.6c1.1,1.5 1.7,3.2 1.6,5c0,0.484 -0.045,0.951 -0.11,1.409c3.499,-0.172 6.527,-0.034 8.204,0.102c-0.002,0.337 -0.033,0.666 -0.051,0.999c-1.671,-0.138 -4.775,-0.28 -8.359,-0.089c-0.089,0.336 -0.197,0.663 -0.325,0.98c3.546,0.046 6.665,0.389 8.548,0.689c-0.043,0.332 -0.093,0.661 -0.151,0.987c-1.912,-0.306 -5.171,-0.664 -8.879,-0.682c-1.665,2.878 -5.22,4.755 -10.777,4.974v0.031c2.6,0 5,3.9 5,6.6v5.4c0,0.823 0.498,1.53 1.209,1.836c9.161,-3.032 15.791,-11.672 15.791,-21.836c0,-12.682 -10.317,-23 -23,-23c-12.683,0 -23,10.318 -23,23c0,10.164 6.63,18.804 15.791,21.836z"></path></g></g>
-                    </svg>
-                    <span class="tooltip-social">GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/adarsh-raj-srivastwa/">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
-                    </svg>
-                    <span class="tooltip-social">LinkedIn</span>
-                </a>
-            </div>
-        </div>
-    </div> -->
-
 
     <div class="card-1">
         <div class="card-client">
@@ -497,46 +544,10 @@
     </div>
 
     
-    <!--Card 6
-    <div class="card-1">
-        <div class="card-client">
-            <div class="user-picture">
-                <img src="/image folder/club members/Divyanshu sinde.jpg" title="Divyanshu Sinde">
-            </div>
-            <p class="name-client">Divyanshu Sinde</p>
-            <div class="line"></div>
-            <div class="social-media">
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-                        <path d="M 5.9199219 6 L 20.582031 27.375 L 6.2304688 44 L 9.4101562 44 L 21.986328 29.421875 L 31.986328 44 L 44 44 L 28.681641 21.669922 L 42.199219 6 L 39.029297 6 L 27.275391 19.617188 L 17.933594 6 L 5.9199219 6 z M 9.7167969 8 L 16.880859 8 L 40.203125 42 L 33.039062 42 L 9.7167969 8 z"></path>
-                    </svg>
-                    <span class="tooltip-social">Twitter</span>
-                </a>
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
-                    </svg>
-                    <span class="tooltip-social">Instagram</span>
-                </a>
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0,0,245,245"
-                    style="fill:#FFFFFF;">
-                    <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M17.791,46.836c0.711,-0.306 1.209,-1.013 1.209,-1.836v-5.4c0,-0.197 0.016,-0.402 0.041,-0.61c-0.014,0.004 -0.027,0.007 -0.041,0.01c0,0 -3,0 -3.6,0c-1.5,0 -2.8,-0.6 -3.4,-1.8c-0.7,-1.3 -1,-3.5 -2.8,-4.7c-0.3,-0.2 -0.1,-0.5 0.5,-0.5c0.6,0.1 1.9,0.9 2.7,2c0.9,1.1 1.8,2 3.4,2c2.487,0 3.82,-0.125 4.622,-0.555c0.934,-1.389 2.227,-2.445 3.578,-2.445v-0.025c-5.668,-0.182 -9.289,-2.066 -10.975,-4.975c-3.665,0.042 -6.856,0.405 -8.677,0.707c-0.058,-0.327 -0.108,-0.656 -0.151,-0.987c1.797,-0.296 4.843,-0.647 8.345,-0.714c-0.112,-0.276 -0.209,-0.559 -0.291,-0.849c-3.511,-0.178 -6.541,-0.039 -8.187,0.097c-0.02,-0.332 -0.047,-0.663 -0.051,-0.999c1.649,-0.135 4.597,-0.27 8.018,-0.111c-0.079,-0.5 -0.13,-1.011 -0.13,-1.543c0,-1.7 0.6,-3.5 1.7,-5c-0.5,-1.7 -1.2,-5.3 0.2,-6.6c2.7,0 4.6,1.3 5.5,2.1c1.699,-0.701 3.599,-1.101 5.699,-1.101c2.1,0 4,0.4 5.6,1.1c0.9,-0.8 2.8,-2.1 5.5,-2.1c1.5,1.4 0.7,5 0.2,6.6c1.1,1.5 1.7,3.2 1.6,5c0,0.484 -0.045,0.951 -0.11,1.409c3.499,-0.172 6.527,-0.034 8.204,0.102c-0.002,0.337 -0.033,0.666 -0.051,0.999c-1.671,-0.138 -4.775,-0.28 -8.359,-0.089c-0.089,0.336 -0.197,0.663 -0.325,0.98c3.546,0.046 6.665,0.389 8.548,0.689c-0.043,0.332 -0.093,0.661 -0.151,0.987c-1.912,-0.306 -5.171,-0.664 -8.879,-0.682c-1.665,2.878 -5.22,4.755 -10.777,4.974v0.031c2.6,0 5,3.9 5,6.6v5.4c0,0.823 0.498,1.53 1.209,1.836c9.161,-3.032 15.791,-11.672 15.791,-21.836c0,-12.682 -10.317,-23 -23,-23c-12.683,0 -23,10.318 -23,23c0,10.164 6.63,18.804 15.791,21.836z"></path></g></g>
-                    </svg>
-                    <span class="tooltip-social">GitHub</span>
-                </a>
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
-                    </svg>
-                    <span class="tooltip-social">LinkedIn</span>
-                </a>
-            </div>
-        </div>
-    </div>-->
-
+    
 </div>
 </div>
 <script src="javascript/navbaar.js"></script>
+<script src="/javascript/preloader.js"></script>
 </body>
 </html>

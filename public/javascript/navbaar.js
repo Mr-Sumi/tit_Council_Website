@@ -40,3 +40,7 @@ const navSilde = document.querySelector(".navSlide");
   
   }
   navScroll();
+
+
+
+

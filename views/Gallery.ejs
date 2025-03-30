@@ -4,32 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Gallery</title>
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/stylesheet/Gallery.css">
     <link rel="stylesheet" href="/stylesheet/navbaar.css">
     <link rel="stylesheet" href="/stylesheet/Student.css">
-
 </head>
 <body>
-
-	<script>
-		window.addEventListener("load" , function(){
-		  const loader = document.getElementById("preloader");
-		  loader.style= "display:none;";
-		});
-	  </script>
-	  
-	  
-	  <!--Loader for website-->
-	  <div class="socket" id="preloader">
-		<div class="glitch-container">
-		Student Council
-		  <span>Student Council</span>
-		  <span>Student Council</span>
-		</div>
-	  </div>
-
-
+    <%- include('partials/preloader') %>
 
     <div class="navSlide">
         <div class="icon">
@@ -61,25 +44,47 @@
     </nav>
 
 <div class="container">
+    <div class="box">
+        <h1>Our <span>Gallery</span></h1>
+    </div>
     
-<div class="box"><h1>STUDENT COUNCIL<br/><span>Event Gallery</span></h1></div>
-    <div class="gallery" id="gallery"></div>
+    <div class="gallery">
+        <!-- Gallery items will be dynamically added here -->
+    </div>
+</div>
 
-    <div class="popup" id="popup">
-        <span class="close-btn" id="close-btn"></span>
-        <img id="popup-img" src="" alt="Popup Image">
+<!-- Improved Popup Structure -->
+<div class="popup">
+    <div class="popup-content">
+        <div class="popup-image-container">
+            <img class="popup-img" src="" alt="Enlarged Image">
+        </div>
+        <div class="popup-controls">
+            <button class="popup-btn download-btn" title="Download">
+                <i class="fas fa-download"></i>
+            </button>
+            <button class="popup-btn share-btn" title="Share">
+                <i class="fas fa-share-alt"></i>
+            </button>
+        </div>
+        <button class="close-btn" title="Close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
     </div>
 
-</div>
     <footer>
         <a href="/Dev">
             <button class="button">Developer team</button>      
         </a>
     </footer>
 
+    <script src="/javascript/preloader.js"></script>
+
     <script src="/javascript/navbaar.js"></script>
 
     <script>
+        // Image Gallery Implementation
         const images = [
             {img: "/image folder/Event Photos/IMG-20241110-WA0049.jpg"},
             {img: "/image folder/Event Photos/IMG_20240214_130059684.jpg"},
@@ -138,35 +143,180 @@
             
         ];
 
-        const gallery = document.getElementById("gallery");
+        const gallery = document.querySelector('.gallery');
+        let currentImageIndex = 0;
+// Create and load gallery items
+function createGalleryItem(item, index) {
+    const imgElement = document.createElement("div");
+    imgElement.className = "gallery-item";
+    imgElement.innerHTML = `
+        <img src="${item.img}" alt="Gallery Image ${index + 1}" loading="lazy">
+        <div class="gallery-actions">
+            <button class="gallery-btn view-btn" title="View">
+                <i class="ri-fullscreen-line"></i>
+            </button>
+            <button class="gallery-btn download-btn" title="Download">
+                <i class="ri-download-line"></i>
+            </button>
+            <button class="gallery-btn share-btn" title="Share">
+                <i class="ri-share-line"></i>
+            </button>
+        </div>
+    `;
 
-        // Create gallery images
-        images.forEach(item => {
-            const imgElement = document.createElement("img");
-            imgElement.src = item.img;
-            imgElement.alt = "Gallery Image";
-            imgElement.addEventListener("click", () => {
-                const popup = document.getElementById("popup");
-                const popupImg = document.getElementById("popup-img");
-                popup.style.display = "flex"; // Open the popup
-                popupImg.src = item.img; // Set the image source of the popup
-            });
-            gallery.appendChild(imgElement);
+    // Add load event listener to handle image loading
+    const img = imgElement.querySelector('img');
+    img.addEventListener('load', () => {
+        imgElement.classList.add('loaded');
+    });
+
+    return imgElement;
+}
+
+// Initialize gallery with loading state
+function initGallery() {
+    gallery.innerHTML = ''; // Clear existing items
+    images.forEach((item, index) => {
+        const galleryItem = createGalleryItem(item, index);
+        gallery.appendChild(galleryItem);
+    });
+}
+
+        // Popup functionality
+        const popup = document.querySelector('.popup');
+        const popupImg = popup.querySelector('.popup-img');
+        let isPopupOpen = false;
+
+        function openPopup(imgSrc, index) {
+            popupImg.src = imgSrc;
+            currentImageIndex = index;
+            popup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            isPopupOpen = true;
+        }
+
+        function closePopup() {
+            popup.classList.remove('active');
+            document.body.style.overflow = '';
+            isPopupOpen = false;
+            setTimeout(() => {
+                popupImg.src = ''; // Clear source after animation
+            }, 300);
+        }
+
+        // Event Handlers
+        gallery.addEventListener('click', (e) => {
+            const galleryItem = e.target.closest('.gallery-item');
+            if (!galleryItem) return;
+
+            const img = galleryItem.querySelector('img');
+            const index = Array.from(gallery.children).indexOf(galleryItem);
+
+            if (e.target.closest('.view-btn')) {
+                openPopup(img.src, index);
+            } else if (e.target.closest('.download-btn')) {
+                downloadImage(img.src);
+            } else if (e.target.closest('.share-btn')) {
+                shareImage(img.src);
+            }
         });
 
-        const closeBtn = document.getElementById("close-btn");
-        closeBtn.addEventListener("click", () => {
-            const popup = document.getElementById("popup");
-            popup.style.display = "none"; // Close the popup
+        // Download functionality
+        function downloadImage(imgSrc) {
+            const link = document.createElement('a');
+            link.href = imgSrc;
+            link.download = `gallery-image-${Date.now()}.jpg`;
+            link.click();
+        }
+
+        // Share functionality
+        async function shareImage(imgSrc) {
+            try {
+                if (navigator.share) {
+                    await navigator.share({
+                        title: 'Gallery Image',
+                        text: 'Check out this image from our gallery!',
+                        url: imgSrc
+                    });
+                } else {
+                    await navigator.clipboard.writeText(imgSrc);
+                    showToast('Image URL copied to clipboard!');
+                }
+            } catch (err) {
+                console.error('Error sharing:', err);
+                showToast('Unable to share image');
+            }
+        }
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // Event Listeners
+        popup.querySelector('.close-btn').addEventListener('click', closePopup);
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) closePopup();
         });
 
-    
-        const popup = document.getElementById("popup");
-        popup.addEventListener("click", function(e) {
-            if (e.target === popup) {
-                popup.style.display = "none";
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (!isPopupOpen) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    closePopup();
+                    break;
+                case 'ArrowLeft':
+                    navigateImage(-1);
+                    break;
+                case 'ArrowRight':
+                    navigateImage(1);
+                    break;
+            }
+        });
+
+        // Image Navigation
+        function navigateImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            popupImg.src = images[currentImageIndex].img;
+        }
+
+        // Initialize gallery
+        initGallery();
+
+        // Handle loading state
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('preloader');
+            if (loader) {
+                loader.style.display = 'none';
             }
         });
     </script>
+
+    <style>
+        /* Toast Notification Style */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            z-index: 1001;
+            animation: fadeInOut 3s ease;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            10%, 90% { opacity: 1; }
+        }
+    </style>
 </body>
 </html>
