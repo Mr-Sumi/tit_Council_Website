@@ -21,9 +21,19 @@
         src: url(/Fonts/Bebrush.otf);
     }
     
+    :root {
+        --primary-color: #4ecdc4;
+        --accent-color: #ff3366;
+        --dark-bg: #0a0a0a;
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --text-primary: #ffffff;
+        --text-secondary: rgba(255, 255, 255, 0.7);
+        --gradient-primary: linear-gradient(45deg, #4ecdc4, #ff3366);
+    }
+    
     body {
-        background-color: white;
-        color: #2a2a45;
+        background: linear-gradient(180deg, var(--dark-bg) 0%, #1a1a1a 100%) !important;
+        color: var(--text-primary);
         font-family: GilroyMedium, sans-serif;
         text-align: center;
         margin: 0;
@@ -57,9 +67,10 @@
         font-family: Bebrush;
         font-size: 3.2vw;
         letter-spacing: 0.8vw;
-        color: #2a2a45;
+        color: var(--text-primary) !important;
         margin-top:6vw;
         font-weight: 400;
+        text-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
     }
     .heading-bearer::after {
         content: '';
@@ -67,8 +78,9 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 2px;
-        background: #2a2a45;
+        height: 3px;
+        background: var(--gradient-primary) !important;
+        border-radius: 2px;
     }
     .team-grid {
         display: flex;
@@ -76,69 +88,97 @@
         justify-content: center;
         gap: 2rem;
         padding: 1rem;
-        animation: fadeIn 1s ease;
+        animation: fadeIn 1s ease-out;
         max-width: 1400px;
         margin: 0 auto;
     }
     .flip-card {
-        background-color: transparent;
+        background: transparent;
         width: 300px;
         height: 380px;
         perspective: 1000px;
         margin: 1rem;
+        box-shadow: none;
+        animation: fadeIn 0.8s ease-out backwards;
     }
     .flip-card-inner {
         position: relative;
         width: 100%;
         height: 100%;
         text-align: center;
-        transition: transform 0.6s;
+        transition: transform 0.8s, box-shadow 0.3s ease;
         transform-style: preserve-3d;
+        cursor: pointer;
     }
     .flip-card:hover .flip-card-inner {
         transform: rotateY(180deg);
+        box-shadow: 0 8px 25px rgba(78, 205, 196, 0.2);
     }
     .flip-card-front, .flip-card-back {
         position: absolute;
         width: 100%;
         height: 100%;
-        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(42, 42, 69, 0.08);
+        box-shadow: none;
     }
     .flip-card-front {
-        background-color: #f8f9fa;
-        padding: 1.5rem;
+        background: var(--card-bg) !important;
+        border: 1px solid rgba(78, 205, 196, 0.1) !important;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        padding: 1.5rem 1rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
     }
     .flip-card-front img {
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
         object-fit: cover;
-        border: 3px solid #2a2a45;
-        box-shadow: 0 4px 15px rgba(42, 42, 69, 0.15);
+        border: 3px solid var(--primary-color) !important;
+        box-shadow: 0 0 20px rgba(78, 205, 196, 0.2) !important;
         margin-bottom: 1rem;
     }
     .flip-card-front h3 {
-        font-family: Gilroy-Bold;
-        font-size: 1.4rem;
-        color: #2a2a45;
-        margin: 0.5rem 0;
+        font-size: 1.2rem;
+        color: var(--text-primary) !important;
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+    }
+    .member-role {
+        font-size: 0.75rem;
+        color: var(--primary-color) !important;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+    .member-quote {
+        font-size: 0.8rem;
+        color: var(--text-secondary) !important;
+        font-style: italic;
+        line-height: 1.3;
+        margin-top: 0.3rem;
+        opacity: 0.9;
+        max-width: 90%;
+        text-align: center;
+        background: rgba(78, 205, 196, 0.05);
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid rgba(78, 205, 196, 0.1);
     }
     .flip-card-back {
-        background-color: #2a2a45;
-        color: white;
+        background: rgba(78, 205, 196, 0.05) !important;
+        border: 1px solid rgba(78, 205, 196, 0.1) !important;
         transform: rotateY(180deg);
-        padding: 1.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding: 1.5rem;
+        backdrop-filter: blur(10px);
     }
     .flip-card-back p {
         font-family: GilroyMedium;
@@ -154,17 +194,20 @@
         width: 45px;
         height: 45px;
         border-radius: 50%;
-        background: white;
+        background: rgba(78, 205, 196, 0.05) !important;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         position: relative;
         overflow: hidden;
+        border: 1px solid rgba(78, 205, 196, 0.1) !important;
+        transition: all 0.3s ease;
     }
     .icon-button i {
         font-size: 1.2rem;
         z-index: 1;
+        color: var(--text-primary) !important;
         transition: color 0.3s ease;
     }
     .icon-button span {
@@ -179,6 +222,10 @@
         width: 100%;
         height: 100%;
         opacity: 1;
+    }
+    .icon-button:hover {
+        background: var(--gradient-primary) !important;
+        transform: translateY(-2px);
     }
     .twitter span { background-color: #4099ff; }
     .facebook span { background-color: #3B5998; }
@@ -221,45 +268,62 @@
             margin: 0.5rem auto;
         }
     }
-    /* Footer and Button Styles */
-    footer {
-        text-align: center;
-        background-color: #23233e;
-        color: #ddd;
-        padding: 15px;
-        width: 100%;
-        box-sizing: border-box;
-        margin-top: auto;
-    }
-
-    .button {
-        background: linear-gradient(to right, #2a2a45, #23233e);
-        color: white;
-        padding: 10px 25px;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        font-family: GilroyMedium;
-        font-size: 16px;
-        box-shadow: 0 4px 15px rgba(42, 42, 69, 0.2);
-        transition: all 0.3s ease;
-    }
-
-    .button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(42, 42, 69, 0.3);
-        background: linear-gradient(to right, #23233e, #2a2a45);
-    }
-
-    a {
-        text-decoration: none;
-        color: black  /* This will keep the text color same as its parent */
-    }
-
+    
     /* If you want to specifically target social media links */
     .social-button a {
         text-decoration: none;
     }
+
+    /* Fix for Safari and other browsers */
+    @media not all and (min-resolution:.001dpcm) { 
+        @supports (-webkit-appearance:none) {
+            .flip-card-front, .flip-card-back {
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+            }
+        }
+    }
+
+    /* Animation for smoother flip */
+    @keyframes flipIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .flip-card-inner {
+        animation: flipIn 0.3s ease-out;
+    }
+
+    /* Hover effect refinement */
+    .flip-card:hover {
+        transform: scale(1.02);
+        transition: transform 0.3s ease;
+    }
+
+    /* Add animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .team-grid {
+        animation: fadeIn 1s ease-out;
+    }
+
+    .flip-card {
+        animation: fadeIn 0.8s ease-out backwards;
+    }
+
+    /* Add staggered animation delay for cards */
+    .flip-card:nth-child(1) { animation-delay: 0.1s; }
+    .flip-card:nth-child(2) { animation-delay: 0.2s; }
+    .flip-card:nth-child(3) { animation-delay: 0.3s; }
+    .flip-card:nth-child(4) { animation-delay: 0.4s; }
+    .flip-card:nth-child(5) { animation-delay: 0.5s; }
+    .flip-card:nth-child(6) { animation-delay: 0.6s; }
+    .flip-card:nth-child(7) { animation-delay: 0.7s; }
+    .flip-card:nth-child(8) { animation-delay: 0.8s; }
+    .flip-card:nth-child(9) { animation-delay: 0.9s; }
 </style>
 </head>
 <body>
@@ -305,7 +369,11 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front">
                     <img src="/image folder/club members/sahil bhaiya.jpg" alt="Sahil Kumar">
-                    <h3>Sahil Kumar</h3>   
+                    <h3>Sahil Kumar</h3>
+                    <div class="member-role">Club Advisor</div>
+                    <div class="member-quote">
+                        "Guiding the next generation of leaders"
+                    </div>
                 </div>
                 <div class="flip-card-back">
                     <p>Club Advisor</p>
@@ -326,6 +394,10 @@
                 <div class="flip-card-front">
                     <img src="/image folder/club members/sHRUTI did.jpg" alt="Shruti Sarawagi">
                     <h3>Shruti Sarawagi</h3>
+                    <div class="member-role">Chief Committee Officer</div>
+                    <div class="member-quote">
+                        "Building bridges between ideas and action"
+                    </div>
                 </div>
                 <div class="flip-card-back">
                     <p>Chief Committee Officer</p>
@@ -346,6 +418,10 @@
                 <div class="flip-card-front">
                     <img src="/image folder/club members/adnam alam.jpg" alt="Adnan Alam">
                     <h3>Adnan Alam</h3>
+                    <div class="member-role">Assistant Chief Committee Officer</div>
+                    <div class="member-quote">
+                        "Creating opportunities for growth"
+                    </div>
                 </div>
                 <div class="flip-card-back">
                     <p>Assistant Chief Committee Officer</p>
@@ -366,6 +442,10 @@
                 <div class="flip-card-front">
                     <img src="/image folder/club members/Harsh Raj Singh.jpg" alt="Harsh Raj Singh">
                     <h3>Harsh Raj Singh</h3>
+                    <div class="member-role">Inter College Relationship officer</div>
+                    <div class="member-quote">
+                        "Connecting colleges, building networks"
+                    </div>
                 </div>
                 <div class="flip-card-back">
                     <p>Inter College Relationship officer</p>
@@ -387,6 +467,10 @@
                 <div class="flip-card-front">
                     <img src="/image folder/club members/vedant - Vedant Singh.jpg" alt="Vedant Singh">
                     <h3>Vedant Singh</h3>
+                    <div class="member-role">Academic Council Officer</div>
+                    <div class="member-quote">
+                        "Promoting academic excellence"
+                    </div>
                 </div>
                 <div class="flip-card-back">
                     <p>Academic Council Officer</p>
@@ -407,6 +491,10 @@
                 <div class="flip-card-front">
                     <img src="/image folder/club members/Screenshot_20241030_124309 - Harsh Katare.jpg" alt="Harsh Katare">
                     <h3>Harsh Katare</h3>
+                    <div class="member-role">Public Relationship Officer</div>
+                    <div class="member-quote">
+                        "Strengthening our community"
+                    </div>
                 </div>
                 <div class="flip-card-back">
                     <p>Public Relationship Officer</p>
@@ -426,6 +514,10 @@
                 <div class="flip-card-front">
                     <img src="/image folder/club members/priyanshu bhaiya.jpg" alt="Priyanshu Patel">
                     <h3>Priyanshu Patel</h3>
+                    <div class="member-role">Club Editor</div>
+                    <div class="member-quote">
+                        "Crafting inspiring stories"
+                    </div>
                 </div>
                 <div class="flip-card-back">
                     <p>Club Editor</p>
@@ -446,6 +538,10 @@
                 <div class="flip-card-front">
                     <img src="/image folder/club members/IMG20240627163440 - Laher Chouksey.jpg" alt="Laher Choukse">
                     <h3>Laher Chouksey</h3>
+                    <div class="member-role">Assistant Academic Council Officer</div>
+                    <div class="member-quote">
+                        "Supporting student success"
+                    </div>
                 </div>
                 <div class="flip-card-back">
                     <p>Assistant Academic Council Officer</p>
@@ -466,6 +562,10 @@
                 <div class="flip-card-front">
                     <img src="/image folder/club members/Aditi sisodia.jpg" alt="Aditi Sisodia">
                     <h3>Aditi Sisodia</h3>
+                    <div class="member-role">Women Empowerment Officer</div>
+                    <div class="member-quote">
+                        "Empowering women to lead"
+                    </div>
                 </div>
                 <div class="flip-card-back">
                     <p>Women Empowerment Officer</p>
