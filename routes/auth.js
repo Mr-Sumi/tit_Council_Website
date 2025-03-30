@@ -5,13 +5,16 @@ const usermodels = require('../models/usermodels');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { isLoggedIn } = require("../middleware/isLoggedIn");
+const flash = require("connect-flash");
+
 
 app.post("/register", async(req, res) => {
   let { username, enrollment, email, dob, phone} = req.body;
  // console.log(username, enrollment, email, dob, phone);
   const user = await usermodels.findOne({ enrollment, email ,phone });
   if (user) {
-    return res.status(400).send("User already exists");
+    req.flash("error", "User already exists");
+    return res.redirect("/login");  // Use flash on redirect
   }else{
     bcrypt.genSalt(11, (err, salt) => {
       if (err) {
@@ -33,10 +36,11 @@ app.post("/register", async(req, res) => {
           });
           let token = jwt.sign({ username, enrollment, dob }, process.env.JWT_TOKEN);
           res.cookie("token", token, { httpOnly: true, secure: true });
-          res.redirect("/");
+          req.flash("success", "Registration successful");
+          res.redirect("/login");
         } catch (err) {
-          console.error(err);
-          return res.status(500).send("Error creating user");
+          req.flash("error", "Error creating user");
+          res.redirect("/register");
         }
       });
     });
@@ -49,11 +53,13 @@ app.post("/login", async (req, res) => {
     const { enrollment, dob } = req.body;
     const user = await usermodels.findOne({ enrollment });
     if (!user) {
-      return res.status(404).send("User not found");
+      req.flash("error", "User not found");
+      return res.redirect("/login");
     }
     const isPasswordValid = await bcrypt.compare(dob, user.dob);
     if (!isPasswordValid) {
-      return res.status(401).send("Invalid credentials");
+      req.flash("error", "Invalid credentials");
+      return res.redirect("/login");
     }
     const token = jwt.sign(
       { enrollment: user.enrollment, dob: user.dob },
@@ -61,10 +67,13 @@ app.post("/login", async (req, res) => {
       { expiresIn: "6h" }
     );
     res.cookie("token", token, { httpOnly: true });
-    res.status(200).redirect("/");
+    req.flash("success", "Login successful");
+    res.redirect("/");
   } catch (error) {
     console.error("Error during login:", error.message);
-    res.status(500).send("An error occurred while processing your request");
+    req.flash("error", "An error occurred during login");
+    res.redirect("/login");
+    // return res.status(500).send("An error occurred while processing your request");
   }
 });
 
