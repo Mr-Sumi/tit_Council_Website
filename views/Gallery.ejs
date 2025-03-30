@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/stylesheet/Gallery.css">
     <link rel="stylesheet" href="/stylesheet/navbaar.css">
     <link rel="stylesheet" href="/stylesheet/Student.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
 </head>
 <body>
     <%- include('partials/preloader') %>
@@ -145,42 +146,58 @@
 
         const gallery = document.querySelector('.gallery');
         let currentImageIndex = 0;
-// Create and load gallery items
-function createGalleryItem(item, index) {
-    const imgElement = document.createElement("div");
-    imgElement.className = "gallery-item";
-    imgElement.innerHTML = `
-        <img src="${item.img}" alt="Gallery Image ${index + 1}" loading="lazy">
-        <div class="gallery-actions">
-            <button class="gallery-btn view-btn" title="View">
-                <i class="ri-fullscreen-line"></i>
-            </button>
-            <button class="gallery-btn download-btn" title="Download">
-                <i class="ri-download-line"></i>
-            </button>
-            <button class="gallery-btn share-btn" title="Share">
-                <i class="ri-share-line"></i>
-            </button>
-        </div>
-    `;
 
-    // Add load event listener to handle image loading
-    const img = imgElement.querySelector('img');
-    img.addEventListener('load', () => {
-        imgElement.classList.add('loaded');
-    });
+        // Intersection Observer for gallery items
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-    return imgElement;
-}
+        const galleryObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = `fadeInScale 0.6s ease forwards ${index * 0.1}s`;
+                    entry.target.style.visibility = 'visible';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-// Initialize gallery with loading state
-function initGallery() {
-    gallery.innerHTML = ''; // Clear existing items
-    images.forEach((item, index) => {
-        const galleryItem = createGalleryItem(item, index);
-        gallery.appendChild(galleryItem);
-    });
-}
+        // Create and load gallery items with scroll trigger
+        function createGalleryItem(item, index) {
+            const imgElement = document.createElement("div");
+            imgElement.className = "gallery-item";
+            imgElement.style.visibility = 'hidden'; // Hide initially
+            imgElement.innerHTML = `
+                <img src="${item.img}" alt="Gallery Image ${index + 1}" loading="lazy">
+                <div class="gallery-actions">
+                    <button class="gallery-btn view-btn" title="View">
+                        <i class="ri-fullscreen-line"></i>
+                    </button>
+                    <button class="gallery-btn download-btn" title="Download">
+                        <i class="ri-download-line"></i>
+                    </button>
+                    <button class="gallery-btn share-btn" title="Share">
+                        <i class="ri-share-line"></i>
+                    </button>
+                </div>
+            `;
+
+            // Observe the gallery item
+            galleryObserver.observe(imgElement);
+
+            return imgElement;
+        }
+
+        // Initialize gallery with loading state
+        function initGallery() {
+            gallery.innerHTML = ''; // Clear existing items
+            images.forEach((item, index) => {
+                const galleryItem = createGalleryItem(item, index);
+                gallery.appendChild(galleryItem);
+            });
+        }
 
         // Popup functionality
         const popup = document.querySelector('.popup');
