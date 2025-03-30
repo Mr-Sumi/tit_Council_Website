@@ -205,3 +205,151 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(element);
     });
 });
+
+// Add this to your existing JavaScript
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe event cards
+    document.querySelectorAll('.event-card').forEach(card => {
+        observer.observe(card);
+    });
+});
+
+// Add this to your existing JavaScript
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe club cards
+    document.querySelectorAll('.club-card').forEach(card => {
+        observer.observe(card);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements
+    document.querySelectorAll('.club-card, .clubs-intro, .clubs-cta').forEach(element => {
+        observer.observe(element);
+    });
+});
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Intersection Observer for Animations
+const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px'
+};
+
+const animateElements = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+        }
+    });
+};
+
+const observer = new IntersectionObserver(animateElements, observerOptions);
+
+// Observe all elements with animation classes
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-card').forEach(element => {
+        observer.observe(element);
+    });
+});
+
+// Handle Navigation
+const nav = document.querySelector('nav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= 0) {
+        nav.classList.remove('scroll-up');
+        return;
+    }
+    
+    if (currentScroll > lastScroll && !nav.classList.contains('scroll-down')) {
+        nav.classList.remove('scroll-up');
+        nav.classList.add('scroll-down');
+    } else if (currentScroll < lastScroll && nav.classList.contains('scroll-down')) {
+        nav.classList.remove('scroll-down');
+        nav.classList.add('scroll-up');
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// Add this to your existing JavaScript
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe event cards
+    document.querySelectorAll('.event-card').forEach(card => {
+        observer.observe(card);
+    });
+});
