@@ -51,10 +51,7 @@ app.use((req, res, next) => {
 
 app.use(cookieParser());
 
-<<<<<<< HEAD
-=======
 app.use(express.static('public')); 
->>>>>>> 52de838cf03b0aa01e66ad2e2483159c58e5f1c3
 app.use("/auth", authRouter);
 app.use("/club",club)
 app.use("/event",event)
@@ -151,12 +148,8 @@ app.get('/form', (req, res) => {
   res.render('form', { title: 'Form Page' });
 });
 
-<<<<<<< HEAD
-app.get("/eventPage",isLoggedIn,(req,res)=>{
-=======
 
 app.get("/eventPage",(req,res)=>{
->>>>>>> 52de838cf03b0aa01e66ad2e2483159c58e5f1c3
   res.render("Events",{isLoggedIn:true});
 })
 
