@@ -4,109 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Gallery</title>
-    <link rel="stylesheet" href="/stylesheet/preloader.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/stylesheet/Gallery.css">
     <link rel="stylesheet" href="/stylesheet/navbaar.css">
     <link rel="stylesheet" href="/stylesheet/Student.css">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
-    <style>
-        /* Add these styles to your existing CSS */
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
 
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.gallery-actions {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover .gallery-actions {
-    transform: translateY(0);
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
-}
-
-.gallery-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    padding: 8px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.gallery-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-.popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
-}
-
-.popup.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.popup-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 90vh;
-}
-
-.popup-img {
-    max-width: 100%;
-    max-height: 90vh;
-    object-fit: contain;
-}
-
-.close-btn {
-    position: absolute;
-    top: -40px;
-    right: 0;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
-    </style>
 </head>
 <body>
+
     <%- include('partials/preloader') %>
+
 
     <div class="navSlide">
         <div class="icon">
@@ -138,47 +46,42 @@
     </nav>
 
 <div class="container">
-    <div class="box">
-        <h1>Our <span>Gallery</span></h1>
-    </div>
     
-    <div class="gallery">
-        <!-- Gallery items will be dynamically added here -->
+<div class="box"><h1>STUDENT COUNCIL<br/><span>Event Gallery</span></h1></div>
+    <div class="gallery" id="gallery"></div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <img id="popup-img" src="" alt="Enlarged Image">
+            <div class="popup-controls">
+                <button class="popup-btn download-btn" title="Download Image">
+                    <span class="btn-icon"><i class="ri-download-line"></i></span>
+                    <span class="btn-tooltip">Download</span>
+                </button>
+                <button class="popup-btn share-btn" title="Share Image">
+                    <span class="btn-icon"><i class="ri-share-line"></i></span>
+                    <span class="btn-tooltip">Share</span>
+                </button>
+            </div>
+            <button class="close-btn" id="close-btn">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
     </div>
+
+    <div id="toast" class="toast"></div>
 </div>
-
-<!-- Improved Popup Structure -->
-<div class="popup">
-    <div class="popup-content">
-        <div class="popup-image-container">
-            <img class="popup-img" src="" alt="Enlarged Image">
-        </div>
-        <div class="popup-controls">
-            <button class="popup-btn download-btn" title="Download">
-                <i class="fas fa-download"></i>
-            </button>
-            <button class="popup-btn share-btn" title="Share">
-                <i class="fas fa-share-alt"></i>
-            </button>
-        </div>
-        <button class="close-btn" title="Close">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-    </div>
-
     <footer>
         <a href="/Dev">
             <button class="button">Developer team</button>      
         </a>
     </footer>
 
-    <script src="/javascript/preloader.js"></script>
+    <script src="/javascript/preloader.js"></script>    
 
     <script src="/javascript/navbaar.js"></script>
 
     <script>
-        // Image Gallery Implementation
         const images = [
             {img: "/image folder/Event Photos/IMG-20241110-WA0049.jpg"},
             {img: "/image folder/Event Photos/IMG_20240214_130059684.jpg"},
@@ -231,87 +134,101 @@
             {img: "/image folder/Event Photos/12.png"},
             {img: "/image folder/Event Photos/64.png"},
             {img: "/image folder/Event Photos/34.png"},
-            // {img: "/image folder/Event Photos/IMG-20241110-WA0019.jpg"},
+            {img: "/image folder/Event Photos/IMG-20241110-WA0019.jpg"},
             {img: "/image folder/Event Photos/IMG-20241110-WA0053.jpg"},
             {img: "/image folder/Event Photos/IMG-20241110-WA0026.jpg"},
             
         ];
 
-        const gallery = document.querySelector('.gallery');
+        const gallery = document.getElementById("gallery");
+        const popup = document.getElementById("popup");
+        const popupImg = document.getElementById("popup-img");
         let currentImageIndex = 0;
 
-        // Simplified gallery item creation
-        function createGalleryItem(item, index) {
-            const imgElement = document.createElement("div");
-            imgElement.className = "gallery-item";
-            imgElement.innerHTML = `
-                <img src="${item.img}" alt="Gallery Image ${index + 1}">
-                <div class="gallery-actions">
-                    <button class="gallery-btn view-btn" title="View">
-                        <i class="ri-fullscreen-line"></i>
-                    </button>
-                    <button class="gallery-btn download-btn" title="Download">
-                        <i class="ri-download-line"></i>
-                    </button>
-                    <button class="gallery-btn share-btn" title="Share">
-                        <i class="ri-share-line"></i>
-                    </button>
-                </div>
-            `;
-            return imgElement;
-        }
-
-        // Initialize gallery
-        function initGallery() {
-            gallery.innerHTML = '';
+        // Create gallery images with enhanced structure
+        function createGallery() {
             images.forEach((item, index) => {
-                const galleryItem = createGalleryItem(item, index);
-                gallery.appendChild(galleryItem);
+                const imgContainer = document.createElement("div");
+                imgContainer.className = "gallery-item";
+                
+                const img = document.createElement("img");
+                img.src = item.img;
+                img.alt = `Gallery Image ${index + 1}`;
+                
+                img.addEventListener("click", () => {
+                    openPopup(item.img, index);
+                });
+                
+                imgContainer.appendChild(img);
+                gallery.appendChild(imgContainer);
             });
         }
 
         // Popup functionality
-        const popup = document.querySelector('.popup');
-        const popupImg = popup.querySelector('.popup-img');
-        let isPopupOpen = false;
-
         function openPopup(imgSrc, index) {
+            popup.style.display = "flex";
             popupImg.src = imgSrc;
             currentImageIndex = index;
-            popup.classList.add('active');
             document.body.style.overflow = 'hidden';
-            isPopupOpen = true;
         }
 
         function closePopup() {
-            popup.classList.remove('active');
+            popup.style.display = "none";
             document.body.style.overflow = '';
-            isPopupOpen = false;
         }
 
-        // Event Handlers
-        gallery.addEventListener('click', (e) => {
-            const galleryItem = e.target.closest('.gallery-item');
-            if (!galleryItem) return;
-
-            const img = galleryItem.querySelector('img');
-            const index = Array.from(gallery.children).indexOf(galleryItem);
-
-            if (e.target.closest('.view-btn')) {
-                openPopup(img.src, index);
-            } else if (e.target.closest('.download-btn')) {
-                downloadImage(img.src);
-            } else if (e.target.closest('.share-btn')) {
-                shareImage(img.src);
+        // Update the toast notification function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            let icon = 'ri-check-line';
+            
+            // Set appropriate icon based on message
+            if (message.includes('error') || message.includes('failed')) {
+                icon = 'ri-error-warning-line';
+            } else if (message.includes('copied')) {
+                icon = 'ri-file-copy-line';
             }
-        });
+            
+            toast.innerHTML = `
+                <i class="${icon}"></i>
+                <span>${message}</span>
+            `;
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
 
-        // Download functionality
-        function downloadImage(imgSrc) {
-            const link = document.createElement('a');
-            link.href = imgSrc;
-            link.download = `gallery-image-${Date.now()}.jpg`;
-            link.click();
+        // Update download function with loading state
+        async function downloadImage(imgSrc) {
+            const downloadBtn = document.querySelector('.download-btn');
+            try {
+                downloadBtn.innerHTML = '<span class="btn-icon"><i class="ri-loader-4-line"></i></span>';
+                downloadBtn.style.pointerEvents = 'none';
+                
+                const response = await fetch(imgSrc);
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = imgSrc.split('/').pop();
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
+                
+                showToast('Image downloaded successfully!');
+            } catch (error) {
+                showToast('Failed to download image');
+            } finally {
+                downloadBtn.innerHTML = `
+                    <span class="btn-icon"><i class="ri-download-line"></i></span>
+                    <span class="btn-tooltip">Download</span>
+                `;
+                downloadBtn.style.pointerEvents = 'auto';
+            }
         }
 
         // Share functionality
@@ -321,37 +238,39 @@
                     await navigator.share({
                         title: 'Gallery Image',
                         text: 'Check out this image from our gallery!',
-                        url: imgSrc
+                        url: window.location.origin + imgSrc
                     });
                 } else {
-                    await navigator.clipboard.writeText(imgSrc);
+                    await navigator.clipboard.writeText(window.location.origin + imgSrc);
                     showToast('Image URL copied to clipboard!');
                 }
-            } catch (err) {
-                console.error('Error sharing:', err);
+            } catch (error) {
                 showToast('Unable to share image');
             }
         }
 
-        // Toast notification
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
-        }
+        // Event listeners
+        document.getElementById("close-btn").addEventListener("click", closePopup);
 
-        // Popup Event Listeners
-        popup.querySelector('.close-btn').addEventListener('click', closePopup);
-        popup.addEventListener('click', (e) => {
-            if (e.target === popup) closePopup();
+        popup.addEventListener("click", (e) => {
+            if (e.target === popup) {
+                closePopup();
+            }
         });
 
-        // Keyboard Navigation
+        // Add event listeners for download and share buttons
+        document.querySelector('.download-btn').addEventListener('click', () => {
+            downloadImage(popupImg.src);
+        });
+
+        document.querySelector('.share-btn').addEventListener('click', () => {
+            shareImage(popupImg.src);
+        });
+
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (!isPopupOpen) return;
-            
+            if (!popup.style.display || popup.style.display === 'none') return;
+
             switch(e.key) {
                 case 'Escape':
                     closePopup();
@@ -365,78 +284,14 @@
             }
         });
 
-        // Image Navigation
+        // Image navigation
         function navigateImage(direction) {
             currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
             popupImg.src = images[currentImageIndex].img;
         }
 
-        // Initialize gallery when DOM is ready
-        document.addEventListener('DOMContentLoaded', () => {
-            initGallery();
-        });
-
-        // Handle loading state
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('preloader');
-            if (loader) {
-                loader.style.display = 'none';
-            }
-        });
-
-        // Add this to your existing script
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.gallery-item img');
-            
-            function handleImageLoad(img) {
-                // Create a temporary image to preload
-                const tempImage = new Image();
-                
-                tempImage.onload = function() {
-                    // Once loaded, show the actual image
-                    img.src = this.src;
-                    img.style.opacity = '1';
-                };
-
-                tempImage.src = img.getAttribute('src');
-                
-                // Set initial state
-                img.style.opacity = '0';
-                img.style.transition = 'opacity 0.3s ease';
-            }
-
-            // Process each image
-            images.forEach(img => {
-                if (img.complete) {
-                    // Image is already loaded
-                    img.style.opacity = '1';
-                } else {
-                    // Image needs to be loaded
-                    handleImageLoad(img);
-                }
-            });
-        });
+        // Initialize gallery
+        createGallery();
     </script>
-
-    <style>
-        /* Toast Notification Style */
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            z-index: 1001;
-            animation: fadeInOut 3s ease;
-        }
-
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0; }
-            10%, 90% { opacity: 1; }
-        }
-    </style>
 </body>
 </html>
