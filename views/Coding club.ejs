@@ -4,26 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CODING CLUB</title>
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="../stylesheet/navbaar.css">
     <link rel="stylesheet" href="../stylesheet/club.css">
 </head>
 <body>
-    <script>
-        window.addEventListener("load", function() {
-            const loader = document.getElementById("preloader");
-            loader.style.display = "none";
-        });
-    </script>
-
-    <!-- Loader -->
-    <div class="socket" id="preloader">
-        <div class="glitch-container">
-            Student Council
-            <span>Student Council</span>
-            <span>Student Council</span>
-        </div>
-    </div>
+    <%- include('partials/preloader') %>
 
     <!-- Navbar -->
     <div class="navSlide">
@@ -108,7 +95,7 @@
     <!-- JavaScript -->
     <script src="javascript/navbaar.js"> </script>
     <!-- <script src="javascript/clubgallery.js"></script> -->
-
+    <script src="/javascript/preloader.js"></script>
     </body>
     <!-- <script src="javascript/navbaar.js"></script> -->
 

@@ -2,7 +2,7 @@ let express = require('express');
 let app = express();
 const { isLoggedIn } = require("../middleware/isLoggedIn");
 
-app.get('/coding',isLoggedIn, (req, res) => {
+app.get('/coding', (req, res) => {
   res.render('Coding club', { title: 'Coding Club Page' });
 });
   

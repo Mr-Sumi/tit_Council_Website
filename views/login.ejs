@@ -5,6 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/a85c40c7f4.js" crossorigin="anonymous"></script>  
+  <link rel="stylesheet" href="/stylesheet/preloader.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
   <link rel="stylesheet" href="../stylesheet/navbaar.css">    
   <link rel="stylesheet" href="../stylesheet/Student.css">
@@ -413,10 +414,67 @@
             text-decoration: none;
             cursor: pointer;
           }
+
+          /* Replace Tailwind utility classes */
+          .message {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            z-index: 100;
+          }
+
+          .error-message {
+            color: #721c24;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+          }
+
+          .success-message {
+            color: #155724;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+          }
+
+          .forms-container {
+            text-align: center;
+          }
+
+          /* Remove these classes as they're no longer needed */
+          .z-999999,
+          .ml-50,
+          .text-center,
+          .text-red-500,
+          .absolute,
+          .top-[25%],
+          .left-[50%],
+          .w-100,
+          .z-100 {
+            /* These will be handled by the new CSS classes above */
+          }
+
+          /* Update input field border styles */
+          .input-field input {
+            border: none;
+          }
+
+          .input-field input.error {
+            border: 2px solid #dc3545;
+          }
+
+          .input-field input.default {
+            border: 2px solid #333;
+          }
   </style>
 </head>
 
 <body>
+  <%- include('partials/preloader') %>
   <div class="navSlide">
     <div class="icon">
      <i class="ri-close-large-line"></i>
@@ -443,59 +501,80 @@
         <li><a href="/gallery">Event Gallary</a></li>
         <i class="ri-menu-line"></i>
     </ul>
+    
 </nav>
 
 
-
+<% if (error_msg.length > 0) { %>
+  <div class="message error-message">
+      <%= error_msg %>
+  </div>
+<% } %>
+<% if (success_msg.length > 0) { %>
+  <div class="message success-message">
+      <%= success_msg %>
+  </div>
+<% } %>
 	<div class="container">
-		<div class="forms-container">
-
-
+		<div class="z-999999 ml-50 forms-container text-center text-red-500">
 			<div class="signin-signup">
-				<form action="/auth/login" class="sign-in-form signin" method="POST">
-					<h2 class="title">Sign in</h2>
-					<div class="input-field">
-						<i class="fas fa-user"></i>
-						<input type="text" placeholder="Enrollment Number" name="enrollment" required="/required" />
-					</div>
-					<div class="input-field">
-						<i class="fas fa-lock"></i>
-						<input type="password" placeholder="dob" name="dob" required="/required"/>
-					</div>
-          <spam class="forget">Forget password</spam>
-					<input type="submit" value="Login" class="btn solid" />
-				</form>
+
+<form action="/auth/login" class="sign-in-form signin" method="POST">
+  <h2 class="title">Sign in</h2>
+
+  <div class="input-field">
+      <i class="fas fa-user"></i>
+      <input type="text" 
+          class="<%= error_msg ? 'border-red-500 border-2' : 'border-black-900 border-2' %>" 
+          placeholder="Enrollment Number" 
+          name="enrollment" 
+          required
+      />
+  </div>
+
+  <div class="input-field">
+      <i class="fas fa-lock"></i>
+      <input type="password" placeholder="DOB (DD/MM/YYYY)" name="dob" required />
+  </div>
+
+  <span class="forget">Forget password</span>
+  
+  <input type="submit" value="Login" class="btn solid" />
+</form>
 
 
+<form action="/auth/register" class="sign-up-form" method="POST">
+  <h2 class="title">Sign up</h2>
 
+  <div class="input-field">
+      <i class="fas fa-user"></i>
+      <input type="text" placeholder="Full Name" name="username" required />
+  </div>
 
+  <div class="input-field">
+      <i class="fas fa-user"></i>
+      <input type="text" placeholder="Enrollment Number" name="enrollment" required />
+  </div>
 
+  <div class="input-field">
+      <i class="fas fa-phone"></i>
+      <input type="tel" placeholder="Phone No" name="phone" maxlength="10" required />
+  </div>
 
-				<form action="/auth/register" class="sign-up-form" method="POST">
-					<h2 class="title">Sign up</h2>
-					<div class="input-field">
-						<i class="fas fa-user"></i>
-						<input type="text" placeholder="Full Name" name="username" required="/required"/>
-					</div>
-          <div class="input-field">
-						<i class="fas fa-user"></i>
-						<input type="text" placeholder="Enrollment Number" name="enrollment" required="/required"/>
-					</div>
-          <div class="input-field">
-						<i class="fas fa-phone"></i>
-						<input type="tel" placeholder="Phone No" name="phone" maxlength="10" required="/required"/>
-					</div>
-					<div class="input-field">
-						<i class="fas fa-envelope"></i>
-						<input type="email" placeholder="Email" name="email" required="/required"/>
-					</div>
-          <div class="input-field" id="dob">
-						<i class="fas fa-calendar-days"></i>
-						<input type="text" placeholder="Date Of Birth" required="/required" name="dob" />
-          </div>
-          <p class="password_section">*your Date of Birth is your password in formate DD/MM/YYYY *</p>
-					<input type="submit" class="btn" value="Sign up" placeholder="DD/MM/YYYY" />
-				</form>
+  <div class="input-field">
+      <i class="fas fa-envelope"></i>
+      <input type="email" placeholder="Email" name="email" required />
+  </div>
+
+  <div class="input-field" id="dob">
+      <i class="fas fa-calendar-days"></i>
+      <input type="text" placeholder="Date Of Birth" name="dob" required />
+  </div>
+
+  <p class="password_section">*Your Date of Birth is your password in format DD/MM/YYYY*</p>
+  <input type="submit" class="btn" value="Sign up" />
+</form>
+
 			</div>
 		</div>
 
@@ -562,6 +641,7 @@
 
 
   <script src="javascript/navbaar.js"></script>
+  <script src="/javascript/preloader.js"></script>
 </body>
 
 </html>

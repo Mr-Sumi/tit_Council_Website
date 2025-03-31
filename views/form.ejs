@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration for Anwesha 2.0</title>
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet"/>
@@ -26,14 +27,14 @@
         body::-webkit-scrollbar{
         display: none;
       }
-        .container {
-            max-width: 70%;
-            margin-top: 12vh;
-            padding: 20px;
-            margin-left: 15vw;
-        }
-        header {
-            text-align: center;
+.container {
+            max-width: 1200px;
+    margin: 12vh auto 4rem;
+    padding: 0 2rem;
+            width: 90%;
+}
+header {
+    text-align: center;
             background: linear-gradient(135deg, #ff8e53, #e54d4d);
             color: #fff;
             padding: 40px 20px;
@@ -98,19 +99,19 @@
             background-size: 250%;
             background-position: left;
             color: #ffd277;
-            position: relative;
+    position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition-duration: 1s;
-            overflow: hidden;
+    overflow: hidden;
             margin-top: 25px;
             margin-left: 20vw;
-            }
+}
 
             .Btn::before {
-            position: absolute;
+    position: absolute;
             content: "Proceed For PAYMENT";
             color: #ffd277;
             display: flex;
@@ -188,28 +189,577 @@
             filter: hue-rotate(250deg);
             }
 
+        /* Enhanced File Upload Styling */
+        .file-upload-container {
+    margin-bottom: 2rem;
+        }
+
+        .file-drop-area {
+    position: relative;
+            padding: 2rem;
+            border: 2px dashed rgba(78, 205, 196, 0.3);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            min-height: 180px;
+        }
+
+        .file-drop-area.drag-over {
+            border-color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.05);
+        }
+
+        .file-input {
+    position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        /* Content States */
+        .file-drop-content,
+        .file-preview-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .file-drop-content {
+            z-index: 0;
+        }
+
+        .file-preview-content {
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .file-preview-content.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Preview Styling */
+        .preview-wrapper {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+    position: relative;
+            margin-bottom: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .file-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .preview-wrapper:hover .preview-overlay {
+            opacity: 1;
+        }
+
+        /* Button Styling */
+        .preview-overlay button {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .change-file {
+            background: rgba(78, 205, 196, 0.8);
+            color: white;
+        }
+
+        .remove-file {
+            background: rgba(255, 51, 102, 0.8);
+            color: white;
+        }
+
+        .preview-overlay button:hover {
+            transform: scale(1.1);
+        }
+
+        /* File Details */
+        .file-details {
+            text-align: center;
+        }
+
+        .file-name {
+            color: #4ecdc4;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+    display: block;
+        }
+
+        .file-size {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+        }
+
+        /* Modern File Upload Styling */
+        .file-upload-container {
+            margin-bottom: 2.5rem;
+        }
+
+        .file-drop-area {
+    position: relative;
+            padding: 2.5rem;
+            border: 2px dashed rgba(78, 205, 196, 0.3);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .file-drop-area.drag-over {
+    border-color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.05);
+            transform: scale(1.01);
+        }
+
+        .file-input {
+    position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-drop-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .upload-icon {
+            font-size: 2.5rem;
+    color: #4ecdc4;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .main-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .sub-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .browse-text {
+            color: #4ecdc4;
+    font-weight: 500;
+    cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .browse-text:hover {
+            color: #ff3366;
+        }
+
+        .file-info {
+            display: none;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(78, 205, 196, 0.1);
+            padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .file-info.active {
+            display: flex;
+        }
+
+        .file-name {
+            color: #4ecdc4;
+            font-size: 0.95rem;
+        }
+
+        .remove-file {
+            background: none;
+            border: none;
+            color: #ff3366;
+            cursor: pointer;
+            padding: 0;
+            font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .remove-file:hover {
+            transform: scale(1.1);
+        }
+
+        .upload-progress {
+            display: none;
+            width: 100%;
+            height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .upload-progress.active {
+            display: block;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #4ecdc4, #ff3366);
+            transition: width 0.3s ease;
+        }
+
+        .file-requirements {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        /* Error State */
+        .file-drop-area.error {
+            border-color: #ff3366;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 1400px) {
+            .container {
+                width: 95%;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            .container {
+                width: 90%;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            .form-section {
+                padding: 25px;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .container {
+                margin: 15vh auto 3rem;
+                padding-top: 20px;
+            }
+
+            header {
+                padding: 30px 15px;
+                margin-top: 20px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .form-section h2 {
+                font-size: 1.6em;
+            }
+
+            /* Payment Button Adjustment */
+            .Btn {
+                width: 60%;
+                margin-left: 20%;
+            }
+        }
+
+@media screen and (max-width: 768px) {
+    .container {
+                margin: 18vh auto 2rem;
+                padding-top: 25px;
+    }
+
+    header {
+                margin-top: 25px;
+    }
+
+    header h1 {
+                font-size: 1.8em;
+    }
+
+    .form-section {
+                padding: 20px;
+    }
+
+            /* Form Controls */
+    input[type="text"],
+    input[type="email"],
+    select {
+                padding: 10px;
+                font-size: 0.95em;
+            }
+
+            .form-group {
+                margin-bottom: 12px;
+            }
+
+            /* File Upload Adjustments */
+            .file-drop-area {
+                padding: 1.5rem;
+                min-height: 160px;
+            }
+
+            .preview-wrapper {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            /* Payment Button */
+            .Btn {
+                width: 80%;
+                margin-left: 10%;
+                height: 35px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .container {
+                margin: 20vh auto 2rem;
+                padding-top: 30px;
+            }
+
+            header {
+                margin-top: 30px;
+            }
+
+            .form-section {
+                padding: 15px;
+            }
+
+            .form-section h2 {
+                font-size: 1.4em;
+                margin-bottom: 15px;
+            }
+
+            label {
+                font-size: 0.9em;
+            }
+
+            /* File Upload Mobile Optimization */
+            .file-drop-area {
+                padding: 1rem;
+                min-height: 140px;
+            }
+
+            .upload-icon {
+                font-size: 1.8rem;
+            }
+
+            .main-text {
+                font-size: 0.9rem;
+            }
+
+            .sub-text {
+                font-size: 0.8rem;
+            }
+
+            .preview-wrapper {
+                max-width: 200px;
+            }
+
+            .preview-overlay button {
+                width: 35px;
+                height: 35px;
+            }
+
+            /* Payment Button */
+            .Btn {
+                width: 90%;
+                margin-left: 5%;
+                height: 40px;
+            }
+
+            .Btn::before {
+                font-size: 0.8em;
+            }
+
+            /* Developer Button */
+            .button {
+                padding: 0.8rem 2rem;
+                font-size: 1.2rem;
+                letter-spacing: 0.3rem;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .container {
+                margin: 22vh auto 2rem;
+                padding-top: 35px;
+            }
+
+            header {
+                margin-top: 35px;
+            }
+
+            header h1 {
+                font-size: 1.3em;
+            }
+
+            .form-section h2 {
+                font-size: 1.2em;
+            }
+
+            /* File Upload Further Optimization */
+            .file-drop-area {
+                padding: 0.8rem;
+                min-height: 120px;
+            }
+
+            .upload-icon {
+                font-size: 1.5rem;
+            }
+
+            .main-text {
+                font-size: 0.8rem;
+            }
+
+            .preview-wrapper {
+                max-width: 180px;
+            }
+
+            .file-name {
+                font-size: 0.8rem;
+            }
+
+            /* Payment Button */
+            .Btn {
+    width: 100%;
+                margin-left: 0;
+                height: 35px;
+            }
+        }
+
+        /* Handle Landscape Mode */
+        @media screen and (max-height: 600px) and (orientation: landscape) {
+            .container {
+                margin: 25vh auto 2rem;
+                padding-top: 40px;
+            }
+
+            .file-drop-area {
+                min-height: 120px;
+            }
+
+            .preview-wrapper {
+                max-width: 150px;
+            }
+        }
+
+        /* High DPI Screens */
+        @media screen and (-webkit-min-device-pixel-ratio: 2), 
+               screen and (min-resolution: 192dpi) {
+            .file-drop-area {
+                border-width: 1px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .container {
+                margin: 0;
+                width: 100%;
+            }
+
+            .file-drop-area {
+                border: 1px solid #000;
+                min-height: auto;
+            }
+
+            .Btn, 
+            .button,
+            .preview-overlay {
+                display: none;
+            }
+        }
+
+        /* Ensure Smooth Transitions */
+        * {
+            transition: all 0.3s ease;
+        }
+
+        /* Fix for iOS Input Zoom */
+        @supports (-webkit-touch-callout: none) {
+            input[type="text"],
+            input[type="email"],
+            select {
+                font-size: 16px;
+            }
+        }
+
+        /* Fix for Firefox Input Fields */
+        @-moz-document url-prefix() {
+            input[type="text"],
+            input[type="email"],
+            select {
+                padding: 11px;
+            }
+}
 
     </style>
 </head>
 <body>
-
-    
-	<script>
-		window.addEventListener("load" , function(){
-		  const loader = document.getElementById("preloader");
-		  loader.style= "display:none;";
-		});
-	  </script>
-	  
-	  
-	  <!--Loader for website-->
-	  <div class="socket" id="preloader">
-		<div class="glitch-container">
-		Student Council
-		  <span>Student Council</span>
-		  <span>Student Council</span>
-		</div>
-	  </div>
+    <%- include('partials/preloader') %>
 
     <div class="navSlide">
         <div class="icon">
@@ -334,8 +884,10 @@
     <a href="/Dev">
         <button class="button">Developer team</button>      
       </a>
-</footer>
-<script>
+        </footer>
+
+        <script src="/javascript/preloader.js"></script>
+        <script>
 
     let price=0;
     
@@ -420,9 +972,41 @@
         // Function to generate photo upload input
         function generatePhotoUploadInput(id) {
             return `
-                <div class="form-group">
-                    <label for="${id}Photo">Upload Photo (PNG or JPG only)</label>
-                    <input type="file" id="${id}Photo" name="${id}Photo" accept=".png, .jpg, .jpeg" required>
+                <div class="form-group file-upload-container">
+                    <label for="${id}Photo">Upload Photo</label>
+                    <div class="file-drop-area" id="${id}DropArea">
+                        <input type="file" class="file-input" id="${id}Photo" name="${id}Photo" accept=".png, .jpg, .jpeg" required>
+                        
+                        <!-- Initial Upload State -->
+                        <div class="file-drop-content" id="${id}DropContent">
+                            <i class="ri-upload-cloud-line upload-icon"></i>
+                            <div class="upload-message">
+                                <span class="main-text">Drag and drop your photo here</span>
+                                <span class="sub-text">or</span>
+                                <span class="browse-text">Browse Files</span>
+                            </div>
+                        </div>
+
+                        <!-- Preview State -->
+                        <div class="file-preview-content" id="${id}PreviewContent">
+                            <div class="preview-wrapper">
+                                <img src="" alt="Preview" class="file-preview" id="${id}Preview">
+                                <div class="preview-overlay">
+                                    <button type="button" class="change-file" title="Change Photo">
+                                        <i class="ri-camera-switch-line"></i>
+                                    </button>
+                                    <button type="button" class="remove-file" title="Remove Photo">
+                                        <i class="ri-delete-bin-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="file-details">
+                                <span class="file-name" id="${id}FileName"></span>
+                                <span class="file-size" id="${id}FileSize"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="file-requirements">Accepted formats: PNG, JPG (Max size: 5MB)</p>
                 </div>
             `;
         }
@@ -587,5 +1171,121 @@
     };
   </script>
 <script src="javascript/navbaar.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function initializeFileUpload(id) {
+            const dropArea = document.getElementById(`${id}DropArea`);
+            const fileInput = dropArea.querySelector('.file-input');
+            const dropContent = dropArea.querySelector('.file-drop-content');
+            const previewContent = dropArea.querySelector('.file-preview-content');
+            const preview = dropArea.querySelector('.file-preview');
+            const fileName = dropArea.querySelector('.file-name');
+            const fileSize = dropArea.querySelector('.file-size');
+            const removeBtn = dropArea.querySelector('.remove-file');
+            const changeBtn = dropArea.querySelector('.change-file');
+
+            // Prevent defaults for drag events
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            // Handle file selection
+            fileInput.addEventListener('change', handleFileSelect);
+            dropArea.addEventListener('drop', handleDrop);
+            removeBtn.addEventListener('click', removeFile);
+            changeBtn.addEventListener('click', () => fileInput.click());
+
+            function handleFileSelect(e) {
+                const files = e.target.files;
+                handleFiles(files);
+            }
+
+            function handleDrop(e) {
+                const files = e.dataTransfer.files;
+                handleFiles(files);
+            }
+
+            function handleFiles(files) {
+                if (files.length) {
+                    const file = files[0];
+                    if (validateFile(file)) {
+                        showPreview(file);
+                    }
+                }
+            }
+
+            function validateFile(file) {
+                const validTypes = ['image/jpeg', 'image/png'];
+                const maxSize = 5 * 1024 * 1024; // 5MB
+
+                if (!validTypes.includes(file.type)) {
+                    showError('Please upload a PNG or JPG file');
+                    return false;
+                }
+
+                if (file.size > maxSize) {
+                    showError('File size must be less than 5MB');
+                    return false;
+                }
+
+                return true;
+            }
+
+            function showPreview(file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    fileName.textContent = file.name;
+                    fileSize.textContent = formatFileSize(file.size);
+                    dropContent.style.opacity = '0';
+                    previewContent.classList.add('active');
+                };
+                reader.readAsDataURL(file);
+            }
+
+            function removeFile(e) {
+                e.stopPropagation();
+                fileInput.value = '';
+                preview.src = '';
+                dropContent.style.opacity = '1';
+                previewContent.classList.remove('active');
+            }
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+            }
+
+            function showError(message) {
+                const error = document.createElement('div');
+                error.className = 'upload-error';
+                error.textContent = message;
+                error.style.cssText = `
+                    position: absolute;
+                    bottom: -40px;
+                    left: 0;
+                    right: 0;
+                    text-align: center;
+                    color: #ff3366;
+                    font-size: 0.85rem;
+                `;
+                dropArea.appendChild(error);
+                setTimeout(() => error.remove(), 3000);
+            }
+        }
+
+        // Initialize file upload for each participant
+        // You'll need to call this function for each participant's file upload field
+        // Example: initializeFileUpload('leader');
+    });
+</script>
  </body>
 </html>

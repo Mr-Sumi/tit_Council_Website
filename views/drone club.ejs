@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DRONE SOCIETY</title>
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet"
@@ -14,23 +15,7 @@
 </head>
 <body>
 
-    
-    <script>
-        window.addEventListener("load" , function(){
-          const loader = document.getElementById("preloader");
-          loader.style= "display:none;";
-        });
-      </script>
-
-  <!--Loader for website-->
-  <div class="socket" id="preloader">
-    <div class="glitch-container">
-      Student Council
-      <span>Student Council</span>
-      <span>Student Council</span>
-    </div>
-  </div>
-
+    <%- include('partials/preloader') %>
   
     <div class="navSlide">
         <div class="icon">
@@ -77,11 +62,11 @@
     <div class="club-bearer"><h1 class="heading-drone">CLUB BEARER</h1></div>
 
     <div class="club-bearer-card">
-        <div class="club-bearer-card-content">
+        <!-- <div class="club-bearer-card-content">
             <img class="image" src="/image folder/club members/IMG-20241030-WA0003 - Dheeraj Thakre.jpg" alt="dheeraj thakare">
             <h1 class="heading">DHEERAJ THAKARE</h1>
             <span class="span">CO-ORDINATOR</span>
-        </div>
+        </div> -->
 
         <div class="club-bearer-card-content">
             <img class="image" src="/image folder/club members/Rishabh Tomar.jpg" alt="Rishabh Tomar">
@@ -112,5 +97,6 @@
         <p>&copy; 2024 STUDENT COUNCIL TIT. All rights reserved.</p>
     </footer>
     <script src="javascript/navbaar.js"></script>
+    <script src="/javascript/preloader.js"></script>
 </body>
 </html>

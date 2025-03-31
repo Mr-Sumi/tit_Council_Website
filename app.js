@@ -14,6 +14,7 @@ const usermodels = require('./models/usermodels');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { isLoggedIn } = require("./middleware/isLoggedIn");
+const flash = require('connect-flash');
 let club=require('./routes/Club.js');
 let event=require('./routes/Event.js')
 
@@ -31,20 +32,30 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,   
-  resave: false,             
-  saveUninitialized: false,  
+  secret: process.env.SESSION_SECRET || 'your-secret-key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
 }));
 
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success');
+  res.locals.error_msg = req.flash('error');
+  next();
+});
 
 app.use(cookieParser());
 
+app.use(express.static('public')); 
 
 app.use("/auth", authRouter);
 app.use("/club",club)
 app.use("/event",event)
-
-
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,   
@@ -72,7 +83,6 @@ app.post('/create/orderId', async (req, res) => {
     res.status(500).send('Error creating order');
   }
 });
-
 
 app.post('/api/payment/verify', async (req, res) => {
   const { razorpayOrderId, razorpayPaymentId, signature } = req.body;
@@ -130,7 +140,6 @@ app.get('/gallery', (req, res) => {
   res.render('Gallery', { title: 'Gallery Page' });
 });
 
-
 app.get('/Dev',  (req, res) => {
   res.render('Dev team', { title: 'Developer Page' });
 });
@@ -148,7 +157,6 @@ app.get("/eventPage",(req,res)=>{
 app.get("/userPage",isLoggedIn,(req,res)=>{
   res.render("user");
 })
-
 
 app.get('/error', (req, res) => {
   res.render('error', { title: 'error:404' });

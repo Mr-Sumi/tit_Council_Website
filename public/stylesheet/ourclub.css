@@ -1,0 +1,392 @@
+@font-face {
+    font-family: Bristone;
+    src: url(/Fonts/Bristone.ttf);
+  }
+  @font-face {
+    font-family: Gilroy-black;
+    src: url(/Fonts/Gilroy-Black.ttf);
+  }
+     @font-face {
+        font-family:GilroyMedium ;
+        src: url(/Fonts/Gilroy-Medium.ttf);
+     }
+       @font-face {
+            font-family: Bebrush;
+            src: url(/Fonts/Bebrush.otf);
+        }
+        @font-face {
+            font-family: Affectsides;
+            src: url(/Fonts/Affectsides.ttf);
+        }
+            body {
+                background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-dark-2) 100%);
+                color: var(--text-color);
+                font-family: GilroyMedium, sans-serif;
+                text-align: center;
+                animation: pageLoad 1s ease;
+            }
+            body::-webkit-scrollbar {
+                display: none;
+            }
+            /* Add this to a separate CSS file: public/stylesheet/clubs.css */
+:root {
+    --primary-color: #4ecdc4;
+    --accent-color: #ff3366;
+    --text-color: #ffffff;
+    --hover-bg: rgba(78, 205, 196, 0.9);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --bg-dark: #0a0a0a;
+    --bg-dark-2: #1a1a1a;
+}
+
+/* Container and Alignment Fixes */
+.container {
+    background: transparent;
+    margin: 12vh auto 4rem;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    text-align: center;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Heading Styles and Animation */
+.heading {
+    margin: 2rem auto 4rem;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.heading h1 {
+    font-family: 'Bebrush', sans-serif;
+    font-size: clamp(2rem, 3.2vw, 3.5rem);
+    letter-spacing: 0.8vw;
+    color: var(--text-color);
+    font-weight: 400;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+    position: relative;
+    text-align: center;
+    width: fit-content;
+}
+
+.heading h1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.heading h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    
+}
+
+/* Add decorative elements */
+.heading::before,
+.heading::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes lineExpand {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 80%;
+    }
+}
+
+@keyframes decorativeLines {
+    from {
+        opacity: 0;
+        transform: translateX(var(--translate)) scaleX(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scaleX(1);
+    }
+}
+
+/* Add a subtle glow effect on hover */
+.heading h1:hover {
+    animation: glow 2s ease infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(78, 205, 196, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(78, 205, 196, 0.4),
+                     0 0 30px rgba(255, 51, 102, 0.2);
+    }
+}
+
+/* Club Grid Centering */
+.club-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 2rem 0;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Card Centering */
+.card {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 1;
+    transform: translateY(0);
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+.card:nth-child(7) { animation-delay: 0.7s; }
+.card:nth-child(8) { animation-delay: 0.8s; }
+.card:nth-child(9) { animation-delay: 0.9s; }
+.card:nth-child(10) { animation-delay: 1s; }
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    display: block;
+    transform: scale(1);
+}
+
+.textBox {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(78, 205, 196, 0.95),
+        rgba(42, 42, 69, 0.95)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1);
+    transition: all 0.3s ease;
+}
+
+.text {
+    font-family: 'Gilroy-black', sans-serif;
+    color: #ffffff;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    padding: 1rem;
+    text-align: center;
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover Effects */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(78, 205, 196, 0.2);
+    border-color: rgba(78, 205, 196, 0.3);
+}
+
+.card:hover .img {
+    transform: scale(1.1);
+}
+
+.card:hover .textBox {
+    opacity: 1;
+}
+
+.card:hover .text {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .container {
+        padding: 2rem 1.5rem;
+    }
+
+    .club-grid {
+        grid-template-columns: repeat(4, 200px);
+        gap: 1.5rem;
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    .club-grid {
+        grid-template-columns: repeat(3, 200px);
+        gap: 1.5rem;
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 10vh;
+    }
+
+    .club-grid {
+        grid-template-columns: repeat(2, 200px);
+        gap: 1rem;
+        max-width: 450px;
+    }
+
+    .heading::before,
+    .heading::after {
+        width: 30px;
+    }
+    
+    .heading h1 {
+        font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem 0.5rem;
+        margin-top: 8vh;
+    }
+
+    .club-grid {
+        grid-template-columns: repeat(2, 150px);
+        gap: 1rem;
+        max-width: 340px;
+    }
+
+    .card {
+        width: 150px;
+        height: 150px;
+    }
+
+    .heading::before,
+    .heading::after {
+        width: 20px;
+    }
+    
+    .heading h1 {
+        font-size: 1.8rem;
+        letter-spacing: 0.3vw;
+        padding: 0.5rem 0.8rem;
+    }
+}
+
+/* Center Fix for Very Small Screens */
+@media (max-width: 360px) {
+    .club-grid {
+        grid-template-columns: repeat(2, 140px);
+        gap: 0.8rem;
+        max-width: 300px;
+    }
+
+    .card {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+/* Ensure content stays centered when scrolling */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
