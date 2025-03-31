@@ -1,18 +1,10 @@
 const express = require('express');
 const path = require('path');
 const connectdb = require('./config/db'); 
-const dotenv = require('dotenv');
-const Razorpay = require('razorpay');
-const user = require('./models/usermodels');
 const authRouter = require("./routes/auth");
 const session=require('express-session');
-const localStrategy = require('passport-local').Strategy;
-const Payment = require('./models/payment.js');
-const bodyParser = require('body-parser'); 
+const payment = require('./routes/payment.js');
 const cookieParser = require("cookie-parser");
-const usermodels = require('./models/usermodels');
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const { isLoggedIn } = require("./middleware/isLoggedIn");
 const flash = require('connect-flash');
 let club=require('./routes/Club.js');
@@ -56,53 +48,54 @@ app.use(express.static('public'));
 app.use("/auth", authRouter);
 app.use("/club",club)
 app.use("/event",event)
+app.use('/payment',payment)
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,   
-  key_secret: process.env.RAZORPAY_KEY_SECRET  
-});
+// const razorpay = new Razorpay({
+//   key_id: process.env.RAZORPAY_KEY_ID,   
+//   key_secret: process.env.RAZORPAY_KEY_SECRET  
+// });
 
-app.post('/create/orderId', async (req, res) => {
-  const options = {
-    amount: 5000 * 100, 
-    currency: "INR",
-  };
+// app.post('/create/orderId', async (req, res) => {
+//   const options = {
+//     amount: 5000 * 100, 
+//     currency: "INR",
+//   };
 
-  try {
-    const order = await razorpay.orders.create(options); 
-    res.send(order);
+//   try {
+//     const order = await razorpay.orders.create(options); 
+//     res.send(order);
 
-    await Payment.create({
-      orderId: order.id,
-      amount: order.amount / 100, 
-      currency: order.currency,
-      status: 'pending',
-    });
-  } catch (error) {
-    console.error('Error creating Razorpay order:', error);
-    res.status(500).send('Error creating order');
-  }
-});
+//     await Payment.create({
+//       orderId: order.id,
+//       amount: order.amount / 100, 
+//       currency: order.currency,
+//       status: 'pending',
+//     });
+//   } catch (error) {
+//     console.error('Error creating Razorpay order:', error);
+//     res.status(500).send('Error creating order');
+//   }
+// });
 
-app.post('/api/payment/verify', async (req, res) => {
-  const { razorpayOrderId, razorpayPaymentId, signature } = req.body;
-  const crypto = require('crypto');
+// app.post('/api/payment/verify', async (req, res) => {
+//   const { razorpayOrderId, razorpayPaymentId, signature } = req.body;
+//   const crypto = require('crypto');
 
-  const generatedSignature = crypto
-    .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
-    .update(`${razorpayOrderId}|${razorpayPaymentId}`)
-    .digest('hex');
+//   const generatedSignature = crypto
+//     .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
+//     .update(`${razorpayOrderId}|${razorpayPaymentId}`)
+//     .digest('hex');
 
-  if (generatedSignature === signature) {
-    await Payment.findOneAndUpdate(
-      { orderId: razorpayOrderId },
-      { paymentId: razorpayPaymentId, signature, status: 'completed' }
-    );
-    res.send('Payment verified successfully');
-  } else {
-    res.status(400).send('Payment verification failed');
-  }
-});
+//   if (generatedSignature === signature) {
+//     await Payment.findOneAndUpdate(
+//       { orderId: razorpayOrderId },
+//       { paymentId: razorpayPaymentId, signature, status: 'completed' }
+//     );
+//     res.send('Payment verified successfully');
+//   } else {
+//     res.status(400).send('Payment verification failed');
+//   }
+// });
 
 app.post('/current_user', (req, res) => {
   if (currentUser) {

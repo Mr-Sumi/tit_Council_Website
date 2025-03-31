@@ -1,6 +1,8 @@
 let express= require('express');
+const Razorpay = require('razorpay');
 
 let app= express();
+require('dotenv').config();
 
 
 
@@ -51,3 +53,5 @@ const razorpay = new Razorpay({
       res.status(400).send('Payment verification failed');
     }
   });
+
+  module.exports =app;

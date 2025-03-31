@@ -799,7 +799,7 @@ header {
     <!-- Registration Form Section -->
     <section class="form-section">
         <h2>Registration Form</h2>
-        <form id="payment-form" method="post" action="/create/orderId">
+        <form id="payment-form" method="post" action="payment/create/orderId">
 
             <!-- College -->
             <div class="form-group">
@@ -1123,7 +1123,7 @@ header {
 </script>
   <script>
     document.getElementById('rzp-button1').onclick = function(e) {
-      axios.post('/create/orderId')
+      axios.post('payment/create/orderId')
         .then(function (response) {
           var options = {
             "key": "<%= process.env.RAZORPAY_KEY_ID %>",
@@ -1134,7 +1134,7 @@ header {
             "image": "https://i.pinimg.com/236x/2a/b2/aa/2ab2aa6a99c6589636ff051f46c14ea3.jpg",
             "order_id": response.data.id,
             "handler": function(response) {
-              axios.post('/api/payment/verify', {
+              axios.post('payment/api/payment/verify', {
                 razorpayOrderId: response.razorpay_order_id,
                 razorpayPaymentId: response.razorpay_payment_id,
                 signature: response.razorpay_signature
