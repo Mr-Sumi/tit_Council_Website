@@ -799,8 +799,12 @@ header {
     <!-- Registration Form Section -->
     <section class="form-section">
         <h2>Registration Form</h2>
+<<<<<<< HEAD
         <form id="payment-form" method="post" action="payment/create/orderId">
 
+=======
+        <form id="payment-form" method="post" action="/create/orderId" enctype="multipart/form-data">
+>>>>>>> cb91edbec0999893d59dd9767f98549e97ae3d42
             <!-- College -->
             <div class="form-group">
                 <label for="college">College</label>
@@ -850,7 +854,6 @@ header {
                     <option value="Robo Race">Robo Race (10th April) </option>
                 </select>
             </div>
-            
 
             <!-- Sub-Event (for Craft Carnival) -->
             <div class="form-group" id="carnivalSubOptions" style="display: none;">
@@ -871,13 +874,18 @@ header {
             </div>
 
             <div id="participantsDetails"></div>
+    
+            <!-- Show calculated price -->
+            <div class="form-group" id="priceDisplay" style="display: none;">
+                <h3>Registration Fee: ₹<span id="calculatedPrice">0</span></h3>
+            </div>
 
             <!-- Submit Button  -->
-            <button class="Btn" id="rzp-button1">
+            <button type="button" class="Btn" id="rzp-button1">
+                Proceed to Payment
             </button>
         </form>
     </section>
-</div>
 
 <!-- Footer Section -->
 <footer>
@@ -887,12 +895,9 @@ header {
         </footer>
 
         <script src="/javascript/preloader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>
-
-    let price=0;
-    
-
-    // Define max participants for each event and labels
     const eventMaxParticipants = {
         "Entrepreneurship Stall": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
         "Jamming Session": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER"],
@@ -932,6 +937,105 @@ header {
         "Robo Race": ["SQUAD"]
     };
     
+        function calculatePrice(eventName, participantType) {
+            eventName = eventName.toUpperCase();
+            participantType = participantType.toUpperCase();
+            
+            let price = 0;
+            
+            // Robo events
+            if (eventName === "ROBO RACE" || eventName === "ROBO WAR") {
+                price = 300;
+            }
+            // Hackathon
+            else if (eventName === "HACKATHON") {
+                price = 200;
+            }
+            // Code events
+            else if (eventName === "CODE CLASH 4.0") {
+                price = 75;
+            }
+            // Gaming events
+            else if ((eventName === "FREE FIRE" || eventName === "BGMI")) {
+                if (participantType === "SOLO") {
+                    price = 50;
+                } else if (participantType === "SQUAD-4-MEMBER") {
+                    price = 200;
+                }
+            }
+            // Musical chair
+            else if (eventName === "MUSICAL CHAIR") {
+                price = 20;
+            }
+            // Renewable model showcase
+            else if (eventName === "RENEWABLE MODEL SHOWCASE") {
+                price = 50;
+            }
+            // Performance events
+            else if ((eventName === "DUMB CHARADES" || eventName === "MIC DROP")) {
+                if (participantType === "SOLO") {
+                    price = 20;
+                } else if (participantType === "DUO") {
+                    price = 40;
+                } else if (participantType === "TRIO") {
+                    price = 60;
+                } else if (participantType === "SQUAD-4-MEMBER") {
+                    price = 80;
+                }
+            }
+            // Corporate challenge
+            else if (eventName === "CORPORATE CHALLENGE SHOWDOWN") {
+                if (participantType === "SOLO") {
+                    price = 100;
+                } else {
+                    price = 200;
+                }
+            }
+            // Entrepreneurship stall
+            else if (eventName === "ENTREPRENEURSHIP STALL") {
+                if (participantType === "SOLO") {
+                    price = 50;
+                } else {
+                    price = 200;
+                }
+            }
+            // Technical presentation
+            else if (eventName === "TECHNICAL PRESENTATION") {
+                if (participantType === "DUO") {
+                    price = 50;
+                } else {
+                    price = 30;
+                }
+            }
+            // Dance events
+            else if (eventName === "FLASH MOB") {
+                if (participantType === "SOLO") {
+                    price = 50;
+                } else if (participantType === "DUO") {
+                    price = 100;
+                } else if (participantType === "SQUAD-4-MEMBER") {
+                    price = 150;
+                }
+            }
+            // Art events
+            else if (eventName === "ART-BYTE" || eventName === "PIXEL PERFECT") {
+                price = 30;
+            }
+            // Quiz events
+            else if (eventName === "BUZZ QUEST" || eventName === "BATTLE OF WITZ") {
+                price = 20;
+            }
+            // Treasure hunt
+            else if (eventName === "TREASURE HUNT") {
+                price = 200;
+            }
+            // Other events (default)
+            else {
+                price = 50; 
+            }
+            
+            return price;
+        }
 
     function updateParticipantsOption() {
         const eventSelect = document.getElementById("events");
@@ -939,79 +1043,79 @@ header {
         const selectedEvent = eventSelect.value;
         const carnivalSubOptions = document.getElementById("carnivalSubOptions");
 
-        // Clear current options in the "Number of Participants" dropdown
         numberSelect.innerHTML = '<option value="">Select</option>';
 
-        // Show sub-options for "Carnival Craft" only
         if (selectedEvent === "CARNIVAL CRAFT/ POSTER MAKING, SLOGAN WRITING") {
             carnivalSubOptions.style.display = "block";
         } else {
             carnivalSubOptions.style.display = "none";
         }
 
-        // Populate the dropdown based on the selected event's participant options
         if (eventMaxParticipants[selectedEvent]) {
             const participantOptions = eventMaxParticipants[selectedEvent];
             participantOptions.forEach(option => {
                 const newOption = document.createElement("option");
-                newOption.value = option.toLowerCase(); // use lowercase for value
+                    newOption.value = option.toLowerCase();
                 newOption.textContent = option;
                 numberSelect.appendChild(newOption);
             });
         }
+            
+            document.getElementById("priceDisplay").style.display = "none";
     }
 
-    // Define number of participants options
     function displayParticipantDetails() {
         const numberSelect = document.getElementById("number").value;
         const participantsDetails = document.getElementById("participantsDetails");
+            const eventSelect = document.getElementById("events").value;
     
-        // Clear previous participant details
+            const price = calculatePrice(eventSelect, numberSelect);
+            document.getElementById("calculatedPrice").textContent = price;
+            document.getElementById("priceDisplay").style.display = "block";
+        
         participantsDetails.innerHTML = "";
     
-        // Function to generate photo upload input
         function generatePhotoUploadInput(id) {
             return `
-                <div class="form-group file-upload-container">
-                    <label for="${id}Photo">Upload Photo</label>
-                    <div class="file-drop-area" id="${id}DropArea">
-                        <input type="file" class="file-input" id="${id}Photo" name="${id}Photo" accept=".png, .jpg, .jpeg" required>
-                        
-                        <!-- Initial Upload State -->
-                        <div class="file-drop-content" id="${id}DropContent">
-                            <i class="ri-upload-cloud-line upload-icon"></i>
-                            <div class="upload-message">
-                                <span class="main-text">Drag and drop your photo here</span>
-                                <span class="sub-text">or</span>
-                                <span class="browse-text">Browse Files</span>
-                            </div>
-                        </div>
-
-                        <!-- Preview State -->
-                        <div class="file-preview-content" id="${id}PreviewContent">
-                            <div class="preview-wrapper">
-                                <img src="" alt="Preview" class="file-preview" id="${id}Preview">
-                                <div class="preview-overlay">
-                                    <button type="button" class="change-file" title="Change Photo">
-                                        <i class="ri-camera-switch-line"></i>
-                                    </button>
-                                    <button type="button" class="remove-file" title="Remove Photo">
-                                        <i class="ri-delete-bin-line"></i>
-                                    </button>
+                    <div class="form-group file-upload-container">
+                        <label for="${id}Photo">Upload Photo</label>
+                        <div class="file-drop-area" id="${id}DropArea">
+                            <input type="file" class="file-input" id="${id}Photo" name="${id}Photo" accept=".png, .jpg, .jpeg" required>
+                            
+                            <!-- Initial Upload State -->
+                            <div class="file-drop-content" id="${id}DropContent">
+                                <i class="ri-upload-cloud-line upload-icon"></i>
+                                <div class="upload-message">
+                                    <span class="main-text">Drag and drop your photo here</span>
+                                    <span class="sub-text">or</span>
+                                    <span class="browse-text">Browse Files</span>
                                 </div>
                             </div>
-                            <div class="file-details">
-                                <span class="file-name" id="${id}FileName"></span>
-                                <span class="file-size" id="${id}FileSize"></span>
+    
+                            <!-- Preview State -->
+                            <div class="file-preview-content" id="${id}PreviewContent">
+                                <div class="preview-wrapper">
+                                    <img src="" alt="Preview" class="file-preview" id="${id}Preview">
+                                    <div class="preview-overlay">
+                                        <button type="button" class="change-file" title="Change Photo">
+                                            <i class="ri-camera-switch-line"></i>
+                                        </button>
+                                        <button type="button" class="remove-file" title="Remove Photo">
+                                            <i class="ri-delete-bin-line"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="file-details">
+                                    <span class="file-name" id="${id}FileName"></span>
+                                    <span class="file-size" id="${id}FileSize"></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <p class="file-requirements">Accepted formats: PNG, JPG (Max size: 5MB)</p>
+                        <p class="file-requirements">Accepted formats: PNG, JPG (Max size: 5MB)</p>
                 </div>
             `;
         }
     
-        // Function to generate participant fields
         function generateParticipantFields(role, id) {
             return `
                 <h3>${role} Information</h3>
@@ -1039,6 +1143,7 @@ header {
             else if (numberSelect === "trio") membersCount = 2;
             else if (numberSelect === "squad-4-member") membersCount = 3;
             else if (numberSelect === "squad-5-member") membersCount = 4;
+                else if (numberSelect === "squad") membersCount = 3;
     
             let formContent = generateParticipantFields("Team Leader", "leader");
             formContent += `<h3>Team Members Information</h3>`;
@@ -1048,6 +1153,7 @@ header {
             }
     
             participantsDetails.innerHTML = formContent;
+<<<<<<< HEAD
         }
     }
     
@@ -1156,22 +1262,54 @@ header {
             },
             "theme": {
               "color": "#000099"
+=======
+>>>>>>> cb91edbec0999893d59dd9767f98549e97ae3d42
             }
-          };
-          var rzp1 = new Razorpay(options);
-          rzp1.on('payment.failed', function(response) {
-            alert('Payment Failed');
-          });
-          rzp1.open();
-          e.preventDefault();
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
-    };
-  </script>
+            
+            setTimeout(() => {
+                document.querySelectorAll('.file-input').forEach(input => {
+                    input.addEventListener('change', function(e) {
+                        const file = e.target.files[0];
+                        if (file) {
+                            const id = this.id.replace('Photo', '');
+                            const preview = document.getElementById(`${id}Preview`);
+                            const fileName = document.getElementById(`${id}FileName`);
+                            const fileSize = document.getElementById(`${id}FileSize`);
+                            const dropContent = document.getElementById(`${id}DropContent`);
+                            const previewContent = document.getElementById(`${id}PreviewContent`);
+                            
+                            preview.src = URL.createObjectURL(file);
+                            
+                            fileName.textContent = file.name;
+                            fileSize.textContent = formatFileSize(file.size);
+                            
+                            dropContent.style.display = 'none';
+                            previewContent.style.display = 'block';
+                            
+                            const removeBtn = previewContent.querySelector('.remove-file');
+                            removeBtn.addEventListener('click', function() {
+                                input.value = '';
+                                dropContent.style.display = 'flex';
+                                previewContent.style.display = 'none';
+                            });
+                            
+                            const changeBtn = previewContent.querySelector('.change-file');
+                            changeBtn.addEventListener('click', function() {
+                                input.click();
+                            });
+                        }
+                    });
+                });
+            }, 100);
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' bytes';
+        else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+    }
+</script>
 <script src="javascript/navbaar.js"></script>
-<script>
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
         function initializeFileUpload(id) {
             const dropArea = document.getElementById(`${id}DropArea`);
@@ -1184,7 +1322,6 @@ header {
             const removeBtn = dropArea.querySelector('.remove-file');
             const changeBtn = dropArea.querySelector('.change-file');
 
-            // Prevent defaults for drag events
             ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
                 dropArea.addEventListener(eventName, preventDefaults, false);
             });
@@ -1286,6 +1423,6 @@ header {
         // You'll need to call this function for each participant's file upload field
         // Example: initializeFileUpload('leader');
     });
-</script>
+  </script>
  </body>
 </html>
