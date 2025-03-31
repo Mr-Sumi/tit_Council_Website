@@ -9,7 +9,6 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
   <link rel="stylesheet" href="../stylesheet/navbaar.css">    
   <link rel="stylesheet" href="../stylesheet/Student.css">
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
   <title>Login with Student Council</title>
   <style>
@@ -415,6 +414,62 @@
             text-decoration: none;
             cursor: pointer;
           }
+
+          /* Replace Tailwind utility classes */
+          .message {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            z-index: 100;
+          }
+
+          .error-message {
+            color: #721c24;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+          }
+
+          .success-message {
+            color: #155724;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+          }
+
+          .forms-container {
+            text-align: center;
+          }
+
+          /* Remove these classes as they're no longer needed */
+          .z-999999,
+          .ml-50,
+          .text-center,
+          .text-red-500,
+          .absolute,
+          .top-[25%],
+          .left-[50%],
+          .w-100,
+          .z-100 {
+            /* These will be handled by the new CSS classes above */
+          }
+
+          /* Update input field border styles */
+          .input-field input {
+            border: none;
+          }
+
+          .input-field input.error {
+            border: 2px solid #dc3545;
+          }
+
+          .input-field input.default {
+            border: 2px solid #333;
+          }
   </style>
 </head>
 
@@ -451,14 +506,12 @@
 
 
 <% if (error_msg.length > 0) { %>
-  <div class="absolute text-center top-[25%] left-[50%] w-100 z-100 ml-50" 
-       style="padding: 10px; border-radius: 5px; color: #721c24; background: #f8d7da; border: 1px solid #f5c6cb;">
+  <div class="message error-message">
       <%= error_msg %>
   </div>
 <% } %>
 <% if (success_msg.length > 0) { %>
-  <div class="absolute text-center top-[25%] left-[50%] w-100 z-100 ml-50" 
-       style="padding: 10px; border-radius: 5px; color: #155724; background: #d4edda; border: 1px solid #c3e6cb;">
+  <div class="message success-message">
       <%= success_msg %>
   </div>
 <% } %>
