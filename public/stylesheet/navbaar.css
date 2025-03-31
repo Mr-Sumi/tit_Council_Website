@@ -34,7 +34,8 @@ nav {
     align-items: center;
     height: 11vh;
     z-index: 99;
-    background: rgba(255, 255, 255, 0.95);
+    background:linear-gradient(to right,rgb(18, 18, 18),rgb(35, 35, 35),rgb(18, 18, 18));
+    color: #ffffff;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     padding: 0 20px;
@@ -123,11 +124,11 @@ nav.show {
     display: none;
     font-size: 24px;
     cursor: pointer;
-    color: #2a2a2a;
+    color: white;
 }
 
 .nav-links a {
-    color: #2a2a2a;
+    color: white;
     text-decoration: none;
     letter-spacing: 1px;
     font-size: 16px;
@@ -140,7 +141,7 @@ nav.show {
 
 .nav-links a:hover {
     color: #b53c3c;
-    background: rgba(181, 60, 60, 0.1);
+    background: rgba(190, 78, 78, 0.1);
 }
 
 .navSlide{
