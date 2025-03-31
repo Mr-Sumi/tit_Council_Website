@@ -71,29 +71,36 @@ body{
 /* Gallery Grid */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 2000px;
+  width: 100%;
+  margin: 0 auto;
   padding: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Gallery Item */
 .gallery-item {
   position: relative;
-  border-radius: 12px;
+  aspect-ratio: 1/1;
+  height: 250px; /* Fixed height for all items */
+  border-radius: 8px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  width: 100%;
+  background: #2a2a2a; /* Loading background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 /* Hover Effects */
@@ -110,26 +117,20 @@ body{
   opacity: 1;
 }
 
-.gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
 .gallery-item:hover img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 /* Gallery Actions */
 .gallery-actions {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   left: 0;
   right: 0;
-  padding: 15px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
+  z-index: 2;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.3s ease;
@@ -142,21 +143,25 @@ body{
 
 /* Action Buttons */
 .gallery-btn {
-  background: rgba(255, 255, 255, 0.15);
+  width: 35px;
+  height: 35px;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-btn i {
+  font-size: 1rem;
 }
 
 .gallery-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.3);
   transform: translateY(-3px);
 }
 
@@ -261,9 +266,9 @@ body{
 
 @media (max-width: 768px) {
   .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
     gap: 15px;
-    padding: 15px;
   }
   .container {
     padding: 2rem 1rem;
@@ -271,30 +276,19 @@ body{
   .gallery-item {
     height: 160px;
   }
-  .gallery-actions {
-    padding: 10px;
-  }
-  .gallery-btn {
-    width: 35px;
-    height: 35px;
-  }
 }
 
 @media (max-width: 480px) {
   .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 400px;
     gap: 10px;
-    padding: 10px;
   }
   .container {
     padding: 1rem;
   }
   .gallery-item {
     height: 200px;
-  }
-  .gallery-btn {
-    width: 32px;
-    height: 32px;
   }
 }
 
@@ -338,37 +332,4 @@ body{
 
 @keyframes spin {
   to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-/* Scroll Trigger Animations */
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Loading Animation */
-.gallery-item.loading {
-  animation: shimmer 1.5s infinite;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.03) 0%,
-    rgba(255, 255, 255, 0.06) 50%,
-    rgba(255, 255, 255, 0.03) 100%
-  );
-  background-size: 200% 100%;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
 }

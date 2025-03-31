@@ -11,6 +11,99 @@
     <link rel="stylesheet" href="/stylesheet/navbaar.css">
     <link rel="stylesheet" href="/stylesheet/Student.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
+    <style>
+        /* Add these styles to your existing CSS */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-actions {
+    transform: translateY(0);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+}
+
+.popup.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+}
+
+.popup-img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.close-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+    </style>
 </head>
 <body>
     <%- include('partials/preloader') %>
@@ -147,30 +240,12 @@
         const gallery = document.querySelector('.gallery');
         let currentImageIndex = 0;
 
-        // Intersection Observer for gallery items
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const galleryObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = `fadeInScale 0.6s ease forwards ${index * 0.1}s`;
-                    entry.target.style.visibility = 'visible';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Create and load gallery items with scroll trigger
+        // Simplified gallery item creation
         function createGalleryItem(item, index) {
             const imgElement = document.createElement("div");
             imgElement.className = "gallery-item";
-            imgElement.style.visibility = 'hidden'; // Hide initially
             imgElement.innerHTML = `
-                <img src="${item.img}" alt="Gallery Image ${index + 1}" loading="lazy">
+                <img src="${item.img}" alt="Gallery Image ${index + 1}">
                 <div class="gallery-actions">
                     <button class="gallery-btn view-btn" title="View">
                         <i class="ri-fullscreen-line"></i>
@@ -183,16 +258,12 @@
                     </button>
                 </div>
             `;
-
-            // Observe the gallery item
-            galleryObserver.observe(imgElement);
-
             return imgElement;
         }
 
-        // Initialize gallery with loading state
+        // Initialize gallery
         function initGallery() {
-            gallery.innerHTML = ''; // Clear existing items
+            gallery.innerHTML = '';
             images.forEach((item, index) => {
                 const galleryItem = createGalleryItem(item, index);
                 gallery.appendChild(galleryItem);
@@ -216,9 +287,6 @@
             popup.classList.remove('active');
             document.body.style.overflow = '';
             isPopupOpen = false;
-            setTimeout(() => {
-                popupImg.src = ''; // Clear source after animation
-            }, 300);
         }
 
         // Event Handlers
@@ -274,7 +342,7 @@
             setTimeout(() => toast.remove(), 3000);
         }
 
-        // Event Listeners
+        // Popup Event Listeners
         popup.querySelector('.close-btn').addEventListener('click', closePopup);
         popup.addEventListener('click', (e) => {
             if (e.target === popup) closePopup();
@@ -303,8 +371,10 @@
             popupImg.src = images[currentImageIndex].img;
         }
 
-        // Initialize gallery
-        initGallery();
+        // Initialize gallery when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initGallery();
+        });
 
         // Handle loading state
         window.addEventListener('load', function() {
@@ -312,6 +382,39 @@
             if (loader) {
                 loader.style.display = 'none';
             }
+        });
+
+        // Add this to your existing script
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.gallery-item img');
+            
+            function handleImageLoad(img) {
+                // Create a temporary image to preload
+                const tempImage = new Image();
+                
+                tempImage.onload = function() {
+                    // Once loaded, show the actual image
+                    img.src = this.src;
+                    img.style.opacity = '1';
+                };
+
+                tempImage.src = img.getAttribute('src');
+                
+                // Set initial state
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease';
+            }
+
+            // Process each image
+            images.forEach(img => {
+                if (img.complete) {
+                    // Image is already loaded
+                    img.style.opacity = '1';
+                } else {
+                    // Image needs to be loaded
+                    handleImageLoad(img);
+                }
+            });
         });
     </script>
 
