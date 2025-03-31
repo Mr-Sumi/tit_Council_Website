@@ -253,7 +253,9 @@
             }
             .club-bearer h1 {
                 font-size: 6vw;
+                margin-bottom:20px !important;
             }
+            
             .club-bearer-card-content {
                 padding: 0.8rem;
             }
