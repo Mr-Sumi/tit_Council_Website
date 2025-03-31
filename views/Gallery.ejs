@@ -46,30 +46,18 @@
     </nav>
 
 <div class="container">
+    <div class="box">
+        <h1><span>Event Gallery</span></h1>
+    </div>
     
-<div class="box"><h1>STUDENT COUNCIL<br/><span>Event Gallery</span></h1></div>
     <div class="gallery" id="gallery"></div>
 
     <div class="popup" id="popup">
-        <div class="popup-content">
-            <img id="popup-img" src="" alt="Enlarged Image">
-            <div class="popup-controls">
-                <button class="popup-btn download-btn" title="Download Image">
-                    <span class="btn-icon"><i class="ri-download-line"></i></span>
-                    <span class="btn-tooltip">Download</span>
-                </button>
-                <button class="popup-btn share-btn" title="Share Image">
-                    <span class="btn-icon"><i class="ri-share-line"></i></span>
-                    <span class="btn-tooltip">Share</span>
-                </button>
-            </div>
-            <button class="close-btn" id="close-btn">
-                <i class="ri-close-line"></i>
-            </button>
-        </div>
+        <button class="close-btn" id="close-btn">×</button>
+        <button class="nav-btn prev-btn" id="prev-btn">❮</button>
+        <button class="nav-btn next-btn" id="next-btn">❯</button>
+        <img id="popup-img" src="" alt="Enlarged Image">
     </div>
-
-    <div id="toast" class="toast"></div>
 </div>
     <footer>
         <a href="/Dev">
@@ -140,158 +128,89 @@
             
         ];
 
-        const gallery = document.getElementById("gallery");
-        const popup = document.getElementById("popup");
-        const popupImg = document.getElementById("popup-img");
-        let currentImageIndex = 0;
+        const gallery = document.getElementById('gallery');
+        const popup = document.getElementById('popup');
+        const popupImg = document.getElementById('popup-img');
+        const closeBtn = document.getElementById('close-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        let currentIndex = 0;
 
-        // Create gallery images with enhanced structure
+        // Create gallery
         function createGallery() {
             images.forEach((item, index) => {
-                const imgContainer = document.createElement("div");
-                imgContainer.className = "gallery-item";
-                
-                const img = document.createElement("img");
+                const img = document.createElement('img');
                 img.src = item.img;
                 img.alt = `Gallery Image ${index + 1}`;
+                img.loading = 'lazy';
                 
-                img.addEventListener("click", () => {
-                    openPopup(item.img, index);
+                img.addEventListener('click', () => {
+                    openPopup(index);
                 });
                 
-                imgContainer.appendChild(img);
-                gallery.appendChild(imgContainer);
+                gallery.appendChild(img);
             });
         }
 
-        // Popup functionality
-        function openPopup(imgSrc, index) {
-            popup.style.display = "flex";
-            popupImg.src = imgSrc;
-            currentImageIndex = index;
+        // Popup functions
+        function openPopup(index) {
+            currentIndex = index;
+            popup.style.display = 'flex';
+            updatePopupImage();
             document.body.style.overflow = 'hidden';
         }
 
         function closePopup() {
-            popup.style.display = "none";
+            popup.style.display = 'none';
             document.body.style.overflow = '';
         }
 
-        // Update the toast notification function
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            let icon = 'ri-check-line';
-            
-            // Set appropriate icon based on message
-            if (message.includes('error') || message.includes('failed')) {
-                icon = 'ri-error-warning-line';
-            } else if (message.includes('copied')) {
-                icon = 'ri-file-copy-line';
-            }
-            
-            toast.innerHTML = `
-                <i class="${icon}"></i>
-                <span>${message}</span>
-            `;
-            
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+        function updatePopupImage() {
+            popupImg.src = images[currentIndex].img;
         }
 
-        // Update download function with loading state
-        async function downloadImage(imgSrc) {
-            const downloadBtn = document.querySelector('.download-btn');
-            try {
-                downloadBtn.innerHTML = '<span class="btn-icon"><i class="ri-loader-4-line"></i></span>';
-                downloadBtn.style.pointerEvents = 'none';
-                
-                const response = await fetch(imgSrc);
-                const blob = await response.blob();
-                const url = window.URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = imgSrc.split('/').pop();
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                window.URL.revokeObjectURL(url);
-                
-                showToast('Image downloaded successfully!');
-            } catch (error) {
-                showToast('Failed to download image');
-            } finally {
-                downloadBtn.innerHTML = `
-                    <span class="btn-icon"><i class="ri-download-line"></i></span>
-                    <span class="btn-tooltip">Download</span>
-                `;
-                downloadBtn.style.pointerEvents = 'auto';
-            }
-        }
-
-        // Share functionality
-        async function shareImage(imgSrc) {
-            try {
-                if (navigator.share) {
-                    await navigator.share({
-                        title: 'Gallery Image',
-                        text: 'Check out this image from our gallery!',
-                        url: window.location.origin + imgSrc
-                    });
-                } else {
-                    await navigator.clipboard.writeText(window.location.origin + imgSrc);
-                    showToast('Image URL copied to clipboard!');
-                }
-            } catch (error) {
-                showToast('Unable to share image');
-            }
+        function navigateImage(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            updatePopupImage();
         }
 
         // Event listeners
-        document.getElementById("close-btn").addEventListener("click", closePopup);
+        closeBtn.addEventListener('click', closePopup);
+        prevBtn.addEventListener('click', () => navigateImage(-1));
+        nextBtn.addEventListener('click', () => navigateImage(1));
 
-        popup.addEventListener("click", (e) => {
+        popup.addEventListener('click', (e) => {
             if (e.target === popup) {
                 closePopup();
             }
         });
 
-        // Add event listeners for download and share buttons
-        document.querySelector('.download-btn').addEventListener('click', () => {
-            downloadImage(popupImg.src);
-        });
-
-        document.querySelector('.share-btn').addEventListener('click', () => {
-            shareImage(popupImg.src);
-        });
-
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (!popup.style.display || popup.style.display === 'none') return;
-
-            switch(e.key) {
-                case 'Escape':
-                    closePopup();
-                    break;
-                case 'ArrowLeft':
-                    navigateImage(-1);
-                    break;
-                case 'ArrowRight':
-                    navigateImage(1);
-                    break;
+            if (popup.style.display === 'flex') {
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        navigateImage(-1);
+                        break;
+                    case 'ArrowRight':
+                        navigateImage(1);
+                        break;
+                    case 'Escape':
+                        closePopup();
+                        break;
+                }
             }
         });
 
-        // Image navigation
-        function navigateImage(direction) {
-            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-            popupImg.src = images[currentImageIndex].img;
-        }
-
         // Initialize gallery
-        createGallery();
+        document.addEventListener('DOMContentLoaded', createGallery);
+
+        // Handle image loading errors
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.target.src = '/path/to/fallback-image.jpg'; // Add a fallback image path
+            }
+        }, true);
     </script>
 </body>
 </html>
