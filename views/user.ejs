@@ -78,12 +78,6 @@
             <!-- Skills Display -->
             <div class="flex flex-wrap gap-2" id="skillsContainer">
                 <span class="px-3 py-1 text-sm bg-indigo-900/50 text-indigo-300 rounded-full flex items-center gap-2">
-                    Web Development
-                    <button onclick="this.parentElement.remove()" class="text-indigo-300 hover:text-indigo-200">
-                        <i class="ri-close-line"></i>
-                    </button>
-                </span>
-                <span class="px-3 py-1 text-sm bg-indigo-900/50 text-indigo-300 rounded-full flex items-center gap-2">
                     UI/UX Design
                     <button onclick="this.parentElement.remove()" class="text-indigo-300 hover:text-indigo-200">
                         <i class="ri-close-line"></i>
@@ -107,7 +101,20 @@
                     >
                 </label>
             </div>
-           
+            <div class="grid grid-cols-1 gap-4" id="certificationsContainer">
+                <div class="border border-zinc-800 rounded-lg p-4 hover:border-zinc-700 transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-medium text-white mb-1">Web Development Fundamentals</h3>
+                            <p class="text-sm text-gray-400">Udemy</p>
+                        </div>
+                        <span class="text-xs px-2 py-1 bg-green-900/50 text-green-300 rounded">
+                            Verified
+                        </span>
+                    </div>
+                    <p class="text-sm text-blue-400 mt-2">Issued: January 2024</p>
+                </div>
+            </div>
         </div>
 
         <!-- Registered Events -->
