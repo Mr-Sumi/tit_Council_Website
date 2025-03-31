@@ -10,18 +10,18 @@
 />
     <link rel="stylesheet" href="../stylesheet/navbaar.css">
     <style>
-         @font-face {
-    font-family: Bristone;
-    src: url(/Fonts/Bristone.ttf);
-  }
-  @font-face {
-    font-family: Gilroy-black;
-    src: url(/Fonts/Gilroy-Black.ttf);
-  }
-     @font-face {
-        font-family:GilroyMedium ;
-        src: url(/Fonts/Gilroy-Medium.ttf);
-     }
+        @font-face {
+          font-family: Bristone;
+          src: url(/Fonts/Bristone.ttf);
+        }
+        @font-face {
+            font-family: Gilroy-black;
+            src: url(/Fonts/Gilroy-Black.ttf);
+        }
+        @font-face {
+             font-family:GilroyMedium ;
+             src: url(/Fonts/Gilroy-Medium.ttf);
+        }
        @font-face {
             font-family: Bebrush;
             src: url(/Fonts/Bebrush.otf);
@@ -30,6 +30,16 @@
             font-family: Affectsides;
             src: url(/Fonts/Affectsides.ttf);
         }
+        :root {
+            --primary-color: #4ecdc4;
+            --accent-color: #ff3366;
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --gradient-primary: linear-gradient(45deg, #4ecdc4, #ff3366);
+        }
+        
         body {
             background-size: cover;
             position: relative;
@@ -70,62 +80,140 @@
 
         .heading-barriers {
             font-family: Bebrush;
-            border-bottom: 2px solid;
             margin: 5.5vw auto 2vw;
             letter-spacing: 1vw;
             font-weight: 400;
             width: fit-content;
             padding: 0 2rem;
+            position: relative;
         }
+        .heading-barriers::after {
+        content: '';
+        position: absolute;
+        bottom: -10%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(45deg, #4ecdc4, #ff3366) !important;
+        border-radius: 2px;
+      }
        
 
         .faculty-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             grid-gap: 20px;
             animation: fadeIn 2s;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
+            margin-top: 5vw;
         }
 
         .faculty-member {
-            background-color:  rgba(78, 205, 196, 0.05) !important;
+            background-color: rgba(78, 205, 196, 0.05) !important;
             border: 1px solid rgba(78, 205, 196, 0.1) !important;
-
-            /* color: #000000; */
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 15px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
             animation: fadeIn 2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            box-sizing: border-box;
         }
 
         .faculty-member img {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.2);
         }
 
         .faculty-member h3 {
-            /* color: black; */
             margin-bottom: 5px;
-            font-size: 25px;
+            font-size: 22px;
+            font-weight: 200;
+            color: var(--text-primary);
         }
 
         .faculty-member p {
-            font-size: 16px;
-            font-weight: 800;
-            font-style: unset;
-            font-family: 'Courier New', Courier, monospace;
-            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--primary-color) !important;
+            margin-bottom: 0.3rem;
+            font-weight: 400;
+        }
+
+        .member-quote {
+            font-size: 0.8rem;
+            color: var(--text-secondary) !important;
+            font-style: italic;
+            line-height: 1.3;
+            margin-top: 0.3rem;
+            opacity: 0.9;
+            max-width: 90%;
+            text-align: center;
+            background: rgba(78, 205, 196, 0.05);
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid rgba(78, 205, 196, 0.1);
         }
 
         @media (max-width: 1200px) {
-            .faculty-grid, .sub-faculty-grid {
-                padding: 0 15px;
+            .faculty-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .faculty-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .faculty-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                gap: 20px;
+            }
+
+            .faculty-member {
+                padding: 15px;
+            }
+
+            .faculty-member img {
+                width: 130px;
+                height: 130px;
+            }
+
+            .faculty-member h3 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .faculty-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+                padding: 0 10px;
+            }
+
+            .faculty-member {
+                padding: 12px;
+            }
+
+            .faculty-member img {
+                width: 120px;
+                height: 120px;
             }
         }
 
@@ -144,26 +232,29 @@
         }
         
 
-        .sub-faculty-grid{
+        .sub-faculty-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            grid-gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
             animation: fadeIn 2s;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
+            margin-top: 5vw;
         }
 
         .sub-faculty-member {
-            background-color: rgba(78, 205, 196, 0.05) !important ;
+            background-color: rgba(78, 205, 196, 0.05) !important;
             border: 1px solid rgba(78, 205, 196, 0.1) !important;
-
-            /* color: #000000; */
-            padding: 20px;
-            border-radius: 5px;
+            padding: 15px;
+            border-radius: 15px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
             animation: fadeIn 2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
 
         .sub-faculty-member .image {
@@ -171,13 +262,16 @@
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.2);
         }
 
         .sub-faculty-member .h3 {
-            /* color: black; */
             margin-bottom: 5px;
             font-size: 20px;
+            font-weight: 200;
+            color: var(--text-primary);
         }
 
         .sub-faculty-member .p {
@@ -187,57 +281,64 @@
             font-family: 'Courier New', Courier, monospace;
             margin-top: 10px;
         }
+
         @media (max-width: 1200px) {
             .sub-faculty-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                grid-gap: 12px;
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
-        @media (max-width: 768px) {
-            .container, .sub-faculity-container {
-                padding: 5px;
+        @media (max-width: 992px) {
+            .sub-faculty-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
             
-            .faculty-grid, .sub-faculty-grid {
+            .heading-barriers h1 {
+                font-size: 2.5rem;
+            }
+            
+            .faculty-member, .sub-faculty-member {
+                padding: 12px;
+            }
+        }
+
+        /* Large phones (576px to 767px) */
+        @media (max-width: 767px) {
+            .container, .sub-faculity-container {
+                padding: 10px;
+            }
+            
+            .faculty-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 12px;
                 padding: 0 10px;
             }
             
+            .sub-faculty-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 12px;
+            }
+            
             .heading-barriers {
-                margin-top: 9vw;
-                padding: 0 1rem;
+                margin-top: 80px;
+            }
+            
+            .heading-barriers h1 {
+                font-size: 2rem;
             }
         }
 
-        @media (max-width: 576px) {
+        /* Small phones (575px and below) */
+        @media (max-width: 575px) {
             .faculty-grid, .sub-faculty-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 10px;
                 padding: 0 8px;
             }
             
-            .heading-barriers {
-                margin-top: 15vw;
-                padding: 0 0.5rem;
-            }
-        }
-
-        @media (max-width: 320px) {
-            .faculty-grid, .sub-faculty-grid {
-                padding: 0 5px;
-            }
-        }
-
-        /* Add support for landscape mode */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .container, .sub-faculity-container {
-                padding: 5px;
-                margin-top: 60px;
-            }
-            
-            .heading-barriers {
-                margin-top: 6vw;
-            }
-        }
-
+            .faculty-member img {
+                width: 100px;
+                height: 100px;
     </style>
 </head>
 <body>
@@ -278,32 +379,50 @@
             <div class="faculty-member">
                 <img src="/image folder/faculty/Prof.(Dr.) Shashi K. Jain.png" alt="Prof.(Dr.) Shashi K. Jain">
                 <h3>Prof.(Dr.) Shashi K. Jain</h3>
-                <p class="para">COUNCIL HEAD</p>
+                <p>COUNCIL HEAD</p>
+                <div class="member-quote">
+                    "Empowering students to lead and innovate"
+                </div>
             </div>
             <div class="faculty-member">
                 <img src="/image folder/faculty/Dr. Kavita Burse.png" alt="Dr. Kavita Burse">
                 <h3>Dr. Kavita Burse</h3>
                 <p>PROFESSIONAL DEVELOPMENT MENTOR</p>
+                <div class="member-quote">
+                    "Fostering professional growth and excellence"
+                </div>
             </div>
             <div class="faculty-member">
                 <img src="/image folder/faculty/Prof. Pankaj Patel.png" alt="Prof. Pankaj Patel">
                 <h3>Prof. Pankaj Patel</h3>
                 <p>COUNCIL SUPERVISOR</p>
+                <div class="member-quote">
+                    "Guiding with wisdom and experience"
+                </div>
             </div>
             <div class="faculty-member">
                 <img src="/image folder/faculty/Dr. Vivek Sharma.png" alt="Dr. Vivek Sharma">
                 <h3>Dr. Vivek Sharma</h3>
                 <p>COUNCIL MENTOR</p>
+                <div class="member-quote">
+                    "Nurturing leadership potential"
+                </div>
             </div>
             <div class="faculty-member">
                 <img src="/image folder/faculty/Dr. Anula Khare.png" alt="Dr. Anula Khare">
                 <h3>Dr. Anula Khare</h3>
                 <p>COUNCIL ADVISOR</p>
+                <div class="member-quote">
+                    "Building bridges to success"
+                </div>
             </div>
             <div class="faculty-member">
                 <img src="/image folder/faculty/Prof Sumit Vashishtha.png" alt="Dr. Sumit Vashishtha">
                 <h3>Dr. Sumit Vashishtha</h3>
                 <p>FACULTY COMMITTEE HEAD</p>
+                <div class="member-quote">
+                    "Leading through collaboration"
+                </div>
             </div>
             <div class="faculty-member">
                 <img src="/image folder/faculty/Dr. Sangeeta Kumar.png" alt="Dr. Sangeeta Kumar">
@@ -432,4 +551,4 @@
 <script src="javascript/navbaar.js"></script>
 <script src="/javascript/preloader.js"></script>
 </body>
-</html>
+</html> 
