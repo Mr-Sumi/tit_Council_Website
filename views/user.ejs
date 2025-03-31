@@ -50,6 +50,66 @@
             </div>
         </div>
 
+        <!-- Skills Section -->
+        <div class="bg-zinc-900 rounded-lg shadow-sm p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-white">Skills</h2>
+                <button onclick="toggleSkillInput()" 
+                        id="addSkillBtn"
+                        class="text-sm text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2">
+                    <i class="ri-add-line"></i> Add Skills
+                </button>
+            </div>
+
+            <!-- Input Box (Hidden by default) -->
+            <div id="skillInputContainer" class="mb-4 hidden">
+                <div class="flex gap-2">
+                    <input type="text" 
+                           id="skillInput" 
+                           placeholder="Type a skill and press Enter" 
+                           class="w-full bg-zinc-800 text-white px-4 py-2 rounded-lg border border-zinc-700 focus:border-indigo-500 focus:outline-none">
+                    <button onclick="toggleSkillInput()" 
+                            class="text-gray-400 hover:text-gray-300 transition-colors">
+                        <i class="ri-close-line text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Skills Display -->
+            <div class="flex flex-wrap gap-2" id="skillsContainer">
+                <span class="px-3 py-1 text-sm bg-indigo-900/50 text-indigo-300 rounded-full flex items-center gap-2">
+                    Web Development
+                    <button onclick="this.parentElement.remove()" class="text-indigo-300 hover:text-indigo-200">
+                        <i class="ri-close-line"></i>
+                    </button>
+                </span>
+                <span class="px-3 py-1 text-sm bg-indigo-900/50 text-indigo-300 rounded-full flex items-center gap-2">
+                    UI/UX Design
+                    <button onclick="this.parentElement.remove()" class="text-indigo-300 hover:text-indigo-200">
+                        <i class="ri-close-line"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <!-- Certifications Section -->
+        <div class="bg-zinc-900 rounded-lg shadow-sm p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-white">Certifications</h2>
+                <label class="cursor-pointer text-sm text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2">
+                    <i class="ri-add-line"></i> Add New
+                    <input 
+                        type="file" 
+                        id="certificationInput"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        class="hidden" 
+                        onchange="handleCertificationUpload(this)"
+                    >
+                </label>
+            </div>
+           
+        </div>
+
         <!-- Registered Events -->
         <div class="bg-zinc-900 rounded-lg shadow-sm p-6">
             <h2 class="text-xl font-semibold text-white mb-4">Registered Events</h2>
@@ -87,20 +147,105 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Action Buttons -->
-        <div class="flex justify-end gap-4 mt-6">
-            <a href="/edit-profile" 
-               class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                <i class="ri-edit-line"></i>
-                Edit Profile
-            </a>
-            <a href="/logout" 
-               class="inline-flex items-center gap-2 px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-900/50 transition-colors">
-                <i class="ri-logout-box-line"></i>
-                Logout
+    <!-- Move this right after the closing of the main div (after the Registered Events section) -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-end gap-4 py-6">
+            <a href="/auth/logout" 
+               class="group inline-flex items-center gap-2 px-6 py-3 bg-zinc-800/50 text-red-400 rounded-lg hover:bg-red-500/10 border border-red-500/20 hover:border-red-500/40 transition-all duration-300">
+                <i class="ri-logout-box-line text-lg group-hover:translate-x-1 transition-transform"></i>
+                <span class="font-medium">Logout</span>
             </a>
         </div>
     </div>
+
+    <!-- Add this script at the end of the body -->
+    <script>
+    function toggleSkillInput() {
+        const inputContainer = document.getElementById('skillInputContainer');
+        const addButton = document.getElementById('addSkillBtn');
+        const skillInput = document.getElementById('skillInput');
+        
+        if (inputContainer.classList.contains('hidden')) {
+            inputContainer.classList.remove('hidden');
+            addButton.classList.add('hidden');
+            skillInput.focus();
+        } else {
+            inputContainer.classList.add('hidden');
+            addButton.classList.remove('hidden');
+            skillInput.value = '';
+        }
+    }
+
+    // Update the existing skill input event listener
+    document.getElementById('skillInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const skill = this.value.trim();
+            if (skill) {
+                const skillsContainer = document.getElementById('skillsContainer');
+                const skillElement = document.createElement('span');
+                skillElement.className = 'px-3 py-1 text-sm bg-indigo-900/50 text-indigo-300 rounded-full flex items-center gap-2';
+                skillElement.innerHTML = `
+                    ${skill}
+                    <button onclick="this.parentElement.remove()" class="text-indigo-300 hover:text-indigo-200">
+                        <i class="ri-close-line"></i>
+                    </button>
+                `;
+                skillsContainer.appendChild(skillElement);
+                this.value = ''; // Clear input after adding
+                toggleSkillInput(); // Hide input after adding
+            }
+        } else if (e.key === 'Escape') {
+            toggleSkillInput(); // Hide input on Escape
+        }
+    });
+
+    function handleCertificationUpload(input) {
+        const file = input.files[0];
+        if (file) {
+            // Create new certification card
+            const card = document.createElement('div');
+            card.className = 'border border-zinc-800 rounded-lg p-4 hover:border-zinc-700 transition-colors';
+            
+            const fileName = file.name;
+            const fileSize = (file.size / (1024 * 1024)).toFixed(2); // Convert to MB
+            const currentDate = new Date().toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long'
+            });
+
+            card.innerHTML = `
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-medium text-white mb-1">${fileName.split('.').slice(0, -1).join('.')}</h3>
+                        <p class="text-sm text-gray-400">Uploaded Certificate</p>
+                    </div>
+                    <span class="text-xs px-2 py-1 bg-yellow-900/50 text-yellow-300 rounded">
+                        Pending Verification
+                    </span>
+                </div>
+                <p class="text-sm text-blue-400 mt-2">Uploaded: ${currentDate}</p>
+                <div class="flex items-center justify-between mt-2">
+                    <div class="flex items-center gap-2">
+                        <i class="ri-file-line text-gray-400"></i>
+                        <span class="text-sm text-gray-400">${fileName} (${fileSize} MB)</span>
+                    </div>
+                    <button onclick="this.closest('.border').remove()" 
+                            class="text-red-400 hover:text-red-300 transition-colors">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
+                </div>
+            `;
+
+            // Add the new card at the top of the container
+            const container = document.getElementById('certificationsContainer');
+            container.insertBefore(card, container.firstChild);
+
+            // Reset file input
+            input.value = '';
+        }
+    }
+    </script>
 </body>
 </html>
