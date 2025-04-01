@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-let express= require('express');
-const Razorpay = require('razorpay');
 
-let app= express();
 require('dotenv').config();
-=======
 const express = require('express');
 const router = express.Router();
 const Razorpay = require('razorpay');
@@ -13,7 +8,6 @@ const Registration = require('../models/payment'); // Assuming you have a Regist
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
->>>>>>> cb91edbec0999893d59dd9767f98549e97ae3d42
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -278,11 +272,8 @@ router.post('/api/payment/verify', async (req, res) => {
     if (generatedSignature !== signature) {
       return res.status(400).json({ error: 'Invalid signature' });
     }
-<<<<<<< HEAD
-  });
 
   module.exports =app;
-=======
     
     const registration = new Registration({
       eventName: orderData.events,
@@ -315,4 +306,3 @@ router.get('/registration/success', (req, res) => {
 });
 
 module.exports = router;
->>>>>>> cb91edbec0999893d59dd9767f98549e97ae3d42
