@@ -382,74 +382,78 @@
     function displayParticipantDetails() {
         const numberSelect = document.getElementById("number").value;
         const participantsDetails = document.getElementById("participantsDetails");
-            const eventSelect = document.getElementById("events").value;
-    
-            const price = calculatePrice(eventSelect, numberSelect);
-            document.getElementById("calculatedPrice").textContent = price;
-            document.getElementById("priceDisplay").style.display = "block";
+        const eventSelect = document.getElementById("events").value;
+
+        const price = calculatePrice(eventSelect, numberSelect);
+        document.getElementById("calculatedPrice").textContent = price;
+        document.getElementById("priceDisplay").style.display = "block";
         
         participantsDetails.innerHTML = "";
-    
+
         function generatePhotoUploadInput(id) {
             return `
+                <div class="form-group">
+                    <label for="${id}Photo">Upload Identity Card</label>
                     <div class="file-upload-container">
-                        <div class="file-drop-area">
-                            <input type="file" class="file-input" id="${id}Photo" name="${id}Photo" accept=".jpg,.jpeg,.png" required>
-                            <div class="upload-content">
+                        <div class="file-drop-area" id="${id}DropArea">
+                            <input type="file" 
+                                class="file-input" 
+                                id="${id}Photo" 
+                                name="${id}Photo" 
+                                accept="image/*"
+                                required
+                                style="opacity: 0; position: absolute; width: 100%; height: 100%; cursor: pointer;">
+                            <div class="upload-content" id="${id}UploadContent">
                                 <i class="ri-upload-cloud-line upload-icon"></i>
                                 <div class="upload-text">
                                     <strong>Click to upload</strong> or drag and drop
                                     <br>
-                                    <span>PNG or JPG (max. 5MB)</span>
+                                    <span>PNG or JPG (max. 2MB)</span>
                                 </div>
                             </div>
-                            <div class="file-preview">
-                                <div class="preview-container">
-                                    <img src="" alt="Preview" class="preview-image">
-                                    <div class="preview-overlay">
-                                        <button type="button" class="preview-button change-file" title="Change file">
-                                            <i class="ri-camera-switch-line"></i>
-                                        </button>
-                                        <button type="button" class="preview-button remove-file" title="Remove file">
-                                            <i class="ri-delete-bin-line"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                            <div class="file-preview" id="${id}Preview" style="display: none;">
+                                <img src="" alt="Preview" class="preview-image">
                                 <div class="file-info">
-                                    <div class="file-name" id="${id}FileName"></div>
-                                    <div class="file-size" id="${id}FileSize"></div>
+                                    <span class="file-name"></span>
+                                    <span class="file-size"></span>
                                 </div>
-                            </div>
-                            <div class="upload-progress">
-                                <div class="progress-bar-container">
-                                    <div class="progress-bar-fill"></div>
+                                <div class="preview-actions">
+                                    <button type="button" class="remove-file">Remove</button>
                                 </div>
-                                <div class="progress-text">Uploading... 0%</div>
                             </div>
                         </div>
                     </div>
-            `;
+                </div>`;
         }
-    
+
         function generateParticipantFields(role, id) {
             return `
-                <h3>${role} Information</h3>
-                <div class="form-group">
-                    <label for="${id}Name">Name</label>
-                    <input type="text" id="${id}Name" name="${id}Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="${id}Enrollment">Enrollment Number</label>
-                    <input type="text" id="${id}Enrollment" name="${id}Enrollment" required>
-                </div>
-                <div class="form-group">
-                    <label for="${id}Email">Email ID</label>
-                    <input type="email" id="${id}Email" name="${id}Email" required>
-                </div>
-                ${generatePhotoUploadInput(id)}
-            `;
+                <div class="participant-section">
+                    <h3>${role} Information</h3>
+                    <div class="form-group">
+                        <label for="${id}Name">Name</label>
+                        <input type="text" id="${id}Name" name="${id}Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="${id}Enrollment">Enrollment Number</label>
+                        <input 
+                            type="text" 
+                            id="${id}Enrollment" 
+                            name="${id}Enrollment" 
+                            pattern="^[0-9]{4}[A-Za-z]{2}[0-9]{6}$"
+                            maxlength="12"
+                            oninput="validateEnrollment(this)"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="${id}Email">Email ID</label>
+                        <input type="email" id="${id}Email" name="${id}Email" required>
+                    </div>
+                    ${generatePhotoUploadInput(id)}
+                </div>`;
         }
-    
+
         if (numberSelect === "solo") {
             participantsDetails.innerHTML = generateParticipantFields("Participant", "solo");
         } else {
@@ -459,86 +463,103 @@
             else if (numberSelect === "squad-4-member") membersCount = 3;
             else if (numberSelect === "squad-5-member") membersCount = 4;
             else if (numberSelect === "squad") membersCount = 3;
-    
+
             let formContent = generateParticipantFields("Team Leader", "leader");
             formContent += `<h3>Team Members Information</h3>`;
-    
+
             for (let i = 1; i <= membersCount; i++) {
                 formContent += generateParticipantFields(`Member ${i}`, `member${i}`);
             }
-    
+
             participantsDetails.innerHTML = formContent;
         }
+
+        // Initialize file upload handlers
+        initializeFileUploads();
     }
-    // find prices
-    
-    function findPrices() {
-        if(selectedEvent=="ROBO RACE" || selectedEvent=="ROBO WAR")
-    price=300;
-    else if(selectedEvent=="uiNOVATION(Hackthons)")
-    price=200;
-   else if(selectedEvent=="CODE CLASH")
-    price=75;
-    else if((selectedEvent=="FREE FIRE" || selectedEvent=="BGMI") && numberSelect=="SOLO")
-        price=50;
-    else if((selectedEvent=="FREE FIRE" || selectedEvent=="BGMI") && numberSelect=="SQUAD-4-MEMBER")
-    prize=200;
-    else if(selectedEvent=="MUSICAL CHAIR")
-    price=20;
-    else if(selectedEvent=="RENEWABLE MODEL SHOWCASE")
-    price=50;
-    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" ) && numberSelect=="SOLO")
-    price=20;
-    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" ) && numberSelect=="DUO")
-    price=40;
-    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" ) && numberSelect=="TRIO")
-    price=60;
-    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" )&& numberSelect=="SQUAD-4-MEMBER")
-    price=80;
-    else if(selectedEvent=="CORPORATE CHALLENGE SHOWDOWN" && numberSelect=="SOLO")
-    price=100;
-    else if(selectedEvent=="CORPORATE CHALLENGE SHOWDOWN")
-    price=200;
-    else if(selectedEvent=="ENTREPRENEURSHIP SALES STALL" && numberSelect=="SOLO")
-    price=50;
-    else if(selectedEvent="ENTREPRENEURSHIP SALES STALL")
-    price=200;
-    else if(selectedEvent=="ESCAPE ROOM/ BUSINESS" && numberSelect=="DUO")
-    price=100;
-    else if(selectedEvent=="ESCAPE ROOM/ BUSINESS")
-    price=200
-    else if(selectedEvent=="ENTREPRENEURIAL MEME CONTEST" && numberSelect=="SOLO")
-    price=50;
-    else if(selectedEvent=="ENTREPRENEURIAL MEME CONTEST")
-    price=100;
-    else if(selectedEvent=="RUNNING COMPETITION/ MARATHON")
-        price=30;
-        else if(selectedEvent=="TUG OF WAR" && numberSelect=="DUO")
-        price=200;
-    else if(selectedEvent=="  TUG OF WAR")
-    price=400;
-    else if(selectedEvent=="TECHNICAL PRESENTATION" && numberSelect=="DUO")
-    price=50;
-    else if(selectedEvent=="TECHNICAL PRESENTATION")
-    price=30;
-    else if(selectedEvent=="CRAFT CARNIVAL/ POSTER MAKING, SLOGAN WRITING")
-    price=30;
-    else if(selectedEvent=="FLASH CLASH OF STYLES: THE DANCE FACE-OFF" && numberSelect=="SOLO")
-    price=50;
-    else if(selectedEvent=="FLASH CLASH OF STYLES: THE DANCE FACE-OFF" && numberSelect=="DUO")
-    price=100;
-    else if(selectedEvent=="FLASH CLASH OF STYLES: THE DANCE FACE-OFF" && numberSelect=="SQUAD-4-MEMBER")
-    price=150;
-    else if(selectedEvent=="TEASERQUEST")
-        price=200;
-    else if(selectedEvent=="HOVERHUNT")
-    price=30;
-    else if(selectedEvent=="TECHNICAL QUIZ")
-    price=20;
- }
 
+    // Add this new function to handle file uploads
+    function initializeFileUploads() {
+        document.querySelectorAll('.file-drop-area').forEach(dropArea => {
+            const fileInput = dropArea.querySelector('.file-input');
+            const uploadContent = dropArea.querySelector('.upload-content');
+            const preview = dropArea.querySelector('.file-preview');
+            const previewImage = preview.querySelector('.preview-image');
+            const fileName = preview.querySelector('.file-name');
+            const fileSize = preview.querySelector('.file-size');
+            const removeButton = preview.querySelector('.remove-file');
 
-    
+            // Handle drag and drop
+            dropArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropArea.classList.add('drag-over');
+            });
+
+            dropArea.addEventListener('dragleave', () => {
+                dropArea.classList.remove('drag-over');
+            });
+
+            dropArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropArea.classList.remove('drag-over');
+                const file = e.dataTransfer.files[0];
+                if (file) handleFile(file);
+            });
+
+            // Handle file input change
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) handleFile(file);
+            });
+
+            // Handle file removal
+            removeButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                resetFileUpload();
+            });
+
+            function handleFile(file) {
+                // Validate file
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size must be less than 5MB');
+                    resetFileUpload();
+                    return;
+                }
+
+                if (!file.type.match('image.*')) {
+                    alert('Please upload an image file (JPG or PNG)');
+                    resetFileUpload();
+                    return;
+                }
+
+                // Show preview
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImage.src = e.target.result;
+                    fileName.textContent = file.name;
+                    fileSize.textContent = formatFileSize(file.size);
+                    uploadContent.style.display = 'none';
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+
+            function resetFileUpload() {
+                fileInput.value = '';
+                previewImage.src = '';
+                fileName.textContent = '';
+                fileSize.textContent = '';
+                uploadContent.style.display = 'block';
+                preview.style.display = 'none';
+            }
+        });
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes < 1024) return bytes + ' bytes';
+        else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+        else return (bytes / 1048576).toFixed(1) + ' MB';
+    }
 </script>
   <script>
     document.getElementById('rzp-button1').onclick = function(e) {
@@ -576,7 +597,7 @@
       "currency": response.data.currency || "INR",
             "name": "TECHNOCRATS",
       "description": `Registration for ${selectedEvent}`,
-            "image": "https://onlinefeestechnocrats.in/HRMS/Images/new-logo.png",
+            "image": "/image folder/image.png",
             "order_id": response.data.id,
             "handler": function(response) {
         // After successful payment, submit form with payment details
@@ -805,118 +826,114 @@ function formatFileSize(bytes) {
   </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('payment-form');
-    const steps = document.querySelectorAll('.form-step');
-    const progressBar = document.querySelector('.progress-bar-line');
-    const stepButtons = document.querySelectorAll('.step-button');
-    const stepItems = document.querySelectorAll('.step-item');
+    const formSteps = document.querySelectorAll('.form-step');
+    const progressBar = document.getElementById('progress-bar');
+    const stepIndicators = document.querySelectorAll('.step');
 
-    // Handle navigation buttons
+    // Navigation button click handler
     document.querySelectorAll('.nav-button').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
             const currentStep = parseInt(this.closest('.form-step').dataset.step);
-            const nextStep = this.dataset.next ? parseInt(this.dataset.next) : parseInt(this.dataset.prev);
+            let targetStep;
 
             if (this.classList.contains('next-button')) {
-                if (!validateStep(currentStep)) return;
+                targetStep = currentStep + 1;
+                if (!validateCurrentStep(currentStep)) return;
+            } else if (this.classList.contains('prev-button')) {
+                targetStep = currentStep - 1;
             }
 
-            updateStep(nextStep);
-        });
-    });
-
-    // Handle step button clicks
-    stepButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const stepNumber = parseInt(this.dataset.step);
-            const currentStep = parseInt(document.querySelector('.form-step.active').dataset.step);
-            
-            if (stepNumber < currentStep || validateAllPreviousSteps(stepNumber)) {
-                updateStep(stepNumber);
+            if (targetStep >= 1 && targetStep <= formSteps.length) {
+                navigateToStep(targetStep);
             }
         });
     });
 
-    function updateStep(stepNumber) {
-        // Update form steps
-        steps.forEach(step => step.classList.remove('active'));
-        document.querySelector(`.form-step[data-step="${stepNumber}"]`).classList.add('active');
+    function navigateToStep(stepNumber) {
+        // Hide all steps
+        formSteps.forEach(step => step.classList.remove('active'));
+        
+        // Show target step
+        const targetStep = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
+        targetStep.classList.add('active');
 
         // Update progress bar
-        const progress = ((stepNumber - 1) / (stepItems.length - 1)) * 100;
+        const progress = ((stepNumber - 1) / (formSteps.length - 1)) * 100;
         progressBar.style.width = `${progress}%`;
 
-        // Update step buttons
-        stepItems.forEach((item, index) => {
-            const button = item.querySelector('.step-button');
+        // Update step indicators
+        stepIndicators.forEach((indicator, index) => {
             if (index + 1 < stepNumber) {
-                button.classList.add('completed');
-                item.classList.remove('active');
+                indicator.classList.add('completed');
+                indicator.classList.remove('active');
             } else if (index + 1 === stepNumber) {
-                button.classList.remove('completed');
-                item.classList.add('active');
-                button.classList.add('active');
+                indicator.classList.add('active');
+                indicator.classList.remove('completed');
             } else {
-                button.classList.remove('completed', 'active');
-                item.classList.remove('active');
+                indicator.classList.remove('active', 'completed');
             }
         });
+
+        // Scroll to top of form
+        const formContainer = document.querySelector('.container');
+        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function validateStep(step) {
-        const currentStep = document.querySelector(`.form-step[data-step="${step}"]`);
-        const inputs = currentStep.querySelectorAll('input[required], select[required]');
+    function validateCurrentStep(stepNumber) {
+        const currentStep = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
+        const requiredFields = currentStep.querySelectorAll('[required]');
         let isValid = true;
 
-        inputs.forEach(input => {
-            if (!input.value) {
-                isValid = false;
-                input.classList.add('error');
-                showError(input);
-            } else {
-                input.classList.remove('error');
-                hideError(input);
-            }
+        requiredFields.forEach(field => {
+            // Clear previous errors
+            field.classList.remove('error');
+            removeErrorMessage(field);
 
-            // Specific validation for contact number
-            if (input.id === 'contact' && !/^\d{10}$/.test(input.value)) {
+            if (!field.value) {
                 isValid = false;
-                input.classList.add('error');
-                showError(input, 'Please enter a valid 10-digit number');
+                showErrorForField(field, 'This field is required');
+            } else if (field.id === 'contact') {
+                // Validate phone number
+                if (!/^\d{10}$/.test(field.value)) {
+                    isValid = false;
+                    showErrorForField(field, 'Please enter a valid 10-digit number');
+                }
+            } else if (field.type === 'email') {
+                // Validate email
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+                    isValid = false;
+                    showErrorForField(field, 'Please enter a valid email address');
+                }
             }
         });
 
         return isValid;
     }
 
-    function validateAllPreviousSteps(targetStep) {
-        for (let i = 1; i < targetStep; i++) {
-            if (!validateStep(i)) return false;
-        }
-        return true;
-    }
-
-    function showError(input, message) {
-        const formGroup = input.closest('.form-group');
-        let errorDiv = formGroup.querySelector('.field-error');
+    function showErrorForField(field, message) {
+        field.classList.add('error');
+        const formGroup = field.closest('.form-group');
         
-        if (!errorDiv) {
-            errorDiv = document.createElement('div');
-            errorDiv.className = 'field-error';
-            formGroup.appendChild(errorDiv);
-        }
+        // Remove any existing error message
+        removeErrorMessage(field);
         
-        errorDiv.textContent = message || 'This field is required';
+        // Create and add new error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'field-error';
+        errorDiv.textContent = message;
         errorDiv.style.color = '#ff3366';
         errorDiv.style.fontSize = '0.8rem';
         errorDiv.style.marginTop = '5px';
+        formGroup.appendChild(errorDiv);
     }
 
-    function hideError(input) {
-        const formGroup = input.closest('.form-group');
-        const errorDiv = formGroup.querySelector('.field-error');
-        if (errorDiv) {
-            errorDiv.remove();
+    function removeErrorMessage(field) {
+        const formGroup = field.closest('.form-group');
+        const existingError = formGroup.querySelector('.field-error');
+        if (existingError) {
+            existingError.remove();
         }
     }
 
@@ -924,237 +941,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('input, select').forEach(input => {
         input.addEventListener('input', function() {
             this.classList.remove('error');
-            hideError(this);
+            removeErrorMessage(this);
         });
     });
+
+    // Initialize the form
+    navigateToStep(1);
 });
-</script>
-
-<script>
-function generateParticipantForm(role, index) {
-    const isLeader = role === 'leader';
-    const isSolo = role === 'solo';
-    const title = isSolo ? 'Participant Details' : 
-                 isLeader ? 'Team Leader Details' : 
-                 `Team Member ${index} Details`;
-
-    return `
-        <div class="participant-card" data-role="${role}" data-index="${index}">
-            <div class="participant-header">
-                <h3 class="participant-title">${title}</h3>
-                <div class="completion-status">
-                    <i class="ri-checkbox-circle-line" style="display: none;"></i>
-                </div>
-            </div>
-            <div class="participant-fields">
-                <div class="form-group">
-                    <label for="${role}_name_${index}">Full Name</label>
-                    <input type="text" 
-                           id="${role}_name_${index}" 
-                           name="${role}_name_${index}" 
-                           class="participant-name" 
-                           required>
-                    <div class="field-error">Please enter the full name</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="${role}_enrollment_${index}">Enrollment Number</label>
-                    <input type="text" 
-                           id="${role}_enrollment_${index}" 
-                           name="${role}_enrollment_${index}" 
-                           class="participant-enrollment" 
-                           required>
-                    <div class="field-error">Please enter a valid enrollment number</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="${role}_email_${index}">Email ID</label>
-                    <input type="email" 
-                           id="${role}_email_${index}" 
-                           name="${role}_email_${index}" 
-                           class="participant-email" 
-                           required>
-                    <div class="field-error">Please enter a valid email address</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="${role}_photo_${index}">Photo Upload</label>
-                    <div class="file-upload-container">
-                        <div class="file-drop-area">
-                            <input type="file" 
-                                   id="${role}_photo_${index}" 
-                                   name="${role}_photo_${index}" 
-                                   class="participant-photo" 
-                                   accept=".jpg,.jpeg,.png" 
-                                   required 
-                                   style="display: none;">
-                            <div class="upload-content">
-                                <i class="ri-upload-cloud-line upload-icon"></i>
-                                <div class="upload-text">
-                                    <strong>Click to upload</strong> or drag and drop
-                                    <br>
-                                    <span>PNG or JPG (max. 5MB)</span>
-                                </div>
-                            </div>
-                            <div class="file-preview">
-                                <div class="preview-container">
-                                    <img src="" alt="Preview" class="preview-image">
-                                    <div class="preview-overlay">
-                                        <button type="button" class="preview-button change-file" title="Change file">
-                                            <i class="ri-camera-switch-line"></i>
-                                        </button>
-                                        <button type="button" class="preview-button remove-file" title="Remove file">
-                                            <i class="ri-delete-bin-line"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="file-info">
-                                    <div class="file-name" id="${role}_name_${index}"></div>
-                                    <div class="file-size" id="${role}_fileSize_${index}"></div>
-                                </div>
-                            </div>
-                            <div class="upload-progress">
-                                <div class="progress-bar-container">
-                                    <div class="progress-bar-fill"></div>
-                                </div>
-                                <div class="progress-text">Uploading... 0%</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field-error">Please upload a valid photo</div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function updateParticipantForms() {
-    const numberSelect = document.getElementById('number');
-    const participantsDetails = document.getElementById('participantsDetails');
-    const participantType = numberSelect.value;
-    
-    if (!participantType) return;
-    
-    let html = '';
-    
-    if (participantType === 'solo') {
-        html = generateParticipantForm('solo', 1);
-    } else {
-        // Add team leader
-        html = generateParticipantForm('leader', 1);
-        
-        // Add team members
-        const membersCount = {
-            'duo': 1,
-            'trio': 2,
-            'squad-4-member': 3,
-            'squad-5-member': 4
-        }[participantType] || 0;
-        
-        for (let i = 1; i <= membersCount; i++) {
-            html += generateParticipantForm('member', i);
-        }
-    }
-    
-    participantsDetails.innerHTML = html;
-    initializeFileUploads();
-    initializeFormValidation();
-}
-
-function initializeFileUploads() {
-    document.querySelectorAll('.file-upload-container').forEach(container => {
-        const fileInput = container.querySelector('input[type="file"]');
-        const preview = container.querySelector('.file-preview');
-        const content = container.querySelector('.upload-content');
-        
-        container.addEventListener('click', () => fileInput.click());
-        
-        container.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            container.style.borderColor = '#4ecdc4';
-            container.style.backgroundColor = 'rgba(78, 205, 196, 0.1)';
-        });
-        
-        container.addEventListener('dragleave', () => {
-            container.style.borderColor = '';
-            container.style.backgroundColor = '';
-        });
-        
-        container.addEventListener('drop', (e) => {
-            e.preventDefault();
-            container.style.borderColor = '';
-            container.style.backgroundColor = '';
-            
-            const file = e.dataTransfer.files[0];
-            if (file) handleFile(fileInput, file, preview, content);
-        });
-        
-        fileInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) handleFile(fileInput, file, preview, content);
-        });
-    });
-}
-
-function handleFile(input, file, preview, content) {
-    if (file.size > 5 * 1024 * 1024) {
-        showError(input, 'File size must be less than 5MB');
-        input.value = '';
-        return;
-    }
-    
-    if (!['image/jpeg', 'image/png'].includes(file.type)) {
-        showError(input, 'Please upload a JPG or PNG file');
-        input.value = '';
-        return;
-    }
-    
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        preview.querySelector('img').src = e.target.result;
-        content.style.display = 'none';
-        preview.style.display = 'block';
-    };
-    reader.readAsDataURL(file);
-}
-
-function initializeFormValidation() {
-    document.querySelectorAll('.participant-card input').forEach(input => {
-        input.addEventListener('input', () => validateField(input));
-    });
-}
-
-function validateField(input) {
-    const formGroup = input.closest('.form-group');
-    const errorDiv = formGroup.querySelector('.field-error');
-    let isValid = true;
-    
-    if (input.hasAttribute('required') && !input.value) {
-        isValid = false;
-        errorDiv.textContent = 'This field is required';
-    } else if (input.type === 'email' && input.value) {
-        isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
-        if (!isValid) errorDiv.textContent = 'Please enter a valid email address';
-    }
-    
-    errorDiv.style.display = isValid ? 'none' : 'block';
-    input.classList.toggle('error', !isValid);
-    
-    updateParticipantStatus(input.closest('.participant-card'));
-    return isValid;
-}
-
-function updateParticipantStatus(card) {
-    const inputs = card.querySelectorAll('input[required]');
-    const isComplete = Array.from(inputs).every(input => validateField(input));
-    const statusIcon = card.querySelector('.completion-status i');
-    
-    statusIcon.style.display = isComplete ? 'block' : 'none';
-    card.classList.toggle('complete', isComplete);
-}
-
-// Initialize when number of participants changes
-document.getElementById('number').addEventListener('change', updateParticipantForms);
 </script>
 
 
@@ -1190,5 +983,74 @@ document.getElementById('number').addEventListener('change', updateParticipantFo
     }
     </script>
 
+<script>
+function validateEnrollment(input) {
+    // Remove any non-alphanumeric characters
+    let value = input.value.replace(/[^a-zA-Z0-9]/g, '');
+    
+    // Convert to uppercase for consistency
+    value = value.toUpperCase();
+    
+    // Format: YYYYBBNNNNNN (Y=Year, B=Branch, N=Number)
+    if (value.length <= 4) {
+        // First 4 characters are numbers (year)
+        value = value.replace(/[^0-9]/g, '');
+    } else if (value.length <= 6) {
+        // Next 2 characters are letters (branch)
+        const numbers = value.slice(0, 4);
+        const letters = value.slice(4).replace(/[^A-Z]/g, '');
+        value = numbers + letters;
+    } else {
+        // Last 6 characters are numbers
+        const numbers = value.slice(0, 4);
+        const letters = value.slice(4, 6).replace(/[^A-Z]/g, '');
+        const lastNumbers = value.slice(6).replace(/[^0-9]/g, '');
+        value = numbers + letters + lastNumbers;
+    }
+
+    // Update input value
+    input.value = value;
+
+    // Validate the format
+    const isValid = /^[0-9]{4}[A-Z]{2}[0-9]{6}$/.test(value);
+    
+    // Visual feedback
+    if (value.length === 12) {
+        if (isValid) {
+            input.classList.remove('error');
+            input.classList.add('valid');
+            // Remove error message if exists
+            const errorMsg = input.parentElement.querySelector('.error-message');
+            if (errorMsg) errorMsg.remove();
+        } else {
+            input.classList.add('error');
+            input.classList.remove('valid');
+            // Show error message
+            showEnrollmentError(input, 'Format: YYYY(year) BB(branch) NNNNNN(number)');
+        }
+    } else if (value.length > 0) {
+        input.classList.add('error');
+        input.classList.remove('valid');
+        // Show error message
+        showEnrollmentError(input, 'Enrollment number must be 12 characters');
+    }
+
+    return isValid;
+}
+
+function showEnrollmentError(input, message) {
+    // Remove existing error message if any
+    const existingError = input.parentElement.querySelector('.error-message');
+    if (existingError) {
+        existingError.remove();
+    }
+
+    // Create and add new error message
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    input.parentElement.appendChild(errorDiv);
+}
+</script>
  </body>
 </html>
