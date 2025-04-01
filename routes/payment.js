@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6a4012c9bef12752efd923e64b10b0f8bdd6e2f5
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
@@ -272,6 +275,10 @@ router.post('/api/payment/verify', async (req, res) => {
     if (generatedSignature !== signature) {
       return res.status(400).json({ error: 'Invalid signature' });
     }
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 6a4012c9bef12752efd923e64b10b0f8bdd6e2f5
 
   module.exports =app;
     
