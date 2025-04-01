@@ -7,8 +7,9 @@
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet"
 />
-    <link rel="stylesheet" href="../stylesheet/navbaar.css">
     <link rel="stylesheet" href="../stylesheet/club.css">
+    <script src="/javascript/preloader.js"></script>
+    <script src="/javascript/navbaar.js"></script>
     <style>
         .profile-box{
             margin-top: 5vw;
@@ -17,34 +18,9 @@
    
 </head>
 <body>
-    <div class="navSlide">
-        <div class="icon">
-         <i class="ri-close-large-line"></i>
-        </div>
-         <ul class="NavLinks">
-           <li><a href="/">Home</a></li>
-           <li><a href="/members">Members</a></li>
-           <li><a href="/clubs">Clubs</a></li>
-           <li><a href="/faculty">Mentors</a></li>
-           <li><a href="/gallery">Event Gallary</a></li>
-           <li><a href="/login" class="loginButton">Login</a></li>   
-       </ul>
-       </div>
-    <nav>
-        <div class="logo">
-            <img class="image-logo" src="/image folder/Student council png.png"/ title="council logo">
-            <h1>STUDENT COUNCIL</h1>
-        </div>
-        <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/members">Members</a></li>
-            <li><a href="/clubs">Clubs</a></li>
-            <li><a href="/faculty">Mentors</a></li>
-            <li><a href="/gallery">Event Gallary</a></li>
-            <i class="ri-menu-line"></i>
-        </ul>
-    </nav>
-
+    <%- include('partials/preloader') %>
+    <%- include('partials/nav') %>
+    
 
     <div class="profile-box">
         <img class="image" src="/image folder/Club logos/Tech WIZARDs.png" alt="drone society">
@@ -92,6 +68,8 @@
         <p>&copy; 2024 STUDENT COUNCIL TIT. All rights reserved.</p>
     </footer>
 
-    <script src="javascript/navbaar.js"></script>
+    <script src="/javascript/navbaar.js"></script>
+    <script src="/javascript/preloader.js"></script>
+
 </body>
 </html>

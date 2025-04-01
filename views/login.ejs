@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../stylesheet/navbaar.css">    
   <link rel="stylesheet" href="../stylesheet/Student.css">
 
+
   <title>Login with Student Council</title>
   <style>
           @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
@@ -766,35 +767,8 @@
 </head>
 
 <body>
-  <div class="navSlide">
-    <div class="icon">
-     <i class="ri-close-large-line"></i>
-    </div>
-     <ul class="NavLinks">
-       <li><a href="/">Home</a></li>
-       <li><a href="/members">Members</a></li>
-       <li><a href="/clubs">Clubs</a></li>
-       <li><a href="/faculty">Mentors</a></li>
-       <li><a href="/gallery">Event Gallary</a></li>
-       <li><a href="/login" class="loginButton">Login</a></li>   
-   </ul>
-   </div>
-  <nav>
-    <div class="logo">
-        <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
-        <h1>STUDENT COUNCIL</h1>
-    </div>
-    <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/members">Members</a></li>
-        <li><a href="/clubs">Clubs</a></li>
-        <li><a href="/faculty">Mentors</a></li>
-        <li><a href="/gallery">Event Gallary</a></li>
-        <i class="ri-menu-line"></i>
-    </ul>
+  <%- include('partials/nav') %>
     
-</nav>
-
 
 <% if (error_msg.length > 0) { %>
   <div class="message error-message">
