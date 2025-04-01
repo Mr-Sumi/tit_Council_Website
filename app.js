@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extended: true })); 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
@@ -43,7 +44,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cookieParser());
 
 app.use(express.static('public')); 
 
@@ -62,7 +62,7 @@ app.post('/current_user', (req, res) => {
 
 // Home route
 app.get('/', (req, res) => {
-  res.render('student council', {isLoggedIn: req.session.isLoggedIn || false });
+  res.render('student council', {isLoggedIn: req.session.isLoggedIn || false }); 
 });
 
 // Member routes
@@ -102,9 +102,10 @@ app.get("/eventPage",(req,res)=>{
   res.render("Events",{isLoggedIn:true});
 })
 
+
 app.get("/userPage",isLoggedIn,async(req,res)=>{
   const {enrollment,username,email,phone} = jwt.verify(req.cookies.token, process.env.JWT_TOKEN);
-  res.render("user",{enrollment, username,email,phone});
+  res.render("user",{enrollment, username,email,phone}); 
 })
 
 app.get('/error', (req, res) => {
