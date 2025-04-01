@@ -132,7 +132,7 @@ nav.show {
     color: white;
 }
 
-/* Navigation Links with enhanced hover effect */
+/* Navigation Links with smoother animations */
 .nav-links a {
     color: white;
     text-decoration: none;
@@ -142,13 +142,14 @@ nav.show {
     font-family: GilroyMedium;
     padding: 8px 15px;
     border-radius: 20px;
-    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     background: transparent;
+    /* Smoother transition for all properties */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hover effect with sliding underline and glow */
+/* Refined hover effects with smoother animations */
 .nav-links a::before {
     content: '';
     position: absolute;
@@ -156,9 +157,14 @@ nav.show {
     left: 50%;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #ff4141, transparent);
+    background: linear-gradient(90deg, 
+        rgba(255, 65, 65, 0),
+        rgba(255, 65, 65, 1) 50%,
+        rgba(255, 65, 65, 0)
+    );
     transform: translateX(-50%);
-    transition: width 0.3s ease;
+    /* Smoother underline animation */
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-links a::after {
@@ -170,12 +176,13 @@ nav.show {
     height: 100%;
     background: rgba(255, 65, 65, 0.1);
     transform: translateX(-50%);
-    transition: width 0.3s ease;
+    /* Smoother background fill animation */
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
     border-radius: 20px;
 }
 
-/* Hover states */
+/* Refined hover states */
 .nav-links a:hover {
     color: #ff4141;
     transform: translateY(-2px);
@@ -875,4 +882,54 @@ footer p {
     .nav-links i.ri-menu-line {
         font-size: 22px;
     }
+}
+
+/* Mobile navigation with smoother animations */
+.navSlide .NavLinks a {
+    position: relative;
+    padding: 10px 20px;
+    background: transparent;
+    border-radius: 10px;
+    /* Smoother mobile transitions */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navSlide .NavLinks a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(255, 107, 107, 0),
+        rgba(255, 107, 107, 1) 50%,
+        rgba(255, 107, 107, 0)
+    );
+    /* Smoother mobile underline animation */
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navSlide .NavLinks a:hover {
+    color: #ff6b6b;
+    padding-left: 30px;
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.navSlide .NavLinks a:hover::before {
+    width: 100%;
+}
+
+/* Smooth mobile menu transition */
+.navSlide {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth icon rotation */
+.navSlide .icon i {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navSlide .icon i:hover {
+    transform: rotate(90deg);
 }
