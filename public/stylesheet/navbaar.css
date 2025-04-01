@@ -113,7 +113,8 @@ nav.show {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 2.2rem;
+    /* padding: 1vw 0vw; */
 }
 
 .nav-links li {
@@ -138,10 +139,85 @@ nav.show {
     border-radius: 20px;
     transition: all 0.3s ease;
 }
+.user-icon {
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: 20px; */
+     margin-right: 2.5vw;
+}
+.user-icon i {
+    font-size: 20px;
+    color: white;
+    display: block;
+}
 
-.nav-links a:hover {
-    color: #b53c3c;
-    background: rgba(190, 78, 78, 0.1);
+.user-icon:hover {
+    background-color: #cb4646;
+    transform: translateY(-2px);
+}
+
+/* Login Button Styling */
+.loginButton {
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.loginButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .user-icon {
+        width: 36px;
+        height: 36px;
+        margin-left: 10px;
+    }
+
+    .user-icon i {
+        font-size: 18px;
+    }
+
+    .loginButton {
+        padding: 6px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Navigation Layout */
+nav ul {
+    display: flex;
+    align-items: center;
+}
+
+nav ul li:last-child {
+    margin-left: auto;
+}
+
+/* For mobile menu */
+.mobile-menu .user-icon,
+.mobile-menu .loginButton {
+    margin: 10px 0;
+    width: 100%;
 }
 
 .navSlide{
@@ -207,22 +283,51 @@ nav.show {
     opacity: 1;
     transform: rotate(90deg);
 }
-.loginButton{
+.loginButton {
     background-color: transparent;
-    border: 2px solid white;
-    border-radius: 50px;
-    width: 100%;
     color: white;
-    padding: 15px 35px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+    padding: 8px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
 }
 
+/* Hover effect */
+.loginButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* For mobile menu */
+#mobile-login-btn {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#mobile-login-btn .loginButton {
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 12px;
+}
+
+/* For desktop menu */
+#desktop-login-btn {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+/* If the button is inside a navigation list */
+nav ul li:last-child {
+    margin-left: auto;
+}
 
 /*Loader*/
 .socket {
