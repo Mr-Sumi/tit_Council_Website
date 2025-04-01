@@ -1,28 +1,41 @@
+<<<<<<< HEAD
 let express = require('express');
 const Razorpay = require('razorpay');
 let app = express();
 require('dotenv').config();
 
 require('dotenv').config();
+=======
+<<<<<<< HEAD
+
+const Razorpay = require('razorpay');
+require('dotenv').config();
+const express = require('express');
+=======
+const express = require('express');
+const Razorpay = require('razorpay');
+>>>>>>> 5fe949e3eb9d48369d2b8468877230968748980b
+>>>>>>> 3b10bd1a7478fed8c822e36aac8d3e08666850e4
 const router = express.Router();
 const crypto = require('crypto');
 const Registration = require('../models/payment.model');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+require('dotenv').config();
 
 // Configure multer storage
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadDir = 'public/uploads/participants';
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
+    destination: function (req, file, cb) {
+        const uploadDir = 'public/uploads/participants';
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+        }
+        cb(null, uploadDir);
+    },
+    filename: function (req, file, cb) {
+        cb(null, `${Date.now()}-${file.originalname}`);
     }
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  }
 });
 
 // Configure multer upload
@@ -346,20 +359,28 @@ router.post('/api/payment/verify', async (req, res) => {
     
     if (generatedSignature !== signature) {
       return res.status(400).json({ error: 'Invalid signature' });
+<<<<<<< HEAD
     }  
 
   module.exports =app;
+=======
+    }
+<<<<<<< HEAD
+
+  module.exports =app;
+=======
+>>>>>>> 5fe949e3eb9d48369d2b8468877230968748980b
+>>>>>>> 3b10bd1a7478fed8c822e36aac8d3e08666850e4
     
     // Check if order data exists in session
     if (req.session.orderData && req.session.orderData.orderId === razorpayOrderId) {
       // Order data found in session
       const orderData = req.session.orderData;
       
-      // Store payment verification in session for the form submission
       req.session.verifiedPayment = {
         orderId: razorpayOrderId,
         paymentId: razorpayPaymentId,
-        amount: orderData.amount / 100, // Convert back from paise
+        amount: orderData.amount / 100,
         event: orderData.event,
         participantType: orderData.participantType,
         college: orderData.college,
@@ -368,8 +389,7 @@ router.post('/api/payment/verify', async (req, res) => {
       
       res.json({ 
         success: true,
-        message: 'Payment verified successfully',
-        // Don't delete session data yet - it will be used when submitting the full form
+        message: 'Payment verified successfully'
       });
     } else {
       // If order data not in session, verify with the data sent from client
@@ -377,7 +397,6 @@ router.post('/api/payment/verify', async (req, res) => {
         return res.status(400).json({ error: 'Missing event information' });
       }
       
-      // Store payment verification in session for the form submission
       req.session.verifiedPayment = {
         orderId: razorpayOrderId,
         paymentId: razorpayPaymentId,
@@ -389,7 +408,7 @@ router.post('/api/payment/verify', async (req, res) => {
       
       res.json({ 
         success: true,
-        message: 'Payment verified successfully',
+        message: 'Payment verified successfully'
       });
     }
   } catch (error) {
@@ -400,7 +419,6 @@ router.post('/api/payment/verify', async (req, res) => {
 
 // Success page after payment
 router.get('/success', (req, res) => {
-  // Check if payment is verified
   if (req.session.verifiedPayment) {
     const paymentInfo = req.session.verifiedPayment;
     res.render('payment-success', { 
@@ -410,7 +428,7 @@ router.get('/success', (req, res) => {
       event: paymentInfo.event 
     });
   } else {
-    res.redirect('/'); // Redirect to home if no payment verification found
+    res.redirect('/');
   }
 });
 
@@ -418,9 +436,7 @@ router.get('/success', (req, res) => {
 router.get('/registrations/:event', async (req, res) => {
   try {
     const eventName = req.params.event;
-    
     const registrations = await Registration.find({ eventName });
-    
     res.json(registrations);
   } catch (error) {
     console.error('Error fetching registrations:', error);
@@ -429,4 +445,11 @@ router.get('/registrations/:event', async (req, res) => {
 });
 
 module.exports = router;
+<<<<<<< HEAD
 module.exports = router;
+=======
+<<<<<<< HEAD
+module.exports = router;
+=======
+>>>>>>> 5fe949e3eb9d48369d2b8468877230968748980b
+>>>>>>> 3b10bd1a7478fed8c822e36aac8d3e08666850e4

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="/stylesheet/preloader.css">
+  <style>
+    /* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #f0f0f0;
+}
+
+/* Container styling */
+.profile-container {
+  background: #222;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  animation: slideIn 0.8s ease-out forwards;
+  border: 1px solid #FFD700; /* Yellow border */
+}
+
+/* Header */
+.profile-header {
+  margin-bottom: 20px;
+}
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #FFD700; /* Yellow border for profile photo */
+  margin-bottom: 10px;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.user-name {
+  font-size: 24px;
+  color: #FFD700;
+  font-weight: bold;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 15px;
+}
+
+/* Events Section */
+.events-section {
+  background: #333;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #444;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.events-section h3 {
+  font-size: 18px;
+  color: #FFD700;
+  margin-bottom: 10px;
+}
+
+.events-list {
+  list-style: none;
+  font-size: 15px;
+  color: #f0f0f0;
+  padding-left: 0;
+}
+
+.events-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #444;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.events-list li:hover {
+  color: #FFD700;
+  transform: translateX(5px);
+}
+
+/* Animations */
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+  </style>
+</head>
+<body onload="loadUserProfile()">
+  <%- include('partials/preloader') %>
+  <div class="profile-container">
+    <div class="profile-header">
+      <img src="default-profile.jpg" alt="Profile Photo" class="profile-photo">
+      <h2 class="user-name">Loading...</h2>
+      <p class="user-email">Loading...</p>
+    </div>
+    <div class="events-section">
+      <h3>Events Participated</h3>
+      <ul class="events-list">
+        <li>Loading...</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    // Mock fetch function to simulate an API call
+async function fetchUserData() {
+  // Simulate a delay
+  await new Promise(resolve => setTimeout(resolve, 500));
+  
+  // Replace with actual API call
+  return {
+    name: "John Doe",
+    email: "john.doe@example.com",
+    profilePhoto: "profile-photo.jpg",
+    events: ["Coding Marathon", "Robotics Workshop", "AI and ML Conference", "Web Development Bootcamp"]
+  };
+}
+
+// Function to populate the profile page with user data
+function populateProfile(data) {
+  document.querySelector(".user-name").textContent = data.name;
+  document.querySelector(".user-email").textContent = data.email;
+  document.querySelector(".profile-photo").src = data.profilePhoto;
+
+  const eventsList = document.querySelector(".events-list");
+  eventsList.innerHTML = ''; // Clear the list before adding
+  data.events.forEach(event => {
+    const listItem = document.createElement("li");
+    listItem.textContent = event;
+    eventsList.appendChild(listItem);
+  });
+}
+
+// Function to load user profile data on page load
+async function loadUserProfile() {
+  try {
+    const userData = await fetchUserData();
+    populateProfile(userData);
+  } catch (error) {
+    console.error("Error loading profile:", error);
+    document.querySelector(".user-name").textContent = "Error loading data";
+    document.querySelector(".user-email").textContent = "Please try again later.";
+  }
+}
+
+  </script>
+  <script src="/javascript/preloader.js"></script>
+</body>
+</html>
