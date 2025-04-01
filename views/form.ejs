@@ -382,14 +382,14 @@
     function displayParticipantDetails() {
         const numberSelect = document.getElementById("number").value;
         const participantsDetails = document.getElementById("participantsDetails");
-            const eventSelect = document.getElementById("events").value;
-    
-            const price = calculatePrice(eventSelect, numberSelect);
-            document.getElementById("calculatedPrice").textContent = price;
-            document.getElementById("priceDisplay").style.display = "block";
+        const eventSelect = document.getElementById("events").value;
+
+        const price = calculatePrice(eventSelect, numberSelect);
+        document.getElementById("calculatedPrice").textContent = price;
+        document.getElementById("priceDisplay").style.display = "block";
         
         participantsDetails.innerHTML = "";
-    
+
         function generatePhotoUploadInput(id) {
             return `
                 <div class="form-group">
@@ -414,21 +414,23 @@
                             <div class="file-preview" id="${id}Preview" style="display: none;">
                                 <img src="" alt="Preview" class="preview-image">
                                 <div class="file-info">
-                                    <span class="file-name"></span>
-                                    <span class="file-size"></span>
-                                    </div>
-                                <div class="preview-actions">
-                                    <button type="button" class="remove-file">Remove</button>
-                                </div>
+                                    <div class="file-name" id="${id}FileName"></div>
+                                    <div class="file-size" id="${id}FileSize"></div>
                                 </div>
                             </div>
+                            <div class="upload-progress">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill"></div>
+                                </div>
+                                <div class="progress-text">Uploading... 0%</div>
+                            </div>
                         </div>
-                </div>`;
+                    </div>
+            `;
         }
-    
+
         function generateParticipantFields(role, id) {
             return `
-                <div class="participant-section">
                 <h3>${role} Information</h3>
                 <div class="form-group">
                     <label for="${id}Name">Name</label>
@@ -436,24 +438,16 @@
                 </div>
                 <div class="form-group">
                     <label for="${id}Enrollment">Enrollment Number</label>
-                        <input 
-                            type="text" 
-                            id="${id}Enrollment" 
-                            name="${id}Enrollment" 
-                            pattern="^[0-9]{4}[A-Za-z]{2}[0-9]{6}$"
-                            maxlength="12"
-                            oninput="validateEnrollment(this)"
-                            required
-                        >
+                    <input type="text" id="${id}Enrollment" name="${id}Enrollment" required>
                 </div>
                 <div class="form-group">
                     <label for="${id}Email">Email ID</label>
                     <input type="email" id="${id}Email" name="${id}Email" required>
                 </div>
                 ${generatePhotoUploadInput(id)}
-                </div>`;
+            `;
         }
-    
+
         if (numberSelect === "solo") {
             participantsDetails.innerHTML = generateParticipantFields("Participant", "solo");
         } else {
@@ -462,15 +456,15 @@
             else if (numberSelect === "trio") membersCount = 2;
             else if (numberSelect === "squad-4-member") membersCount = 3;
             else if (numberSelect === "squad-5-member") membersCount = 4;
-                else if (numberSelect === "squad") membersCount = 3;
+            else if (numberSelect === "squad") membersCount = 3;
     
             let formContent = generateParticipantFields("Team Leader", "leader");
             formContent += `<h3>Team Members Information</h3>`;
-    
+
             for (let i = 1; i <= membersCount; i++) {
                 formContent += generateParticipantFields(`Member ${i}`, `member${i}`);
             }
-    
+
             participantsDetails.innerHTML = formContent;
         }
 
@@ -983,74 +977,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     </script>
 
-<script>
-function validateEnrollment(input) {
-    // Remove any non-alphanumeric characters
-    let value = input.value.replace(/[^a-zA-Z0-9]/g, '');
-    
-    // Convert to uppercase for consistency
-    value = value.toUpperCase();
-    
-    // Format: YYYYBBNNNNNN (Y=Year, B=Branch, N=Number)
-    if (value.length <= 4) {
-        // First 4 characters are numbers (year)
-        value = value.replace(/[^0-9]/g, '');
-    } else if (value.length <= 6) {
-        // Next 2 characters are letters (branch)
-        const numbers = value.slice(0, 4);
-        const letters = value.slice(4).replace(/[^A-Z]/g, '');
-        value = numbers + letters;
-    } else {
-        // Last 6 characters are numbers
-        const numbers = value.slice(0, 4);
-        const letters = value.slice(4, 6).replace(/[^A-Z]/g, '');
-        const lastNumbers = value.slice(6).replace(/[^0-9]/g, '');
-        value = numbers + letters + lastNumbers;
-    }
-
-    // Update input value
-    input.value = value;
-
-    // Validate the format
-    const isValid = /^[0-9]{4}[A-Z]{2}[0-9]{6}$/.test(value);
-    
-    // Visual feedback
-    if (value.length === 12) {
-        if (isValid) {
-            input.classList.remove('error');
-            input.classList.add('valid');
-            // Remove error message if exists
-            const errorMsg = input.parentElement.querySelector('.error-message');
-            if (errorMsg) errorMsg.remove();
-        } else {
-            input.classList.add('error');
-            input.classList.remove('valid');
-            // Show error message
-            showEnrollmentError(input, 'Format: YYYY(year) BB(branch) NNNNNN(number)');
-        }
-    } else if (value.length > 0) {
-        input.classList.add('error');
-        input.classList.remove('valid');
-        // Show error message
-        showEnrollmentError(input, 'Enrollment number must be 12 characters');
-    }
-
-    return isValid;
-}
-
-function showEnrollmentError(input, message) {
-    // Remove existing error message if any
-    const existingError = input.parentElement.querySelector('.error-message');
-    if (existingError) {
-        existingError.remove();
-    }
-
-    // Create and add new error message
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message';
-    errorDiv.textContent = message;
-    input.parentElement.appendChild(errorDiv);
-}
-  </script>
  </body>
 </html>
