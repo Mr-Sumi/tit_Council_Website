@@ -8,7 +8,22 @@
        <li><a href="/members">Members</a></li>
        <li><a href="/clubs">Clubs</a></li>
        <li><a href="/faculty">Mentors</a></li>
-       <li><a href="/gallery">Event Gallery</a></li> 
+       <li><a href="/gallery">Event Gallery</a></li>
+       <% if(isLoggedIn){ %>
+           <li class="mobile-user">
+               <a href="/userPage" class="user-icon" aria-label="User Profile">
+                   <i class="ri-user-3-line"></i>
+                   <span>Profile</span>
+               </a>
+           </li>
+       <% } else { %>
+           <li class="mobile-login">
+               <a href="/login" class="loginButton" aria-label="Login">
+                   <i class="ri-login-box-line"></i>
+                   <span>Login</span>
+               </a>
+           </li>
+       <% } %>
    </ul>
    </div>
 
@@ -25,14 +40,18 @@
     <li><a href="/faculty">Mentors</a></li>
     <li><a href="/gallery">Gallery</a></li>
     <% if(isLoggedIn){ %>
-        <a href="/userPage" class="user-icon">
-            <i class="ri-user-3-line"></i>
-        </a>
+        <li class="user-profile">
+            <a href="/userPage" class="user-icon" aria-label="User Profile">
+                <i class="ri-user-3-line"></i>
+            </a>
+        </li>
     <% } else { %>
-        <li id="desktop-login-btn">
-            <a href="/login" class="loginButton">Login</a>
+        <li class="login-item">
+            <a href="/login" class="loginButton" aria-label="Login">Login</a>
         </li>
     <% } %>
+    <li class="menu-toggle">
         <i class="ri-menu-line" aria-label="Toggle Mobile Menu"></i>
+    </li>
 </ul>
 </nav>
