@@ -1,14 +1,156 @@
 <style>
+    /* Base notification styles */
+.notification-container {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    z-index: 1000;
+}
+
+.custom-swal {
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Success notification */
+.custom-swal-success {
+    background: rgba(46, 213, 115, 0.1);
+    border-color: rgba(46, 213, 115, 0.3);
+    color: #2ed573;
+}
+
+/* Error notification */
+.custom-swal-error {
+    background: rgba(255, 71, 87, 0.1);
+    border-color: rgba(255, 71, 87, 0.3);
+    color: #ff4757;
+}
+
+/* Info notification */
+.custom-swal-info {
+    background: rgba(78, 205, 196, 0.1);
+    border-color: rgba(78, 205, 196, 0.3);
+    color: var(--primary-color);
+}
+
+/* Icons */
+.custom-swal i {
+    font-size: 1.5rem;
+}
+
+.custom-swal-success i {
+    color: #2ed573;
+}
+
+.custom-swal-error i {
+    color: #ff4757;
+}
+
+.custom-swal-info i {
+    color: var(--primary-color);
+}
+
+/* Close button */
+.custom-swal .close-btn {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: currentColor;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.custom-swal .close-btn:hover {
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
     .custom-swal {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
     }
-    .custom-swal-error {
-        background: rgba(255, 51, 51, 0.95);
-        color: white;
+    
+    .custom-swal i {
+        font-size: 1.2rem;
     }
+}
 </style>
+
+<div class="notification-container">
+    <% if (typeof message !== 'undefined') { %>
+        <div class="custom-swal custom-swal-<%= type %>">
+            <i class="ri-<%= type === 'success' ? 'checkbox-circle' : type === 'error' ? 'error-warning' : 'information' %>-line"></i>
+            <span><%= message %></span>
+            <button class="close-btn">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+    <% } %>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const notifications = document.querySelectorAll('.custom-swal');
+    
+    notifications.forEach(notification => {
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+            notification.style.animation = 'fadeOut 0.3s ease-out forwards';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 5000);
+
+        // Close button functionality
+        const closeBtn = notification.querySelector('.close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                notification.style.animation = 'fadeOut 0.3s ease-out forwards';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            });
+        }
+    });
+});
+</script>
 
 <% if (messages.success && messages.success.length > 0) { %>
     <script>
