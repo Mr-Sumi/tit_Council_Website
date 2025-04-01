@@ -1251,19 +1251,19 @@ header {
     college: college
   })
   .then(function(response) {
-    var options = {
-      "key": "<%= process.env.RAZORPAY_KEY_ID %>",
-      "amount": response.data.amount,
+          var options = {
+            "key": "<%= process.env.RAZORPAY_KEY_ID %>",
+            "amount": response.data.amount,
       "currency": response.data.currency || "INR",
-      "name": "TECHNOCRATS",
+            "name": "TECHNOCRATS",
       "description": `Registration for ${selectedEvent}`,
-      "image": "https://i.pinimg.com/236x/2a/b2/aa/2ab2aa6a99c6589636ff051f46c14ea3.jpg",
-      "order_id": response.data.id,
-      "handler": function(response) {
+            "image": "https://i.pinimg.com/236x/2a/b2/aa/2ab2aa6a99c6589636ff051f46c14ea3.jpg",
+            "order_id": response.data.id,
+            "handler": function(response) {
         // After successful payment, submit form with payment details
         const paymentData = {
-          razorpayOrderId: response.razorpay_order_id,
-          razorpayPaymentId: response.razorpay_payment_id,
+                razorpayOrderId: response.razorpay_order_id,
+                razorpayPaymentId: response.razorpay_payment_id,
           signature: response.razorpay_signature,
           event: selectedEvent,
           participantType: participantType,
@@ -1276,32 +1276,32 @@ header {
           window.location.href = '/payment/success'; // Redirect to success page
         })
         .catch(function(error) {
-          console.error(error);
+                console.error(error);
           alert('Payment verification failed. Please contact support.');
-        });
-      },
-      "prefill": {
+              });
+            },
+            "prefill": {
         "name": document.getElementById('soloName')?.value || document.getElementById('leaderName')?.value || "",
         "email": document.getElementById('soloEmail')?.value || document.getElementById('leaderEmail')?.value || "",
         "contact": "" // You might want to add phone fields to your form
-      },
-      "notes": {
+            },
+            "notes": {
         "college": college,
         "event": selectedEvent
-      },
-      "theme": {
-        "color": "#000099"
-      }
-    };
+            },
+            "theme": {
+              "color": "#000099"
+            }
+          };
     
-    var rzp1 = new Razorpay(options);
-    rzp1.open();
-  })
+          var rzp1 = new Razorpay(options);
+          rzp1.open();
+        })
   .catch(function(error) {
     console.error('Error creating order:', error);
     alert('Unable to process payment at this time. Please try again later.');
-  });
-};
+        });
+    };
 
 // Validate form before submission
 function validateForm() {
@@ -1377,7 +1377,7 @@ function formatFileSize(bytes) {
   else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
   else return (bytes / 1048576).toFixed(1) + ' MB';
 }
-</script>
+  </script>
 =======
   </script>
 >>>>>>> 9a0c640e0194969e1c81b642956cbc4134274e41
