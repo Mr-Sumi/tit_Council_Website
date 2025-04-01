@@ -26,10 +26,16 @@ body {
 
 .container {
     max-width: 1200px;
-    margin-top: 5rem;
+    margin: 2rem auto;
+    padding: 2rem;
+    width: 100%;
     box-sizing: border-box;
     animation: slideUpFade 0.8s ease-out;
-    background: linear-gradient(        135deg,        rgba(78, 205, 196, 0.05),        rgba(255, 51, 102, 0.05)    );
+    background: linear-gradient(
+        135deg,
+        rgba(78, 205, 196, 0.05),
+        rgba(255, 51, 102, 0.05)
+    );
     border: 1px solid rgba(78, 205, 196, 0.1);
 }
 
@@ -39,7 +45,6 @@ body {
     padding: 2rem 1.5rem;
     border-radius: 12px;
     margin-bottom: 2.5rem;
-    margin-top: 2.5rem;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     animation: slideUpFade 0.8s ease-out;
@@ -227,7 +232,6 @@ body {
 
 /* Form Controls */
 .form-group {
-    margin-top: 2rem;
     margin-bottom: 2rem;
     position: relative;
 }
@@ -306,14 +310,12 @@ input:focus, select:focus {
     background: rgba(78, 205, 196, 0.1);
     color: var(--primary-color);
     border: 1px solid var(--primary-border);
-    cursor: pointer;
 }
 
 .next-button {
     background: var(--primary-color);
     color: var(--light-text);
     border: none;
-    cursor: pointer;
 }
 
 .nav-button:hover {
@@ -528,7 +530,6 @@ input:focus, select:focus {
 /* Enhanced File Upload Styles */
 .file-upload-container {
     margin-top: 1rem;
-    margin-bottom: 2rem;
 }
 
 .file-drop-area {
