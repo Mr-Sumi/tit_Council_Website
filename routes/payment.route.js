@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 
-const Razorpay = require('razorpay');
-require('dotenv').config();
-const express = require('express');
-=======
 const express = require('express');
 const Razorpay = require('razorpay');
->>>>>>> 5fe949e3eb9d48369d2b8468877230968748980b
 const router = express.Router();
 const crypto = require('crypto');
 const Registration = require('../models/payment.model');
@@ -351,11 +345,8 @@ router.post('/api/payment/verify', async (req, res) => {
     if (generatedSignature !== signature) {
       return res.status(400).json({ error: 'Invalid signature' });
     }
-<<<<<<< HEAD
 
   module.exports =app;
-=======
->>>>>>> 5fe949e3eb9d48369d2b8468877230968748980b
     
     // Check if order data exists in session
     if (req.session.orderData && req.session.orderData.orderId === razorpayOrderId) {
@@ -430,7 +421,3 @@ router.get('/registrations/:event', async (req, res) => {
 });
 
 module.exports = router;
-<<<<<<< HEAD
-module.exports = router;
-=======
->>>>>>> 5fe949e3eb9d48369d2b8468877230968748980b

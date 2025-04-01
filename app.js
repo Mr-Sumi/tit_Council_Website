@@ -107,7 +107,7 @@ app.post('/current_user', (req, res) => {
 
 // Home route
 app.get('/', (req, res) => {
-  res.render('student council', { isLoggedIn : true });
+  res.render('student council', {isLoggedIn: req.session.isLoggedIn || false });
 });
 
 // Member routes

@@ -106,6 +106,7 @@ app.post("/login", async (req, res) => {
     });
 
     req.flash("success", `Welcome back, ${user.username}!`);
+    req.session.isLoggedIn = true;
     res.redirect("/");
 
   } catch (error) {
@@ -125,6 +126,7 @@ app.get("/logout", (req, res) => {
       sameSite: 'strict'
     });
     req.flash("success", "Successfully logged out");
+   req.session.isLoggedIn = false;
     res.redirect("/login");
   } catch (error) {
     console.error("Logout error:", error);
