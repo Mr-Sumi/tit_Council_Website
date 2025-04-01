@@ -1262,7 +1262,7 @@ header {
       "currency": response.data.currency || "INR",
             "name": "TECHNOCRATS",
       "description": `Registration for ${selectedEvent}`,
-            "image": "https://i.pinimg.com/236x/2a/b2/aa/2ab2aa6a99c6589636ff051f46c14ea3.jpg",
+            "image": "https://onlinefeestechnocrats.in/HRMS/Images/new-logo.png",
             "order_id": response.data.id,
             "handler": function(response) {
         // After successful payment, submit form with payment details
@@ -1278,7 +1278,7 @@ header {
         axios.post('payment/api/payment/verify', paymentData)
         .then(function(response) {
           alert('Payment successful! Registration complete.');
-          window.location.href = '/payment/success'; // Redirect to success page
+          window.location.href = '/eventPage'; // Redirect to success page
         })
         .catch(function(error) {
                 console.error(error);
@@ -1288,7 +1288,7 @@ header {
             "prefill": {
         "name": document.getElementById('soloName')?.value || document.getElementById('leaderName')?.value || "",
         "email": document.getElementById('soloEmail')?.value || document.getElementById('leaderEmail')?.value || "",
-        "contact": "" // You might want to add phone fields to your form
+        "contact": document.getElementById('contact')?.value || "",
             },
             "notes": {
         "college": college,

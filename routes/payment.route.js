@@ -1,27 +1,6 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 let express = require('express');
 const Razorpay = require('razorpay');
-let app = express();
 require('dotenv').config();
-
-require('dotenv').config();
-=======
-<<<<<<< HEAD
->>>>>>> b3eb82d44e58e0a360f49e2ce469d12be5ea5f09
-
-const Razorpay = require('razorpay');
-require('dotenv').config();
-const express = require('express');
-<<<<<<< HEAD
-=======
-=======
-const express = require('express');
-const Razorpay = require('razorpay');
->>>>>>> 5fe949e3eb9d48369d2b8468877230968748980b
->>>>>>> 3b10bd1a7478fed8c822e36aac8d3e08666850e4
->>>>>>> b3eb82d44e58e0a360f49e2ce469d12be5ea5f09
 const router = express.Router();
 const crypto = require('crypto');
 const Registration = require('../models/payment.model');
@@ -362,24 +341,11 @@ router.post('/api/payment/verify', async (req, res) => {
       .update(razorpayOrderId + '|' + razorpayPaymentId)
       .digest('hex');
     
-    if (generatedSignature !== signature) {
-      return res.status(400).json({ error: 'Invalid signature' });
-<<<<<<< HEAD
-    }  
-
-  module.exports =app;
-=======
-    }
-
-  module.exports =app;
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 5fe949e3eb9d48369d2b8468877230968748980b
->>>>>>> 3b10bd1a7478fed8c822e36aac8d3e08666850e4
->>>>>>> b3eb82d44e58e0a360f49e2ce469d12be5ea5f09
-    
-    // Check if order data exists in session
+  if (generatedSignature !== signature) {
+    return res.status(400).json({ error: 'Invalid signature' });
+  }  
+  
+  // Check if order data exists in session
     if (req.session.orderData && req.session.orderData.orderId === razorpayOrderId) {
       // Order data found in session
       const orderData = req.session.orderData;
@@ -452,14 +418,3 @@ router.get('/registrations/:event', async (req, res) => {
 });
 
 module.exports = router;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-module.exports = router;
-=======
-<<<<<<< HEAD
-module.exports = router;
-=======
->>>>>>> 5fe949e3eb9d48369d2b8468877230968748980b
->>>>>>> 3b10bd1a7478fed8c822e36aac8d3e08666850e4
->>>>>>> b3eb82d44e58e0a360f49e2ce469d12be5ea5f09
