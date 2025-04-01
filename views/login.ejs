@@ -18,6 +18,18 @@
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
           }
+
+          /* Add these CSS variables to your :root */
+          :root {
+            --primary-color: #4ecdc4;
+            --primary-rgb: 78, 205, 196;
+            --accent-color: #ff3366;
+            --accent-rgb: 255, 51, 102;
+            --dark-bg: #1b1b32;
+            --text-light: #ffffff;
+            --text-gray: rgba(255, 255, 255, 0.8);
+            --error-color: #ff3366;
+          }
           body{
             position: relative;
           }
@@ -42,6 +54,7 @@
             height: 100%;
             top: 0;
             left: 0;
+            text-align: center;
           }
 
           .signin-signup {
@@ -98,67 +111,43 @@
             display: grid;
             grid-template-columns: 15% 85%;
             padding: 0 0.4rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            margin-bottom: 30px;
           }
 
           /* Icon Styling */
           .input-field i {
             text-align: center;
-            line-height: 55px;
+            line-height: 1;
             font-size: 1.2rem;
             color: var(--primary-color);
             transition: all 0.3s ease;
+            padding-left: 1rem;
           }
 
           /* Input Element Styling */
           .input-field input {
             background: transparent;
-            overflow: hidden;
             outline: none;
             border: none;
             line-height: 1;
             font-weight: 500;
             font-size: 1.1rem;
             color: var(--text-light);
-            padding: 0 0.5rem;
-          }
-
-          .input-field input::placeholder {
-            color: var(--text-gray);
-            font-weight: 400;
+            padding: 0 1rem;
           }
 
           /* Focus States */
           .input-field:focus-within {
-            background: linear-gradient(
-                145deg,
-                rgba(var(--primary-rgb), 0.15) 0%,
-                rgba(var(--accent-rgb), 0.15) 100%
-            );
-            border-color: rgba(var(--primary-rgb), 0.5);
+            border-color: var(--primary-color);
             box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.15);
-          }
-
-          .input-field:focus-within i {
-            background: linear-gradient(
-                135deg,
-                var(--accent-color),
-                var(--primary-color)
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
           }
 
           /* Hover States */
           .input-field:hover {
-            background: linear-gradient(
-                145deg,
-                rgba(var(--primary-rgb), 0.12) 0%,
-                rgba(var(--accent-rgb), 0.12) 100%
-            );
+            border-color: rgba(255, 255, 255, 0.3);
           }
 
           /* Calendar Field Specific */
@@ -178,48 +167,6 @@
             -webkit-text-fill-color: transparent;
           }
 
-          /* Error States */
-          .input-field.error {
-            background: linear-gradient(
-                145deg,
-                rgba(220, 53, 69, 0.1) 0%,
-                rgba(255, 71, 87, 0.1) 100%
-            );
-            border-color: rgba(220, 53, 69, 0.5);
-          }
-
-          .input-field.error i {
-            background: linear-gradient(
-                135deg,
-                #dc3545,
-                #ff4757
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-
-          /* Success States */
-          .input-field.success {
-            background: linear-gradient(
-                145deg,
-                rgba(40, 167, 69, 0.1) 0%,
-                rgba(46, 213, 115, 0.1) 100%
-            );
-            border-color: rgba(40, 167, 69, 0.5);
-          }
-
-          .input-field.success i {
-            background: linear-gradient(
-                135deg,
-                #28a745,
-                #2ed573
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-
           /* Animation for focus/hover */
           @keyframes gradientShift {
             0% {
@@ -231,18 +178,6 @@
             100% {
                 background-position: 0% 50%;
             }
-          }
-
-          /* Add these CSS variables to your :root */
-          :root {
-            --primary-color: #4ecdc4;
-            --primary-rgb: 78, 205, 196;
-            --accent-color: #ff3366;
-            --accent-rgb: 255, 51, 102;
-            --dark-bg: #1b1b32;
-            --text-light: #ffffff;
-            --text-gray: rgba(255, 255, 255, 0.8);
-            --error-color: #ff3366;
           }
 
           .btn {
@@ -647,7 +582,7 @@
 
           /* Hover state */
           .input-field.calendar-field:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: transparent;
           }
 
           /* Add to your existing styles */
@@ -832,6 +767,215 @@
                 transition-duration: 0.01ms !important;
             }
           }
+
+          .password-hint {
+            position: absolute;
+            bottom: -24px;
+            left: 0;
+            font-size: 12px;
+            color: var(--text-gray);
+            width: 100%;
+            text-align: left;
+            padding-left: 15%;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+          }
+
+          .input-field:focus-within .password-hint {
+            color: var(--primary-color);
+            opacity: 1;
+          }
+
+          /* Adjust spacing for the next input field */
+          .input-field {
+            margin-bottom: 30px;
+          }
+
+          /* Mobile responsiveness */
+          @media (max-width: 480px) {
+            .password-hint {
+                font-size: 11px;
+                bottom: -22px;
+            }
+          }
+
+          /* Mobile Responsive Styles */
+          @media (max-width: 768px) {
+            /* Container adjustments */
+            .container {
+                margin-top: 0;
+                padding: 1rem;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+            }
+
+            /* Form container adjustments */
+            .forms-container {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+
+            /* Sign in/up form adjustments */
+            .signin-signup {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                width: 100%;
+                padding: 1rem;
+            }
+
+            form {
+                padding: 0;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            /* Input field adjustments */
+            .input-field {
+                max-width: 100%;
+                margin: 8px 0 25px;
+                height: 50px;
+            }
+
+            .input-field i {
+                font-size: 1.1rem;
+                line-height: 50px;
+            }
+
+            .input-field input {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            /* Title adjustments */
+            .title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Button adjustments */
+            .btn {
+                width: 100%;
+                max-width: 200px;
+                height: 45px;
+                font-size: 0.9rem;
+            }
+
+            /* Password field adjustments */
+            .password-toggle {
+                padding: 12px;
+                right: 5px;
+            }
+
+            .password-hint {
+                font-size: 11px;
+                bottom: -20px;
+                padding-left: 5%;
+            }
+
+            /* Helper text adjustments */
+            .forget {
+                font-size: 0.9rem;
+                margin-top: 1rem;
+            }
+
+            /* Message adjustments */
+            .message {
+                width: 90%;
+                max-width: 350px;
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+          }
+
+          /* Small mobile devices */
+          @media (max-width: 480px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .input-field {
+                height: 45px;
+                margin: 6px 0 20px;
+            }
+
+            .input-field i {
+                font-size: 1rem;
+                line-height: 45px;
+            }
+
+            .input-field input {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                height: 40px;
+                font-size: 0.85rem;
+            }
+
+            .password-toggle i {
+                font-size: 14px;
+            }
+
+            .password-hint {
+                font-size: 10px;
+                bottom: -18px;
+            }
+
+            .forget {
+                font-size: 0.85rem;
+            }
+          }
+
+          /* Landscape mode */
+          @media (max-height: 600px) and (orientation: landscape) {
+            .container {
+                min-height: auto;
+                padding: 1rem;
+            }
+
+            .signin-signup {
+                padding: 0.5rem;
+            }
+
+            .input-field {
+                margin: 6px 0 20px;
+            }
+
+            .title {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+          }
+
+          /* High DPI Mobile Screens */
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .input-field {
+                border-width: 0.5px;
+            }
+
+            .btn {
+                border-width: 0.5px;
+            }
+          }
+
+          /* Safe Area Insets for Notched Phones */
+          @supports (padding: env(safe-area-inset-top)) {
+            .container {
+                padding-top: env(safe-area-inset-top);
+                padding-bottom: env(safe-area-inset-bottom);
+                padding-left: env(safe-area-inset-left);
+                padding-right: env(safe-area-inset-right);
+            }
+          }
   </style>
 </head>
 
@@ -895,10 +1039,12 @@
 
   <div class="input-field">
       <i class="fas fa-lock"></i>
-      <input type="password" placeholder="DOB (DDMMYYYY)" name="dob" id="password" required />
+      <input type="password" placeholder="Password" name="dob" id="password" required 
+      maxlength="8" minlength="8"/>
       <button type="button" class="password-toggle" aria-label="Toggle password visibility">
           <i class="fas fa-eye" id="togglePassword"></i>
       </button>
+      <div class="password-hint">Your DOB in DDMMYYYY format is your password</div>
   </div>
 
   <!-- <span class="forget">Forget password</span> -->
@@ -1289,5 +1435,4 @@
   <script src="javascript/navbaar.js"></script>
 </body>
 
-</html>
 </html>
