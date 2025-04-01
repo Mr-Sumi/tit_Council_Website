@@ -799,12 +799,8 @@ header {
     <!-- Registration Form Section -->
     <section class="form-section">
         <h2>Registration Form</h2>
-<<<<<<< HEAD
-        <form id="payment-form" method="post" action="payment/create/orderId">
 
-=======
-        <form id="payment-form" method="post" action="/create/orderId" enctype="multipart/form-data">
->>>>>>> cb91edbec0999893d59dd9767f98549e97ae3d42
+        <form id="payment-form" method="post" action="payment/create/orderId" >
             <!-- College -->
             <div class="form-group">
                 <label for="college">College</label>
@@ -1153,10 +1149,8 @@ header {
             }
     
             participantsDetails.innerHTML = formContent;
-<<<<<<< HEAD
         }
     }
-    
     // find prices
     
     function findPrices() {
@@ -1229,84 +1223,159 @@ header {
 </script>
   <script>
     document.getElementById('rzp-button1').onclick = function(e) {
-      axios.post('payment/create/orderId')
-        .then(function (response) {
-          var options = {
-            "key": "<%= process.env.RAZORPAY_KEY_ID %>",
-            "amount": response.data.amount,
-            "currency": response.data.currency,
-            "name": "TECHNOCRATS",
-            "description": "Transaction",
-            "image": "https://i.pinimg.com/236x/2a/b2/aa/2ab2aa6a99c6589636ff051f46c14ea3.jpg",
-            "order_id": response.data.id,
-            "handler": function(response) {
-              axios.post('payment/api/payment/verify', {
-                razorpayOrderId: response.razorpay_order_id,
-                razorpayPaymentId: response.razorpay_payment_id,
-                signature: response.razorpay_signature
-              })
-              .then(function (response) {
-                alert('Payment verified successfully');
-              })
-              .catch(function (error) {
-                console.error(error);
-              });
-            },
-            "prefill": {
-              "name": "Krishna Jadhav",
-              "email": "kj4241808@gmail.com@gmail.com",
-              "contact": "8989655811"
-            },
-            "notes": {
-              "address": "Razorpay Corporate Office"
-            },
-            "theme": {
-              "color": "#000099"
-=======
->>>>>>> cb91edbec0999893d59dd9767f98549e97ae3d42
-            }
-            
-            setTimeout(() => {
-                document.querySelectorAll('.file-input').forEach(input => {
-                    input.addEventListener('change', function(e) {
-                        const file = e.target.files[0];
-                        if (file) {
-                            const id = this.id.replace('Photo', '');
-                            const preview = document.getElementById(`${id}Preview`);
-                            const fileName = document.getElementById(`${id}FileName`);
-                            const fileSize = document.getElementById(`${id}FileSize`);
-                            const dropContent = document.getElementById(`${id}DropContent`);
-                            const previewContent = document.getElementById(`${id}PreviewContent`);
-                            
-                            preview.src = URL.createObjectURL(file);
-                            
-                            fileName.textContent = file.name;
-                            fileSize.textContent = formatFileSize(file.size);
-                            
-                            dropContent.style.display = 'none';
-                            previewContent.style.display = 'block';
-                            
-                            const removeBtn = previewContent.querySelector('.remove-file');
-                            removeBtn.addEventListener('click', function() {
-                                input.value = '';
-                                dropContent.style.display = 'flex';
-                                previewContent.style.display = 'none';
-                            });
-                            
-                            const changeBtn = previewContent.querySelector('.change-file');
-                            changeBtn.addEventListener('click', function() {
-                                input.click();
-                            });
-                        }
-                    });
-                });
-            }, 100);
-        }
+  e.preventDefault();
+  
+  // Get form data
+  const form = document.getElementById('payment-form');
+  const college = document.getElementById('college').value;
+  const selectedEvent = document.getElementById('events').value;
+  const participantType = document.getElementById('number').value;
+  
+  // Calculate price
+  const price = calculatePrice(selectedEvent, participantType);
+  
+  // Validate form before proceeding
+  if (!validateForm()) {
+    return false;
+  }
+  
+  // Prepare data to send to the server
+  const formData = new FormData(form);
+  formData.append('amount', price * 100); // Razorpay expects amount in paise
+  
+  // Create order ID
+  axios.post('payment/create/orderId', {
+    amount: price * 100, // Convert to paise
+    event: selectedEvent,
+    participantType: participantType,
+    college: college
+  })
+  .then(function(response) {
+    var options = {
+      "key": "<%= process.env.RAZORPAY_KEY_ID %>",
+      "amount": response.data.amount,
+      "currency": response.data.currency || "INR",
+      "name": "TECHNOCRATS",
+      "description": `Registration for ${selectedEvent}`,
+      "image": "https://i.pinimg.com/236x/2a/b2/aa/2ab2aa6a99c6589636ff051f46c14ea3.jpg",
+      "order_id": response.data.id,
+      "handler": function(response) {
+        // After successful payment, submit form with payment details
+        const paymentData = {
+          razorpayOrderId: response.razorpay_order_id,
+          razorpayPaymentId: response.razorpay_payment_id,
+          signature: response.razorpay_signature,
+          event: selectedEvent,
+          participantType: participantType,
+          amount: price
+        };
         
-        function formatFileSize(bytes) {
-            if (bytes < 1024) return bytes + ' bytes';
-        else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+        axios.post('payment/api/payment/verify', paymentData)
+        .then(function(response) {
+          alert('Payment successful! Registration complete.');
+          window.location.href = '/payment/success'; // Redirect to success page
+        })
+        .catch(function(error) {
+          console.error(error);
+          alert('Payment verification failed. Please contact support.');
+        });
+      },
+      "prefill": {
+        "name": document.getElementById('soloName')?.value || document.getElementById('leaderName')?.value || "",
+        "email": document.getElementById('soloEmail')?.value || document.getElementById('leaderEmail')?.value || "",
+        "contact": "" // You might want to add phone fields to your form
+      },
+      "notes": {
+        "college": college,
+        "event": selectedEvent
+      },
+      "theme": {
+        "color": "#000099"
+      }
+    };
+    
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+  })
+  .catch(function(error) {
+    console.error('Error creating order:', error);
+    alert('Unable to process payment at this time. Please try again later.');
+  });
+};
+
+// Validate form before submission
+function validateForm() {
+  const form = document.getElementById('payment-form');
+  const requiredFields = form.querySelectorAll('[required]');
+  let isValid = true;
+  
+  requiredFields.forEach(field => {
+    if (!field.value) {
+      field.classList.add('error');
+      isValid = false;
+    } else {
+      field.classList.remove('error');
     }
+  });
+  
+  if (!isValid) {
+    alert('Please fill in all required fields');
+  }
+  
+  return isValid;
+}
+
+// Add this to your existing file handling code
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(() => {
+    document.querySelectorAll('.file-input').forEach(input => {
+      input.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          // Check file size (max 5MB)
+          if (file.size > 5 * 1024 * 1024) {
+            alert('File size exceeds 5MB limit');
+            this.value = '';
+            return;
+          }
+          
+          const id = this.id.replace('Photo', '');
+          const preview = document.getElementById(`${id}Preview`);
+          const fileName = document.getElementById(`${id}FileName`);
+          const fileSize = document.getElementById(`${id}FileSize`);
+          const dropContent = document.getElementById(`${id}DropContent`);
+          const previewContent = document.getElementById(`${id}PreviewContent`);
+          
+          preview.src = URL.createObjectURL(file);
+          
+          fileName.textContent = file.name;
+          fileSize.textContent = formatFileSize(file.size);
+          
+          dropContent.style.display = 'none';
+          previewContent.style.display = 'block';
+          
+          const removeBtn = previewContent.querySelector('.remove-file');
+          removeBtn.addEventListener('click', function() {
+            input.value = '';
+            dropContent.style.display = 'flex';
+            previewContent.style.display = 'none';
+          });
+          
+          const changeBtn = previewContent.querySelector('.change-file');
+          changeBtn.addEventListener('click', function() {
+            input.click();
+          });
+        }
+      });
+    });
+  }, 100);
+});
+
+function formatFileSize(bytes) {
+  if (bytes < 1024) return bytes + ' bytes';
+  else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+  else return (bytes / 1048576).toFixed(1) + ' MB';
+}
 </script>
 <script src="javascript/navbaar.js"></script>
   <script>
