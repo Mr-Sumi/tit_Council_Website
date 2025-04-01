@@ -113,10 +113,7 @@ app.get('/events',  (req, res) => {
   });
 
 
-    
-app.get('/Quiz', (req, res) => {
-  res.render('Anwesha Event/Technical Quiz', { title: 'Quiz Page' });
-})
+  
 
 app.get('/ScreenToSpeech', (req, res) => {
   res.render('Anwesha Event/ScreenToSpeech', { title: 'ScreenToSpeech Page' });
@@ -134,4 +131,71 @@ app.get('/SkyHighSnapandSolve', (req, res) => {
   res.render('Anwesha Event/SkyHighSnapandSolve', { title: 'SkyHigh Snap and Solve' });
 })
 
+app.get('/JammingSession', (req, res) => {
+  res.render('Anwesha Event/Jamming Session', { title: 'Jamming Session' });
+})
+
+app.get('/BounceAndBurst', (req, res) => {
+  res.render('Anwesha Event/Bounce&Burst', { title: 'Bounce and Burst' });
+})
+
+app.get('/PitchoPlay', (req, res) => {
+  res.render('Anwesha Event/Pitch-o-Play', { title: 'Pitch-o-Play' });
+})
+
+app.get('/ArtByte', (req, res) => {
+  res.render('Anwesha Event/ArtByte', { title: 'Art Byte' });
+})
+
+app.get('/TechnocratsGotTalent', (req, res) => {
+  res.render('Anwesha Event/Technocrats Got Talent', { title: 'Technocrats Got Talent' });
+})
+
+app.get('/FunWithThingsAndThink', (req, res) => {
+  res.render('Anwesha Event/Fun With Things', { title: 'Fun With Things And Think' });
+})
+
+app.get('/FilmyFrenzy', (req, res) => {
+  res.render('Anwesha Event/Filmy Frenzy', { title: 'Filmy Frenzy' });
+})
+
+app.get('/FashionFusion', (req, res) => {
+  res.render('Anwesha Event/Fashion Fusion', { title: 'Fashion Fusion' });
+})
+
+app.get('/SpinTheSpotlight', (req, res) => {
+  res.render('Anwesha Event/Spin The Spotlight', { title: 'Spin The Spotlight' });
+})
+
+app.get('/BuzzQuest', (req, res) => {
+  res.render('Anwesha Event/BuzzQuest', { title: 'Buzz Quest' });
+})
+
+app.get('/ChineseWishper', (req, res) => {
+  res.render('Anwesha Event/ChineseWhisper', { title: 'Chinese Wishper' });
+})
+
+app.get('/Hackathon', (req, res) => {
+  res.render('Anwesha Event/Hackathon', { title: 'Hackathon' });
+})
+
+app.get('/PixelPerfect', (req, res) => {
+  res.render('Anwesha Event/PixelPerfect', { title: 'Pixel Perfect' });
+})
+
+app.get('/BattleOfWitz', (req, res) => {
+  res.render('Anwesha Event/BattleOfWits', { title: 'Battle Of Witz' });
+})
+
+app.get('/MemeMania', (req, res) => {
+  res.render('Anwesha Event/MemeMania', { title: 'Meme Mania' });
+})
+
+app.get('/MindGame', (req, res) => {
+  res.render('Anwesha Event/MindGame', { title: 'Mind Game' });
+})
+
+app.get('/IGI2CovertStrike', (req, res) => {
+  res.render('Anwesha Event/Igi', { title: 'IGI 2 - Covert Strike' });
+})
 module.exports = app
