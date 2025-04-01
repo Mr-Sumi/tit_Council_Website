@@ -1,30 +1,48 @@
 const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
+const { v2: cloudinary } = require('cloudinary');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+require('dotenv').config(); 
 
-// Multer Storage (Temporary Storage in Memory)
-const storage = multer.memoryStorage();
+// 🔹 Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
-// File Filter (Only Allow Image Files)
+// 🔹 Configure Cloudinary Storage
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: async (req, file) => {
+    let folder = 'uploads';
+    let format = file.mimetype === 'application/pdf' ? 'pdf' : 'png'; 
+    let public_id = file.originalname.split('.')[0]; 
+
+    return { folder, format, public_id };
+  },
+});
+
+// 🔹 File Filter (Only Allow PDF, JPG, PNG, JPEG)
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf'];
 
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error('Only JPG, PNG images are allowed'), false);
+    cb(new Error('Only JPG, PNG, JPEG, and PDF files are allowed!'), false);
   }
 };
 
+// 🔹 Multer Upload Middleware
 const upload = multer({
   storage: storage,
   fileFilter: fileFilter,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB file size limit
+  limits: { fileSize: 10 * 1024 * 1024 }, // ⏫ Increased limit: 10MB
 });
 
-// Function to Convert Image to Hexadecimal
-const imageToHex = (buffer) => {
+// 🔹 Function to Convert File Buffer to Hexadecimal (For Images)
+const fileToHex = (buffer) => {
   return buffer.toString('hex');
 };
 
-module.exports = { upload, imageToHex };
+module.exports = { upload, fileToHex, cloudinary };

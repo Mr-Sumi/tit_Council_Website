@@ -799,7 +799,12 @@ header {
     <!-- Registration Form Section -->
     <section class="form-section">
         <h2>Registration Form</h2>
+<<<<<<< HEAD
+        <form id="payment-form" method="post" action="payment/create/orderId">
+
+=======
         <form id="payment-form" method="post" action="/create/orderId" enctype="multipart/form-data">
+>>>>>>> cb91edbec0999893d59dd9767f98549e97ae3d42
             <!-- College -->
             <div class="form-group">
                 <label for="college">College</label>
@@ -1148,6 +1153,117 @@ header {
             }
     
             participantsDetails.innerHTML = formContent;
+<<<<<<< HEAD
+        }
+    }
+    
+    // find prices
+    
+    function findPrices() {
+        if(selectedEvent=="ROBO RACE" || selectedEvent=="ROBO WAR")
+    price=300;
+    else if(selectedEvent=="uiNOVATION(Hackthons)")
+    price=200;
+   else if(selectedEvent=="CODE CLASH")
+    price=75;
+    else if((selectedEvent=="FREE FIRE" || selectedEvent=="BGMI") && numberSelect=="SOLO")
+        price=50;
+    else if((selectedEvent=="FREE FIRE" || selectedEvent=="BGMI") && numberSelect=="SQUAD-4-MEMBER")
+    prize=200;
+    else if(selectedEvent=="MUSICAL CHAIR")
+    price=20;
+    else if(selectedEvent=="RENEWABLE MODEL SHOWCASE")
+    price=50;
+    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" ) && numberSelect=="SOLO")
+    price=20;
+    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" ) && numberSelect=="DUO")
+    price=40;
+    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" ) && numberSelect=="TRIO")
+    price=60;
+    else if((selectedEvent=="DUMCHARADE" || selectedEvent=="OPEN MIC" )&& numberSelect=="SQUAD-4-MEMBER")
+    price=80;
+    else if(selectedEvent=="CORPORATE CHALLENGE SHOWDOWN" && numberSelect=="SOLO")
+    price=100;
+    else if(selectedEvent=="CORPORATE CHALLENGE SHOWDOWN")
+    price=200;
+    else if(selectedEvent=="ENTREPRENEURSHIP SALES STALL" && numberSelect=="SOLO")
+    price=50;
+    else if(selectedEvent="ENTREPRENEURSHIP SALES STALL")
+    price=200;
+    else if(selectedEvent=="ESCAPE ROOM/ BUSINESS" && numberSelect=="DUO")
+    price=100;
+    else if(selectedEvent=="ESCAPE ROOM/ BUSINESS")
+    price=200
+    else if(selectedEvent=="ENTREPRENEURIAL MEME CONTEST" && numberSelect=="SOLO")
+    price=50;
+    else if(selectedEvent=="ENTREPRENEURIAL MEME CONTEST")
+    price=100;
+    else if(selectedEvent=="RUNNING COMPETITION/ MARATHON")
+        price=30;
+        else if(selectedEvent=="TUG OF WAR" && numberSelect=="DUO")
+        price=200;
+    else if(selectedEvent=="  TUG OF WAR")
+    price=400;
+    else if(selectedEvent=="TECHNICAL PRESENTATION" && numberSelect=="DUO")
+    price=50;
+    else if(selectedEvent=="TECHNICAL PRESENTATION")
+    price=30;
+    else if(selectedEvent=="CRAFT CARNIVAL/ POSTER MAKING, SLOGAN WRITING")
+    price=30;
+    else if(selectedEvent=="FLASH CLASH OF STYLES: THE DANCE FACE-OFF" && numberSelect=="SOLO")
+    price=50;
+    else if(selectedEvent=="FLASH CLASH OF STYLES: THE DANCE FACE-OFF" && numberSelect=="DUO")
+    price=100;
+    else if(selectedEvent=="FLASH CLASH OF STYLES: THE DANCE FACE-OFF" && numberSelect=="SQUAD-4-MEMBER")
+    price=150;
+    else if(selectedEvent=="TEASERQUEST")
+        price=200;
+    else if(selectedEvent=="HOVERHUNT")
+    price=30;
+    else if(selectedEvent=="TECHNICAL QUIZ")
+    price=20;
+ }
+
+
+    
+</script>
+  <script>
+    document.getElementById('rzp-button1').onclick = function(e) {
+      axios.post('payment/create/orderId')
+        .then(function (response) {
+          var options = {
+            "key": "<%= process.env.RAZORPAY_KEY_ID %>",
+            "amount": response.data.amount,
+            "currency": response.data.currency,
+            "name": "TECHNOCRATS",
+            "description": "Transaction",
+            "image": "https://i.pinimg.com/236x/2a/b2/aa/2ab2aa6a99c6589636ff051f46c14ea3.jpg",
+            "order_id": response.data.id,
+            "handler": function(response) {
+              axios.post('payment/api/payment/verify', {
+                razorpayOrderId: response.razorpay_order_id,
+                razorpayPaymentId: response.razorpay_payment_id,
+                signature: response.razorpay_signature
+              })
+              .then(function (response) {
+                alert('Payment verified successfully');
+              })
+              .catch(function (error) {
+                console.error(error);
+              });
+            },
+            "prefill": {
+              "name": "Krishna Jadhav",
+              "email": "kj4241808@gmail.com@gmail.com",
+              "contact": "8989655811"
+            },
+            "notes": {
+              "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+              "color": "#000099"
+=======
+>>>>>>> cb91edbec0999893d59dd9767f98549e97ae3d42
             }
             
             setTimeout(() => {

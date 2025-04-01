@@ -1,18 +1,10 @@
 const express = require('express');
 const path = require('path');
 const connectdb = require('./config/db'); 
-const dotenv = require('dotenv');
-const Razorpay = require('razorpay');
-const user = require('./models/usermodels');
 const authRouter = require("./routes/auth");
 const session=require('express-session');
-const localStrategy = require('passport-local').Strategy;
-const Payment = require('./models/payment.js');
-const bodyParser = require('body-parser'); 
+const payment = require('./routes/payment.js');
 const cookieParser = require("cookie-parser");
-const usermodels = require('./models/usermodels');
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const { isLoggedIn } = require("./middleware/isLoggedIn");
 const flash = require('connect-flash');
 let club=require('./routes/Club.js');
@@ -56,6 +48,7 @@ app.use(express.static('public'));
 app.use("/auth", authRouter);
 app.use("/club",club)
 app.use("/event",event)
+app.use('/payment',payment)
 
 // const razorpay = new Razorpay({
 //   key_id: process.env.RAZORPAY_KEY_ID,   
