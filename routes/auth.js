@@ -99,14 +99,16 @@ app.post("/login", async (req, res) => {
     );
 
     // Set cookie
+
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict'
     });
 
-    req.flash("success", `Welcome back, ${user.username}!`);
+
     req.session.isLoggedIn = true;
+    req.flash("success", `Welcome back, ${user.username}!`);
     res.redirect("/");
 
   } catch (error) {
@@ -126,7 +128,7 @@ app.get("/logout", (req, res) => {
       sameSite: 'strict'
     });
     req.flash("success", "Successfully logged out");
-   req.session.isLoggedIn = false;
+    req.session.isLoggedIn = false;
     res.redirect("/login");
   } catch (error) {
     console.error("Logout error:", error);
