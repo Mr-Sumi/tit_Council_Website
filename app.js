@@ -3,10 +3,12 @@ const path = require('path');
 const connectdb = require('./config/db'); 
 const authRouter = require("./routes/auth");
 const session=require('express-session');
+const usermodel = require("./models/usermodels");
 const payment = require('./routes/payment.route.js');
 const cookieParser = require("cookie-parser");
 const { isLoggedIn } = require("./middleware/isLoggedIn");
 const flash = require('connect-flash');
+const jwt = require("jsonwebtoken");
 let club=require('./routes/Club.js');
 let event=require('./routes/Event.js')
 
@@ -100,8 +102,9 @@ app.get("/eventPage",(req,res)=>{
   res.render("Events",{isLoggedIn:true});
 })
 
-app.get("/userPage",isLoggedIn,(req,res)=>{
-  res.render("user");
+app.get("/userPage",isLoggedIn,async(req,res)=>{
+  const {enrollment,username,email,phone} = jwt.verify(req.cookies.token, process.env.JWT_TOKEN);
+  res.render("user",{enrollment, username,email,phone});
 })
 
 app.get('/error', (req, res) => {
