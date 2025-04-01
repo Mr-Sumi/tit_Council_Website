@@ -853,6 +853,7 @@ header {
                     <option value="The Mind Game">The Mind Game (9th April) </option>
                     <option value="Robo War">Robo War (10th April) </option>
                     <option value="Robo Race">Robo Race (10th April) </option>
+                    <option value="Hover Hunt">Hover Hunt (10th April) </option>
                 </select>
             </div>
 
@@ -900,42 +901,43 @@ header {
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>
     const eventMaxParticipants = {
-        "Entrepreneurship Stall": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
+        "Entrepreneurship Stall": [ "TRIO", "SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
         "Jamming Session": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER"],
         "Flash Mob": ["SOLO", "DUO", "SQUAD-4-MEMBER"],
         "Bounce & Burst": ["SOLO"],
-        "Pitch-o-Play": ["DUO", "TRIO", "SQUAD-4-MEMBER"],
+        "Pitch-o-Play": ["SOLO"],
         "Art-Byte": ["SOLO"],
         "Qala Sangam": ["SOLO"],
         "Technocrats Got Talent": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER"],
         "IGI 2: Covert Strike": ["SOLO"],
-        "Renewable Model Showcase": ["SOLO"],
+        "Renewable Model Showcase": ["TRIO"],
         "Musical Chair": ["SOLO"],
         "Code Clash 4.0": ["SOLO"],
-        "Mic Drop": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER"],
-        "Filmy Frenzy": ["SOLO"],
-        "Fashion Fusion": ["SOLO", "DUO", "SQUAD-4-MEMBER"],
-        "Corporate Challenge Showdown": ["DUO", "TRIO", "SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
+        "Mic Drop": ["SOLO"],
+        "Filmy Frenzy": ["DUO"],
+        "Fashion Fusion": ["SOLO"],
+        "Corporate Challenge Showdown": ["SOLO"],
         "Free Fire": ["SOLO", "SQUAD-4-MEMBER"],
-        "Spin The Spotlight": ["SOLO", "DUO", "TRIO"],
+        "Spin The Spotlight": ["SOLO"],
         "Buzz Quest": ["SOLO"],
         "Treasure Hunt": ["SQUAD-4-MEMBER"],
-        "Sky High Snap Show": ["SOLO", "DUO", "TRIO"],
-        "Technical Presentation": ["SOLO", "SQUAD-4-MEMBER"],
-        "Dumb Charades": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER"],
-        "Chinese Whisper": ["DUO", "TRIO", "SQUAD-4-MEMBER"],
+        "Sky High Snap Show": ["SOLO", "TRIO"],
+        "Technical Presentation": ["SOLO", "DUO"],
+        "Dumb Charades": [  "SQUAD-4-MEMBER"],
+        "Chinese Whisper": [  "SQUAD-4-MEMBER"],
         "Screen to Speech": ["SOLO"],
         "BGMI": ["SOLO", "SQUAD-4-MEMBER"],
-        "Hackathon": ["DUO", "TRIO", "SQUAD-4-MEMBER"],
+        "Hackathon": [ "SQUAD-4-MEMBER"],
         "TIT Got Latent": ["SOLO"],
         "Pixel Perfect": ["SOLO"],
         "Battle Of Witz": ["SOLO"],
         "Meme Mania": ["SOLO", "DUO"],
-        "Relay Race": ["SOLO"],
-        "Arm Wrestling": ["DUO", "SQUAD-4-MEMBER"],
+        "Relay Race": ["SQUAD-4-MEMBER"],
+        "Arm Wrestling": ["SOLO"],
         "The Mind Game": ["SOLO"],
-        "Robo War": ["SQUAD"],
-        "Robo Race": ["SQUAD"]
+        "Robo War": ["SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
+        "Robo Race": ["SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
+        "Hover Hunt": ["SOLO"]
     };
     
         function calculatePrice(eventName, participantType) {
