@@ -14,7 +14,7 @@ app.get('/events',  (req, res) => {
   // Event details dance route
   
   app.get('/eventdance',  (req, res) => {
-    res.render('Anwesha Event/flash clash', { title: 'Event Page' });
+    res.render('Anwesha Event/flash Mob', { title: 'Event Page' });
   });
   
   app.get('/event',(req,res)=>{
@@ -56,7 +56,7 @@ app.get('/events',  (req, res) => {
   });
   
   app.get('/TEASERQUEST',  (req, res) => {
-    res.render('Anwesha Event/TEASERQUEST', { title: 'TEASERQUEST Page' });
+    res.render('Anwesha Event/Treasure Hunt', { title: 'TEASERQUEST Page' });
   })
   
   
@@ -69,7 +69,7 @@ app.get('/events',  (req, res) => {
   // open mic route
   
   app.get('/mic',  (req, res) => {
-    res.render('Anwesha Event/Open Mic ', { title: 'Open Mic Page' });
+    res.render('Anwesha Event/Mic Drop', { title: 'Open Mic Page' });
   });
   
   //corporte event route
@@ -86,18 +86,14 @@ app.get('/events',  (req, res) => {
   
   // Escape Room Business Crisis route
   
-  app.get('/escape', (req, res) => {
-    res.render('Anwesha Event/Escape Room Business Crisis', { title: 'Escape Room Business Crisis Page' });
-  });
-  
   // running route
   
-  app.get('/running',  (req, res) => {
-    res.render('Anwesha Event/Marathon', { title: 'Running Page' });
+  app.get('/RelayRace',  (req, res) => {
+    res.render('Anwesha Event/RelayRace', { title: 'Running Page' });
   });
   
   app.get('/tug',  (req, res) => {
-    res.render('Anwesha Event/Tug of War', { title: 'Tug of War Page' });
+    res.render('Anwesha Event/ArmWrestling', { title: 'Tug of War Page' });
   });
   
   //bgmi routes
@@ -112,9 +108,30 @@ app.get('/events',  (req, res) => {
     res.render('Anwesha Event/Free Fire', { title: 'Freefire Page' });
   });
 
+  app.get('/QalaSangam',  (req, res) => {
+    res.render('Anwesha Event/Qala Sangam', { title: 'Freefire Page' });
+  });
+
+
     
 app.get('/Quiz', (req, res) => {
-  res.render('Anwesha Event/Technical Quiz ', { title: 'Quiz Page' });
+  res.render('Anwesha Event/Technical Quiz', { title: 'Quiz Page' });
 })
 
-  module.exports = app
+app.get('/ScreenToSpeech', (req, res) => {
+  res.render('Anwesha Event/ScreenToSpeech', { title: 'ScreenToSpeech Page' });
+})
+
+app.get('/meme', (req, res) => {
+  res.render('Anwesha Event/ENTERPRENEURSHIP SALES STALL', { title: 'ScreenToSpeech Page' });
+})
+
+app.get('/hoverhunt', (req, res) => {
+  res.render('Anwesha Event/HoverHunt', { title: 'ScreenToSpeech Page' });
+})
+
+app.get('/SkyHighSnapandSolve', (req, res) => {
+  res.render('Anwesha Event/SkyHighSnapandSolve', { title: 'SkyHigh Snap and Solve' });
+})
+
+module.exports = app
