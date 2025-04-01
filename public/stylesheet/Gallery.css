@@ -45,6 +45,7 @@ body::-webkit-scrollbar {
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
   position: relative;
+  font-weight: 100;
 }
 
 /* Add subtle glow effect */

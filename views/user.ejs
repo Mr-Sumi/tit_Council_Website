@@ -6,7 +6,13 @@
     <title>User Profile | Student Council</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <style>
+        body::-webkit-scrollbar{
+            display: none;
+        }
+    </style>
 </head>
+
 <body class="bg-black min-h-screen">
     <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
         <!-- Profile Header -->
@@ -108,9 +114,6 @@
                             <h3 class="font-medium text-white mb-1">Web Development Fundamentals</h3>
                             <p class="text-sm text-gray-400">Udemy</p>
                         </div>
-                        <span class="text-xs px-2 py-1 bg-green-900/50 text-green-300 rounded">
-                            Verified
-                        </span>
                     </div>
                     <p class="text-sm text-blue-400 mt-2">Issued: January 2024</p>
                 </div>
@@ -228,9 +231,6 @@
                         <h3 class="font-medium text-white mb-1">${fileName.split('.').slice(0, -1).join('.')}</h3>
                         <p class="text-sm text-gray-400">Uploaded Certificate</p>
                     </div>
-                    <span class="text-xs px-2 py-1 bg-yellow-900/50 text-yellow-300 rounded">
-                        Pending Verification
-                    </span>
                 </div>
                 <p class="text-sm text-blue-400 mt-2">Uploaded: ${currentDate}</p>
                 <div class="flex items-center justify-between mt-2">
