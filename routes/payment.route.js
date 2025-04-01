@@ -1,16 +1,7 @@
-<<<<<<< HEAD:routes/payment.route.js
-let express = require('express');
-const Razorpay = require('razorpay');
-let app = express();
-require('dotenv').config();
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> 6a4012c9bef12752efd923e64b10b0f8bdd6e2f5
+const Razorpay = require('razorpay');
 require('dotenv').config();
 const express = require('express');
->>>>>>> 9a0c640e0194969e1c81b642956cbc4134274e41:routes/payment.js
 const router = express.Router();
 const crypto = require('crypto');
 const Registration = require('../models/payment.model');
@@ -354,15 +345,8 @@ router.post('/api/payment/verify', async (req, res) => {
     if (generatedSignature !== signature) {
       return res.status(400).json({ error: 'Invalid signature' });
     }
-<<<<<<< HEAD:routes/payment.route.js
-=======
-<<<<<<< HEAD
-=======
-  
->>>>>>> 6a4012c9bef12752efd923e64b10b0f8bdd6e2f5
 
   module.exports =app;
->>>>>>> 9a0c640e0194969e1c81b642956cbc4134274e41:routes/payment.js
     
     // Check if order data exists in session
     if (req.session.orderData && req.session.orderData.orderId === razorpayOrderId) {
@@ -428,7 +412,6 @@ router.get('/success', (req, res) => {
   }
 });
 
-<<<<<<< HEAD:routes/payment.route.js
 // Get registrations by event (admin function)
 router.get('/registrations/:event', async (req, res) => {
   try {
@@ -444,6 +427,4 @@ router.get('/registrations/:event', async (req, res) => {
 });
 
 module.exports = router;
-=======
 module.exports = router;
->>>>>>> 9a0c640e0194969e1c81b642956cbc4134274e41:routes/payment.js
