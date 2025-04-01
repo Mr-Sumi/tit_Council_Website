@@ -44,15 +44,19 @@
         <li><a href="/faculty">Mentors</a></li>
         <li><a href="/gallery">Gallery</a></li>
         <% if(isLoggedIn){ %>
-            <a href="/userPage" class="user-icon">
-                <i class="ri-user-3-line"></i>
-            </a>
+            <li id="profile-menu">
+                <a href="/userPage" class="user-icon">
+                    <i class="ri-user-3-line"></i>
+                </a>
+            </li>
         <% } else { %>
-            <li id="desktop-login-btn">
+            <li id="login-btn">
                 <a href="/login" class="loginButton">Login</a>
             </li>
         <% } %>
-		    <i class="ri-menu-line" aria-label="Toggle Mobile Menu"></i>
+        <li>
+            <i class="ri-menu-line" aria-label="Toggle Mobile Menu"></i>
+        </li>
     </ul>
 </nav>
 
@@ -384,45 +388,7 @@
     <!-- Scripts -->
     <script src="javascript/student.js"></script>
     <script src="javascript/navbaar.js"></script>
-<script>
-        // Mobile Navigation
-  const navSilde = document.querySelector(".navSlide");
-  const HomeIcon = document.querySelector("nav .nav-links i"); 
-        const closeIcon = document.querySelector(".navSlide .icon i");
-        
-        HomeIcon.addEventListener("click", () => {
-            navSilde.style.right = "0%";
-        });
-        
-        closeIcon.addEventListener("click", () => {
-            navSilde.style.right = "-100%";
-        });
 
-        // Authentication Functions
-function checkLoginStatus() {
-  fetch('/current_user')
-    .then(response => response.json())
-    .then(data => {
-                    const loginBtn = document.getElementById('login-btn');
-                    const profileMenu = document.getElementById('profile-menu');
-                    
-      if (data.loggedIn) {
-                        loginBtn.classList.add('hidden');
-                        profileMenu.classList.remove('hidden');
-      } else {
-                        loginBtn.classList.remove('hidden');
-                        profileMenu.classList.add('hidden');
-                    }
-                })
-                .catch(error => console.error('Error checking login status:', error));
-        }
-
-        // Initialize on load
-        window.addEventListener('load', checkLoginStatus);
-
-        // Update copyright year
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-</script>
     <script src="/javascript/preloader.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ const session=require('express-session');
 const usermodel = require("./models/usermodels");
 const payment = require('./routes/payment.route.js');
 const cookieParser = require("cookie-parser");
-const { isLoggedIn } = require("./middleware/isLoggedIn");
+const {isLoggedIn}  = require("./middleware/isLoggedIn");
 const flash = require('connect-flash');
 const jwt = require("jsonwebtoken");
 let club=require('./routes/Club.js');
@@ -43,6 +43,12 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash('error');
   next();
 });
+
+// app.use((req, res, next) => {
+//   console.log("Session isLoggedIn:", req.session.isLoggedIn); // Debugging
+//   res.locals.isLoggedIn = req.session.isLoggedIn || false;
+//   next();
+// });
 
 
 app.use(express.static('public')); 

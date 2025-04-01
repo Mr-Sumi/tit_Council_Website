@@ -108,6 +108,7 @@ app.post("/login", async (req, res) => {
 
 
     req.session.isLoggedIn = true;
+    console.log("Login Successful: Session isLoggedIn =", req.session.isLoggedIn); 
     req.flash("success", `Welcome back, ${user.username}!`);
     res.redirect("/");
 
@@ -129,6 +130,7 @@ app.get("/logout", (req, res) => {
     });
     req.flash("success", "Successfully logged out");
     req.session.isLoggedIn = false;
+    console.log("Logout Successful: Session isLoggedIn =", req.session.isLoggedIn);
     res.redirect("/login");
   } catch (error) {
     console.error("Logout error:", error);
