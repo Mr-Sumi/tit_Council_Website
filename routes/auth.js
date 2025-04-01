@@ -45,7 +45,7 @@ app.post("/register", async(req, res) => {
     });
 
     const token = jwt.sign(
-      { username, enrollment },
+      { username, enrollment, email, phone },
       process.env.JWT_TOKEN,
       { expiresIn: '6h' }
     );
@@ -93,7 +93,7 @@ app.post("/login", async (req, res) => {
 
     // Generate token
     const token = jwt.sign(
-      { enrollment: user.enrollment, username: user.username },
+      { enrollment: user.enrollment, username: user.username , email: user.email, phone: user.phone },
       process.env.JWT_TOKEN,
       { expiresIn: "6h" }
     );
