@@ -347,19 +347,14 @@ router.post('/api/payment/verify', async (req, res) => {
     return res.status(400).json({ error: 'Invalid signature' });
   }  
   
-<<<<<<< HEAD
   // // Check if order data exists in session
   //   if (generatedSignature !== signature) {
   //     return res.status(400).json({ error: 'Invalid signature' });
   //   }
 
   // module.exports =app;
-=======
+
   // Check if order data exists in session
-    if (generatedSignature !== signature) {
-      return res.status(400).json({ error: 'Invalid signature' });
-    }
->>>>>>> ebeedd38dd4f4aa78c9391fc7816ab622330cd0c
     
     // Check if order data exists in session
     if (req.session.orderData && req.session.orderData.orderId === razorpayOrderId) {
