@@ -6,8 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/a85c40c7f4.js" crossorigin="anonymous"></script>  
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="../stylesheet/navbaar.css">    
-  <link rel="stylesheet" href="../stylesheet/Student.css">
+  <link rel="stylesheet" href="/stylesheet/navbaar.css">    
+  <link rel="stylesheet" href="/stylesheet/Student.css">
+  <link rel="stylesheet" href="/stylesheet/login.css">
+
 
   <title>Login with Student Council</title>
   <style>
@@ -980,35 +982,7 @@
 </head>
 
 <body>
-  <div class="navSlide">
-    <div class="icon">
-     <i class="ri-close-large-line"></i>
-    </div>
-     <ul class="NavLinks">
-       <li><a href="/">Home</a></li>
-       <li><a href="/members">Members</a></li>
-       <li><a href="/clubs">Clubs</a></li>
-       <li><a href="/faculty">Mentors</a></li>
-       <li><a href="/gallery">Event Gallary</a></li>
-       <li><a href="/login" class="loginButton">Login</a></li>   
-   </ul>
-   </div>
-  <nav>
-    <div class="logo">
-        <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
-        <h1>STUDENT COUNCIL</h1>
-    </div>
-    <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/members">Members</a></li>
-        <li><a href="/clubs">Clubs</a></li>
-        <li><a href="/faculty">Mentors</a></li>
-        <li><a href="/gallery">Event Gallary</a></li>
-        <i class="ri-menu-line"></i>
-    </ul>
-    
-</nav>
-
+  <%- include('partials/nav') %>
 
 <% if (error_msg.length > 0) { %>
   <div class="message error-message">
@@ -1196,7 +1170,7 @@
                 const year = date.getFullYear();
                 
                 // Store formatted date for form submission
-                this.setAttribute('data-formatted', ${day}/${month}/${year});
+                this.setAttribute('data-formatted', `${day}/${month}/${year}`);
             }
         });
     });
@@ -1437,7 +1411,7 @@
   });
 
   </script>
-  <script src="javascript/navbaar.js"></script>
+  <script src="/javascript/navbaar.js"></script>
 </body>
 
 </html>
