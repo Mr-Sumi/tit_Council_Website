@@ -154,24 +154,40 @@
             <!-- Step 3: Number of Participants -->
             <div class="form-step" data-step="3">
                 <h2>Step 3: Number of Participants</h2>
-            <div class="form-group">
-                <label for="number">Number of Participants</label>
-                    <select class="select-scrollable" id="number" name="number" onchange="displayParticipantDetails()" required placeholder="Select number of participants">
-                        <option value="" disabled selected>Select number of participants</option>
-                        <!-- Add options dynamically via JavaScript if needed -->
-                </select>
-            </div>
+                
+                <div class="form-group">
+                    <label for="number">Number of Participants</label>
+                    <div class="select-wrapper">
+                        <select 
+                            class="select-scrollable"
+                            id="number" 
+                            name="number" 
+                            onchange="displayParticipantDetails()" 
+                            required
+                        >
+                            <option value="" disabled selected>Select number of participants</option>
+                            <option value="1">1 Participant</option>
+                            <option value="2">2 Participants</option>
+                            <option value="3">3 Participants</option>
+                            <option value="4">4 Participants</option>
+                            <option value="5">5 Participants</option>
+                        </select>
+                    </div>
+                </div>
 
+                <!-- Participants Details Container -->
                 <div id="participantsDetails" class="participants-container">
                     <!-- Participant details will be dynamically added here -->
-            </div>
+                </div>
 
+                <!-- Navigation Buttons -->
                 <div class="form-navigation">
                     <button type="button" class="nav-button prev-button" data-prev="3">
-                        <span class="button-text">Previous</span>
-            </button>
+                        <span>Previous</span>
+                    </button>
+                    
                     <button type="button" class="nav-button next-button" data-next="4">
-                        <span class="button-text">Next</span>
+                        <span>Next</span>
                     </button>
                 </div>
             </div>
@@ -345,27 +361,36 @@
         const eventSelect = document.getElementById("events");
         const numberSelect = document.getElementById("number");
         const selectedEvent = eventSelect.value;
-        const carnivalSubOptions = document.getElementById("carnivalSubOptions");
+        const participantsDetails = document.getElementById("participantsDetails");
 
+        // Clear existing options and participant details
         numberSelect.innerHTML = '<option value="" disabled selected>Select number of participants</option>';
+        participantsDetails.innerHTML = "";
+        
+        // Reset price display
+        document.getElementById("calculatedPrice").textContent = "0";
+        document.getElementById("priceDisplay").style.display = "none";
 
-        if (selectedEvent === "CARNIVAL CRAFT/ POSTER MAKING, SLOGAN WRITING") {
-            carnivalSubOptions.style.display = "block";
-        } else {
-            carnivalSubOptions.style.display = "none";
-        }
-
-        if (eventMaxParticipants[selectedEvent]) {
-            const participantOptions = eventMaxParticipants[selectedEvent];
-            participantOptions.forEach(option => {
-                const newOption = document.createElement("option");
-                    newOption.value = option.toLowerCase();
-                newOption.textContent = option;
-                numberSelect.appendChild(newOption);
-            });
-        }
+        // Get allowed participant types for the selected event
+        const allowedTypes = eventMaxParticipants[selectedEvent] || [];
+        
+        // Add new options based on allowed types
+        allowedTypes.forEach(type => {
+            const option = document.createElement('option');
+            option.value = type.toLowerCase();
             
-            document.getElementById("priceDisplay").style.display = "none";
+            // Format the display text
+            const displayText = {
+                'solo': '1 Participant (Solo)',
+                'duo': '2 Participants (Duo)',
+                'trio': '3 Participants (Trio)',
+                'squad-4-member': '4 Participants (Squad)',
+                'squad-5-member': '5 Participants (Squad)'
+            }[type.toLowerCase()] || type;
+            
+            option.textContent = displayText;
+            numberSelect.appendChild(option);
+        });
     }
 
     function displayParticipantDetails() {
@@ -976,72 +1001,68 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 function validateEnrollment(input) {
-    // Remove any non-alphanumeric characters
-    let value = input.value.replace(/[^a-zA-Z0-9]/g, '');
+    const value = input.value.toUpperCase();
+    const enrollmentRegex = /^[0-9]{4}[A-Z]{2}[0-9]{6}$/;
+    const errorContainer = input.parentElement.querySelector('.field-error') || 
+                          document.createElement('div');
     
-    // Convert to uppercase for consistency
-    value = value.toUpperCase();
+    errorContainer.className = 'field-error';
     
-    // Format: YYYYBBNNNNNN (Y=Year, B=Branch, N=Number)
-    if (value.length <= 4) {
-        // First 4 characters are numbers (year)
-        value = value.replace(/[^0-9]/g, '');
-    } else if (value.length <= 6) {
-        // Next 2 characters are letters (branch)
-        const numbers = value.slice(0, 4);
-        const letters = value.slice(4).replace(/[^A-Z]/g, '');
-        value = numbers + letters;
-    } else {
-        // Last 6 characters are numbers
-        const numbers = value.slice(0, 4);
-        const letters = value.slice(4, 6).replace(/[^A-Z]/g, '');
-        const lastNumbers = value.slice(6).replace(/[^0-9]/g, '');
-        value = numbers + letters + lastNumbers;
+    if (!value) {
+        showFieldError(input, 'Enrollment number is required');
+        return false;
     }
-
-    // Update input value
-    input.value = value;
-
-    // Validate the format
-    const isValid = /^[0-9]{4}[A-Z]{2}[0-9]{6}$/.test(value);
     
-    // Visual feedback
-    if (value.length === 12) {
-        if (isValid) {
-            input.classList.remove('error');
-            input.classList.add('valid');
-            // Remove error message if exists
-            const errorMsg = input.parentElement.querySelector('.error-message');
-            if (errorMsg) errorMsg.remove();
-        } else {
-            input.classList.add('error');
-            input.classList.remove('valid');
-            // Show error message
-            showEnrollmentError(input, 'Format: YYYY(year) BB(branch) NNNNNN(number)');
-        }
-    } else if (value.length > 0) {
-        input.classList.add('error');
-        input.classList.remove('valid');
-        // Show error message
-        showEnrollmentError(input, 'Enrollment number must be 12 characters');
+    if (!enrollmentRegex.test(value)) {
+        showFieldError(input, 'Format: YYYY(year) BB(branch) NNNNNN(number)');
+        return false;
     }
-
-    return isValid;
+    
+    // Valid enrollment
+    removeFieldError(input);
+    return true;
 }
 
-function showEnrollmentError(input, message) {
-    // Remove existing error message if any
-    const existingError = input.parentElement.querySelector('.error-message');
-    if (existingError) {
-        existingError.remove();
+function showFieldError(input, message) {
+    const formGroup = input.closest('.form-group');
+    let errorDiv = formGroup.querySelector('.field-error');
+    
+    if (!errorDiv) {
+        errorDiv = document.createElement('div');
+        errorDiv.className = 'field-error';
+        formGroup.appendChild(errorDiv);
     }
-
-    // Create and add new error message
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message';
+    
     errorDiv.textContent = message;
-    input.parentElement.appendChild(errorDiv);
+    input.classList.add('error');
 }
-  </script>
+
+function removeFieldError(input) {
+    const formGroup = input.closest('.form-group');
+    const errorDiv = formGroup.querySelector('.field-error');
+    
+    if (errorDiv) {
+        errorDiv.remove();
+    }
+    
+    input.classList.remove('error');
+}
+
+function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + ' bytes';
+    if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / 1048576).toFixed(1) + ' MB';
+}
+
+// Initialize everything when the document is ready
+document.addEventListener('DOMContentLoaded', () => {
+    initializeFormNavigation();
+    document.querySelectorAll('.file-drop-area').forEach(initializeFileUpload);
+    
+    // Initialize event selection
+    const eventSelect = document.getElementById('events');
+    eventSelect.addEventListener('change', updateParticipantsOption);
+});
+</script>
  </body>
 </html>
