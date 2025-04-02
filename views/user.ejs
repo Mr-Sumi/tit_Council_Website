@@ -12,21 +12,59 @@
         body::-webkit-scrollbar{
             display: none;
         }
+        /* Profile Photo Hover Effects */
+        .group:hover .border-zinc-800 {
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        /* Animation for photo update */
+        #profileImage {
+            transition: transform 0.2s ease-out;
+        }
+
+        /* Success Message Animation */
+        @keyframes slideIn {
+            from {
+                transform: translateY(-1rem);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
 <body class="bg-black min-h-screen">
     <%- include('partials/preloader') %>
+    <%- include('partials/navbar') %>
     <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
         <!-- Profile Header -->
         <div class="bg-zinc-900 rounded-lg shadow-sm p-6 mb-6">
             <div class="flex flex-col sm:flex-row items-center gap-6">
-                <img src="/image folder/default-avatar.png" 
-                     alt="Profile Picture" 
-                     class="w-32 h-32 rounded-full object-cover border-4 border-zinc-800 shadow-sm">
+                <!-- Profile Photo Container with Edit Option -->
+                <div class="relative group">
+                    <img src="/image folder/default-avatar.png" 
+                         alt="Profile Picture" 
+                         id="profileImage"
+                         class="w-32 h-32 rounded-full object-cover border-4 border-zinc-800 shadow-sm transition-all duration-300 group-hover:opacity-75">
+                    
+                    <!-- Edit Photo Overlay -->
+                    <label class="absolute inset-0 flex items-center justify-center rounded-full cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
+                        <span class="flex flex-col items-center text-white">
+                            <i class="ri-camera-line text-2xl mb-1"></i>
+                            <span class="text-xs">Change Photo</span>
+                        </span>
+                        <input type="file" 
+                               class="hidden" 
+                               id="profilePhotoInput"
+                               accept="image/*"
+                               onchange="handleProfilePhotoChange(this)">
+                    </label>
+                </div>
                 
                 <div class="text-center sm:text-left">
-                  
                     <h1 class="text-2xl font-bold text-white"><%= username %></h1>
                     <p class="text-gray-400 mb-2">Student Council</p>
                     <div class="flex flex-wrap gap-2">
@@ -256,6 +294,63 @@
             // Reset file input
             input.value = '';
         }
+    }
+
+    // Add this new function for handling profile photo changes
+    function handleProfilePhotoChange(input) {
+        const file = input.files[0];
+        if (file) {
+            // Validate file type
+            if (!file.type.startsWith('image/')) {
+                alert('Please select an image file');
+                return;
+            }
+
+            // Validate file size (max 5MB)
+            const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+            if (file.size > maxSize) {
+                alert('File size should be less than 5MB');
+                return;
+            }
+
+            // Create preview
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const profileImage = document.getElementById('profileImage');
+                profileImage.src = e.target.result;
+                
+                // Add a subtle animation
+                profileImage.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    profileImage.style.transform = 'scale(1)';
+                }, 200);
+
+                // Here you would typically upload the file to your server
+                // For now, we'll just show a success message
+                showPhotoUpdateMessage();
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Function to show a success message
+    function showPhotoUpdateMessage() {
+        // Create message element
+        const message = document.createElement('div');
+        message.className = 'fixed top-4 right-4 bg-green-900/90 text-green-300 px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 transform translate-y-[-1rem] opacity-0 transition-all duration-300';
+        message.innerHTML = `
+            <i class="ri-check-line"></i>
+            <span>Profile photo updated successfully</span>
+        `;
+
+        // Add to document
+        document.body.appendChild(message);
+
+        // Trigger animation
+        setTimeout(() => {
+            message.style.transform = 'translate-y(0)';
+            message.style.opacity = '1';
+        }, 3000); // Hide after 3 seconds
     }
     </script>
     <script src="/javascript/preloader.js"></script>
