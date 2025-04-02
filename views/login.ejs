@@ -1028,13 +1028,18 @@
   <h2 class="title">Sign in</h2>
 
   <div class="input-field">
-      <i class="fas fa-user"></i>
-      <input type="text" 
-          class="<%= error_msg ? 'border-red-500 border-2' : 'border-black-900 border-2' %>" 
-          placeholder="Enrollment Number" 
-          name="enrollment" 
-          required
-      />
+    <i class="ri-id-card-line"></i>
+    <input 
+        type="text" 
+        placeholder="Enrollment Number" 
+        name="enrollment" 
+        pattern="^[a-zA-Z0-9]+$"
+        maxlength="12"
+        oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '')"
+        onkeyup="validateEnrollment(this)"
+        required 
+    />
+    <small class="error-text"></small>
   </div>
 
   <div class="input-field">
@@ -1062,7 +1067,7 @@
   </div>
 
   <div class="input-field">
-    <i class="ri-user-line"></i>
+    <i class="ri-id-card-line"></i>
     <input 
         type="text" 
         placeholder="Enrollment Number" 
@@ -1111,7 +1116,7 @@
       <input type="date" name="dob" required placeholder="Date of Birth" />
   </div>
 
-  <p class="password_section">*Your Date of Birth is your password in format DDMMYYYY*</p>
+  <p class="password_section">Your Date of Birth is your password in format DDMMYYYY</p>
   <input type="submit" class="btn" value="Sign up" />
 </form>
 
@@ -1191,7 +1196,7 @@
                 const year = date.getFullYear();
                 
                 // Store formatted date for form submission
-                this.setAttribute('data-formatted', `${day}/${month}/${year}`);
+                this.setAttribute('data-formatted', ${day}/${month}/${year});
             }
         });
     });

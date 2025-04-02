@@ -344,48 +344,12 @@
         </div>
 </footer>
 
+
+
+
     <!-- Scripts -->
     <script src="javascript/student.js"></script>
     <script src="javascript/navbaar.js"></script>
-<script>
-        // Mobile Navigation
-  const navSilde = document.querySelector(".navSlide");
-  const HomeIcon = document.querySelector("nav .nav-links i"); 
-        const closeIcon = document.querySelector(".navSlide .icon i");
-        
-        HomeIcon.addEventListener("click", () => {
-            navSilde.style.right = "0%";
-        });
-        
-        closeIcon.addEventListener("click", () => {
-            navSilde.style.right = "-100%";
-        });
-
-        // Authentication Functions
-function checkLoginStatus() {
-  fetch('/current_user')
-    .then(response => response.json())
-    .then(data => {
-                    const loginBtn = document.getElementById('login-btn');
-                    const profileMenu = document.getElementById('profile-menu');
-                    
-      if (data.loggedIn) {
-                        loginBtn.classList.add('hidden');
-                        profileMenu.classList.remove('hidden');
-      } else {
-                        loginBtn.classList.remove('hidden');
-                        profileMenu.classList.add('hidden');
-                    }
-                })
-                .catch(error => console.error('Error checking login status:', error));
-        }
-
-        // Initialize on load
-        window.addEventListener('load', checkLoginStatus);
-
-        // Update copyright year
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-</script>
     <script src="/javascript/preloader.js"></script>
 </body>
 </html>
