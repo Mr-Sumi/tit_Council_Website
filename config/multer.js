@@ -22,6 +22,7 @@ const storage = new CloudinaryStorage({
   },
 });
 
+
 // 🔹 File Filter (Only Allow PDF, JPG, PNG, JPEG)
 const fileFilter = (req, file, cb) => {
   const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf'];
@@ -33,6 +34,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
+
 // 🔹 Multer Upload Middleware
 const upload = multer({
   storage: storage,
@@ -40,7 +42,6 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 }, // ⏫ Increased limit: 10MB
 });
 
-// 🔹 Function to Convert File Buffer to Hexadecimal (For Images)
 const fileToHex = (buffer) => {
   return buffer.toString('hex');
 };
