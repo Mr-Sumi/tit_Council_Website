@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/stylesheet/navbaar.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <style>
         body::-webkit-scrollbar{
             display: none;
@@ -33,12 +35,83 @@
                 opacity: 1;
             }
         }
+
+        /* Cropper Modal Styles */
+        #cropperModal {
+            backdrop-filter: blur(5px);
+        }
+
+        #cropperModal .cropper-view-box,
+        #cropperModal .cropper-face {
+            border-radius: 50%;
+        }
+
+        #cropperModal .cropper-view-box {
+            box-shadow: 0 0 0 1px #39c;
+            outline: 0;
+        }
+
+        #cropperModal .cropper-face {
+            background-color: inherit !important;
+        }
+
+        /* Ensure the cropper container maintains aspect ratio */
+        .cropper-container {
+            width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 1;
+        }
+
+        /* Animation for modal */
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #cropperModal > div {
+            animation: modalFadeIn 0.3s ease-out;
+        }
     </style>
 </head>
 
 <body class="bg-black min-h-screen">
     <%- include('partials/preloader') %>
-    <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+
+    <div class="navSlide">
+        <div class="icon">
+         <i class="ri-close-large-line"></i>
+        </div>
+         <ul class="NavLinks">
+           <li><a href="/">Home</a></li>
+           <li><a href="/members">Members</a></li>
+           <li><a href="/clubs">Clubs</a></li>
+           <li><a href="/faculty">Mentors</a></li>
+           <li><a href="/gallery">Event Gallary</a></li>
+           <li><a href="/login" class="loginButton">Login</a></li>   
+       </ul>
+       </div>
+    <nav>
+        <div class="logo">
+            <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
+            <h1>STUDENT COUNCIL</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/members">Members</a></li>
+            <li><a href="/clubs">Clubs</a></li>
+            <li><a href="/faculty">Mentors</a></li>
+            <li><a href="/gallery">Event Gallary</a></li>
+            <i class="ri-menu-line"></i>
+        </ul>
+    </nav>
+
+    <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 mt-20">
         <!-- Profile Header -->
         <div class="bg-zinc-900 rounded-lg shadow-sm p-6 mb-6">
             <div class="flex flex-col sm:flex-row items-center gap-6">
@@ -213,6 +286,15 @@
 
     <!-- Add this script at the end of the body -->
     <script>
+    // Add these variables at the top of your script
+    let cropper = null;
+    let cropperModal = null;
+
+    // Initialize modal reference
+    document.addEventListener('DOMContentLoaded', function() {
+        cropperModal = document.getElementById('cropperModal');
+    });
+
     function toggleSkillInput() {
         const inputContainer = document.getElementById('skillInputContainer');
         const addButton = document.getElementById('addSkillBtn');
@@ -295,7 +377,7 @@
         }
     }
 
-    // Add this new function for handling profile photo changes
+    // Update handleProfilePhotoChange function
     function handleProfilePhotoChange(input) {
         const file = input.files[0];
         if (file) {
@@ -312,24 +394,87 @@
                 return;
             }
 
-            // Create preview
+            // Read file and initialize cropper
             const reader = new FileReader();
             reader.onload = function(e) {
-                const profileImage = document.getElementById('profileImage');
-                profileImage.src = e.target.result;
+                // Show modal
+                cropperModal.classList.remove('hidden');
                 
-                // Add a subtle animation
-                profileImage.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    profileImage.style.transform = 'scale(1)';
-                }, 200);
-
-                // Here you would typically upload the file to your server
-                // For now, we'll just show a success message
-                showPhotoUpdateMessage();
+                // Initialize cropper
+                const cropperImage = document.getElementById('cropperImage');
+                cropperImage.src = e.target.result;
+                
+                // Destroy existing cropper if it exists
+                if (cropper) {
+                    cropper.destroy();
+                }
+                
+                // Initialize new cropper
+                cropper = new Cropper(cropperImage, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                    dragMode: 'move',
+                    autoCropArea: 1,
+                    restore: false,
+                    guides: true,
+                    center: true,
+                    highlight: false,
+                    cropBoxMovable: true,
+                    cropBoxResizable: true,
+                    toggleDragModeOnDblclick: false,
+                });
             };
             reader.readAsDataURL(file);
         }
+    }
+
+    // Function to close the cropper modal
+    function closeCropperModal() {
+        cropperModal.classList.add('hidden');
+        if (cropper) {
+            cropper.destroy();
+            cropper = null;
+        }
+        // Reset file input
+        document.getElementById('profilePhotoInput').value = '';
+    }
+
+    // Function to save the cropped image
+    function saveCroppedImage() {
+        if (!cropper) return;
+
+        // Get cropped canvas
+        const canvas = cropper.getCroppedCanvas({
+            width: 400,    // Output image width
+            height: 400,   // Output image height
+        });
+
+        // Convert canvas to blob
+        canvas.toBlob((blob) => {
+            // Update profile image preview
+            const profileImage = document.getElementById('profileImage');
+            profileImage.src = canvas.toDataURL();
+            
+            // Add animation
+            profileImage.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                profileImage.style.transform = 'scale(1)';
+            }, 200);
+
+            // Here you would typically upload the blob to your server
+            // const formData = new FormData();
+            // formData.append('profile_photo', blob, 'profile_photo.jpg');
+            // fetch('/api/upload-profile-photo', {
+            //     method: 'POST',
+            //     body: formData
+            // });
+
+            // Show success message
+            showPhotoUpdateMessage();
+            
+            // Close modal
+            closeCropperModal();
+        }, 'image/jpeg', 0.9);
     }
 
     // Function to show a success message
@@ -354,5 +499,34 @@
     </script>
     <script src="/javascript/preloader.js"></script>
     <script src="/javascript/navbaar.js"></script>
+
+    <!-- Image Cropper Modal -->
+    <div id="cropperModal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-zinc-900 rounded-lg max-w-2xl w-full p-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-white">Crop Profile Photo</h3>
+                <button onclick="closeCropperModal()" class="text-gray-400 hover:text-white">
+                    <i class="ri-close-line text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Cropper Container -->
+            <div class="relative aspect-square w-full mb-4 bg-zinc-800 rounded-lg overflow-hidden">
+                <img id="cropperImage" src="" class="max-w-full">
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex justify-end gap-3">
+                <button onclick="closeCropperModal()" 
+                        class="px-4 py-2 text-gray-400 hover:text-white transition-colors">
+                    Cancel
+                </button>
+                <button onclick="saveCroppedImage()" 
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                    Save Photo
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
