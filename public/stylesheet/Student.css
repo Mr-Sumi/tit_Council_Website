@@ -804,29 +804,8 @@ a {
   color: #ffffff;
 }
 
-.newsletter-form {
-  margin-top: 1.5rem;
-  position: relative;
-}
 
-.newsletter-form input {
-  width: 100%;
-  padding: 1rem 1.5rem;
-  border-radius: 9999px;
-  background: #242424;
-  border: 1px solid #292929;
-  color: #fff;
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-  transition: all 0.3s ease;
-}
-
-.newsletter-form input:focus {
-  outline: none;
-  border-color: #ffffff;
-}
-
-.newsletter-form button {
+.button-news {
   width: 100%;
   padding: 1rem;
   border-radius: 9999px;
