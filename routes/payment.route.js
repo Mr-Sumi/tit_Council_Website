@@ -349,8 +349,6 @@ router.post('/api/payment/verify', async (req, res) => {
     if (generatedSignature !== signature) {
       return res.status(400).json({ error: 'Invalid signature' });
     }
-
-  module.exports =app;
     
     // Check if order data exists in session
     if (req.session.orderData && req.session.orderData.orderId === razorpayOrderId) {
