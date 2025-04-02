@@ -1,57 +1,27 @@
-  <!-- Mobile Navigation -->
-  <div class="navSlide" aria-label="Mobile Navigation">
+<div class="navSlide">
     <div class="icon">
-     <i class="ri-close-large-line" aria-label="Close Menu"></i>
+     <i class="ri-close-large-line"></i>
     </div>
      <ul class="NavLinks">
        <li><a href="/">Home</a></li>
        <li><a href="/members">Members</a></li>
        <li><a href="/clubs">Clubs</a></li>
        <li><a href="/faculty">Mentors</a></li>
-       <li><a href="/gallery">Event Gallery</a></li>
-       <% if(isLoggedIn){ %>
-           <li class="mobile-user">
-               <a href="/userPage" class="user-icon" aria-label="User Profile">
-                   <i class="ri-user-3-line"></i>
-                   <span>Profile</span>
-               </a>
-           </li>
-       <% } else { %>
-           <li class="mobile-login">
-               <a href="/login" class="loginButton" aria-label="Login">
-                   <i class="ri-login-box-line"></i>
-                   <span>Login</span>
-               </a>
-           </li>
-       <% } %>
+       <li><a href="/gallery">Event Gallary</a></li>
+       <li><a href="/login" class="loginButton">Login</a></li>   
    </ul>
    </div>
-
-<!-- Main Navigation -->
-<nav aria-label="Main Navigation">
-<div class="logo">
-        <img class="image-logo" src="/image folder/Student council png.png" alt="Council Logo" title="council logo">
+<nav>
+    <div class="logo">
+        <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
         <h1>STUDENT COUNCIL</h1>
-</div>
-<ul class="nav-links">
-    <li><a href="/" aria-current="page">Home</a></li>
-    <li><a href="/members">Members</a></li>
-    <li><a href="/clubs">Clubs</a></li>
-    <li><a href="/faculty">Mentors</a></li>
-    <li><a href="/gallery">Gallery</a></li>
-    <% if(isLoggedIn){ %>
-        <li class="user-profile">
-            <a href="/userPage" class="user-icon" aria-label="User Profile">
-                <i class="ri-user-3-line"></i>
-            </a>
-        </li>
-    <% } else { %>
-        <li class="login-item">
-            <a href="/login" class="loginButton" aria-label="Login">Login</a>
-        </li>
-    <% } %>
-    <li class="menu-toggle">
-        <i class="ri-menu-line" aria-label="Toggle Mobile Menu"></i>
-    </li>
-</ul>
+    </div>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/members">Members</a></li>
+        <li><a href="/clubs">Clubs</a></li>
+        <li><a href="/faculty">Mentors</a></li>
+        <li><a href="/gallery">Event Gallary</a></li>
+        <li><a href="/login" class="loginButton">Login</a></li>   
+    </ul>
 </nav>

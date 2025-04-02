@@ -88,9 +88,22 @@
                 <input type="text" id="college" name="college" required placeholder="Enter your college name">
             </div>
             <div class="form-group">
+                <div class="input-field">
                     <label for="contact">Contact Number</label>
-                    <input type="tel" id="contact" name="contact" required pattern="[6-9]{10}" title="Please enter a valid 10 digit number" maxlength="10" minlength="10" 
-                    placeholder="Enter your 10 digit Mobile Number" >
+                    <input 
+                        type="tel" 
+                        id="contact"
+                        placeholder="Phone Number" 
+                        name="phone" 
+                        minlength="10"
+                        maxlength="10"
+                        pattern="[6-9][0-9]{9}"
+                        oninput="validatePhoneNumber(this)"
+                        onkeypress="return onlyNumbers(event)"
+                        required 
+                    />
+                    <small class="error-text"></small>
+                </div>
                 </div>
                 <div class="form-navigation">
                     <button type="button" class="nav-button prev-button" data-prev="1">Previous</button>
@@ -576,6 +589,105 @@
         else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
         else return (bytes / 1048576).toFixed(1) + ' MB';
     }
+
+// phone number validator
+
+function validatePhoneNumber(input) {
+    const errorText = input.parentElement.querySelector('.error-text');
+    let value = input.value.replace(/\D/g, ''); // Remove non-digits
+    
+    // Ensure only numbers are entered
+    input.value = value;
+    
+    // Validation logic
+    if (value.length > 0) {
+        if (value.length < 10) {
+            input.classList.add('error');
+            errorText.textContent = 'Phone number must be 10 digits';
+            return false;
+        } else if (value.length > 10) {
+            input.value = value.slice(0, 10); // Trim to 10 digits
+        } else if (!/^[6-9]\d{9}$/.test(value)) {
+            input.classList.add('error');
+            errorText.textContent = 'Enter a valid phone number';
+            return false;
+        } else {
+            input.classList.remove('error');
+            errorText.textContent = '';
+            return true;
+        }
+    } else {
+        input.classList.remove('error');
+        errorText.textContent = '';
+    }
+  }
+
+  // Add form submission validation
+  document.querySelector('form').addEventListener('submit', function(event) {
+    const phoneInput = this.querySelector('input[name="phone"]');
+    if (!validatePhoneNumber(phoneInput)) {
+        event.preventDefault();
+    }
+  });
+
+  function onlyNumbers(event) {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const messages = document.querySelectorAll('.message');
+    
+    if (messages.length > 0) {
+        messages.forEach(message => {
+            // Remove message after 10 seconds
+            setTimeout(() => {
+                message.addEventListener('animationend', function(e) {
+                    if (e.animationName === 'fadeOut') {
+                        message.remove();
+                    }
+                });
+            }, 10000);
+
+            // Add close button
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '×';
+            closeBtn.className = 'message-close';
+            closeBtn.style.cssText = `
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: none;
+                border: none;
+                color: currentColor;
+                font-size: 1.5rem;
+                cursor: pointer;
+                opacity: 0.7;
+                transition: opacity 0.3s ease;
+            `;
+            
+            closeBtn.addEventListener('mouseover', () => closeBtn.style.opacity = '1');
+            closeBtn.addEventListener('mouseout', () => closeBtn.style.opacity = '0.7');
+            
+            closeBtn.addEventListener('click', () => {
+                message.style.animation = 'fadeOut 0.3s ease-in forwards';
+                message.addEventListener('animationend', function(e) {
+                    if (e.animationName === 'fadeOut') {
+                        message.remove();
+                    }
+                });
+            });
+            
+            message.appendChild(closeBtn);
+        });
+    }
+  });
+
+
 </script>
   <script>
     document.getElementById('rzp-button1').onclick = function(e) {

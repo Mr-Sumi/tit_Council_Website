@@ -8,6 +8,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
+
 // Configure multer storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -149,8 +150,9 @@ function calculatePrice(eventName, participantType) {
 router.post('/create/orderId', async (req, res) => {
   try {
     const { amount, event, participantType, college } = req.body;
+    console.log(req.body);
     
-    // Validate the required data
+    // Validate the required da
     if (!event || !participantType || !college) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
@@ -192,7 +194,7 @@ router.post('/create/orderId', async (req, res) => {
   }
 });
 
-// Form submission with photos endpoint
+
 router.post('/submit-registration', upload.fields([
   { name: 'soloPhoto', maxCount: 1 },
   { name: 'leaderPhoto', maxCount: 1 },
@@ -326,7 +328,7 @@ router.post('/submit-registration', upload.fields([
 // Payment verification endpoint
 router.post('/api/payment/verify', async (req, res) => {
   try {
-    const { 
+    let { 
       razorpayOrderId, 
       razorpayPaymentId, 
       signature, 
@@ -334,21 +336,25 @@ router.post('/api/payment/verify', async (req, res) => {
       participantType,
       amount 
     } = req.body;
-    
+
     // Verify the payment signature
     const generatedSignature = crypto
       .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
       .update(razorpayOrderId + '|' + razorpayPaymentId)
       .digest('hex');
-    
+
   if (generatedSignature !== signature) {
     return res.status(400).json({ error: 'Invalid signature' });
   }  
   
+  // // Check if order data exists in session
+  //   if (generatedSignature !== signature) {
+  //     return res.status(400).json({ error: 'Invalid signature' });
+  //   }
+
+  // module.exports =app;
+
   // Check if order data exists in session
-    if (generatedSignature !== signature) {
-      return res.status(400).json({ error: 'Invalid signature' });
-    }
     
     // Check if order data exists in session
     if (req.session.orderData && req.session.orderData.orderId === razorpayOrderId) {
