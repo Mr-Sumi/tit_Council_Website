@@ -527,16 +527,40 @@
         const toggleBtn = document.querySelector('.toggle-btn');
         const toggleSection = document.querySelector('.toggle-section');
 
-        toggleBtn.addEventListener('click', () => {
-            container.classList.toggle('active');
-            if (container.classList.contains('active')) {
-                toggleBtn.textContent = 'Sign In';
-                toggleSection.querySelector('h3').textContent = 'One of Us?';
-                toggleSection.querySelector('p').textContent = 'Sign in with your personal info';
-        } else {
-                toggleBtn.textContent = 'Sign Up';
-                toggleSection.querySelector('h3').textContent = 'New Here?';
-                toggleSection.querySelector('p').textContent = 'Sign up and discover great content from Student Council';
+    sign_up_btn.addEventListener("click", () => {
+      container.classList.add("sign-up-mode");
+    });
+
+    sign_in_btn.addEventListener("click", () => {
+      container.classList.remove("sign-up-mode");
+    });
+    
+    document.querySelector('form').addEventListener('submit', function(event) {
+      const email = document.querySelector('input[name=email]').value;
+      if (/^[^a-zA-Z0-9]/.test(email)) {
+          event.preventDefault();
+          alert('Email cannot start with a symbol.');
+      }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Format date input
+    const dateInputs = document.querySelectorAll('input[type="date"]');
+    dateInputs.forEach(input => {
+        // Set default placeholder
+        input.setAttribute('data-placeholder', 'Date of Birth');
+        
+        // Format date on change
+        input.addEventListener('change', function(e) {
+            if(this.value) {
+                const date = new Date(this.value);
+                const day = date.getDate().toString().padStart(2, '0');
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                const year = date.getFullYear();
+                
+                // Store formatted date for form submission
+                this.setAttribute('data-formatted', `${day}/${month}/${year}`);
+                this.setAttribute('data-formatted', `${day}${month}${year}`);
             }
         });
 

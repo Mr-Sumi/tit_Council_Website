@@ -112,6 +112,10 @@ app.get('/events',  (req, res) => {
     res.render('Anwesha Event/Qala Sangam', { title: 'Freefire Page' });
   });
 
+  app.get('/stall', (req, res) => {
+    res.render('Anwesha Event/ENTERPRENEURSHIP SALES STALL', { title: 'Stall Page' });
+  })
+
 
   
 
