@@ -10,6 +10,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 router.post("/register", async (req, res) => {
   try {
     const { username,enrollment ,email,dob, phone } = req.body;
+    const dob1 = dob.split('-').reverse().join('');
 
     if (!username || !email || !enrollment || !dob || !phone) {
       req.flash('error_msg', 'All fields are required');
@@ -23,8 +24,8 @@ router.post("/register", async (req, res) => {
       return res.redirect('/login');
     }
 
-    bcrypt.genSalt(10, function (err, salt) {
-      bcrypt.hash(dob, salt, async function (err, hash) {
+    bcrypt.genSalt(11, function (err, salt) {
+      bcrypt.hash(dob1, salt, async function (err, hash) {
         const createdUser = await userModel.create({
           username,
           enrollment,
@@ -62,12 +63,10 @@ router.post("/login", async (req, res) => {
     if (!user) {
       req.flash('error_msg', 'Please register first');
       return res.redirect('/login');
-    }
-
-    bcrypt.compare(dob,user.dob, (err, result)=>{
+    } 
+    bcrypt.compare(user.dob,dob, (err, result)=>{
       if (!result) {
         req.flash('error_msg', 'Email or password did not match');
-        console.log("Password did not match");
         return res.redirect('/login');
       }
       const { username, enrollment, email, phone } = user;
