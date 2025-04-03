@@ -1,16 +1,28 @@
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const userModel = require("../models/usermodels");
+const JWT_SECRET = process.env.JWT_SECRET;
 
-module.exports.isLoggedIn = (req, res, next) => {
-    try {
-      if (!req.cookies.token || req.cookies.token === "") {
-        return res.redirect("/login");
-      }
-      const data = jwt.verify(req.cookies.token, process.env.JWT_TOKEN);
-      req.user = data;
-      next();
-    } catch (error) {
-      console.error("Authentication error:", error.message);
+const isLoggedIn = async (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
+    req.flash("error_msg", "You must be logged in to access this page.");
+    return res.redirect("/login");
+  }
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    const user = await userModel.findById(decoded.enrollment);
+    if (!user) {
+      req.flash("error_msg", "Invalid token. Please log in again.");
       return res.redirect("/login");
     }
-  };
+    req.user = user;
+    next();
+  } catch (err) {
+    req.flash("error_msg", "Invalid token. Please log in again.");
+    res.redirect("/login");
+    next()
+  }
+};
+
+module.exports = { isLoggedIn };
