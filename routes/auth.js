@@ -52,29 +52,32 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const { enrollment, dob } = req.body;
+    const { enrollmentno, dob } = req.body;
 
-    if (!enrollment || !dob) {
+    if (!enrollmentno || !dob) {
       req.flash('error_msg', 'Email and password are required');
       return res.redirect('/login');
     }
 
-    let user = await userModel.findOne({ enrollment: enrollment }).select("+password");
+    let user = await userModel.findOne({ enrollment: enrollmentno }).select("+password");
+    console.log(user);
     if (!user) {
       req.flash('error_msg', 'Please register first');
       return res.redirect('/login');
     } 
-    bcrypt.compare(user.dob,dob, (err, result)=>{
+
+
+    const result = await bcrypt.compare(dob, user.dob);
       if (!result) {
         req.flash('error_msg', 'Email or password did not match');
         return res.redirect('/login');
       }
-      const { username, enrollment, email, phone } = user;
+      let { username, enrollment, email, phone } = user;
       let token = jwt.sign({username,enrollment,email,phone}, process.env.JWT_SECRET);
       res.cookie("token", token);
       req.flash('success_msg', 'You are now logged in');
       res.redirect("/");
-    });
+    ;
   } catch (err) {
     req.flash('error_msg', err.message);
     res.redirect('/login');

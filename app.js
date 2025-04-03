@@ -10,7 +10,8 @@ const {isLoggedIn}  = require("./middleware/isLoggedIn");
 const flash = require('connect-flash');
 const jwt = require("jsonwebtoken");
 let club=require('./routes/Club.js');
-let event=require('./routes/Event.js')
+let event=require('./routes/Event.js');
+const { name } = require('ejs');
 
 require('dotenv').config();
 connectdb();
@@ -55,6 +56,7 @@ app.use('/payment',payment)
 app.get('/', (req, res) => {
   req.cookies.token ? res.render('student council', { isLoggedIn: true }) : res.render('student council', { isLoggedIn: false });
 });
+
 
 
 // Member routes
