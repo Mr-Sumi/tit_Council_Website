@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Student Council - Official website for college student council">
     <title>STUDENT COUNCIL</title>
-    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- CSS Links -->
     <link rel="stylesheet" href="/stylesheet/Student.css">
     <link rel="stylesheet" href="/stylesheet/navbaar.css">
@@ -41,7 +41,11 @@
             <li><a href="/clubs">Clubs</a></li>
             <li><a href="/faculty">Mentors</a></li>
             <li><a href="/gallery">Event Gallary</a></li>
-            <li><a href="/login" class="loginButton">Login</a></li>   
+            <% if(isLoggedIn){ %>
+                <li><a class="user-icon" href="/userPage"><i class="ri-user-3-line text-white"></i></a></li>
+            <% }else{ %>
+                <li><a href="/login" class="loginButton">Login</a></li>
+            <% } %>
             <i class="ri-menu-line"></i>
         </ul>
     </nav>

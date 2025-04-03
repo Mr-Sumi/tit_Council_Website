@@ -52,9 +52,6 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const { enrollment, dob } = req.body;
-    console.log("enrollment:", typeof enrollment, enrollment);
-    console.log("dob:", typeof dob, dob); 
-    // console.log("dob:", dob);
 
     if (!enrollment || !dob) {
       req.flash('error_msg', 'Email and password are required');
@@ -62,7 +59,6 @@ router.post("/login", async (req, res) => {
     }
 
     let user = await userModel.findOne({ enrollment: enrollment }).select("+password");
-    console.log("user:", user);
     if (!user) {
       req.flash('error_msg', 'Please register first');
       return res.redirect('/login');

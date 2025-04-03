@@ -1,4 +1,9 @@
 /* Global Styles */
+@font-face {
+    font-family: "Remix Icon";
+    src: url("/path-to-font/remixicon.woff2") format("woff2"),
+         url("/path-to-font/remixicon.woff") format("woff");
+}
 :root {
     --primary-color: #4ecdc4;
     --accent-color: #ff3366;
@@ -446,7 +451,16 @@ a {
     pointer-events: none;
     opacity: 0.8;
 }
-
+.user-icon{
+    padding: 1vw;
+    border-radius:50px;
+}
+.user-icon i{
+    font-size: 2vw;
+    color: white;
+    z-index: 9999;
+    font-family: "Remix Icon", sans-serif;
+}
 .styled-button.loading .inner-button {
     animation: bounce 1s infinite;
 }
