@@ -1,448 +1,778 @@
 @font-face {
     font-family: Bristone;
     src: url(/Fonts/Bristone.ttf);
-  }
-  @font-face {
+}
+@font-face {
     font-family: Gilroy-black;
     src: url(/Fonts/Gilroy-Black.ttf);
-  }
-     @font-face {
-        font-family:GilroyMedium ;
-        src: url(/Fonts/Gilroy-Medium.ttf);
-     }
-       @font-face {
-            font-family: Bebrush;
-            src: url(/Fonts/Bebrush.otf);
-        }
-        @font-face {
-            font-family: Affectsides;
-            src: url(/Fonts/Affectsides.ttf);
-        }
-        :root {
-            --primary-color: #4ecdc4;
-            --accent-color: #ff3366;
-            --dark-bg: #0a0a0a;
-            --dark-bg-2: #1a1a1a;
-            --text-color: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --border-color: rgba(255, 255, 255, 0.05);
-        }
-        body {
-            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-bg-2) 100%);
-            color: var(--text-color);
-            font-family: GilroyMedium, sans-serif;
-            line-height: 1.6;
-            padding: 1vw;
-        }
-        body::-webkit-scrollbar {
-            display: none;
-        }
-        .container-elem {
-            margin-top: 8vh;
-            padding: 0 3vw;
-        }
-        .profile-box {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            width: 100%;
-            flex-wrap: wrap;
-            gap: 2vw;
-            padding: 0;
-            margin: 0;
-        }
-        .image {
-            border-radius: 50%;
-            height: 200px;
-        }
-        .profile-content {
-            flex: 1;
-            min-width: 300px;
-            padding: 1rem;
-        }
-        
-        .profile-name {
-            font-family: Gilroy-black;
-            font-size: 2.5rem;
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.5px;
-        }
-        
-        .profile-role {
-            font-family: GilroyMedium;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .profile-description {
-            font-family: sans-serif;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin-bottom: 1.5rem;
-        }
-        
-        .profile-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-family: Gilroy-black;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.25rem;
-        }
-        
-        .stat-label {
-            font-family: GilroyMedium;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        @media (max-width: 1024px){
-            .profile-box {
-                padding: 2rem;
-            }
-            .profile-name {
-                font-size: 2rem;
-            }
-            .profile-role {
-                font-size: 1.1rem;
-            }
-            .club-bearer h1 {
-                font-size: 4vw;
-            }
-            .heading {
-                font-size: 16px;
-            }
-            .span {
-                font-size: 11px;
-            }
-            .mission-heading,
-            .vision-heading {
-                font-size: 26px;
-                width: 70%;
-            }
-        }
-        @media (max-width: 768px) {
-            .profile-box {
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                gap: 2vw;
-            }
-            .image {
-                height: 150px;
-            }
-            .profile-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            .profile-name {
-                font-size: 1.8rem;
-            }
-            .profile-stats {
-                justify-content: center;
-            }
-            .heading {
-                font-size: 14px;
-            }
-            .span {
-                font-size: 10px;
-            }
-            .mission-heading,
-            .vision-heading {
-                font-size: 22px;
-                width: 75%;
-            }
-        }
-        @media (max-width: 576px){
-            .container-elem {
-                margin-top: 5vh;
-                padding: 0 2vw;
-            }
-            .profile-box {
-                gap: 1.5vw;
-            }
-            .image {
-                height: 120px;
-            }
-            .profile-content {
-                text-align: center;
-                width: 100%;
-                padding: 0;
-            }
-            .profile-name {
-                font-size: 1.5rem;
-            }
-            .profile-role {
-                font-size: 1rem;
-            }
-            .profile-description {
-                font-size: 0.9rem;
-            }
-            .stat-value {
-                font-size: 1.2rem;
-            }
-            .stat-label {
-                font-size: 0.8rem;
-            }
-            .heading-drone {
-                font-size: 20px;
-                margin-top: 10px;
-            }
-            .para {
-                font-size: 12px;
-            }
-            .heading {
-                font-size: 12px !important;
-            }
-            span {
-                font-size: 10px !important;
-            }
-            .club-bearer h1 {
-                font-size: 5vw;
-            }
-            .club-bearer-card-content {
-                padding: 1rem;
-            }
-            .mission-heading,
-            .vision-heading {
-                font-size: 18px;
-                width: 80%;
-            }
-            .follow-us-section a {
-                font-size: 1.5rem;
-            }
-        }
-        @media (max-width: 320px){
-            .profile-box {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                gap: 1vw;
-            }
-            .image {
-                height: 80px !important;
-            }
-            .heading-drone {
-                font-size: 18px;
-            }
-            .para {
-                font-size: 11px;
-            }
-            .heading {
-                font-size: 11px !important;
-            }
-            span {
-                font-size: 9px !important;
-            }
-            .club-bearer h1 {
-                font-size: 6vw;
-                margin-bottom:20px !important;
-            }
-            
-            .club-bearer-card-content {
-                padding: 0.8rem;
-            }
-            .mission-heading,
-            .vision-heading {
-                font-size: 16px;
-                width: 85%;
-            }
-            .follow-us-section a {
-                font-size: 20px;
-            }
-        }
-        @media (max-height: 500px) and (orientation: landscape) {
-            .container-elem {
-                margin-top: 5vh;
-            }
-            .image {
-                height: 100px;
-                width: 100px;
-            }
-            .club-bearer h1 {
-                font-size: 4vw;
-            }
-            .heading {
-                font-size: 14px;
-            }
-            .span {
-                font-size: 10px;
-            }
-        }
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            .image {
-                image-rendering: -webkit-optimize-contrast;
-            }
-        }
-        @media print {
-            body {
-                background-color: white;
-                color: black;
-            }
-            .container-elem {
-                margin-top: 0;
-            }
-            .image {
-                border: 1px solid #000;
-            }
-            .follow-us-section {
-                display: none;
-            }
-        }
-        .para{
-            color: var(--text-color);
-        }
+}
+@font-face {
+    font-family: GilroyMedium;
+    src: url(/Fonts/Gilroy-Medium.ttf);
+}
+@font-face {
+    font-family: Bebrush;
+    src: url(/Fonts/Bebrush.otf);
+}
+@font-face {
+    font-family: Affectsides;
+    src: url(/Fonts/Affectsides.ttf);
+}
 
-        .follow-us-section{
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            justify-content: center;
-            margin: 2rem 0;
-            padding: 1rem;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(42, 42, 69, 0.08);
-            border: 1px solid var(--border-color);
-        }
-        .club-bearer{
-            text-align: center;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            align-self: center;
-            justify-content: center;
-            font-family: Bebrush;
-            position: relative;
-        }
-        .club-bearer h1{
-            font-size: 3.2vw;
-            letter-spacing: 0.5vw;
-            margin: 0;
-            padding: 0;
-            position: relative;
-        }
-        .club-bearer h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--primary-color);
-        }
+/* ==========================================================================
+   1. Root Variables and Base Setup
+   ========================================================================== */
+:root {
+    --primary-color: #4ecdc4;
+    --accent-color: #ff3366;
+    --dark-bg: #0a0a0a;
+    --dark-bg-2: #1a1a1a;
+    --text-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(255, 255, 255, 0.05);
+    
+    /* Spacing Variables */
+    --section-spacing: clamp(2rem, 4vw, 6rem);
+    --container-padding: clamp(1rem, 3vw, 3rem);
+    --element-spacing: clamp(1rem, 2vw, 2rem);
+    
+    /* Typography Scale */
+    --h1-size: clamp(2rem, 3.2vw, 3.5rem);
+    --h2-size: clamp(1.5rem, 2.5vw, 2.8rem);
+    --h3-size: clamp(1.2rem, 2vw, 2.2rem);
+    --body-size: clamp(0.9rem, 1.1vw, 1.1rem);
+    --small-size: clamp(0.8rem, 0.9vw, 1rem);
+}
 
-        .club-bearer-card{
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            width: 100%;
-            flex-wrap: wrap;
-            background-position: center;
-            margin-top: 3vw;
-        }
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .club-bearer-card-content{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: fit-content;
-            width: fit-content;
-            padding: 2vw;
-            border-radius: 10px;
-            background: var(--card-bg);
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
-        .club-bearer-card-content:hover {
-            transform: translateY(-5px);
-        }
-        .heading{
-            font-size: 18px;
-            font-family: Bebrush;
-            font-weight: 100;
-            margin-top: 10px;
-            letter-spacing: 2px;
-            color: var(--text-color);
-        }
-        .span{
-            font-size: 12px;
-            font-family: monospace;
-            color: var(--primary-color);
-        }
-        .mission{
-            background-color: #2a2a45;
-            width: 100%;
-            padding: 2rem 1.5rem;
-            margin-top: 3rem;
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(42, 42, 69, 0.15);
-        }
-        .mission-section, .vision-section {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            padding: 1rem 0;
-        }
-        .mission-section {
-            align-items: start;
-            text-align: left;
-        }
-        .vision-section {
-            align-items: end;
-            text-align: right;
-        }
-        .mission-heading, .vision-heading {
-            font-size: 30px;
-            font-family: Gilroy-black;
-            border-bottom: 2px solid white;
-            width: 65%;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .follow-us-section a{
-            text-decoration: none;
-            font-size: 30px;
-            color: var(--text-color);
-            padding: 0;
-            margin: 0;
-        }
-        .follow-us-section a:hover {
-            color: var(--primary-color);
-        }
+body {
+    background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-bg-2) 100%);
+    color: var(--text-color);
+    font-family: GilroyMedium, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
 
-        footer {
-            text-align: center;
-            background-color: #23233e;
-            color: #ffffff;
-            padding: 1.5rem;
-            width: 100%;
-            margin-top: 2rem;
-        }
+body::-webkit-scrollbar {
+    display: none;
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+/* ==========================================================================
+   2. Container and Layout
+   ========================================================================== */
+.container-elem {
+    width: 100%;
+    max-width: 1400px;
+    margin: clamp(3rem, 8vh, 8rem) auto 0;
+    padding: 0 var(--container-padding);
+    flex: 1;
+}
 
-        .animate-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
+/* ==========================================================================
+   3. Profile Section
+   ========================================================================== */
+.profile-box {
+    display: flex;
+    align-items: center;
+    gap: var(--element-spacing);
+    padding: var(--element-spacing);
+    margin-bottom: var(--section-spacing);
+    flex-wrap: wrap;
+}
+
+.image {
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-content {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.profile-name {
+    font-size: var(--h1-size);
+    font-family: Gilroy-black;
+    margin: 0px 0px 32px;
+    padding: 0px 0px 16px;
+    color: var(--text-color);
+    flex: 1;
+}
+
+.para {
+    font-size: var(--body-size);
+    margin-top: 1rem;
+    max-width: 65ch;
+}
+
+.profile-role {
+    font-family: GilroyMedium;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.profile-description {
+    font-size: clamp(1rem, 1.1vw, 1.2rem);
+    line-height: 1.6;
+    color: var(--gray-text);
+    margin: 0;
+    padding: 0 0.5rem;
+}
+
+/* ==========================================================================
+   4. Club Bearer Section
+   ========================================================================== */
+.club-bearer {
+    margin: var(--section-spacing) 0;
+    text-align: center;
+}
+
+.heading-drone {
+    font-size: var(--h2-size);
+    font-family: Bebrush;
+    letter-spacing: 0.5vw;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.club-bearer-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: var(--element-spacing);
+    justify-items: center;
+    margin-top: clamp(1.5rem, 3vw, 3rem);
+}
+
+.club-bearer-card-content {
+    width: 100%;
+    max-width: 300px;
+    padding: var(--element-spacing);
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.heading {
+    font-size: var(--h3-size);
+    margin-top: 1rem;
+}
+
+.span {
+    font-size: var(--small-size);
+    color: var(--primary-color);
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   5. Mission & Vision Section
+   ========================================================================== */
+.mission {
+    background-color: #2a2a45;
+    padding: clamp(1.5rem, 3vw, 3rem);
+    margin-top: var(--section-spacing);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(42, 42, 69, 0.15);
+}
+
+.mission-section, .vision-section {
+    padding: clamp(1rem, 2vw, 2rem) 0;
+}
+
+.mission-section {
+    align-items: start;
+    text-align: left;
+}
+
+.vision-section {
+    align-items: end;
+    text-align: right;
+}
+
+.mission-heading, .vision-heading {
+    font-size: var(--h2-size);
+    font-family: Gilroy-black;
+    width: clamp(200px, 65%, 600px);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid white;
+}
+
+.vision-section .vision-heading {
+    margin-left: auto;
+}
+
+/* ==========================================================================
+   6. Social Media Section
+   ========================================================================== */
+.follow-us-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 1.2rem 2rem;
+    width: 100%;
+}
+
+.profile-name {
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    font-family: Gilroy-black;
+    color: var(--text-color);
+    margin: 0;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon i {
+    font-size: 1.8rem;
+}
+
+.social-icon:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   7. Footer
+   ========================================================================== */
+footer {
+    margin-top: var(--section-spacing);
+    padding: clamp(1rem, 2vw, 2rem);
+    background-color: #23233e;
+    text-align: center;
+    font-size: var(--small-size);
+}
+
+/* ==========================================================================
+   8. Responsive Breakpoints
+   ========================================================================== */
+@media screen and (max-width: 1024px) {
+    .club-bearer-card {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .follow-us-section {
+        padding: 1rem 1.5rem;
+    }
+
+    .profile-name {
+        font-size: clamp(1.6rem, 2vw, 2rem);
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-icon i {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-content {
+        min-width: 100%;
+        align-items: center;
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .para {
+        margin: 1rem auto;
+    }
+
+    .mission-heading, .vision-heading {
+        width: 80%;
+    }
+
+    .follow-us-section {
+        padding: 1rem;
+    }
+
+    .profile-name {
+        font-size: clamp(1.4rem, 1.8vw, 1.8rem);
+    }
+
+    .social-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .social-icon i {
+        font-size: 1.4rem;
+    }
+
+    .profile-description {
+        text-align: center;
+        padding: 0;
+        max-width: 600px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .club-bearer-card-content {
+        max-width: 250px;
+    }
+
+    .mission-heading, .vision-heading {
+        width: 100%;
+    }
+
+    .mission-section, .vision-section {
+        text-align: center;
+    }
+
+    .vision-section .vision-heading {
+        margin: 0 auto;
+    }
+
+    .follow-us-section {
+        padding: 0.8rem;
+    }
+
+    .profile-name {
+        font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+    }
+
+    .social-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .social-icon i {
+        font-size: 1.3rem;
+    }
+
+    .profile-description {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile-box {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 1vw;
+    }
+    .image {
+        height: 80px !important;
+    }
+    .heading-drone {
+        font-size: 18px;
+    }
+    .para {
+        font-size: 11px;
+    }
+    .heading {
+        font-size: 11px !important;
+    }
+    span {
+        font-size: 9px !important;
+    }
+    .club-bearer h1 {
+        font-size: 6vw;
+        margin-bottom:20px !important;
+    }
+    
+    .club-bearer-card-content {
+        padding: 0.8rem;
+    }
+    .mission-heading,
+    .vision-heading {
+        font-size: 16px;
+        width: 85%;
+    }
+    .follow-us-section {
+        padding: 0.6rem;
+    }
+    .profile-name {
+        font-size: 1.1rem;
+    }
+    .social-icon {
+        width: 32px;
+        height: 32px;
+    }
+    .social-icon i {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .container-elem {
+        margin-top: 5vh;
+    }
+    .image {
+        height: 100px;
+        width: 100px;
+    }
+    .club-bearer h1 {
+        font-size: 4vw;
+    }
+    .heading {
+        font-size: 14px;
+    }
+    .span {
+        font-size: 10px;
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .image {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+    .container-elem {
+        margin-top: 0;
+    }
+    .image {
+        border: 1px solid #000;
+    }
+    .follow-us-section {
+        display: none;
+    }
+}
+
+.follow-us-section{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(42, 42, 69, 0.08);
+    border: 1px solid var(--border-color);
+}
+.club-bearer{
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    font-family: Bebrush;
+    position: relative;
+}
+.club-bearer h1{
+    font-size: 3.2vw;
+    letter-spacing: 0.5vw;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.club-bearer h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+.club-bearer-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+    background-position: center;
+    margin-top: 3vw;
+}
+
+.club-bearer-card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    width: fit-content;
+    padding: 2vw;
+    border-radius: 10px;
+    background: var(--card-bg);
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+.club-bearer-card-content:hover {
+    transform: translateY(-5px);
+}
+.heading{
+    font-size: 18px;
+    font-family: Bebrush;
+    font-weight: 100;
+    margin-top: 10px;
+    letter-spacing: 2px;
+    color: var(--text-color);
+}
+.span{
+    font-size: 12px;
+    font-family: monospace;
+    color: var(--primary-color);
+}
+.mission{
+    background-color: #2a2a45;
+    width: 100%;
+    padding: 2rem 1.5rem;
+    margin-top: 3rem;
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(42, 42, 69, 0.15);
+}
+.mission-section, .vision-section {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 1rem 0;
+}
+.mission-section {
+    align-items: start;
+    text-align: left;
+}
+.vision-section {
+    align-items: end;
+    text-align: right;
+}
+.mission-heading, .vision-heading {
+    font-size: 30px;
+    font-family: Gilroy-black;
+    border-bottom: 2px solid white;
+    width: 65%;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+.follow-us-section a{
+    text-decoration: none;
+    font-size: 30px;
+    color: var(--text-color);
+    padding: 0;
+    margin: 0;
+}
+.follow-us-section a:hover {
+    color: var(--primary-color);
+}
+
+footer {
+    text-align: center;
+    background-color: #23233e;
+    color: #ffffff;
+    padding: 1.5rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+/* ==========================================================================
+   Image Base Styles
+   ========================================================================== */
+.image {
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile Image */
+.profile-box .image {
+    width: clamp(120px, 20vw, 200px);
+    height: clamp(120px, 20vw, 200px);
+    border: 3px solid var(--primary-color);
+}
+
+/* Club Bearer Card Images */
+.club-bearer-card-content .image {
+    width: clamp(100px, 15vw, 180px);
+    height: clamp(100px, 15vw, 180px);
+    margin-bottom: 1rem;
+    border: 2px solid var(--primary-color);
+}
+
+/* Image Hover Effects */
+.image:hover {
+    transform: scale(1.05);
+}
+
+/* Image Loading and Error States */
+.image {
+    opacity: 0;
+    animation: imageLoad 0.3s ease forwards;
+}
+
+@keyframes imageLoad {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* High DPI Screen Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .image {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* ==========================================================================
+   Responsive Image Adjustments
+   ========================================================================== */
+@media screen and (max-width: 1200px) {
+    .club-bearer-card-content .image {
+        width: clamp(90px, 14vw, 160px);
+        height: clamp(90px, 14vw, 160px);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .profile-box .image {
+        width: clamp(110px, 18vw, 180px);
+        height: clamp(110px, 18vw, 180px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile-box .image {
+        width: clamp(100px, 16vw, 150px);
+        height: clamp(100px, 16vw, 150px);
+    }
+
+    .club-bearer-card-content .image {
+        width: clamp(80px, 13vw, 140px);
+        height: clamp(80px, 13vw, 140px);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .profile-box .image {
+        width: clamp(90px, 15vw, 130px);
+        height: clamp(90px, 15vw, 130px);
+    }
+
+    .club-bearer-card-content .image {
+        width: clamp(70px, 12vw, 120px);
+        height: clamp(70px, 12vw, 120px);
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile-box .image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .club-bearer-card-content .image {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .profile-box .image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .club-bearer-card-content .image {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* ==========================================================================
+   Image Container Adjustments
+   ========================================================================== */
+/* Profile Box Image Container */
+.profile-box {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 2rem);
+    padding: clamp(1rem, 2vw, 2rem);
+}
+
+/* Club Bearer Card Image Container */
+.club-bearer-card-content {
+    padding: clamp(1rem, 2vw, 2rem);
+    width: fit-content;
+    min-width: clamp(150px, 20vw, 250px);
+}
+
+/* Image Loading Fallback */
+.image:not([src]), 
+.image[src=""], 
+.image[src="#"] {
+    background: var(--card-bg);
+    position: relative;
+}
+
+.image:not([src])::after, 
+.image[src=""]::after, 
+.image[src="#"]::after {
+    content: 'Image';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-color);
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* Print Media Optimization */
+@media print {
+    .image {
+        border: 1px solid #000;
+        print-color-adjust: exact;
+    }
+}
