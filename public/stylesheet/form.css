@@ -1,14 +1,24 @@
 :root {
-    --primary-color: #4ecdc4;
-    --primary-light: rgba(78, 205, 196, 0.1);
-    --primary-border: rgba(78, 205, 196, 0.2);
-    --accent-color: #ff3366;
-    --accent-light: rgba(255, 51, 102, 0.1);
-    --dark-bg: #1b1b32;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --light-text: #ffffff;
-    --gray-text: rgba(255, 255, 255, 0.8);
-    --error-color: #ff3366;
+    /* Primary Colors */
+    --primary-color: #3e4141;
+    --primary-light: #5c6060;
+    --primary-border: rgba(78, 205, 196, 0.5);
+    
+    /* Accent Colors */
+    --accent-color: #ff3b72;
+    --accent-light: rgba(255, 59, 114, 0.25);
+    
+    /* Background Colors */
+    --dark-bg: #0f0f1a;
+    --card-bg: rgba(255, 255, 255, 0.07);
+    
+    /* Text Colors */
+    --light-text: #e6e6e6;
+    --gray-text: rgba(255, 255, 255, 0.6);
+    
+    /* Status Colors */
+    --error-color: #ff2e5f;
+    --success-color: #38cb0b;
 }
 
 /* Base Styles */
@@ -29,19 +39,20 @@ body {
     width: 100vw;
     box-sizing: border-box;
     animation: slideUpFade 0.8s ease-out;
-    background: linear-gradient(
-        135deg,
-        rgba(78, 205, 196, 0.05),
-        rgba(255, 51, 102, 0.05)
-    );
+    background: rgba(15, 15, 26, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(78, 205, 196, 0.1);
     margin-top: 5rem;
     margin-bottom: 0.5rem;
+    box-shadow: 
+        0 25px 45px rgba(0, 0, 0, 0.2),
+        inset 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 /* Enhanced Header Styles */
 .form-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    background:linear-gradient(135deg,rgb(0, 0, 0),rgb(0, 0, 0),rgb(0, 0, 0));
     padding: 2rem;
     border-radius: 12px;
     margin-bottom: 2.5rem;
@@ -54,7 +65,7 @@ body {
 
 .form-header h1 {
     font-size: clamp(1.8rem, 4vw, 2.5rem);
-    color: #272424eb;
+    color: #dbd8d8eb;
     margin: 0 0 1rem;
     line-height: 1.2;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -62,7 +73,7 @@ body {
 
 .form-header p {
     font-size: clamp(0.9rem, 2vw, 1.1rem);
-    color: rgba(0, 0, 0, 0.752);
+    color: rgba(212, 204, 204, 0.752);
     margin: 0;
     max-width: 600px;
     margin: 0 auto;
@@ -86,8 +97,7 @@ body {
 .progress-bar {
     height: 100%;
     background: linear-gradient(90deg, 
-        var(--primary-color),
-        var(--accent-color)
+        #38cb0bda,
     );
     border-radius: 4px;
     transition: width 0.4s ease;
@@ -234,6 +244,10 @@ body {
     text-align: left;
     border-bottom: 2px solid var(--primary-border);
     padding-bottom: 0.75rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 /* Form Controls */
@@ -284,6 +298,7 @@ input:focus, select:focus {
     margin-top: 0.5rem;
     display: none;
     animation: slideUpFade 0.3s ease-out;
+    background: rgba(255, 46, 95, 0.9);
 }
 
 .form-group.error .error-message {
@@ -310,6 +325,15 @@ input:focus, select:focus {
     position: relative;
     overflow: hidden;
     min-width: auto;
+    background: linear-gradient(
+        45deg,
+        var(--primary-color),
+        var(--accent-color)
+    );
+    color: var(--light-text);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        inset 0 0 5px rgba(255, 255, 255, 0.1);
 }
 
 .prev-button {
@@ -326,6 +350,14 @@ input:focus, select:focus {
 
 .nav-button:hover {
     transform: translateY(-2px);
+    background: linear-gradient(
+        45deg,
+        var(--accent-color),
+        var(--primary-color)
+    );
+    box-shadow: 
+        0 8px 25px rgba(255, 59, 114, 0.3),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .prev-button:hover {
@@ -517,9 +549,15 @@ input:focus, select:focus {
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 59, 114, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 59, 114, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 59, 114, 0);
+    }
 }
 
 @keyframes slideUpFade {
