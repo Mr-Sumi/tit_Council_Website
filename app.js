@@ -68,8 +68,9 @@ app.post('/current_user', (req, res) => {
 
 // Home route
 app.get('/', (req, res) => {
-  res.render('student council', {isLoggedIn: req.session.isLoggedIn || false }); 
+  req.cookies.token ? res.render('student council', { isLoggedIn: true }) : res.render('student council', { isLoggedIn: false });
 });
+
 
 // Member routes
 app.get('/members', (req, res) => {
@@ -110,7 +111,7 @@ app.get("/eventPage",(req,res)=>{
 
 
 app.get("/userPage",isLoggedIn,async(req,res)=>{
-  const {enrollment,username,email,phone} = jwt.verify(req.cookies.token, process.env.JWT_TOKEN);
+  const {enrollment,username,email,phone} = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
   res.render("user",{enrollment, username,email,phone}); 
 })
 

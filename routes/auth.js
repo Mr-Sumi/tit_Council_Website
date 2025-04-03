@@ -1,142 +1,91 @@
 const express = require("express");
-const app = express.Router();
-const passport = require("passport");
-const usermodels = require('../models/usermodels');
+const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { isLoggedIn } = require("../middleware/isLoggedIn");
-const flash = require("connect-flash");
+const moment = require("moment");
+const userModel = require("../models/usermodels");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
-// Registration route
-app.post("/register", async(req, res) => {
+
+router.post("/register", async (req, res) => {
   try {
-    let { username, enrollment, email, dob, phone } = req.body;
-    
-    // Input validation
-    if (!username || !enrollment || !email || !dob || !phone) {
-      req.flash("error", "All fields are required");
-      return res.redirect("/login");
+    const { username,enrollment ,email,dob, phone } = req.body;
+
+    if (!username || !email || !enrollment || !dob || !phone) {
+      req.flash('error_msg', 'All fields are required');
+      return res.redirect('/login');
     }
 
-    // Check if user exists
-    const existingUser = await usermodels.findOne({
-      $or: [
-        { enrollment: enrollment },
-        { email: email },
-        { phone: phone }
-      ]
-    });
+    let user = await userModel.findOne({ enrollment: enrollment });
 
-    if (existingUser) {
-      req.flash("error", "Account already exists with these credentials");
-      return res.redirect("/login");
+    if (user) {
+      req.flash('error_msg', 'User already exists. Please login');
+      return res.redirect('/login');
     }
 
-    // Create new user
-    const salt = await bcrypt.genSalt(11);
-    const hash = await bcrypt.hash(dob, salt);
-    
-    const newUser = await usermodels.create({
-      username,
-      enrollment,
-      email,
-      dob: hash,
-      phone,
+    bcrypt.genSalt(10, function (err, salt) {
+      bcrypt.hash(dob, salt, async function (err, hash) {
+        const createdUser = await userModel.create({
+          username,
+          enrollment,
+          email,
+          dob: hash,
+          phone,
+        });
+
+        const token = jwt.sign(
+          {username, enrollment, email, phone },
+          process.env.JWT_SECRET
+        );
+
+        res.cookie("token", token);
+        req.flash('success_msg', 'You are now registered and can log in');
+        res.redirect("/");
+      });
     });
-
-    const token = jwt.sign(
-      { username, enrollment, email, phone },
-      process.env.JWT_TOKEN,
-      { expiresIn: '6h' }
-    );
-
-    res.cookie("token", token, { 
-      httpOnly: true, 
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict'
-    });
-
-    req.flash("success", "Registration successful! Please login.");
-    res.redirect("/login");
-
-  } catch (error) {
-    console.error("Registration error:", error);
-    req.flash("error", "Registration failed. Please try again.");
-    res.redirect("/login");
+  } catch (err) {
+    req.flash('error_msg', err.message);
+    res.redirect('/login');
   }
 });
 
-// Login route
-app.post("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { enrollment, dob } = req.body;
 
-    // Input validation
     if (!enrollment || !dob) {
-      req.flash("error", "Please provide both enrollment and date of birth");
-      return res.redirect("/login");
+      req.flash('error_msg', 'Email and password are required');
+      return res.redirect('/login');
     }
 
-    // Find user
-    const user = await usermodels.findOne({ enrollment });
+    let user = await userModel.findOne({ enrollment: enrollment }).select("+password");
     if (!user) {
-      req.flash("error", "Invalid credentials");
-      return res.redirect("/login");
+      req.flash('error_msg', 'Please register first');
+      return res.redirect('/login');
     }
 
-    // Verify password
-    const isPasswordValid = await bcrypt.compare(dob, user.dob);
-    if (!isPasswordValid) {
-      req.flash("error", "Invalid credentials");
-      return res.redirect("/login");
-    }
-
-    // Generate token
-    const token = jwt.sign(
-      { enrollment: user.enrollment, username: user.username , email: user.email, phone: user.phone },
-      process.env.JWT_TOKEN,
-      { expiresIn: "6h" }
-    );
-
-    // Set cookie
-
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict'
+    bcrypt.compare(dob,user.dob, (err, result)=>{
+      if (!result) {
+        req.flash('error_msg', 'Email or password did not match');
+        console.log("Password did not match");
+        return res.redirect('/login');
+      }
+      const { username, enrollment, email, phone } = user;
+      let token = jwt.sign({username,enrollment,email,phone}, process.env.JWT_SECRET);
+      res.cookie("token", token);
+      req.flash('success_msg', 'You are now logged in');
+      res.redirect("/");
     });
-
-
-    req.session.isLoggedIn = true;
-    console.log("Login Successful: Session isLoggedIn =", req.session.isLoggedIn); 
-    req.flash("success", `Welcome back, ${user.username}!`);
-    res.redirect("/");
-
-  } catch (error) {
-    console.error("Login error:", error);
-    req.flash("error", "Login failed. Please try again.");
-    res.redirect("/login");
+  } catch (err) {
+    req.flash('error_msg', err.message);
+    res.redirect('/login');
   }
 });
 
-// Logout route
-app.get("/logout", (req, res) => {
-  try {
-    res.cookie("token", "", {
-      httpOnly: true,
-      expires: new Date(0),
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict'
-    });
-    req.flash("success", "Successfully logged out");
-    req.session.isLoggedIn = false;
-    console.log("Logout Successful: Session isLoggedIn =", req.session.isLoggedIn);
-    res.redirect("/login");
-  } catch (error) {
-    console.error("Logout error:", error);
-    req.flash("error", "Logout failed");
-    res.redirect("/");
-  }
+router.get("/logout", (req, res) => {
+  res.cookie('token', "");
+  req.flash('success_msg', 'You are now logged out');
+  res.redirect("/login");
 });
 
-module.exports = app;
+module.exports = router;
