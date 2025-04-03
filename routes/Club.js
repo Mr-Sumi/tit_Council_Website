@@ -10,6 +10,8 @@ app.get('/coding', (req, res) => {
 app.get('/drone',isLoggedIn, (req, res) => {
   res.render('drone club',{ title: 'Drone Club Page' });
 });
+
+
   
   // Media Fusion route
   app.get('/media',isLoggedIn, (req, res) => {
@@ -76,4 +78,8 @@ app.get('/drone',isLoggedIn, (req, res) => {
     res.render('IEEE Student chapter', { title: 'IEEE Student Chapter Page' });
   });
 
+  // cyber cop
+  app.get('/cyberCop',isLoggedIn, (req, res) => {
+    res.render('cyberCop', { title: 'Cyber Cop Club Page' });
+  });
   module.exports=app;
