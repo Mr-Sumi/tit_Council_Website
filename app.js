@@ -44,27 +44,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use((req, res, next) => {
-//   console.log("Session isLoggedIn:", req.session.isLoggedIn); // Debugging
-//   res.locals.isLoggedIn = req.session.isLoggedIn || false;
-//   next();
-// });
-
-
 app.use(express.static('public')); 
 
 app.use("/auth", authRouter);
 app.use("/club",club)
 app.use("/event",event)
 app.use('/payment',payment)
-
-app.post('/current_user', (req, res) => {
-  if (currentUser) {
-    res.json({ loggedIn: true, username: currentUser.username });
-  } else {
-    res.json({ loggedIn: false });
-  }
-});
 
 // Home route
 app.get('/', (req, res) => {

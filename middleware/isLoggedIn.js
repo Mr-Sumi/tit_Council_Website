@@ -13,7 +13,7 @@ const isLoggedIn = async (req, res, next) => {
   try {
     console.log(JWT_SECRET);
     const decoded = jwt.verify(token,JWT_SECRET);
-    const user = await userModel.findById(decoded.enrollment);
+    const user = await userModel.findOne({ enrollment: decoded.enrollment });
     if (!user) {
       req.flash("error_msg", "Invalid token. Please log in again.");
       console.log("User not found for the given token.");
