@@ -242,8 +242,8 @@
     inset: 0;
     background: linear-gradient(
         135deg,
-        rgba(78, 205, 196, 0.95),
-        rgba(42, 42, 69, 0.95)
+        rgba(11, 11, 11, 0.95),
+        rgba(6, 6, 6, 0.95)
     );
     display: flex;
     align-items: center;
@@ -262,6 +262,7 @@
     text-align: center;
     transform: translateY(0);
     opacity: 1;
+    font-weight: 100;
     transition: all 0.3s ease;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -269,8 +270,8 @@
 /* Hover Effects */
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(78, 205, 196, 0.2);
-    border-color: rgba(78, 205, 196, 0.3);
+    /* box-shadow: 0 12px 25px rgba(78, 205, 196, 0.2); */
+    /* border-color: rgba(78, 205, 196, 0.3); */
 }
 
 .card:hover .img {
