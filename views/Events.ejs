@@ -28,8 +28,9 @@
             body {
                 margin: 0;
                 padding: 0;
-                background: linear-gradient(256deg, #FFDEE9 0%, #B5FFFC 100%);
+                background:linear-gradient(to top,rgb(18, 18, 18),rgb(35, 35, 35),rgb(18, 18, 18));
                 min-height: 100vh;
+                color: white!important;
             }
 
             /* Event Container */
@@ -93,15 +94,19 @@
             }
 
             .flip-card-front {
-                background: linear-gradient(256deg, #FFDEE9 0%, #B5FFFC 100%);
-                color: black;
+                background: linear-gradient(256deg,#151515, #151515 0%, #000000 100%);
+                color: white !important;
                 z-index: 2; /* Ensures it's on top initially */
                 padding: 1rem;
             }
+            .flip-card-front p{
+                font-size: 1rem;
+                font-weight: 100;
+            }
 
             .flip-card-back {
-                background: linear-gradient(256deg, #FFDEE9 0%, #B5FFFC 100%);
-                color: white;
+                background: linear-gradient(256deg,#151515, #151515 0%, #000000 100%);
+                color: white !important;
                 transform: rotateY(180deg);
                 z-index: 1;
             }
@@ -124,14 +129,14 @@
                 font-family: Bebrush;
                 font-size: 3.5rem;
                 letter-spacing: 3px;
-                color: rgb(20, 20, 20);
+                color: white;
             }
 
             .heading1 h3 {
                 font-family: Bristone;
                 font-size: 1.8rem;
                 margin-top: 0.1rem;
-                color: rgb(186, 72, 72);
+                color: rgb(158, 53, 53);
             }
 
             /* Responsive Font Size for Heading */
