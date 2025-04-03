@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CODING CLUB</title>
+    <title><%= club.name %></title>
     <link rel="stylesheet" href="/stylesheet/preloader.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="../stylesheet/navbaar.css">
@@ -44,13 +44,13 @@
     <!-- Main Content -->
     <div class="container-elem">
         <div class="profile-box">
-            <img class="image" src="/image folder/Club logos/Coding club.png" alt="Coding Club Logo">
+            <img class="image" src="<%= club.club_logo %>" alt="<%= club.name %> Logo">
             <div class="title-box">
                 <div class="follow-us-section">
-                    <h1 class="heading-drone">CODING CLUB</h1>
-                    <a href="https://www.instagram.com/tit_coding_club/profilecard/?igsh=MTFrMmc5ZnJ6dGxiMw=="><i class="ri-instagram-line"></i></a>
+                    <h1 class="heading-drone"><%= club.name %> club</h1>
+                    <a href="<%= club.instagram_url %>"><i class="ri-instagram-line"></i></a>
                 </div>
-                <p class="para">Empowering innovation through code, collaboration, and creativity.</p>
+                <p class="para"><%= club.mission %></p>
             </div>
         </div>
 
@@ -58,18 +58,18 @@
         <div class="club-bearer"><h1 class="heading-drone">CLUB BEARER</h1></div>
         <div class="club-bearer-card">
             <div class="club-bearer-card-content">
-                <img class="image" src="/image folder/club members/IMG_20241031_014414 - Adarsh Raj.jpg" alt="Adarsh Raj">
-                <h1 class="heading">Adarsh Raj </h1>
+                <img class="image" src="<%= club.coordinator.photo_src %>" alt="<%= club.coordinator.name %>">
+                <h1 class="heading"><%= club.coordinator.name %></h1>
                 <span class="span">CO-ORDINATOR</span>
             </div>
             <div class="club-bearer-card-content">
-                <img class="image" src="/image folder/club members/Krishna Jadhav.jpg" alt="Krishna Jadav">
-                <h1 class="heading">Krishna Jadhav</h1>
+                <img class="image" src="<%= club.secretary.photo_src %>" alt="<%= club.secretary.name %>">
+                <h1 class="heading"><%= club.secretary.name %></h1>
                 <span class="span">SECRETARY</span>
             </div>
             <div class="club-bearer-card-content">
-                <img class="image" src="/image folder/club members/Neeraj Sahu.jpg" alt="Neeraj Sahu">
-                <h1 class="heading">Neeraj Sahu</h1>
+                <img class="image" src="<%= club.assistant_secretary.photo_src %>" alt="<%= club.assistant_secretary.name %>">
+                <h1 class="heading"><%= club.assistant_secretary.name %></h1>
                 <span class="span">ASST. SECRETARY</span>
             </div>
         </div>
@@ -78,11 +78,11 @@
         <div class="mission">
             <div class="mission-section">
                 <h3 class="mission-heading">THE MISSION</h3>
-                <p>To inspire, educate, and equip students with coding skills, fostering a community of innovative thinkers and collaborative problem solvers.</p>
+                <p><%= club.mission %></p>
             </div>
             <div class="vision-section">
                 <h3 class="vision-heading">THE VISION</h3>
-                <p>To create a vibrant community where students excel in coding, drive technological innovation, and shape the future through impactful solutions.</p>
+                <p><%= club.vision %></p>
             </div>
         </div>
     </div>
