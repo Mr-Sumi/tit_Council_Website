@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= event.event_name || "Event Details" %></title>
+</head>
+<body>
+  <h1><%= event.event_name || "Event Name Not Available" %></h1>
+  <p><strong>Tagline:</strong> <%= event.tagline || "N/A" %></p>
+  <p><strong>Details:</strong> <%= event.event_detail || "N/A" %></p>
+  <p><strong>Description:</strong> <%= event.description_of_the_event || "N/A" %></p>
+  <p><strong>Entry Fee:</strong> <%= event.entry_fee ? JSON.stringify(event.entry_fee) : "N/A" %></p>
+  <p><strong>Coordinator:</strong> <%= event.coordinator || "N/A" %></p>
+  <p><strong>Co-Coordinator:</strong> <%= event.co_coordinator || "N/A" %></p>
+  <p><strong>Contact:</strong> <%= event.contact || "N/A" %></p>
+  <h2>Rules</h2>
+  <ul>
+    <% if (Array.isArray(event.rules)) { %>
+      <% event.rules.forEach(rule => { %>
+        <li><%= rule %></li>
+      <% }); %>
+    <% } else { %>
+      <li>No rules available</li>
+    <% } %>
+  </ul>
+</body>
+</html>

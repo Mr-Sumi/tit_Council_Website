@@ -10,7 +10,6 @@ const isLoggedIn = async (req, res, next) => {
     return res.redirect("/login");
   }
   try {
-    console.log(JWT_SECRET);
     const decoded = jwt.verify(token,JWT_SECRET);
     const user = await userModel.findOne({ enrollment: decoded.enrollment });
     if (!user) {

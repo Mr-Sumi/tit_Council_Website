@@ -197,11 +197,11 @@ let event={
                 "2. Registration fee: 250/-.",
                 "3. Teams must provide their team’s name, member names, and contact information during registration.",
                 ],
-                "Event Format:"[
+                "Event Format": [
                 "1. The event will consist of multiple challenges, both physical and mental.",
                 "2. Challenges will be revealed at the start of each round.",
                 "3. Teams will be eliminated after each round, based on their performance.",
-                "4. The last team standing will be declared the winner.",
+                "4. The last team standing will be declared the winner."
                 ],
                 "Challenge Types:": [
                 "1. Physical Challenges: Teams will participate in physical activities such as answering fast as possible by doing an assigned gesture.",
@@ -341,7 +341,7 @@ let event={
         },
 
         {
-            "event_under": "Entrepreneurship Club",
+            "event_under": "Stall",
             "tagline": "Entrepreneurial Sales Stall Experience",
             "event_detail": "A hands-on event where participants set up and brand mini stalls to market and sell products. Teams compete to attract customers, make sales, and handle business challenges in a lively, interactive setting.",
             "description_of_the_event": "Participants will engage in real-world business scenarios by setting up stalls, promoting their products, and managing customer interactions. They will also face dynamic challenges such as rebranding and handling customer complaints.",
