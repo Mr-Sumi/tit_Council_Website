@@ -336,6 +336,7 @@ let event={
         },
 
         {
+
             "event_under": "Entrepreneurship Club",
             "event_name": "Entreprenership Sales Stall",
             "event_under": "Stall",

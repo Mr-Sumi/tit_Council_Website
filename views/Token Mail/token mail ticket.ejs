@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techno Cultural Fest - Registration Confirmation</title>
+    <style>
+        :root {
+            --primary-color: #ff4141;
+            --secondary-color: #1a1a2e;
+            --accent-color: #ff6b6b;
+            --dark-bg: rgb(18, 18, 18);
+            --light-text: #ffffff;
+            --gray-text: rgba(255, 255, 255, 0.8);
+            --border-radius: 16px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --gradient-bg: linear-gradient(to right, rgb(18, 18, 18), rgb(35, 35, 35), rgb(18, 18, 18));
+        }
+
+        body {
+            font-family: 'GilroyMedium', 'Segoe UI', Arial, sans-serif;
+            background: var(--gradient-bg);
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.95), rgba(18, 18, 18, 0.95));
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(255, 65, 65, 0.1);
+        }
+
+        .event-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(to right, rgba(255, 65, 65, 0.05), rgba(255, 107, 107, 0.05));
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 65, 65, 0.1);
+        }
+
+        .event-title {
+            font-family: 'Bristone', sans-serif;
+            font-size: 32px;
+            background: linear-gradient(45deg, var(--primary-color) 40%, var(--accent-color) 60%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .event-subtitle {
+            color: var(--gray-text);
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .poster {
+            position: relative;
+            margin: -30px -30px 30px -30px;
+            overflow: hidden;
+        }
+
+        .poster img {
+            width: 100%;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 65, 65, 0.2);
+        }
+
+        .details {
+            text-align: left;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .detail-item {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 65, 65, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .detail-item strong {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .detail-item span {
+            color: var(--light-text);
+            font-size: 16px;
+        }
+
+        .token-container {
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(145deg, var(--primary-color), #cb4646);
+            border-radius: var(--border-radius);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 65, 65, 0.2);
+        }
+
+        .token {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            border-radius: var(--border-radius);
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-info {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .event-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .event-info p {
+            color: var(--gray-text);
+            margin: 10px 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .important-note {
+            margin-top: 30px;
+            padding: 15px;
+            background: linear-gradient(to right, rgba(255, 65, 65, 0.05), rgba(255, 107, 107, 0.05));
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 65, 65, 0.1);
+            color: var(--light-text);
+            font-size: 14px;
+        }
+
+        .registration-details {
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.7), rgba(18, 18, 18, 0.7));
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 65, 65, 0.1);
+        }
+
+        .registration-header {
+            background: linear-gradient(45deg, var(--primary-color) 40%, var(--accent-color) 60%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 65, 65, 0.2);
+        }
+
+        .participant-details {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .participant-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .payment-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.7), rgba(18, 18, 18, 0.7));
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 65, 65, 0.1);
+        }
+
+        .payment-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .payment-item {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--border-radius);
+            text-align: left;
+        }
+
+        .event-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(255, 65, 65, 0.1);
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--primary-color);
+            margin: 5px;
+            border: 1px solid rgba(255, 65, 65, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .event-badge:hover {
+            background: rgba(255, 65, 65, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .schedule-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.7), rgba(18, 18, 18, 0.7));
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 65, 65, 0.1);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .venue-details {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 65, 65, 0.05);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 65, 65, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .event-title {
+                font-size: 24px;
+            }
+
+            .token {
+                font-size: 18px;
+                padding: 15px;
+            }
+
+            .participant-info,
+            .payment-details {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .venue-details {
+                padding: 15px;
+            }
+        }
+
+        .contact-details{
+            margin-top: 1rem;
+        }
+
+        .poster::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--dark-bg), transparent);
+            pointer-events: none;
+        }
+
+        .contact-details .detail-item {
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.7), rgba(18, 18, 18, 0.7));
+            border: 1px solid rgba(255, 65, 65, 0.1);
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .contact-details span {
+            display: block;
+            padding: 5px 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .event-title, .registration-header, .detail-item strong {
+                -webkit-text-fill-color: var(--primary-color);
+                color: var(--primary-color);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="poster">
+            <img src="{{event_poster_url}}" alt="Techno Cultural Fest Poster">
+        </div>
+        
+        <div class="event-header">
+            <div class="event-title">{{event_name}}</div>
+            <div class="event-subtitle">Techno Cultural Fest 2024</div>
+        </div>
+
+        <div class="schedule-container">
+            <div class="registration-header">Event Schedule & Venue</div>
+            <div class="schedule-grid">
+                <div class="detail-item">
+                    <strong>Event Date</strong>
+                    <span>{{event_date}}</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Venue</strong>
+                    <span>{{venue_name}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="registration-details">
+            <div class="registration-header">Registration Details</div>
+            <div class="participant-info">
+                <div class="detail-item">
+                    <strong>Registration ID</strong>
+                    <span>{{registration_id}}</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Registration Date</strong>
+                    <span>{{registration_date}}</span>
+                </div>
+            </div>
+            
+            <div class="participant-details">
+                <strong>Registered Events</strong>
+                <div class="event-badges">
+                    {{#each registered_events}}
+                    <span class="event-badge">{{this}}</span>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="participant-details">
+                <strong>Participant Information</strong>
+                <div class="participant-info">
+                    <div class="detail-item">
+                        <strong>Name</strong>
+                        <span>{{participant_name}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Name</strong>
+                        <span>{{participant_name}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Name</strong>
+                        <span>{{participant_name}}</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Name</strong>
+                        <span>{{participant_name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-container">
+            <div class="registration-header">Payment Details</div>
+            <div class="payment-details">
+                <div class="payment-item">
+                    <strong>Transaction ID</strong>
+                    <span>{{transaction_id}}</span>
+                </div>
+                <div class="payment-item">
+                    <strong>Payment Date</strong>
+                    <span>{{payment_date}}</span>
+                </div>
+                <div class="payment-item">
+                    <strong>Amount Paid</strong>
+                    <span>₹{{amount_paid}}</span>
+                </div>
+                <div class="payment-item">
+                    <strong>Payment Status</strong>
+                    <span>{{payment_status}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="token-container">
+            <div>Your Confirmation Token</div>
+            <div class="token">{{unique_token}}</div>
+            <div class="token-note">
+                Please present this token at the event registration desk
+            </div>
+        </div>
+
+        <div class="important-note">
+            <strong>Important Information:</strong>
+            <p>- Carry valid college ID card</p>
+            <p>- Token is non-transferable</p>
+            <p>- Report {{reporting_time_before}} before your event time</p>
+            <p>- Late entries will not be permitted</p>
+            <p>- Follow venue guidelines and instructions</p>
+        </div>
+
+        <div class="contact-details">
+            <div class="detail-item">
+                <strong>Event Coordinator</strong>
+                <span>{{coordinator_name}}</span>
+                <span>{{coordinator_contact}}</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

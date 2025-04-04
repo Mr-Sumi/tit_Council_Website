@@ -139,7 +139,7 @@ nav.show {
     color: white;
 }
 
-/* Navigation Links with smoother animations */
+/* Navigation Links with cleaner hover effects */
 .nav-links a {
     color: white;
     text-decoration: none;
@@ -150,28 +150,13 @@ nav.show {
     padding: 8px 15px;
     border-radius: 20px;
     position: relative;
-    overflow: hidden;
     background: transparent;
-    /* Smoother transition for all properties */
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Refined hover effects with smoother animations */
+/* Remove the underline effects */
 .nav-links a::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, 
-        rgba(255, 65, 65, 0),
-        rgba(255, 65, 65, 1) 50%,
-        rgba(255, 65, 65, 0)
-    );
-    transform: translateX(-50%);
-    /* Smoother underline animation */
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: none; /* Remove the underline effect */
 }
 
 .nav-links a::after {
@@ -183,22 +168,15 @@ nav.show {
     height: 100%;
     background: rgba(255, 65, 65, 0.1);
     transform: translateX(-50%);
-    /* Smoother background fill animation */
     transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
     border-radius: 20px;
 }
 
-/* Refined hover states */
+/* Simplified hover states */
 .nav-links a:hover {
     color: #ff4141;
     transform: translateY(-2px);
-    text-shadow: 0 0 8px rgba(255, 65, 65, 0.3);
-}
-
-.nav-links a:hover::before {
-    width: 80%;
-    box-shadow: 0 0 10px rgba(255, 65, 65, 0.5);
 }
 
 .nav-links a:hover::after {
@@ -209,11 +187,6 @@ nav.show {
 .nav-links a.active {
     color: #ff4141;
     background: rgba(255, 65, 65, 0.1);
-}
-
-.nav-links a.active::before {
-    width: 80%;
-    background: #ff4141;
 }
 
 .user-icon {
@@ -314,6 +287,7 @@ nav ul li:last-child {
     gap: 25px;
     margin-top: 80px;
     padding: 40px;
+    list-style: none;
 }
 .navSlide .NavLinks a{
     display: block !important;
@@ -891,40 +865,24 @@ footer p {
     }
 }
 
-/* Mobile navigation with smoother animations */
+/* Mobile navigation with simplified hover */
 .navSlide .NavLinks a {
     position: relative;
     padding: 10px 20px;
     background: transparent;
     border-radius: 10px;
-    /* Smoother mobile transitions */
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Remove mobile underline effect */
 .navSlide .NavLinks a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, 
-        rgba(255, 107, 107, 0),
-        rgba(255, 107, 107, 1) 50%,
-        rgba(255, 107, 107, 0)
-    );
-    /* Smoother mobile underline animation */
-    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: none;
 }
 
 .navSlide .NavLinks a:hover {
     color: #ff6b6b;
     padding-left: 30px;
     background: rgba(255, 107, 107, 0.1);
-}
-
-.navSlide .NavLinks a:hover::before {
-    width: 100%;
 }
 
 /* Smooth mobile menu transition */

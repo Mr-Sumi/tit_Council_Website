@@ -78,7 +78,8 @@
         </div>
 
     <!-- Registration Form Section -->
-        <form id="payment-form" method="post" action="payment/create/orderId">
+        <form id="payment-form" method="post" action="/payment/create/orderId" enctype="multipart/form-data">
+            <input type="hidden" name="participants" id="participantsData">
 
             <!-- Step 1: College & Contact Details -->
             <div class="form-step active" data-step="1">
@@ -741,7 +742,7 @@ function validatePhoneNumber(input) {
         axios.post('payment/api/payment/verify', paymentData)
         .then(function(response) {
           alert('Payment successful! Registration complete.');
-          window.location.href = '/eventPage'; // Redirect to success page
+          window.location.href = '/eventPage';
         })
         .catch(function(error) {
                 console.error(error);
@@ -1175,6 +1176,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const eventSelect = document.getElementById('events');
     eventSelect.addEventListener('change', updateParticipantsOption);
 });
+</script>
+<script>
+  // Update participants data before form submission
+  document.getElementById('payment-form').addEventListener('submit', function (e) {
+    const participants = [];
+    const participantSections = document.querySelectorAll('.participant-section');
+    participantSections.forEach(section => {
+      const name = section.querySelector('[name$="Name"]').value;
+      const enrollment = section.querySelector('[name$="Enrollment"]').value;
+      const email = section.querySelector('[name$="Email"]').value;
+      const photo = section.querySelector('[name$="Photo"]').files[0]?.name || null;
+      const role = section.querySelector('h3').textContent.includes('Leader') ? 'leader' : 'member';
+
+      participants.push({ name, enrollment, email, photo, role });
+    });
+
+    document.getElementById('participantsData').value = JSON.stringify(participants);
+  });
+</script>
+<script>
+  document.getElementById('payment-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent default form submission for logging
+
+    console.log('Submit event triggered'); // Debugging log
+
+    const participants = [];
+    const participantSections = document.querySelectorAll('.participant-section');
+    participantSections.forEach(section => {
+      const name = section.querySelector('[name$="Name"]').value;
+      const enrollment = section.querySelector('[name$="Enrollment"]').value;
+      const email = section.querySelector('[name$="Email"]').value;
+      const photo = section.querySelector('[name$="Photo"]').files[0]?.name || null;
+      const role = section.querySelector('h3').textContent.includes('Leader') ? 'leader' : 'member';
+
+      participants.push({ name, enrollment, email, photo, role });
+    });
+
+    const formData = {
+      college: document.getElementById('college').value,
+      contact: document.getElementById('contact').value,
+      event: document.getElementById('events').value,
+      participantType: document.getElementById('number').value,
+      participants: participants
+    };
+
+    console.log('Form Data:', formData); // Log form data
+
+    // Uncomment the next line to allow form submission after logging
+    // this.submit();
+  });
 </script>
  </body>
 </html>

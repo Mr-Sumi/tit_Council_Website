@@ -42,8 +42,6 @@
 /* Container and Alignment Fixes */
 .container {
     background: transparent;
-    margin: 12vh auto 4rem;
-    padding: 2rem 1rem;
     min-height: 100vh;
     text-align: center;
     width: 100%;
@@ -57,7 +55,7 @@
 
 /* Heading Styles and Animation */
 .heading {
-    margin: 2rem auto 4rem;
+    margin-top:5rem;
     position: relative;
     width: 100%;
     max-width: 1200px;
@@ -70,117 +68,23 @@
 }
 
 .heading h1 {
-    font-family: 'Bebrush', sans-serif;
-    font-size: clamp(2rem, 3.2vw, 3.5rem);
-    letter-spacing: 0.8vw;
-    color: var(--text-color);
+    font-family: Bebrush;
+    margin: 5.5vw auto 2vw;
+    letter-spacing: 1vw;
     font-weight: 400;
-    margin: 0 auto;
-    padding: 0.5rem 2rem;
-    position: relative;
-    text-align: center;
     width: fit-content;
+    padding: 0 2rem;
+    position: relative;
 }
-
-.heading h1::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    
-}
-
 .heading h1::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 3px;
-    
-}
-
-/* Add decorative elements */
-.heading::before,
-.heading::after {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 3px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0;
-}
-
-/* Animations */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
-
-@keyframes lineExpand {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 80%;
-    }
-}
-
-@keyframes decorativeLines {
-    from {
-        opacity: 0;
-        transform: translateX(var(--translate)) scaleX(0);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0) scaleX(1);
-    }
-}
-
-/* Add a subtle glow effect on hover */
-.heading h1:hover {
-    animation: glow 2s ease infinite;
-}
-
-@keyframes glow {
-    0%, 100% {
-        text-shadow: 0 0 10px rgba(78, 205, 196, 0.2);
-    }
-    50% {
-        text-shadow: 0 0 20px rgba(78, 205, 196, 0.4),
-                     0 0 30px rgba(255, 51, 102, 0.2);
-    }
+content: '';
+position: absolute;
+bottom: -10%;
+left: 0;
+width: 100%;
+height: 3px;
+background: linear-gradient(45deg, #4ecdc4, #ff3366) !important;
+border-radius: 2px;
 }
 
 /* Club Grid Centering */
