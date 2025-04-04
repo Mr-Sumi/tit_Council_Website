@@ -60,7 +60,6 @@ router.post("/login", async (req, res) => {
     }
 
     let user = await userModel.findOne({ enrollment: enrollmentno }).select("+password");
-    console.log(user);
     if (!user) {
       req.flash('error_msg', 'Please register first');
       return res.redirect('/login');
