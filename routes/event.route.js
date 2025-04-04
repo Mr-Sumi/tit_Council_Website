@@ -102,9 +102,9 @@ app.get('/events',  (req, res) => {
   
   //stall route
   
-  app.get('/stall',  (req, res) => {
-    res.render('Anwesha Event/ENTERPRENEURSHIP SALES STALL', { title: 'Stall Page' });
-  });
+  // app.get('/stall',  (req, res) => {
+  //   res.render('Anwesha Event/ENTERPRENEURSHIP SALES STALL', { title: 'Stall Page' });
+  // });
   
   // Escape Room Business Crisis route
   
