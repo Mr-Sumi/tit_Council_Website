@@ -186,12 +186,10 @@ let event={
                 "3. Team members must be present throughout the event.",
                 "1. Teams must register online by 3rd April.",
                 "3. Teams must provide their team’s name, member names, and contact information during registration.",
-<<<<<<< HEAD
                 "1. The event will consist of multiple challenges, both physical and mental.",
                 "2. Challenges will be revealed at the start of each round.",
                 "3. Teams will be eliminated after each round, based on their performance.",
                 "4. The last team standing will be declared the winner.",
-=======
                 ],
                 "Event Format": [
                 "1. The event will consist of multiple challenges, both physical and mental.",
@@ -200,7 +198,6 @@ let event={
                 "4. The last team standing will be declared the winner."
                 ],
                 "Challenge Types:": [
->>>>>>> 955ae5e14b42c3b3bc3e44b4934cde61f40314d7
                 "1. Physical Challenges: Teams will participate in physical activities such as answering fast as possible by doing an assigned gesture.",
                 "2. Mental Challenges: Teams will participate in mental activities, such as building strategies.",
                 "1. Teams must complete each challenge within the given time limit.",
@@ -339,13 +336,8 @@ let event={
         },
 
         {
-<<<<<<< HEAD
-            "event_under": "Entrepreneurship Club",
-            "event_name": "Entreprenership Sales Stall",
-=======
             "event_under": "Stall",
             "tagline": "Entrepreneurial Sales Stall Experience",
->>>>>>> 955ae5e14b42c3b3bc3e44b4934cde61f40314d7
             "event_detail": "A hands-on event where participants set up and brand mini stalls to market and sell products. Teams compete to attract customers, make sales, and handle business challenges in a lively, interactive setting.",
             "description_of_the_event": "Participants will engage in real-world business scenarios by setting up stalls, promoting their products, and managing customer interactions. They will also face dynamic challenges such as rebranding and handling customer complaints.",
             "entry_fee": {
