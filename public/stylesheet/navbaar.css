@@ -40,6 +40,13 @@ nav {
     transition: all 0.3s ease;
     padding: 0 20px;
 }
+
+.Slide-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
 /* nav.hidden {
   transform: translateY(-100%);
 }
