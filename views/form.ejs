@@ -802,8 +802,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const file = e.target.files[0];
         if (file) {
           // Check file size (max 5MB)
-          if (file.size > 5 * 1024 * 1024) {
-            alert('File size exceeds 5MB limit');
+          if (file.size > 2 * 1024 * 1024) {
+            alert('File size exceeds 2MB limit');
             this.value = '';
             return;
           }
@@ -896,7 +896,7 @@ function formatFileSize(bytes) {
 
             function validateFile(file) {
                 const validTypes = ['image/jpeg', 'image/png'];
-                const maxSize = 5 * 1024 * 1024; // 5MB
+                const maxSize = 2 * 1024 * 1024; // 2MB
 
                 if (!validTypes.includes(file.type)) {
                     showError(input, 'Please upload a PNG or JPG file');
