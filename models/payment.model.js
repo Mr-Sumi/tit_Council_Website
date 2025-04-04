@@ -1,25 +1,5 @@
 const mongoose = require('mongoose');
 
-const participantSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  enrollment: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: String,
-    required: true
-  },
-  role: {
-    type: String,
-    enum: ['leader', 'member', null],
-    default: null
-  }
-});
-
 const registrationSchema = new mongoose.Schema({
   eventName: {
     type: String,
@@ -34,7 +14,31 @@ const registrationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  participants: [participantSchema],
+  participants: [
+    {
+      name: {
+        type: String,
+        required: true
+      },
+      enrollment: {
+        type: String,
+        required: true
+      },
+      email: {
+        type: String,
+        required: true
+      },
+      role: {
+        type: String,
+        enum: ['leader', 'member', null],
+        default: null
+      },
+      photo: {
+        type: String,
+        default: null
+      }
+    }
+  ],
   paymentId: {
     type: String,
     required: true

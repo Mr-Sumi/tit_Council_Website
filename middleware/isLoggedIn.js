@@ -1,6 +1,6 @@
 require('dotenv').config();
 const jwt = require("jsonwebtoken");
-const userModel = require("../models/usermodels");
+const userModel = require("../models/user.model");
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const isLoggedIn = async (req, res, next) => {
