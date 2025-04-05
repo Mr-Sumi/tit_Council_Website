@@ -52,6 +52,15 @@ app.use("/club", club);
 app.use("/event", event);
 app.use("/payment", payment);
 
+// app.js
+const fetchAllImages = require('./routes/fetchAllImages');
+
+fetchAllImages(); // ✅ Run once on server start
+
+
+// Serve public files
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Home route
 app.get("/", (req, res) => {
   req.cookies.token
