@@ -446,6 +446,7 @@ body::-webkit-scrollbar {
     }
 }
 
+
 /* Enhanced Button Styles */
 .styled-button {
     position: relative;
@@ -455,69 +456,75 @@ body::-webkit-scrollbar {
     color: var(--light-text);
     background: linear-gradient(
         145deg,
-        rgba(23, 23, 23, 0.9),
-        rgba(36, 36, 36, 0.95)
+        rgba(18, 18, 18, 0.85),
+        rgba(30, 30, 30, 0.95)
     );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 9999px;
     cursor: pointer;
     box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.2),
-        0 8px 16px rgba(0, 0, 0, 0.3),
-        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.07);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: clamp(0.5rem, 1vw, 1rem);
-    border: 1px solid rgba(41, 41, 41, 0.8);
-    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     text-decoration: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
+    overflow: hidden;
 }
 
-/* Button Gradient Border */
+/* Glass Overlay Effect */
 .styled-button::before {
     content: "";
     position: absolute;
-    inset: -1px;
+    top: -100%; /* Start from above */
+    left: 0;
+    width: 100%;
+    height: 200%; /* Double height for smooth transition */
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+/* Sliding Glass Effect on Hover */
+@media (hover: hover) {
+    .styled-button:hover::before {
+        transform: translateY(100%); /* Slide downward */
+    }
+}
+
+/* Additional Glass Shine */
+.styled-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
     background: linear-gradient(
         145deg,
-        rgba(78, 205, 196, 0.2),
-        rgba(255, 51, 102, 0.2)
+        rgba(255, 255, 255, 0.05) 0%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.05) 100%
     );
-    z-index: -1;
-    border-radius: 9999px;
-    transition: all 0.3s ease;
     opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-/* Button Hover Effects */
-@media (hover: hover) {
-    .styled-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 
-            0 4px 8px rgba(0, 0, 0, 0.3),
-            0 12px 24px rgba(0, 0, 0, 0.2),
-            inset 0 1px 1px rgba(255, 255, 255, 0.15);
-    }
-
-    .styled-button:hover::before {
-        opacity: 1;
-    }
+.styled-button:hover::after {
+    opacity: 1;
 }
 
-/* Button Active State */
-.styled-button:active {
-    transform: translateY(1px);
-    box-shadow: 
-        0 1px 2px rgba(0, 0, 0, 0.2),
-        0 4px 8px rgba(0, 0, 0, 0.1),
-        inset 0 1px 1px rgba(255, 255, 255, 0.05);
-}
-
-/* Inner Button Circle */
-.styled-button .inner-button {
+/* Inner Button Enhancement */
+.inner-button {
     position: relative;
     display: flex;
     align-items: center;
@@ -527,144 +534,124 @@ body::-webkit-scrollbar {
     border-radius: 50%;
     background: linear-gradient(
         145deg,
-        rgba(23, 23, 23, 0.95),
-        rgba(36, 36, 36, 0.98)
+        rgba(20, 20, 20, 0.95),
+        rgba(30, 30, 30, 0.98)
     );
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     box-shadow: 
-        0 1px 2px rgba(0, 0, 0, 0.2),
-        inset 0 1px 1px rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(37, 37, 37, 0.8);
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
+    overflow: hidden;
 }
 
-/* Inner Button Gradient */
-.styled-button .inner-button::before {
+/* Inner Button Glass Effect */
+.inner-button::before {
     content: "";
     position: absolute;
-    inset: -1px;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
     background: linear-gradient(
-        145deg,
-        rgba(78, 205, 196, 0.2),
-        rgba(255, 51, 102, 0.2)
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.1),
+        transparent
     );
-    z-index: -1;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+/* Inner Button Hover Effect */
+@media (hover: hover) {
+    .styled-button:hover .inner-button::before {
+        transform: translateY(100%);
+    }
+}
+
+/* Enhanced Hover State */
+@media (hover: hover) {
+    .styled-button:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(
+            145deg,
+            rgba(25, 25, 25, 0.9),
+            rgba(35, 35, 35, 0.95)
+        );
+        box-shadow: 
+            0 8px 20px rgba(0, 0, 0, 0.4),
+            0 15px 30px rgba(0, 0, 0, 0.3),
+            inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .styled-button:hover .inner-button {
+        transform: scale(1.05);
+    }
 }
 
 /* Icon Styling */
-.styled-button .inner-button .icon {
+.icon {
     width: clamp(16px, 2vw, 20px);
     height: clamp(16px, 2vw, 20px);
     color: var(--light-text);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    position: relative;
+    z-index: 1;
 }
 
-/* Icon Hover Effect */
-@media (hover: hover) {
-    .styled-button:hover .inner-button {
-        background: linear-gradient(
-            145deg,
-            rgba(78, 205, 196, 0.1),
-            rgba(255, 51, 102, 0.1)
-        );
+/* Loading Animation */
+@keyframes glassSlide {
+    0% {
+        transform: translateY(-100%);
     }
-
-    .styled-button:hover .inner-button::before {
-    opacity: 1;
-}
-
-    .styled-button:hover .icon {
-        transform: rotate(-15deg) scale(1.1);
-        filter: 
-            drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4))
-            brightness(1.2);
+    100% {
+        transform: translateY(100%);
     }
 }
 
-/* Loading State */
-.styled-button.loading {
-    pointer-events: none;
-    opacity: 0.8;
+.styled-button.loading::before {
+    animation: glassSlide 2s infinite;
 }
 
-.styled-button.loading .icon {
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+/* Active State */
+.styled-button:active {
+    transform: translateY(1px);
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.2),
+        inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .styled-button {
         padding: clamp(0.7rem, 1.5vw, 1rem) clamp(1.2rem, 2.5vw, 2rem);
-        font-size: clamp(0.85rem, 1.1vw, 1rem);
-    }
-
-    .styled-button .inner-button {
-        width: clamp(28px, 3.5vw, 36px);
-        height: clamp(28px, 3.5vw, 36px);
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .styled-button {
-        width: 100%;
-        justify-content: center;
-        padding: 0.8rem 1.5rem;
-    }
-
-    .styled-button .inner-button {
-        width: 32px;
-        height: 32px;
     }
 }
 
 /* Touch Device Optimization */
 @media (hover: none) {
-    .styled-button:active {
-        transform: scale(0.98);
-    }
-
-    .styled-button .inner-button:active {
-        transform: scale(0.95);
-    }
-}
-
-/* High Contrast Mode */
-@media (prefers-contrast: high) {
-.styled-button {
-        border: 2px solid #fff;
-        background: #000;
-    }
-
-    .styled-button .inner-button {
-        border: 2px solid #fff;
-    }
-}
-
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-    .styled-button,
-    .styled-button .inner-button,
-    .styled-button .icon {
-        transition: none;
-    }
-}
-
-/* Print Optimization */
-@media print {
-    .styled-button {
+    .styled-button::before {
         display: none;
     }
+    
+    .styled-button:active {
+        background: linear-gradient(
+            145deg,
+            rgba(25, 25, 25, 0.9),
+            rgba(35, 35, 35, 0.95)
+        );
+    }
 }
 
+       
 /* President Section Base */
 .president-showcase {
     width: 100%;
@@ -677,25 +664,6 @@ body::-webkit-scrollbar {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-}
-
-/* Background Effects */
-.president-showcase::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(78, 205, 196, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 51, 102, 0.08) 0%, transparent 50%);
-    z-index: -1;
-    opacity: 0.6;
-}
-
-.president-wrapper {
-    max-width: min(1400px, 95%);
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-    position: relative;
 }
 
 /* Smart Grid Layout */
@@ -958,36 +926,6 @@ body::-webkit-scrollbar {
     .president-social-links {
         display: none;
     }
-}
-
-/* Background Effects */
-.about-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-        radial-gradient(circle at top right, 
-            rgba(78, 205, 196, 0.05) 0%,
-            transparent 50%),
-        radial-gradient(circle at bottom left, 
-            rgba(255, 51, 102, 0.05) 0%,
-            transparent 50%);
-    z-index: -1;
-}
-
-.about-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg,
-        transparent,
-        var(--primary-color),
-        var(--accent-color),
-        transparent
-    );
 }
 
 /* About Section Base */
@@ -1254,36 +1192,6 @@ body::-webkit-scrollbar {
     position: relative;
     overflow: hidden;
     isolation: isolate;
-}
-
-/* Background Effects */
-.team-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-        radial-gradient(circle at top right, 
-            rgba(78, 205, 196, 0.05) 0%,
-            transparent 50%),
-        radial-gradient(circle at bottom left, 
-            rgba(255, 51, 102, 0.05) 0%,
-            transparent 50%);
-    z-index: -1;
-}
-
-.team-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg,
-        transparent,
-        var(--primary-color),
-        var(--accent-color),
-        transparent
-    );
 }
 
 /* Container */
@@ -1634,33 +1542,6 @@ body::-webkit-scrollbar {
     justify-content: center;
 }
 
-/* Background Effects */
-.featured-clubs::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg,
-        transparent,
-        var(--primary-color),
-        var(--accent-color),
-        transparent
-    );
-}
-
-.featured-clubs::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle at center,
-        rgba(78, 205, 196, 0.05) 0%,
-        transparent 70%
-    );
-    pointer-events: none;
-}
 
 /* Club Content */
 .club-content {
@@ -1926,33 +1807,6 @@ body::-webkit-scrollbar {
     overflow: hidden;
 }
 
-/* Section Decorative Elements */
-.upcoming-events::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg,
-        transparent,
-        var(--primary-color),
-        var(--accent-color),
-        transparent
-    );
-}
-
-.upcoming-events::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle at 50% 0%,
-        rgba(78, 205, 196, 0.05) 0%,
-        transparent 70%
-    );
-    pointer-events: none;
-}
 
 /* Container */
 .upcoming-events .container {
@@ -2433,94 +2287,4 @@ body::-webkit-scrollbar {
     .footer-links i {
         display: none;
     }
-}
-
-/* Background Effects */
-.president-showcase::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-        radial-gradient(circle at top right, 
-            rgba(78, 205, 196, 0.05) 0%,
-            transparent 50%),
-        radial-gradient(circle at bottom left, 
-            rgba(255, 51, 102, 0.05) 0%,
-            transparent 50%);
-    z-index: -1;
-}
-
-.president-showcase::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg,
-        transparent,
-        var(--primary-color),
-        var(--accent-color),
-        transparent
-    );
-}
-
-/* Background Effects */
-.get-involved-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-        radial-gradient(circle at top right, 
-            rgba(78, 205, 196, 0.05) 0%,
-            transparent 50%),
-        radial-gradient(circle at bottom left, 
-            rgba(255, 51, 102, 0.05) 0%,
-            transparent 50%);
-    z-index: -1;
-}
-
-.get-involved-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg,
-        transparent,
-        var(--primary-color),
-        var(--accent-color),
-        transparent
-    );
-}
-
-/* Background Effects */
-.footer::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-        radial-gradient(circle at top right, 
-            rgba(78, 205, 196, 0.05) 0%,
-            transparent 50%),
-        radial-gradient(circle at bottom left, 
-            rgba(255, 51, 102, 0.05) 0%,
-            transparent 50%);
-    z-index: -1;
-}
-
-.footer::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg,
-        transparent,
-        var(--primary-color),
-        var(--accent-color),
-        transparent
-    );
 }
