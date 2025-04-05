@@ -1,4 +1,5 @@
 {
-    "ignore": ["public/imageLinks.json"]
+    "watch": ["."],
+    "ignore": ["imageLinks.json"]
   }
   
