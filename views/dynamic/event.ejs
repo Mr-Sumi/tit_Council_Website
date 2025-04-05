@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craft carnival/ poster making/ slogan writing</title>
+    <title><%= event.event_name %></title>
     <link rel="stylesheet" href="/stylesheet/Event page.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
     <!-- Header Section -->
     <header>
         <h1>SAFFRON SUNDOWN PHASE-2</h1>
-        <p>Organized by the Student Core Committee</p>
+        <p>Organized by the Student</p>
         <p>Venue: Technocrats Group of Institutes</p>
         <a href="/form">
             <button>
@@ -53,94 +53,61 @@
 
     <!-- About Section -->
     <section class="section">
-        <h2> </h2>
-<<<<<<< HEAD
-        <p>Join us at Saffron Sundown Phase 2 — A unique fest designed to inspire creativity, foster collaboration, and enhance skills through diverse, engaging events for students across all semesters!</p>
-=======
+        <h2>Event Under Club</h2>
         <p>Join us at SAFFRON SUNDOWN PHASE-2 — A unique fest designed to inspire creativity, foster collaboration, and enhance skills through diverse, engaging events for students across all semesters!</p>
->>>>>>> 18b5daaf043261dd4224200643274bdce73b9ac1
     </section>
 
     <!-- Events Section -->
     <section class="section">
-        <h2>Featured Events</h2>
+        <h2>Featured Event</h2>
 
-        <!-- Club Mania (1st Semester) -->
-        <div class="event">
-            <h3>Meme Mania</h3>
-            <p> A creative and fun-filled contest where participants
-              create and submit memes related to startups, business
-              trends, marketing, funding struggles, hustle culture,
-              and the ups & downs of entrepreneurship. The goal is to
-              blend humor with the world of business while engaging
-              the audience through digital creativity<br/><br/>
-                Entry fees :- 50/- (solo)
-                100/- (duo)
-                 <br/>
+        <% if (event) { %>
+            <div class="event">
+                <h3><%= event.event_name %></h3>
+                <p><%= event.event_detail %></p>
+                <p><%= event.description_of_the_event %></p>
+                <p>
+                    <%= event.entry_fee?.solo !== 'N/A' ? `Solo Entry: ${event.entry_fee.solo}<br>` : '' %>
+                    <%= event.entry_fee?.duo !== 'N/A' ? `Duo Entry: ${event.entry_fee.duo}<br>` : '' %>
+                    <%= event.entry_fee?.trio !== 'N/A' ? `Trio Entry: ${event.entry_fee.trio}<br>` : '' %>
+                    <%= event.entry_fee?.squad !== 'N/A' ? `Squad Entry: ${event.entry_fee.squad}<br>` : '' %>
+                    <%= event.entry_fee?.["group(5 member)"] !== 'N/A' ? `Group (5 members): ${event.entry_fee["group(5 member)"]}` : '' %>
                 </p>
                 <h5 class="coordinater">
                     Coordinator<br/>
-                    Madhur Verma<br>   
-                    Mahima Sharma<br>
-                    7470811264                
+                    <%= event.coordinator || 'TBA' %><br/>
+                    <%= event.co_coordinator || 'TBA' %><br>
+                    <%= event.contact || 'TBA' %>
                 </h5>
-              </div>
+            </div>
+        <% } else { %>
+            <p>Event details are not available.</p>
+        <% } %>
     </section>
 
-    <!--Rules-->
+    <!-- Rules Section -->
     <section class="section">
-      <h2>Rules & Regulations</h2>
+        <h2>Rules & Regulations</h2>
 
-      <!-- Club Mania (1st Semester) -->
-      <div class="event">
-          <h3> What is Going to Happen in Your Event?</h3>
-          <p>
-            Participants will create original memes on
-            entrepreneurial themes.<br>
-            Memes will be submitted within the given deadline.<br>
-            Judges will evaluate entries based on creativity and
-            relevance.<br>
-            Selected memes will be posted on social media for
-            audience engagement.<br>
-            Winners will be chosen based on judging scores and
-            online engagement.<br>
-          </p>
-          <h3>Specific Guidelines :-</h3>
-          <p>Meme Format:
-            Static memes (JPEG/PNG) or short GIFs/videos
-            (MP4).<br>
-            1.
-            Text-based or image-based memes are both
-            acceptable.<br>
-            2.
-            Theme: Must be related to startups, businesses,
-            funding, failures, success, marketing, or innovation.<br>
-            Originality: No plagiarism; only original self-created
-            content is allowed.<br>
-            Submission Deadline: [Set a specific date and time].<br>
-            Content Guidelines: No offensive, political, or
-            inappropriate content.<br>
-            
-          </p>
-          <h3>Judging Criteria :-</h3>
-          <p>Creativity & Humor – Unique and funny concept.<br>
-            Relevance to Entrepreneurship – Relatability to
-            startup culture.<br>
-            Presentation & Quality – Visual appeal and clarity.<br>
-            Originality – Freshness of the idea.<br>
-           
-          </p>
-        
-      </div>
-  </section>
+        <% if (event && event.rules && event.rules.length > 0) { %>
+            <div class="event">
+                <h3>General Rules for <%= event.event_name %>:</h3>
+                <ul>
+                    <% event.rules.forEach(rule => { %>
+                        <li><%= rule %></li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% } else { %>
+            <p>No rules available for this event.</p>
+        <% } %>
+    </section>
 
     <!-- Join Us Section -->
     <section class="section join-section">
-        <h2>Don’t Miss Out!</h2>
-        <p>
-            Join us for Saffron Sundown—where you’ll solve coding puzzles, race through a treasure hunt, and put your programming skills to the test! Form a team of 4 and take on the challenge!
-         </p>
-        <p><strong>#SaffronSundown</strong></p>
+      <h2>Don't Miss Out!</h2>
+      <p>Be part of SAFFRON SUNDOWN PHASE-2 and enjoy a day filled with learning, fun, and connection. Discover your talents, make new friends, and experience the vibrant spirit of Technocrats Group of Institutes!</p>
+      <p><strong>#SaffronSundown</strong></p>
     </section>
 </div>
 

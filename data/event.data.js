@@ -338,7 +338,7 @@ let event={
         {
 
             
-            "event_name": "Entreprenership Sales Stall",
+            "event_name": "Stall",
             "event_under": "Stall",
             "tagline": "Entrepreneurial Sales Stall Experience",
             "event_detail": "A hands-on event where participants set up and brand mini stalls to market and sell products. Teams compete to attract customers, make sales, and handle business challenges in a lively, interactive setting.",
@@ -623,7 +623,7 @@ let event={
 
         {
             
-            "event_name": "IGI 2: Convert Strike",
+            "event_name": "IGI 2 Convert Strike",
             "event_detail": "IGI 2: Covert Strike is a tactical first-person shooter that challenges players to complete covert missions using strategy, stealth, and precise combat skills.",
             "description_of_the_event": "Players will engage in immersive environments with realistic weapon mechanics and various mission objectives. The event tests quick thinking, adaptability, and survival skills in an elimination-based format.",
             "entry_fee": {
@@ -800,7 +800,7 @@ let event={
 
         {
            
-            "event_name": "Pitch-O-Play",
+            "event_name": "PitchOPlay",
             "event_detail": "Pitch-O-Play is an engaging entrepreneurship event where participants brainstorm, strategize, and pitch innovative business ideas. Teams will receive creative themes and objects, develop unique business concepts, and present them to a panel of judges.",
             "description_of_the_event": "Participants will randomly pick a chit containing a theme and an object name. They must then develop a product or business idea based on their chit. Each team will prepare a 3-5 minute pitch and present it to the judges. The best and most innovative idea wins!",
             "entry_fee": {
@@ -988,7 +988,7 @@ let event={
         
         {
             
-            "event_name": "Roborace",
+            "event_name": "Robo Race",
             "event_detail": "A high-speed robotics challenge where participants build and race remote-controlled bots through a challenging course.",
             "description_of_the_event": "Robo Race is an exciting competition that tests creativity, engineering skills, and speed. Participants must design, construct, and maneuver their bots through a dynamic race track filled with obstacles and sharp turns.",
             "entry_fee": {
@@ -1024,7 +1024,7 @@ let event={
 
         {
            
-            "event_name": "Robowar",
+            "event_name": "Robo War",
             "event_detail": "Robo War is an intense competition where participants design and unleash their mechanical creations in high-stakes showdowns, demonstrating engineering prowess and strategic thinking.",
             "description_of_the_event": "The arena transforms into a futuristic battleground where robots clash in an adrenaline-fueled spectacle. The competition consists of multiple elimination rounds, where robots engage in one-on-one combat. The last surviving robot will be declared the winner.",
             "entry_fee": {
@@ -1050,7 +1050,7 @@ let event={
         
         {
            
-            "event_name": "Screen to Speech",
+            "event_name": "Screen To Speech",
             "event_detail": "Screen to Speech is a fun contest that challenges participants to creatively narrate and provide dialogue for a randomly given muted video clip.",
             "description_of_the_event": "This event tests creativity, storytelling, and improvisational skills, encouraging participants to bring scenes to life with their words. Whether humorous, dramatic, or poetic, the best narrations will be those that captivate the audience and seamlessly fit the visuals. Participants will be given a random muted clip and a short preparation time before delivering their speech live in front of an audience and judges.",
             "entry_fee": {
@@ -1086,7 +1086,7 @@ let event={
 
         {
             
-            "event_name": "SkyHigh Snap and SHow",
+            "event_name": "Sky High Snap and solve",
             "event_detail": "In this event, there will be 2 rounds:\n1. Puzzle Round: Each team (max 3 members) will have to solve a puzzle in the minimum time. The top 3 teams who solve the puzzle first will move to the next round.\n2. Videography and Photography Round: The top 3 teams will compete in a photography and videography competition using drones. Trainers will guide participants. The winning team will get prizes, and all participants will receive certificates.",
             "description_of_the_event": "A thrilling competition where teams first solve puzzles and then showcase their drone photography and videography skills.",
             "entry_fee": {
