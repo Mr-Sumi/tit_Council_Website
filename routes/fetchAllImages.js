@@ -16,7 +16,7 @@ async function fetchAllImages() {
     const result = await cloudinary.api.resources({
       resource_type: 'image',
       type: 'upload',
-      max_results: 1000
+      max_results: 10000
     });
 
     const imageUrls = result.resources.map(r => r.secure_url);
