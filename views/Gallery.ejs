@@ -69,64 +69,8 @@
     <script src="/javascript/navbaar.js"></script>
 
     <script>
-        const images = [
-            {img: "/image folder/Event Photos/IMG-20241110-WA0049.jpg"},
-            {img: "/image folder/Event Photos/IMG_20240214_130059684.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0031.jpg"},
-            {img: "/image folder/Event Photos/46.png"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0009.jpg"},
-            {img: "/image folder/Event Photos/10.png"},
-            {img: "/image folder/Event Photos/58.png"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0038.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0045.jpg"},
-            {img: "/image folder/Event Photos/60.png"},
-            {img: "/image folder/Event Photos/4.png"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0041.jpg"},
-            {img: "/image folder/Event Photos/38.png"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0052.jpg"},
-            {img: "/image folder/Event Photos/19.png"},
-            {img: "/image folder/Event Photos/5.png"},
-            {img: "/image folder/Event Photos/52.png"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0011.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0025.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0028.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0007.jpg"},
-            {img: "/image folder/Event Photos/49.png"},
-            {img: "/image folder/Event Photos/25.png"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0012.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0022.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0018.jpg"},
-            {img: "/image folder/Event Photos/40.png"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0046.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0014.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0054.jpg"},
-            {img: "/image folder/Event Photos/24.png"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0051.jpg"},
-            {img: "/image folder/Event Photos/15.png"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0030.jpg"},
-            {img: "/image folder/Event Photos/IMG_20240214_122157876.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0050.jpg"},
-            {img: "/image folder/Event Photos/18.png"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0024.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0034.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0047.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0037.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0032.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0008.jpg"},
-            {img: "/image folder/Event Photos/66.png"},
-            {img: "/image folder/Event Photos/13.png"},
-            {img: "/image folder/Event Photos/68.png"},
-            {img: "/image folder/Event Photos/8.png"},
-            {img: "/image folder/Event Photos/51.png"},
-            {img: "/image folder/Event Photos/12.png"},
-            {img: "/image folder/Event Photos/64.png"},
-            {img: "/image folder/Event Photos/34.png"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0019.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0053.jpg"},
-            {img: "/image folder/Event Photos/IMG-20241110-WA0026.jpg"},
-            
-        ];
-
+        const images = [];
+    
         const gallery = document.getElementById('gallery');
         const popup = document.getElementById('popup');
         const popupImg = document.getElementById('popup-img');
@@ -134,82 +78,83 @@
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
         let currentIndex = 0;
-
-        // Create gallery
+    
+        // 1. Load imageLinks.json
+        async function loadImages() {
+            try {
+                const res = await fetch('/imageLinks.json'); // this must be in your public folder
+                const data = await res.json();
+                data.forEach(url => images.push({ img: url }));
+                createGallery();
+            } catch (error) {
+                console.error('Error loading images:', error);
+            }
+        }
+    
+        // 2. Create gallery
         function createGallery() {
             images.forEach((item, index) => {
                 const img = document.createElement('img');
                 img.src = item.img;
                 img.alt = `Gallery Image ${index + 1}`;
                 img.loading = 'lazy';
-                
+    
                 img.addEventListener('click', () => {
                     openPopup(index);
                 });
-                
+    
                 gallery.appendChild(img);
             });
         }
-
-        // Popup functions
+    
+        // 3. Popup functions
         function openPopup(index) {
             currentIndex = index;
             popup.style.display = 'flex';
             updatePopupImage();
             document.body.style.overflow = 'hidden';
         }
-
+    
         function closePopup() {
             popup.style.display = 'none';
             document.body.style.overflow = '';
         }
-
+    
         function updatePopupImage() {
             popupImg.src = images[currentIndex].img;
         }
-
+    
         function navigateImage(direction) {
             currentIndex = (currentIndex + direction + images.length) % images.length;
             updatePopupImage();
         }
-
-        // Event listeners
+    
+        // 4. Event listeners
         closeBtn.addEventListener('click', closePopup);
         prevBtn.addEventListener('click', () => navigateImage(-1));
         nextBtn.addEventListener('click', () => navigateImage(1));
-
         popup.addEventListener('click', (e) => {
-            if (e.target === popup) {
-                closePopup();
-            }
+            if (e.target === popup) closePopup();
         });
-
-        // Keyboard navigation
+    
         document.addEventListener('keydown', (e) => {
             if (popup.style.display === 'flex') {
-                switch(e.key) {
-                    case 'ArrowLeft':
-                        navigateImage(-1);
-                        break;
-                    case 'ArrowRight':
-                        navigateImage(1);
-                        break;
-                    case 'Escape':
-                        closePopup();
-                        break;
-                }
+                if (e.key === 'ArrowLeft') navigateImage(-1);
+                if (e.key === 'ArrowRight') navigateImage(1);
+                if (e.key === 'Escape') closePopup();
             }
         });
-
-        // Initialize gallery
-        document.addEventListener('DOMContentLoaded', createGallery);
-
-        // Handle image loading errors
+    
+        // 5. Load everything
+        document.addEventListener('DOMContentLoaded', loadImages);
+    
+        // 6. Fallback for broken images
         window.addEventListener('error', function(e) {
             if (e.target.tagName === 'IMG') {
-                e.target.src = '/path/to/fallback-image.jpg'; // Add a fallback image path
+                e.target.src = '/path/to/fallback-image.jpg';
             }
         }, true);
     </script>
+    
 </body>
 </html>
