@@ -62,7 +62,7 @@ let event={
 
         {
             
-            "event_name": "Battle Of Wits",
+            "event_name": "Battle Of Witz",
             "event_detail": "Battle of Wits",
             "description_of_the_event": "Battle of Wits consists of two events: Debate Competition and Group Discussions. The debate competition will include an opening session, topic announcement, and structured rebuttals. The group discussion will involve collaborative discussion on a given topic to enhance communication and critical thinking skills.",
             "entry_fee": {
@@ -623,7 +623,7 @@ let event={
 
         {
             
-            "event_name": "IGI 2 Convert Strike",
+            "event_name": "IGI 2 Covert Strike",
             "event_detail": "IGI 2: Covert Strike is a tactical first-person shooter that challenges players to complete covert missions using strategy, stealth, and precise combat skills.",
             "description_of_the_event": "Players will engage in immersive environments with realistic weapon mechanics and various mission objectives. The event tests quick thinking, adaptability, and survival skills in an elimination-based format.",
             "entry_fee": {
