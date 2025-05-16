@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site": "studentcounciltit",
     "public": "public",
     "ignore": [
       "firebase.json",
