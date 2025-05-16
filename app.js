@@ -128,23 +128,3 @@ app.use((req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
-const { initializeApp } = require('firebase/app')
-const { getAuth } = require('firebase/auth')
-const { getFirestore } = require('firebase/firestore')
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAog8nhlq4v8KxrJiQhn19DT_eWcbsh5yw",
-  authDomain: "student-council-f7f41.firebaseapp.com",
-  projectId: "student-council-f7f41",
-  storageBucket: "student-council-f7f41.appspot.com",
-  messagingSenderId: "18454546490",
-  appId: "1:18454546490:web:09ac0b75dcd5ecb5b80d03",
-  measurementId: "G-FXCS20QKHE"
-}
-
-const app = initializeApp(firebaseConfig)
-
-const auth = getAuth(app)
-const db = getFirestore(app)
-
-module.exports = { auth, db }
