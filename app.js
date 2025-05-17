@@ -105,6 +105,11 @@ app.get("/form", (req, res) => {
   res.render("form", { title: "Form Page" });
 });
 
+//join council route
+app.get("/views/forms/Join council form", (req, res) => {
+  res.render("join", { title: "Join Student Council" });
+});
+
 app.get("/eventPage", (req, res) => {
   res.render("Events", { isLoggedIn: true });
 });

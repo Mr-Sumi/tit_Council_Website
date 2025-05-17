@@ -1176,8 +1176,8 @@ body {
 
 /* Deputies Grid */
 .deputies-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    display: flex;
+    flex-direction: column;
     gap: clamp(2rem, 4vw, 3rem);
     width: 100%;
     margin: 0 auto;
@@ -1187,22 +1187,27 @@ body {
 /* Deputy Card */
 .deputy-card {
     display: flex;
-    flex-direction: column;
-    background: rgba(255, 255, 255, 0.03);
     border-radius: 20px;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    transform-style: preserve-3d;
+    -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    -moz-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    -ms-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.deputy-card:hover {
-    transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(78, 205, 196, 0.1);
-    border-color: rgba(78, 205, 196, 0.2);
+.card-1{
+    flex-direction: row;
+}
+.card-2{
+    flex-direction: row-reverse;
+}
+@media screen and (max-width: 768px) {
+    .card-1, .card-2 {
+        flex-direction: column;
+    }
+    
 }
 
 /* Profile Section */
@@ -1217,43 +1222,32 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    align-content: center;
     gap: clamp(0.75rem, 1.25vw, 1rem);
+}
+.pa{
+padding-left: 5rem;
+padding-right: 5rem;
+
 }
 
 /* Image Wrapper */
-.profile-section .image-wrapper {
+.image-wrapper {
     width: clamp(140px, 35vw, 200px);
     aspect-ratio: 1;
     position: relative;
     padding: 4px;
     border-radius: 50%;
-    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
 }
 
-.profile-section .image-wrapper img {
+.image-wrapper img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     border: 4px solid rgba(255, 255, 255, 0.1);
-}
-
-.profile-section .image-wrapper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: linear-gradient(45deg,
-        rgba(78, 205, 196, 0.2),
-        rgba(255, 51, 102, 0.2)
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.deputy-card:hover .image-wrapper::after {
-    opacity: 1;
 }
 
 /* Profile Info */
@@ -1284,7 +1278,7 @@ body {
 }
 
 /* Social Icons */
-.profile-info .social-icons {
+.social-icons {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -1292,7 +1286,7 @@ body {
     margin-top: clamp(1rem, 2vw, 1.5rem);
 }
 
-.profile-info .social-icons a {
+.social-icons a {
     width: clamp(35px, 5vw, 40px);
     aspect-ratio: 1;
     border-radius: 12px;

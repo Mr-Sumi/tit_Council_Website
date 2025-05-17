@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join the Council</title>
+    <meta name="description" content="Join the Student Council form. Fill out your details to apply for the council.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheet/preloader.css">
+    <link rel="stylesheet" href="/stylesheet/navbar.css">
     <style>
         :root {
             --primary-color: #4ecdc4;
@@ -13,16 +16,16 @@
             --light-text: #ffffff;
             --gray-text: rgba(255, 255, 255, 0.8);
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-
+        
         body {
-            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+            background: linear-gradient(180deg, var(--dark-bg) 0%, #1a1a1a 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -30,17 +33,31 @@
             padding: 2rem;
             color: var(--light-text);
         }
-
+        
         .form-container {
-            background: rgba(255, 255, 255, 0.03);
             padding: 2.5rem;
             border-radius: 15px;
             width: 100%;
             max-width: 600px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.6s ease-in-out;
         }
-
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
         h2 {
             text-align: center;
             font-size: 2rem;
@@ -48,30 +65,32 @@
             color: var(--light-text);
             position: relative;
             padding-bottom: 1rem;
+            width: 100%;
         }
-
+        
         h2::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 120px;
             height: 3px;
             background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
         }
-
+        
         .form-group {
             margin-bottom: 1.5rem;
+            width: 100%;
         }
-
+        
         label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--gray-text);
             font-weight: 500;
         }
-
+        
         input, select, textarea {
             width: 100%;
             padding: 12px;
@@ -81,23 +100,27 @@
             color: var(--light-text);
             font-size: 1rem;
             transition: all 0.3s ease;
+            margin: 0 auto;
+            display: block;
         }
-
+        
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(78, 205, 196, 0.1);
+            box-shadow: 0 0 15px rgba(78, 205, 196, 0.2);
+            transform: scale(1.01);
         }
-
+        
         textarea {
             min-height: 120px;
             resize: vertical;
         }
-
+        
         .progress-container {
             margin: 2rem 0;
+            width: 100%;
         }
-
+        
         .progress-bar {
             width: 100%;
             height: 6px;
@@ -105,21 +128,21 @@
             border-radius: 3px;
             overflow: hidden;
         }
-
+        
         .progress {
             height: 100%;
             width: 0;
             background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
             transition: width 0.3s ease;
         }
-
+        
         .progress-text {
             text-align: center;
             color: var(--gray-text);
             font-size: 0.9rem;
             margin-top: 0.5rem;
         }
-
+        
         button {
             width: 100%;
             padding: 1rem;
@@ -132,34 +155,42 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
+        
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
         }
-
+        
+        /* Responsive Styles */
         @media (max-width: 768px) {
             .form-container {
-                padding: 1.5rem;
+                padding: 2rem;
             }
-
+        
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
         }
-
+        
         @media (max-width: 480px) {
             body {
                 padding: 1rem;
             }
-
+        
             .form-container {
-                padding: 1rem;
+                padding: 1.5rem;
+            }
+        
+            h2 {
+                font-size: 1.4rem;
             }
         }
+
     </style>
 </head>
 <body>
+    <%- include('partials/preloader') %>
+    
     <div class="form-container">
         <h2>Join the Student Council</h2>
         
@@ -169,45 +200,57 @@
             </div>
             <div class="progress-text" id="progressText">Form completion: 0%</div>
         </div>
-
-        <form id="councilForm">
+   
+        <form id="councilForm" novalidate>
             <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" required>
+                <input type="text" id="name" name="name" required minlength="3" placeholder="Enter your full name">
             </div>
-
+        
             <div class="form-group">
                 <label for="enrollment">Enrollment Number</label>
-                <input type="text" id="enrollment" required>
+                <input type="text" id="enrollment" name="enrollment" required maxlength="12" placeholder="0111AL111111">
             </div>
-
+        
             <div class="form-group">
                 <label for="branch">Branch</label>
-                <select id="branch" required>
-                    <option value="">Select Branch</option>
-                    <option value="Computer Science">Computer Science</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Mechanical">Mechanical</option>
-                    <option value="Civil">Civil</option>
-                </select>
+               <select id="branch" name="branch" required>
+                <option value="" disabled selected>Select Branch</option>
+                
+                <optgroup label="CSE">
+                    <option value="CSE">CSE</option>
+                    <option value="CSE AIML">CSE - AIML</option>
+                    <option value="CSE AI">CSE - AI</option>
+                    <option value="CSE DS">CSE - DS</option>
+                    <option value="CSE AIDS">CSE - AIDS</option>
+                    <option value="CSE Cyber">CSE - Cyber Sec</option>
+                    <option value="CSE IoT">CSE - IoT</option>
+                    <option value="IT">IT</option>
+                    <option value="EX">EX</option>
+                    <option value="EC">EC</option>
+                    <option value="ME">ME</option>
+                    <option value="CE">CE</option>
+                    <option value="B.Pharm">B.Pharm</option>
+                    <option value="MBA">MBA</option>
+                    <option value="Law">Law</option>
+            </select>
             </div>
-
+        
             <div class="form-group">
                 <label for="year">Year of Study</label>
-                <select id="year" required>
-                    <option value="">Select Year</option>
+                <select id="year" name="year" required>
+                    <option value="" disabled selected>Select Year</option>
                     <option value="1st Year">1st Year</option>
                     <option value="2nd Year">2nd Year</option>
                     <option value="3rd Year">3rd Year</option>
                     <option value="4th Year">4th Year</option>
                 </select>
             </div>
-
+        
             <div class="form-group">
                 <label for="club">Club to Join</label>
-                <select id="club" required>
-                    <option value="">Select a Club</option>
+                <select id="club" name="club" required>
+                    <option value="" disabled selected>Select a Club</option>
                     <option value="Drone Society">Drone Society</option>
                     <option value="Coding Club">Coding Club</option>
                     <option value="Robotics Club">Robotics Club</option>
@@ -220,57 +263,60 @@
                     <option value="Drama Club">Drama Club</option>
                 </select>
             </div>
-
+        
             <div class="form-group">
                 <label for="skills">Technical Skills</label>
-                <input type="text" id="skills" required>
+                <input type="text" id="skills" name="skills" required minlength="2" placeholder="HTML, Python">
             </div>
-
+        
             <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" required>
+                <input type="tel" id="phone" name="phone" required pattern="[6-9]\d{9}" placeholder="10-digit Indian number" maxlength="10">
             </div>
-
+        
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" required>
+                <input type="email" id="email" name="email" required placeholder="yourname@example.com">
             </div>
-
+        
             <div class="form-group">
                 <label for="why">Why do you want to join?</label>
-                <textarea id="why" required></textarea>
+                <textarea id="why" name="why" required minlength="10" placeholder="Write your motivation..."></textarea>
             </div>
-
+        
             <button type="submit">Submit Application</button>
         </form>
     </div>
+     <script src="/javascript/preloader.js"></script>
 
-    <script>
-        const form = document.getElementById('councilForm');
-        const progress = document.getElementById('progress');
-        const progressText = document.getElementById('progressText');
+<script>
+    const form = document.getElementById('councilForm');
+    const progress = document.getElementById('progress');
+    const progressText = document.getElementById('progressText');
 
-        function updateProgress() {
-            const fields = form.querySelectorAll('input, select, textarea');
-            const filledFields = Array.from(fields).filter(field => field.value.trim() !== '');
-            const percentage = (filledFields.length / fields.length) * 100;
-            
-            progress.style.width = `${percentage}%`;
-            progressText.textContent = `Form completion: ${Math.round(percentage)}%`;
+    function updateProgress() {
+        const fields = form.querySelectorAll('input, select, textarea');
+        const filledFields = Array.from(fields).filter(field => field.value.trim() !== '');
+        const percentage = (filledFields.length / fields.length) * 100;
+
+        progress.style.width = `${percentage}%`;
+        progressText.textContent = `Form completion: ${Math.round(percentage)}%`;
+    }
+
+    form.addEventListener('input', updateProgress);
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (form.checkValidity()) {
+            alert('✅ Application submitted successfully!');
+            form.reset();
+            updateProgress();
+        } else {
+            alert('⚠️ Please fill in all required fields correctly.');
+            form.reportValidity(); // Shows native browser validation messages
         }
+    });
+</script>
 
-        form.addEventListener('input', updateProgress);
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            if (form.checkValidity()) {
-                alert('Application submitted successfully!');
-                form.reset();
-                updateProgress();
-            } else {
-                alert('Please fill in all required fields.');
-            }
-        });
-    </script>
 </body>
 </html>
