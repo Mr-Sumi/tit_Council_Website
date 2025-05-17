@@ -796,12 +796,60 @@
                                     return;
                                 }
 
+<<<<<<< HEAD
                                 const id = this.id.replace('Photo', '');
                                 const preview = document.getElementById(`${id}Preview`);
                                 const fileName = document.getElementById(`${id}FileName`);
                                 const fileSize = document.getElementById(`${id}FileSize`);
                                 const dropContent = document.getElementById(`${id}DropContent`);
                                 const previewContent = document.getElementById(`${id}PreviewContent`);
+=======
+// Add this to your existing file handling code
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(() => {
+    document.querySelectorAll('.file-input').forEach(input => {
+      input.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          // Check file size (max 5MB)
+          if (file.size > 2 * 1024 * 1024) {
+            alert('File size exceeds 2MB limit');
+            this.value = '';
+            return;
+          }
+          
+          const id = this.id.replace('Photo', '');
+          const preview = document.getElementById(`${id}Preview`);
+          const fileName = document.getElementById(`${id}FileName`);
+          const fileSize = document.getElementById(`${id}FileSize`);
+          const dropContent = document.getElementById(`${id}DropContent`);
+          const previewContent = document.getElementById(`${id}PreviewContent`);
+          
+          preview.src = URL.createObjectURL(file);
+          
+          fileName.textContent = file.name;
+          fileSize.textContent = formatFileSize(file.size);
+          
+          dropContent.style.display = 'none';
+          previewContent.style.display = 'block';
+          
+          const removeBtn = previewContent.querySelector('.remove-file');
+          removeBtn.addEventListener('click', function() {
+            input.value = '';
+            dropContent.style.display = 'flex';
+            previewContent.style.display = 'none';
+          });
+          
+          const changeBtn = previewContent.querySelector('.change-file');
+          changeBtn.addEventListener('click', function() {
+            input.click();
+          });
+        }
+      });
+    });
+  }, 100);
+});
+>>>>>>> 3dc4a4cbe8e8bdb9f3cce14439497acb61620ed3
 
                                 preview.src = URL.createObjectURL(file);
 
@@ -1100,12 +1148,18 @@
             }
         </script>
 
+<<<<<<< HEAD
         <script>
             function validateEnrollment(input) {
                 const value = input.value.toUpperCase();
                 const enrollmentRegex = /^[0-9]{4}[A-Z]{2}[0-9]{6}$/;
                 const errorContainer = input.parentElement.querySelector('.field-error') ||
                     document.createElement('div');
+=======
+            function validateFile(file) {
+                const validTypes = ['image/jpeg', 'image/png'];
+                const maxSize = 2 * 1024 * 1024; // 2MB
+>>>>>>> 3dc4a4cbe8e8bdb9f3cce14439497acb61620ed3
 
                 errorContainer.className = 'field-error';
 

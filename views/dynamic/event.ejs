@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= event.event_name %></title>
+    <link rel="stylesheet" href="/stylesheet/Event page.css">
+    <!-- <link rel="stylesheet" href="/stylesheet/navbaar.css"> -->
+</head>
+<body>
+    
+
+<div class="container">
+    <!-- Header Section -->
+    <header>
+        <h1>SAFFRON SUNDOWN PHASE-2</h1>
+        <p>Organized by the Student</p>
+        <p>Venue: Technocrats Group of Institutes</p>
+        <a href="/form">
+            <!-- From Uiverse.io by adamgiebl --> 
+<button class="cssbuttons-io-button">
+    Register
+    <div class="icon">
+      <svg
+        height="24"
+        width="24"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path
+          d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+          fill="currentColor"
+        ></path>
+      </svg>
+    </div>
+  </button>
+  
+        </a>
+    </header>
+
+    <!-- About Section -->
+    <section class="section">
+        <h2>Event Under Club</h2>
+        <p>Join us at SAFFRON SUNDOWN PHASE-2 — A unique fest designed to inspire creativity, foster collaboration, and enhance skills through diverse, engaging events for students across all semesters!</p>
+    </section>
+
+    <!-- Events Section -->
+    <section class="section">
+        <h2>Featured Event</h2>
+
+        <% if (event) { %>
+            <div class="event">
+                <h3><%= event.event_name %></h3>
+                <p><%= event.event_detail %></p>
+                <p><%= event.description_of_the_event %></p>
+                <p>
+                    <%= event.entry_fee?.solo !== 'N/A' ? `Solo Entry: ${event.entry_fee.solo}<br>` : '' %>
+                    <%= event.entry_fee?.duo !== 'N/A' ? `Duo Entry: ${event.entry_fee.duo}<br>` : '' %>
+                    <%= event.entry_fee?.trio !== 'N/A' ? `Trio Entry: ${event.entry_fee.trio}<br>` : '' %>
+                    <%= event.entry_fee?.squad !== 'N/A' ? `Squad Entry: ${event.entry_fee.squad}<br>` : '' %>
+                    <%= event.entry_fee?.["group(5 member)"] !== 'N/A' ? `Group (5 members): ${event.entry_fee["group(5 member)"]}` : '' %>
+                </p>
+                <h5 class="coordinater">
+                    Coordinator<br/>
+                    <%= event.coordinator || 'TBA' %><br/>
+                    <%= event.co_coordinator || 'TBA' %><br>
+                    <%= event.contact || 'TBA' %>
+                </h5>
+            </div>
+        <% } else { %>
+            <p>Event details are not available.</p>
+        <% } %>
+    </section>
+
+    <!-- Rules Section -->
+    <section class="section">
+        <h2>Rules & Regulations</h2>
+
+        <% if (event && event.rules && event.rules.length > 0) { %>
+            <div class="event">
+                <h3>General Rules for <%= event.event_name %>:</h3>
+                <ul>
+                    <% event.rules.forEach(rule => { %>
+                        <li><%= rule %></li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% } else { %>
+            <p>No rules available for this event.</p>
+        <% } %>
+    </section>
+
+    <!-- Join Us Section -->
+    <section class="section join-section">
+      <h2>Don't Miss Out!</h2>
+      <p>Be part of SAFFRON SUNDOWN PHASE-2 and enjoy a day filled with learning, fun, and connection. Discover your talents, make new friends, and experience the vibrant spirit of Technocrats Group of Institutes!</p>
+      <p><strong>#SaffronSundown</strong></p>
+    </section>
+</div>
+
+<!-- Footer Section -->
+<footer>
+    <p>&copy; 2024 Technocrats Group of Institutes. All rights reserved.</p>
+</footer>
+
+<script>
+    // Intersection Observer to animate events on scroll
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    });
+
+    document.querySelectorAll('.event').forEach(event => {
+        observer.observe(event);
+    });
+</script>
+<script src="/javascript/eventpage.js"></script>
+
+</body>
+</html>

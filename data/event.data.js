@@ -1,7 +1,7 @@
 let event={
     eventdetail:[
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Arm Wrestling",
             "event_detail": "Organized by the Student Core Committee at Technocrats Group of Institutes.",
             "description_of_the_event": "Join us for an exciting set of events including Arm Wrestling, Poster Making, and more!",
@@ -32,7 +32,7 @@ let event={
         },
 
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Art Byte",
             "event_detail": "Art Byte - Digital Poster Making Competition",
             "description_of_the_event": "ArtByte is a digital poster-making competition to showcase your artistic skills. Participants will design a digital poster based on the theme revealed on the event day.",
@@ -61,8 +61,8 @@ let event={
         },
 
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
-            "event_name": "Battle Of Wits",
+            
+            "event_name": "Battle Of Witz",
             "event_detail": "Battle of Wits",
             "description_of_the_event": "Battle of Wits consists of two events: Debate Competition and Group Discussions. The debate competition will include an opening session, topic announcement, and structured rebuttals. The group discussion will involve collaborative discussion on a given topic to enhance communication and critical thinking skills.",
             "entry_fee": {
@@ -91,7 +91,7 @@ let event={
         },
 
         {
-            "event_under": "TECH WIZARD",
+            
             "event_name": "BGMI",
             "event_detail": "Battlegrounds Mobile India (BGMI)",
             "description_of_the_event": "BGMI (Battlegrounds Mobile India) is a popular battle royale game developed by Krafton, specifically for the Indian audience. Players compete in large, immersive battlegrounds, either solo or in teams, to be the last person or team standing. With high-quality graphics, a range of realistic weapons, and intense gameplay modes, BGMI provides an exciting experience, keeping players engaged in survival strategies and action-packed combat.",
@@ -137,7 +137,7 @@ let event={
         },
 
         {
-            "event_under": "Craft Carnival",
+            
             "event_name": "Bounce & Burst",
             "event_detail": "Bounce & Brust - A fun and exciting event featuring Hopscotch and Balloon POP.",
             "description_of_the_event": "Join us at SAFFRON SUNDOWN PHASE-2 — A unique fest designed to inspire creativity, foster collaboration, and enhance skills through diverse, engaging events for students across all semesters!",
@@ -166,7 +166,7 @@ let event={
         },
 
         {
-            "event_under": "Craft Carnival",
+            
             "event_name": "Buzz Quest",
             "event_detail": "Buzz Quest - A thrilling adventure where participants conquer challenges, using both physical and mental skills.",
             "description_of_the_event": "Join us at SAFFRON SUNDOWN PHASE-2 — A unique fest designed to inspire creativity, foster collaboration, and enhance skills through diverse, engaging events for students across all semesters!",
@@ -218,7 +218,7 @@ let event={
         },
 
         {
-            "event_under": "Craft Carnival",
+          
             "event_name": "Chinese Whisper",
             "event_detail": "Bounce & Burst - An engaging and exciting event that combines fun challenges with creativity.",
             "description_of_the_event": "Join us at Saffron Sundown — A unique fest designed to inspire creativity, foster collaboration, and enhance skills through diverse, engaging events for students across all semesters!",
@@ -241,7 +241,7 @@ let event={
         },
 
         {
-            "event_under": "Coding Club",
+            
             "event_name": "Code Clash 4.0",
             "event_detail": "CODECLASH 4.0 - Where Coders Compete, Skills Ignite",
             "description_of_the_event": "To challenge and enhance the coding, aptitude, and verbal skills of participants in a competitive yet fair environment.",
@@ -277,8 +277,8 @@ let event={
         
 
         {
-            "event_under": "Entrepreneurship Club & Cultural & Event Club",
-            "event_name": "",
+           
+            "event_name": "Corporate Challenge Showdown",
             "event_detail": "Join us at SAFFRON SUNDOWN PHASE-2 — A unique fest designed to inspire creativity, foster collaboration, and enhance skills through diverse, engaging events for students across all semesters!",
             "description_of_the_event": "The Corporate Challenge Showdown is an interactive event where duo participants and teams tackle real-world crisis scenarios faced by startups. Each team must develop quick, innovative strategies to 'save' a struggling startup across multiple rounds with new challenges. The goal is to build participants' real-world business skills, enhance strategic thinking, and foster creative problem-solving, preparing them to navigate and succeed in high-stakes entrepreneurial situations.",
             "entry_fee": {
@@ -301,7 +301,7 @@ let event={
         },
 
         {
-            "event_under": "Alumni Relation Club",
+            
             "event_name": "Dumb Charades",
             "event_detail": "Join us at SAFFRON SUNDOWN PHASE-2 — A unique fest designed to inspire creativity, foster collaboration, and enhance skills through diverse, engaging events for students across all semesters!",
             "description_of_the_event": "Dumb Charades is an exciting team-based event where participants act out words or phrases without speaking, while their teammates guess the answer. This game tests creativity, non-verbal communication, and quick thinking. Teams must rely on gestures, expressions, and movement to convey their given clues effectively.",
@@ -337,8 +337,8 @@ let event={
 
         {
 
-            "event_under": "Entrepreneurship Club",
-            "event_name": "Entreprenership Sales Stall",
+            
+            "event_name": "Stall",
             "event_under": "Stall",
             "tagline": "Entrepreneurial Sales Stall Experience",
             "event_detail": "A hands-on event where participants set up and brand mini stalls to market and sell products. Teams compete to attract customers, make sales, and handle business challenges in a lively, interactive setting.",
@@ -383,7 +383,7 @@ let event={
 
 
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Fashion Fusion",
             "event_detail": "An exciting event featuring Fashion Fusion, where participants express their creativity and confidence through fashion.",
             "description_of_the_event": "Fashion Fusion is an exhilarating platform for students to showcase their fashion creativity, confidence, and uniqueness. With a freestyle theme, participants have the liberty to express themselves through their outfits, blending different styles, cultures, and inspirations. The event is all about pushing creative boundaries while maintaining elegance and decency.",
@@ -412,7 +412,7 @@ let event={
         },
 
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2  filmy frenzy",
+            
             "event_name": "Filmy Frenzy",
             "event_detail": "Craft Carnival features poster making and slogan writing competitions, encouraging participants to showcase their artistic and expressive skills.",
             "description_of_the_event": "Craft Carnival is a platform for students to display their creativity through visual art and impactful slogans. Participants will engage in poster making and slogan writing, blending artistic expression with meaningful messages. This event aims to promote innovation and awareness through artistic mediums.",
@@ -439,7 +439,7 @@ let event={
         },
         
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Flash Mob",
             "event_detail": "Flash Mob: The Dance Faceoff showcases the diversity of dance styles and techniques, encouraging participants to exhibit their best moves and unique dance forms.",
             "description_of_the_event": "Flash Mob is an exhilarating dance battle where participants compete to showcase their style and skills. From solos to group performances, this event celebrates rhythm, coordination, and creativity, culminating in an electrifying faceoff round.",
@@ -476,7 +476,7 @@ let event={
         },
 
         {
-            "event_under": "TECH WIZARD",
+            
             "event_name": "Free Fire",
             "event_detail": "Free Fire is a fast-paced battle royale tournament where participants compete to be the last person or team standing.",
             "description_of_the_event": "Free Fire is a popular battle royale game where players scavenge for weapons, gear, and resources to survive and eliminate opponents. The event will feature solo and squad-based matches with eliminations leading to the final showdown. Participants must strategize, collaborate, and showcase their combat skills in this high-intensity competition.",
@@ -514,7 +514,7 @@ let event={
         },
 
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Fun With Things and Think",
             "event_detail": "Fun With Things and Think is a mystery gaming challenge that tests participants' reflexes, strategic thinking, and teamwork through a series of engaging and fun games.",
             "description_of_the_event": "Participants will face a variety of surprise games, requiring quick decision-making, coordination, and logical thinking. The exact games will remain a mystery until the event starts, adding an element of excitement and unpredictability.",
@@ -545,7 +545,7 @@ let event={
         },
         
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Hackathon",
             "event_detail": "UInovate is a UI/UX hackathon where participants compete to enhance a brand’s interface using modern design and frontend development techniques.",
             "description_of_the_event": "UInovate is a dynamic hackathon centered around UI/UX design and frontend development. Participants will be given a real-world company interface to redesign, focusing on user experience, aesthetics, and functionality. The event will be divided into phases: wireframing, UI design, development, and final presentation. The best designs will be judged based on creativity, usability, and technical execution.",
@@ -586,7 +586,7 @@ let event={
         },
 
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Hover Hunt",
             "event_detail": "HoverHunt is an exciting quiz competition diving into the world of drones and emerging technology.",
             "description_of_the_event": "Participants will engage in a timed online quiz covering various aspects of drone technology, real-world applications, and cutting-edge advancements in technology. The event ensures a secure and monitored setting to maintain fair play.",
@@ -622,8 +622,8 @@ let event={
         },
 
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
-            "event_name": "IGI 2: Convert Strike",
+            
+            "event_name": "IGI 2 Covert Strike",
             "event_detail": "IGI 2: Covert Strike is a tactical first-person shooter that challenges players to complete covert missions using strategy, stealth, and precise combat skills.",
             "description_of_the_event": "Players will engage in immersive environments with realistic weapon mechanics and various mission objectives. The event tests quick thinking, adaptability, and survival skills in an elimination-based format.",
             "entry_fee": {
@@ -659,7 +659,7 @@ let event={
         },
 
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Jamming Session",
             "event_detail": "The Jamming Session is an open stage event where participants can showcase their musical talents, collaborate with fellow musicians, and create spontaneous musical performances.",
             "description_of_the_event": "Participants are encouraged to bring their own instruments or use the provided ones to perform live. Whether solo or in a group, this is an opportunity to explore musical creativity in an informal, relaxed environment.",
@@ -691,7 +691,7 @@ let event={
         },
 
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Meme Mania",
             "event_detail": "A creative and fun-filled contest where participants create and submit memes related to startups, business trends, marketing, funding struggles, hustle culture, and the ups & downs of entrepreneurship.",
             "description_of_the_event": "Participants will have the opportunity to showcase their digital creativity by crafting memes that resonate with the startup ecosystem. The best memes will be judged based on humor, originality, and engagement.",
@@ -726,7 +726,7 @@ let event={
         },
 
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Mic Drop",
             "event_detail": "Mic Drop is a creative event where students get a chance to perform poetry, storytelling, stand-up comedy, and music performances in front of a live audience. This event encourages creative expression, audience engagement, and cultural appreciation.",
             "description_of_the_event": "Participants will perform their chosen artistic piece within a set time limit. The best performances will be judged based on creativity, stage presence, audience interaction, and overall impact.",
@@ -763,7 +763,7 @@ let event={
         },
 
         {
-            "event_under": "Music Club",
+            
             "event_name": "Musical Chair",
             "event_detail": "Musical Chairs is an exciting and interactive game where participants walk around a set of chairs as music plays. When the music stops, they must quickly find a seat. The last person remaining wins the game!",
             "description_of_the_event": "Participants move in a circular motion around chairs while music plays. When the music stops, they must grab a seat immediately. One chair is removed after each round, and the last seated participant is declared the winner.",
@@ -799,8 +799,8 @@ let event={
         },
 
         {
-            "event_under": "Entrepreneurship Club",
-            "event_name": "Pitch-O-Play",
+           
+            "event_name": "PitchOPlay",
             "event_detail": "Pitch-O-Play is an engaging entrepreneurship event where participants brainstorm, strategize, and pitch innovative business ideas. Teams will receive creative themes and objects, develop unique business concepts, and present them to a panel of judges.",
             "description_of_the_event": "Participants will randomly pick a chit containing a theme and an object name. They must then develop a product or business idea based on their chit. Each team will prepare a 3-5 minute pitch and present it to the judges. The best and most innovative idea wins!",
             "entry_fee": {
@@ -836,7 +836,7 @@ let event={
         },
 
         {
-            "event_under": "Creative Arts Club",
+            
             "event_name": "Pixel Perfect",
             "event_detail": "Pixel Perfect is an exciting online event where creativity meets branding and media. Participants will be given unique themes and must submit a picture that best represents the theme—whether it’s a photograph, digital artwork, or edited visual.",
             "description_of_the_event": "This competition challenges visual storytelling skills, pushing participants to capture the essence of the theme through perspective, composition, and creativity. Whether it’s an abstract concept, a tricky illusion, or a powerful branding message, the goal is to deliver a visually compelling and thought-provoking image.",
@@ -871,7 +871,7 @@ let event={
         },
 
         {
-            "event_under": "Qala Sangam",
+       
             "event_name": "Qala Sangam",
             "event_detail": "Qala Sangam is a celebration of artistic talent, featuring multiple creative events that allow participants to showcase their skills in different forms of visual art.",
             "description_of_the_event": "Calligraphy, Face Painting, Tattoo Art, Mehndi, Sketching, Painting, Wall Painting, Rangoli",
@@ -914,7 +914,7 @@ let event={
         },
 
         {
-            "event_under": "Saffron Sundown Phase-2",
+            
             "event_name": "Relay Race",
             "event_detail": "Relay race running, which involves teams of runners passing a baton to one another, follows a specific set of rules to ensure fairness, safety, and smooth competition. The most widely recognized rules are governed by World Athletics (formerly IAAF), although variations may exist for different events or local competitions.",
             "description_of_the_event": "Relay race with teams of four, requiring strategic baton exchanges and adherence to specific competition rules.",
@@ -948,7 +948,7 @@ let event={
         },
 
         {
-            "event_under": "Renewable Energy Club",
+            
             "event_name": "Renewable Model Showcase",
             "event_detail": "The Renewable Model Showcase is a hands-on, educational exhibit that introduces visitors to various forms of renewable energy. This exhibit features miniature working models that simulate how solar, wind, hydropower, biomass, geothermal, and hybrid energy systems function, allowing viewers to see and understand renewable energy concepts up close.",
             "description_of_the_event": "Each model highlights the operational principles behind these technologies, the equipment used, and their real-world applications.",
@@ -987,8 +987,8 @@ let event={
         },
         
         {
-            "event_under": "Robotic Club",
-            "event_name": "Roborace",
+            
+            "event_name": "Robo Race",
             "event_detail": "A high-speed robotics challenge where participants build and race remote-controlled bots through a challenging course.",
             "description_of_the_event": "Robo Race is an exciting competition that tests creativity, engineering skills, and speed. Participants must design, construct, and maneuver their bots through a dynamic race track filled with obstacles and sharp turns.",
             "entry_fee": {
@@ -1023,8 +1023,8 @@ let event={
         },
 
         {
-            "event_under": "Robotic Club",
-            "event_name": "Robowar",
+           
+            "event_name": "Robo War",
             "event_detail": "Robo War is an intense competition where participants design and unleash their mechanical creations in high-stakes showdowns, demonstrating engineering prowess and strategic thinking.",
             "description_of_the_event": "The arena transforms into a futuristic battleground where robots clash in an adrenaline-fueled spectacle. The competition consists of multiple elimination rounds, where robots engage in one-on-one combat. The last surviving robot will be declared the winner.",
             "entry_fee": {
@@ -1049,8 +1049,8 @@ let event={
         },
         
         {
-            "event_under": "Alumni Relation Club",
-            "event_name": "Screen to Speech",
+           
+            "event_name": "Screen To Speech",
             "event_detail": "Screen to Speech is a fun contest that challenges participants to creatively narrate and provide dialogue for a randomly given muted video clip.",
             "description_of_the_event": "This event tests creativity, storytelling, and improvisational skills, encouraging participants to bring scenes to life with their words. Whether humorous, dramatic, or poetic, the best narrations will be those that captivate the audience and seamlessly fit the visuals. Participants will be given a random muted clip and a short preparation time before delivering their speech live in front of an audience and judges.",
             "entry_fee": {
@@ -1085,8 +1085,8 @@ let event={
         },
 
         {
-            "event_under": "DRONE SOCIETY",
-            "event_name": "SkyHigh Snap and SHow",
+            
+            "event_name": "Sky High Snap and solve",
             "event_detail": "In this event, there will be 2 rounds:\n1. Puzzle Round: Each team (max 3 members) will have to solve a puzzle in the minimum time. The top 3 teams who solve the puzzle first will move to the next round.\n2. Videography and Photography Round: The top 3 teams will compete in a photography and videography competition using drones. Trainers will guide participants. The winning team will get prizes, and all participants will receive certificates.",
             "description_of_the_event": "A thrilling competition where teams first solve puzzles and then showcase their drone photography and videography skills.",
             "entry_fee": {
@@ -1118,7 +1118,7 @@ let event={
         },
         
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Spin The Spotlight",
             "event_detail": "SAFFRON SUNDOWN PHASE-2 is a fest designed to inspire creativity, foster collaboration, and enhance skills through diverse, engaging events for students across all semesters.",
             "description_of_the_event": "Spin The Spotlight - This activity will challenge participants to think on their feet. A box filled with different materials (objects, words, or phrases) will serve as the inspiration for their impromptu speeches.",
@@ -1140,7 +1140,7 @@ let event={
         },
 
         {
-            "event_under": "IEEE Club",
+            
             "event_name": "Technical Presentation",
             "event_detail": "The Technical Presentation event challenges participants to present on a selected topic. Presentations should cover technical details, real-world applications, and engage the audience with clear, concise explanations supported by visuals and demonstrations.",
             "description_of_the_event": "Participants will present on one of the given technical topics, ensuring well-structured content, engaging delivery, and effective use of visual aids. A Q&A session will follow each presentation.",
@@ -1167,7 +1167,7 @@ let event={
         },
 
         {
-            "event_under": "Technocrats Got Talent",
+            
             "event_name": "Technocrats Got Talent",
             "event_detail": "A fun and creative talent competition with different categories.",
             "description_of_the_event": "Participants will showcase their skills in various creative and performance-based categories.",
@@ -1191,7 +1191,7 @@ let event={
         },
         
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "The Mind Game",
             "event_detail": "A festival with multiple events including 'The Mind Game'.",
             "description_of_the_event": "Join us for SAFFRON SUNDOWN PHASE-2, a festival that brings students together for a series of creative and skill-enhancing competitions.",
@@ -1211,7 +1211,7 @@ let event={
         },
         
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_ name": "TIT Got Latent",
             "event_detail": "Technocrats Got Latent - A talent hunt show where participants showcase their unique and exceptional skills.",
             "description_of_the_event": "Technocrats Got Latent aims to provide a platform for students to demonstrate their hidden talents and compete against their peers.",
@@ -1236,7 +1236,7 @@ let event={
         },
 
         {
-            "event_under": "SAFFRON SUNDOWN PHASE-2",
+            
             "event_name": "Treasure Hunt",
             "event_detail": "Treasure Hunt - An adventurous event where participants solve physical and mental challenges to find the hidden treasure.",
             "description_of_the_event": "Treasure Hunt is a thrilling competition where teams navigate through various rounds, solving puzzles and overcoming obstacles to reach the final treasure.",

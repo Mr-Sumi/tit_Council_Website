@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const { isLoggedIn } = require("./middleware/isLoggedIn");
 const flash = require("connect-flash");
 const jwt = require("jsonwebtoken");
+const cron = require('node-cron');
 let club = require("./routes/club.route.js");
 let event = require("./routes/event.route.js");
 import {firebaseApp  } from './config/firebase.js';
@@ -53,6 +54,17 @@ app.use("/auth", authRouter);
 app.use("/club", club);
 app.use("/event", event);
 app.use("/payment", payment);
+
+const fetchAllImages = require('./routes/fetchAllImages');
+
+// Run once every day at midnight
+cron.schedule('0 0 * * *', () => {
+  console.log('📸 Fetching updated Cloudinary images...');
+  fetchAllImages();
+});
+
+// Serve public files
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Home route
 app.get("/", (req, res) => {
@@ -108,6 +120,7 @@ app.get("/userPage", isLoggedIn, async (req, res) => {
 app.get("/error", (req, res) => {
   res.render("error", { title: "error:404" });
 });
+
 
 app.use((req, res, next) => {
   res.status(404).render("error", { title: "Page Not Found" });
