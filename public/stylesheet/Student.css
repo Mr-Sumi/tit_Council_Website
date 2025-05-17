@@ -106,43 +106,10 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Modern Scrollbar Styling */
-@media (min-width: 768px) {
-    body {
-        scrollbar-width: thin;
-        scrollbar-color: var(--primary-color) var(--dark-bg-lighter);
-    }
-
-    body::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-    }
-
-    body::-webkit-scrollbar-track {
-        background: var(--dark-bg-lighter);
-    }
-
-    body::-webkit-scrollbar-thumb {
-        background: var(--primary-color);
-        border-radius: var(--radius-full);
-    }
-
-    body::-webkit-scrollbar-thumb:hover {
-        background: var(--primary-dark);
-    }
+/* Scrollbar Styles */
+body::-webkit-scrollbar {
+    display: none;
 }
-
-/* Mobile Scrollbar */
-@media (max-width: 767px) {
-    body::-webkit-scrollbar {
-        display: none;
-    }
-    
-    body {
-        scrollbar-width: none;
-    }
-}
-
 /* Focus Styles */
 :focus-visible {
     outline: 2px solid var(--primary-color);
@@ -203,9 +170,6 @@ body {
     line-height: 1.5;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
 
 /* Header Section */
 
@@ -222,14 +186,15 @@ body::-webkit-scrollbar {
 
 /* Optimized Video Background */
 .video-bg {
-  position: absolute;
+    position: absolute;
     inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     z-index: var(--z-below);
+    transform: scale(1.02);
+    -webkit-filter: brightness(0.5) contrast(1.1);
     filter: brightness(0.5) contrast(1.1);
-    transform: scale(1.02); /* Prevents white edges during motion */
 }
 
 /* Enhanced Overlay System */
@@ -459,8 +424,8 @@ body::-webkit-scrollbar {
         rgba(18, 18, 18, 0.85),
         rgba(30, 30, 30, 0.95)
     );
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     border-radius: 9999px;
     cursor: pointer;
     box-shadow: 
@@ -537,8 +502,8 @@ body::-webkit-scrollbar {
         rgba(20, 20, 20, 0.95),
         rgba(30, 30, 30, 0.98)
     );
-    backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
     box-shadow: 
         0 2px 8px rgba(0, 0, 0, 0.3),
         inset 0 1px 1px rgba(255, 255, 255, 0.07);
@@ -656,11 +621,6 @@ body::-webkit-scrollbar {
 .president-showcase {
     width: 100%;
     padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem);
-    background: linear-gradient(
-        180deg,
-        var(--dark-bg) 0%,
-        rgba(10, 10, 10, 0.98) 100%
-    );
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -931,9 +891,6 @@ body::-webkit-scrollbar {
 /* About Section Base */
 .about-section {
     padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem);
-    background: linear-gradient(180deg, 
-        rgba(10, 10, 10, 0.98) 0%,
-        rgba(26, 26, 26, 0.95) 100%);
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -1009,7 +966,6 @@ body::-webkit-scrollbar {
 /* Feature Card */
 .feature {
     padding: clamp(1.5rem, 3vw, 2.5rem);
-    background: rgba(255, 255, 255, 0.03);
     border-radius: clamp(12px, 2vw, 20px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1042,9 +998,6 @@ body::-webkit-scrollbar {
 /* Get Involved Section */
 .get-involved-section {
     padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem);
-    background: linear-gradient(180deg, 
-        rgba(26, 26, 26, 0.95) 0%,
-        rgba(10, 10, 10, 0.98) 100%);
     position: relative;
 }
 
@@ -1186,9 +1139,6 @@ body::-webkit-scrollbar {
 /* Team Section Styles */
 .team-section {
     padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem);
-    background: linear-gradient(180deg, 
-        rgba(10, 10, 10, 0.98) 0%,
-        rgba(20, 20, 20, 0.95) 100%);
     position: relative;
     overflow: hidden;
     isolation: isolate;
@@ -1387,7 +1337,6 @@ body::-webkit-scrollbar {
 
 /* Message Section */
 .message-section {
-    background: rgba(0, 0, 0, 0.2);
     padding: clamp(1.5rem, 3vw, 2rem);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     flex: 1;
@@ -1530,10 +1479,7 @@ body::-webkit-scrollbar {
 
 /* Featured Clubs Section */
 .featured-clubs {
-    padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem);
-    background: linear-gradient(180deg, 
-        rgba(10, 10, 10, 0.98) 0%,
-        rgba(26, 26, 26, 0.95) 100%);
+    /* padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem); */
     position: relative;
     overflow: hidden;
     display: flex;
@@ -1800,9 +1746,7 @@ body::-webkit-scrollbar {
 /* Upcoming Events Section */
 .upcoming-events {
     padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem);
-    background: linear-gradient(180deg, 
-        rgba(10, 10, 10, 0.95) 0%,
-        rgba(26, 26, 26, 0.98) 100%);
+   
     position: relative;
     overflow: hidden;
 }
@@ -1994,12 +1938,10 @@ body::-webkit-scrollbar {
 
 /* Footer Base */
 .footer {
-    background: linear-gradient(to bottom, #171717, #0a0a0a);
     color: var(--light-text);
     padding: clamp(3rem, 5vw, 5rem) 0 clamp(1.5rem, 2vw, 2rem);
     position: relative;
     width: 100%;
-    margin-top: clamp(2rem, 4vw, 4rem);
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
 }
 
@@ -2018,7 +1960,6 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     gap: clamp(1.2rem, 2vw, 1.8rem);
-    padding: clamp(1rem, 1.5vw, 2rem);
 }
 
 .footer-section h3 {
@@ -2154,8 +2095,6 @@ body::-webkit-scrollbar {
 /* Footer Bottom */
 .footer-bottom {
     text-align: center;
-    padding-top: clamp(2rem, 3vw, 2.5rem);
-    margin-top: clamp(3rem, 4vw, 4rem);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
