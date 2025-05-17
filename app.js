@@ -10,6 +10,8 @@ const flash = require("connect-flash");
 const jwt = require("jsonwebtoken");
 let club = require("./routes/club.route.js");
 let event = require("./routes/event.route.js");
+import {firebaseApp  } from './config/firebase.js';
+
 
 require("dotenv").config();
 connectdb();
