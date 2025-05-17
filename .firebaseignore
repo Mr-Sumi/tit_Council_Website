@@ -1,0 +1,8 @@
+node_modules
+firebase-debug.log
+firebase-error.log
+.DS_Store
+*.zip
+*.exe
+*.mp4
+firebase logout
