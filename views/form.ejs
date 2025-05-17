@@ -1,425 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration for Anwesha 2.0</title>
     <link rel="stylesheet" href="/stylesheet/preloader.css">
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
-    rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="stylesheet/navbaar.css">
     <link rel="stylesheet" href="/stylesheet/Student.css">
     <link rel="stylesheet" href="/stylesheet/form.css">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
+
 <body>
     <%- include('partials/preloader') %>
 
-    <div class="navSlide">
-        <div class="icon">
-         <i class="ri-close-large-line"></i>
+        <div class="navSlide">
+            <div class="icon">
+                <i class="ri-close-large-line"></i>
+            </div>
+            <ul class="NavLinks">
+                <li><a href="/">Home</a></li>
+                <li><a href="/members">Members</a></li>
+                <li><a href="/clubs">Clubs</a></li>
+                <li><a href="/faculty">Mentors</a></li>
+                <li><a href="/gallery">Event Gallary</a></li>
+                <li><a href="/login" class="loginButton">Login</a></li>
+            </ul>
         </div>
-         <ul class="NavLinks">
-           <li><a href="/">Home</a></li>
-           <li><a href="/members">Members</a></li>
-           <li><a href="/clubs">Clubs</a></li>
-           <li><a href="/faculty">Mentors</a></li>
-           <li><a href="/gallery">Event Gallary</a></li>
-           <li><a href="/login" class="loginButton">Login</a></li>   
-       </ul>
-       </div>
-    <nav>
-        <div class="logo">
-            <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
-            <h1>STUDENT COUNCIL</h1>
-        </div>
-        <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/members">Members</a></li>
-            <li><a href="/clubs">Clubs</a></li>
-            <li><a href="/faculty">Mentors</a></li>
-            <li><a href="/gallery">Event Gallary</a></li>
-            <i class="ri-menu-line"></i>
-        </ul>
-    </nav>
-
-<div class="container">
-    <!-- Header Section -->
-        <header class="form-header">
-            <h1>Register for Saffron Sundown Phase 2</h1>
-        <p>Be part of an exciting day filled with innovation, creativity, and teamwork!</p>
-    </header>
-    
-        <!-- Progress Bar -->
-        <div class="progress-container">
-            <div class="progress-track">
-                <div class="progress-bar" id="progress-bar"></div>
+        <nav>
+            <div class="logo">
+                <img class="image-logo" src="/image folder/Student council png.png" title="council logo">
+                <h1>STUDENT COUNCIL</h1>
             </div>
-            <div class="steps-container">
-                <div class="step active" data-step="1">
-                    <div class="step-circle">1</div>
-                    <div class="step-label">College & Contact</div>
-                </div>
-                <div class="step" data-step="2">
-                    <div class="step-circle">2</div>
-                    <div class="step-label">Event Selection</div>
-                </div>
-                <div class="step" data-step="3">
-                    <div class="step-circle">3</div>
-                    <div class="step-label">Participant Details</div>
-                </div>
-                <div class="step" data-step="4">
-                    <div class="step-circle">4</div>
-                    <div class="step-label">Payment</div>
-                </div>
-            </div>
-        </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/members">Members</a></li>
+                <li><a href="/clubs">Clubs</a></li>
+                <li><a href="/faculty">Mentors</a></li>
+                <li><a href="/gallery">Event Gallary</a></li>
+                <i class="ri-menu-line"></i>
+            </ul>
+        </nav>
 
-    <!-- Registration Form Section -->
-        <form id="payment-form" method="post" action="/payment/create/orderId" enctype="multipart/form-data">
-            <input type="hidden" name="participants" id="participantsData">
+        <div class="container">
+            <!-- Header Section -->
+            <header class="form-header">
+                <h1>Register for Saffron Sundown Phase 2</h1>
+                <p>Be part of an exciting day filled with innovation, creativity, and teamwork!</p>
+            </header>
 
-            <!-- Step 1: College & Contact Details -->
-            <div class="form-step active" data-step="1">
-                <h2>Step 1: College & Contact Details</h2>
-            <div class="form-group">
-                <label for="college">College</label>
-                <input type="text" id="college" name="college" required placeholder="Enter your college name">
-            </div>
-            <div class="form-group">
-                <div class="input-field">
-                    <label for="contact">Contact Number</label>
-                    <input 
-                        type="tel" 
-                        id="contact"
-                        placeholder="Phone Number" 
-                        name="phone" 
-                        minlength="10"
-                        maxlength="10"
-                        pattern="[6-9][0-9]{9}"
-                        oninput="validatePhoneNumber(this)"
-                        onkeypress="return onlyNumbers(event)"
-                        required 
-                    />
-                    <small class="error-text"></small>
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-track">
+                    <div class="progress-bar" id="progress-bar"></div>
                 </div>
-                </div>
-                <div class="form-navigation">
-                    <button type="button" class="nav-button prev-button" data-prev="1">Previous</button>
-                    <button type="button" class="nav-button next-button" data-next="2">Next</button>
+                <div class="steps-container">
+                    <div class="step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">College & Contact</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Event Selection</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Participant Details</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Payment</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Step 2: Event Selection -->
-            <div class="form-step" data-step="2">
-                <h2>Step 2: Select Event</h2>
-            <div class="form-group">
-                <label for="events">Events List</label>
-                    <select class="select-scrollable" id="events" name="events" onchange="updateParticipantsOption()" required placeholder="Select Event">
-                    <option value="">Select Event</option>
-                    <option value="Entrepreneurship Stall">Entrepreneurship Stall (4th April) </option>
-                    <option value="Jamming Session">Jamming Session (4th April) </option>
-                    <option value="Flash Mob">Flash Mob (4th April) </option>
-                    <option value="Bounce & Burst">Bounce & Burst (4th April) </option>
-                    <option value="Pitch-o-Play">Pitch-o-Play (5th April)</option>
-                    <option value="Art-Byte">Art-Byte (5th April) </option>
-                    <option value="Qala Sangam">Qala Sangam (5th-8th April) </option>
-                    <option value="Technocrats Got Talent">Technocrats Got Talent (5th April) </option>
-                    <option value="IGI 2: Covert Strike">IGI 2: Covert Strike (5th April) </option>
-                    <option value="Renewable Model Showcase">Renewable Model Showcase (5th April) </option>
-                    <option value="Musical Chair">Musical Chair (5th April) </option>
-                    <option value="Code Clash 4.0">Code Clash 4.0 (7th April)</option>
-                    <option value="Mic Drop">Mic Drop (7th April) </option>
-                    <option value="Filmy Frenzy">Filmy Frenzy (7th April) </option>
-                    <option value="Fashion Fusion">Fashion Fusion (7th April) </option>
-                    <option value="Corporate Challenge Showdown">Corporate Challenge Showdown (7th April) </option>
-                    <option value="Free Fire">Free Fire (7th April) </option>
-                    <option value="Spin The Spotlight">Spin The Spotlight (8th April) </option>
-                    <option value="Buzz Quest">Buzz Quest (8th April) </option>
-                    <option value="Treasure Hunt">Treasure Hunt (8th April)</option>
-                    <option value="Sky High Snap Show">Sky High Snap Show (8th April) </option>
-                    <option value="Technical Presentation">Technical Presentation (8th April) </option>
-                    <option value="Dumb Charades">Dumb Charades (8th April)</option>
-                    <option value="Chinese Whisper">Chinese Whisper (8th April) </option>
-                    <option value="Screen to Speech">Screen to Speech (8th April)</option>
-                    <option value="BGMI">BGMI (8th April) </option>
-                    <option value="Hackathon">Hackathon (9th April) </option>
-                    <option value="TIT Got Latent">TIT Got Latent (9th April) </option>
-                    <option value="Pixel Perfect">Pixel Perfect (9th April) </option>
-                    <option value="Battle Of Witz">Battle Of Witz (9th April) </option>
-                    <option value="Meme Mania">Meme Mania (9th April) </option>
-                    <option value="Relay Race">Relay Race (9th April) </option>
-                    <option value="Arm Wrestling">Arm Wrestling (9th April) </option>
-                    <option value="The Mind Game">The Mind Game (9th April) </option>
-                    <option value="Robo War">Robo War (10th April) </option>
-                    <option value="Robo Race">Robo Race (10th April) </option>
-                    <option value="Hover Hunt">Hover Hunt (10th April) </option>
-                </select>
-            </div>
+            <!-- Registration Form Section -->
+            <form id="payment-form" method="post" action="/payment/create/orderId" enctype="multipart/form-data">
+                <input type="hidden" name="participants" id="participantsData">
 
-            <div class="form-navigation">
-                <button type="button" class="nav-button prev-button" data-prev="2">Previous</button>
-                <button type="button" class="nav-button next-button" data-next="3">Next</button>
-            </div>
-            </div>
-
-            <!-- Step 3: Number of Participants -->
-            <div class="form-step" data-step="3">
-                <h2>Step 3: Number of Participants</h2>
-                
-                <div class="form-group">
-                    <label for="number">Number of Participants</label>
-                    <div class="select-wrapper">
-                        <select 
-                            class="select-scrollable"
-                            id="number" 
-                            name="number" 
-                            onchange="displayParticipantDetails()" 
-                            required
-                        >
-                            <option value="" disabled selected>Select number of participants</option>
-                            <option value="1">1 Participant</option>
-                            <option value="2">2 Participants</option>
-                            <option value="3">3 Participants</option>
-                            <option value="4">4 Participants</option>
-                            <option value="5">5 Participants</option>
-                        </select>
+                <!-- Step 1: College & Contact Details -->
+                <div class="form-step active" data-step="1">
+                    <h2>Step 1: College & Contact Details</h2>
+                    <div class="form-group">
+                        <label for="college">College</label>
+                        <input type="text" id="college" name="college" required placeholder="Enter your college name">
+                    </div>
+                    <div class="form-group">
+                        <div class="input-field">
+                            <label for="contact">Contact Number</label>
+                            <input type="tel" id="contact" placeholder="Phone Number" name="phone" minlength="10"
+                                maxlength="10" pattern="[6-9][0-9]{9}" oninput="validatePhoneNumber(this)"
+                                onkeypress="return onlyNumbers(event)" required />
+                            <small class="error-text"></small>
+                        </div>
+                    </div>
+                    <div class="form-navigation">
+                        <button type="button" class="nav-button prev-button" data-prev="1">Previous</button>
+                        <button type="button" class="nav-button next-button" data-next="2">Next</button>
                     </div>
                 </div>
 
-                <!-- Participants Details Container -->
-                <div id="participantsDetails" class="participants-container">
-                    <!-- Participant details will be dynamically added here -->
+                <!-- Step 2: Event Selection -->
+                <div class="form-step" data-step="2">
+                    <h2>Step 2: Select Event</h2>
+                    <div class="form-group">
+                        <label for="events">Events List</label>
+                        <select class="select-scrollable" id="events" name="events"
+                            onchange="updateParticipantsOption()" required placeholder="Select Event">
+                            <option value="">Select Event</option>
+                            <option value="Entrepreneurship Stall">Entrepreneurship Stall (4th April) </option>
+                            <option value="Jamming Session">Jamming Session (4th April) </option>
+                            <option value="Flash Mob">Flash Mob (4th April) </option>
+                            <option value="Bounce & Burst">Bounce & Burst (4th April) </option>
+                            <option value="Pitch-o-Play">Pitch-o-Play (5th April)</option>
+                            <option value="Art-Byte">Art-Byte (5th April) </option>
+                            <option value="Qala Sangam">Qala Sangam (5th-8th April) </option>
+                            <option value="Technocrats Got Talent">Technocrats Got Talent (5th April) </option>
+                            <option value="IGI 2: Covert Strike">IGI 2: Covert Strike (5th April) </option>
+                            <option value="Renewable Model Showcase">Renewable Model Showcase (5th April) </option>
+                            <option value="Musical Chair">Musical Chair (5th April) </option>
+                            <option value="Code Clash 4.0">Code Clash 4.0 (7th April)</option>
+                            <option value="Mic Drop">Mic Drop (7th April) </option>
+                            <option value="Filmy Frenzy">Filmy Frenzy (7th April) </option>
+                            <option value="Fashion Fusion">Fashion Fusion (7th April) </option>
+                            <option value="Corporate Challenge Showdown">Corporate Challenge Showdown (7th April)
+                            </option>
+                            <option value="Free Fire">Free Fire (7th April) </option>
+                            <option value="Spin The Spotlight">Spin The Spotlight (8th April) </option>
+                            <option value="Buzz Quest">Buzz Quest (8th April) </option>
+                            <option value="Treasure Hunt">Treasure Hunt (8th April)</option>
+                            <option value="Sky High Snap Show">Sky High Snap Show (8th April) </option>
+                            <option value="Technical Presentation">Technical Presentation (8th April) </option>
+                            <option value="Dumb Charades">Dumb Charades (8th April)</option>
+                            <option value="Chinese Whisper">Chinese Whisper (8th April) </option>
+                            <option value="Screen to Speech">Screen to Speech (8th April)</option>
+                            <option value="BGMI">BGMI (8th April) </option>
+                            <option value="Hackathon">Hackathon (9th April) </option>
+                            <option value="TIT Got Latent">TIT Got Latent (9th April) </option>
+                            <option value="Pixel Perfect">Pixel Perfect (9th April) </option>
+                            <option value="Battle Of Witz">Battle Of Witz (9th April) </option>
+                            <option value="Meme Mania">Meme Mania (9th April) </option>
+                            <option value="Relay Race">Relay Race (9th April) </option>
+                            <option value="Arm Wrestling">Arm Wrestling (9th April) </option>
+                            <option value="The Mind Game">The Mind Game (9th April) </option>
+                            <option value="Robo War">Robo War (10th April) </option>
+                            <option value="Robo Race">Robo Race (10th April) </option>
+                            <option value="Hover Hunt">Hover Hunt (10th April) </option>
+                        </select>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="nav-button prev-button" data-prev="2">Previous</button>
+                        <button type="button" class="nav-button next-button" data-next="3">Next</button>
+                    </div>
                 </div>
 
-                <!-- Navigation Buttons -->
-                <div class="form-navigation">
-                    <button type="button" class="nav-button prev-button" data-prev="3">
-                        <span>Previous</span>
-                    </button>
-                    
-                    <button type="button" class="nav-button next-button" data-next="4">
-                        <span>Next</span>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Step 4: Payment -->
-            <div class="form-step" data-step="4">
-                <h2>Step 4: Payment</h2>
-                <div class="form-group" id="priceDisplay">
-                    <h3>Registration Fee: ₹<span id="calculatedPrice">0</span></h3>
-                </div>
-                <div class="form-navigation">
-                    <button type="button" class="nav-button prev-button" data-prev="4">Previous</button>
-                    <button type="submit" class="Btn" id="rzp-button1">Proceed to Payment</button>
-                </div>
-            </div>
-        </form>
-    </div>
+                <!-- Step 3: Number of Participants -->
+                <div class="form-step" data-step="3">
+                    <h2>Step 3: Number of Participants</h2>
 
-<!-- Footer Section -->
-<footer>
-    <a href="/Dev">
-        <button class="button">Developer team</button>      
-      </a>
+                    <div class="form-group">
+                        <label for="number">Number of Participants</label>
+                        <div class="select-wrapper">
+                            <select class="select-scrollable" id="number" name="number"
+                                onchange="displayParticipantDetails()" required>
+                                <option value="" disabled selected>Select number of participants</option>
+                                <option value="1">1 Participant</option>
+                                <option value="2">2 Participants</option>
+                                <option value="3">3 Participants</option>
+                                <option value="4">4 Participants</option>
+                                <option value="5">5 Participants</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Participants Details Container -->
+                    <div id="participantsDetails" class="participants-container">
+                        <!-- Participant details will be dynamically added here -->
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="form-navigation">
+                        <button type="button" class="nav-button prev-button" data-prev="3">
+                            <span>Previous</span>
+                        </button>
+
+                        <button type="button" class="nav-button next-button" data-next="4">
+                            <span>Next</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Payment -->
+                <div class="form-step" data-step="4">
+                    <h2>Step 4: Payment</h2>
+                    <div class="form-group" id="priceDisplay">
+                        <h3>Registration Fee: ₹<span id="calculatedPrice">0</span></h3>
+                    </div>
+                    <div class="form-navigation">
+                        <button type="button" class="nav-button prev-button" data-prev="4">Previous</button>
+                        <button type="submit" class="Btn" id="rzp-button1">Proceed to Payment</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer Section -->
+        <footer>
+            <a href="/Dev">
+                <button class="button">Developer team</button>
+            </a>
         </footer>
 
         <script src="/javascript/preloader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>
-    const eventMaxParticipants = {
-        "Entrepreneurship Stall": [ "TRIO", "SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
-        "Jamming Session": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER"],
-        "Flash Mob": ["SOLO", "DUO", "SQUAD-4-MEMBER"],
-        "Bounce & Burst": ["SOLO"],
-        "Pitch-o-Play": ["SOLO"],
-        "Art-Byte": ["SOLO"],
-        "Qala Sangam": ["SOLO"],
-        "Technocrats Got Talent": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER"],
-        "IGI 2: Covert Strike": ["SOLO"],
-        "Renewable Model Showcase": ["TRIO"],
-        "Musical Chair": ["SOLO"],
-        "Code Clash 4.0": ["SOLO"],
-        "Mic Drop": ["SOLO"],
-        "Filmy Frenzy": ["DUO"],
-        "Fashion Fusion": ["SOLO"],
-        "Corporate Challenge Showdown": ["SOLO"],
-        "Free Fire": ["SOLO", "SQUAD-4-MEMBER"],
-        "Spin The Spotlight": ["SOLO"],
-        "Buzz Quest": ["SOLO"],
-        "Treasure Hunt": ["SQUAD-4-MEMBER"],
-        "Sky High Snap Show": ["SOLO", "TRIO"],
-        "Technical Presentation": ["SOLO", "DUO"],
-        "Dumb Charades": [  "SQUAD-4-MEMBER"],
-        "Chinese Whisper": [  "SQUAD-4-MEMBER"],
-        "Screen to Speech": ["SOLO"],
-        "BGMI": ["SOLO", "SQUAD-4-MEMBER"],
-        "Hackathon": [ "SQUAD-4-MEMBER"],
-        "TIT Got Latent": ["SOLO"],
-        "Pixel Perfect": ["SOLO"],
-        "Battle Of Witz": ["SOLO"],
-        "Meme Mania": ["SOLO", "DUO"],
-        "Relay Race": ["SQUAD-4-MEMBER"],
-        "Arm Wrestling": ["SOLO"],
-        "The Mind Game": ["SOLO"],
-        "Robo War": ["SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
-        "Robo Race": ["SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
-        "Hover Hunt": ["SOLO"]
-    };
-    
-        function calculatePrice(eventName, participantType) {
-            eventName = eventName.toUpperCase();
-            participantType = participantType.toUpperCase();
-            
-            let price = 0;
-            
-            // Robo events
-            if (eventName === "ROBO RACE" || eventName === "ROBO WAR") {
-                price = 300;
-            }
-            // Hackathon
-            else if (eventName === "HACKATHON") {
-                price = 200;
-            }
-            // Code events
-            else if (eventName === "CODE CLASH 4.0") {
-                price = 75;
-            }
-            // Gaming events
-            else if ((eventName === "FREE FIRE" || eventName === "BGMI")) {
-                if (participantType === "SOLO") {
-                    price = 50;
-                } else if (participantType === "SQUAD-4-MEMBER") {
+            const eventMaxParticipants = {
+                "Entrepreneurship Stall": ["TRIO", "SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
+                "Jamming Session": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER"],
+                "Flash Mob": ["SOLO", "DUO", "SQUAD-4-MEMBER"],
+                "Bounce & Burst": ["SOLO"],
+                "Pitch-o-Play": ["SOLO"],
+                "Art-Byte": ["SOLO"],
+                "Qala Sangam": ["SOLO"],
+                "Technocrats Got Talent": ["SOLO", "DUO", "TRIO", "SQUAD-4-MEMBER"],
+                "IGI 2: Covert Strike": ["SOLO"],
+                "Renewable Model Showcase": ["TRIO"],
+                "Musical Chair": ["SOLO"],
+                "Code Clash 4.0": ["SOLO"],
+                "Mic Drop": ["SOLO"],
+                "Filmy Frenzy": ["DUO"],
+                "Fashion Fusion": ["SOLO"],
+                "Corporate Challenge Showdown": ["SOLO"],
+                "Free Fire": ["SOLO", "SQUAD-4-MEMBER"],
+                "Spin The Spotlight": ["SOLO"],
+                "Buzz Quest": ["SOLO"],
+                "Treasure Hunt": ["SQUAD-4-MEMBER"],
+                "Sky High Snap Show": ["SOLO", "TRIO"],
+                "Technical Presentation": ["SOLO", "DUO"],
+                "Dumb Charades": ["SQUAD-4-MEMBER"],
+                "Chinese Whisper": ["SQUAD-4-MEMBER"],
+                "Screen to Speech": ["SOLO"],
+                "BGMI": ["SOLO", "SQUAD-4-MEMBER"],
+                "Hackathon": ["SQUAD-4-MEMBER"],
+                "TIT Got Latent": ["SOLO"],
+                "Pixel Perfect": ["SOLO"],
+                "Battle Of Witz": ["SOLO"],
+                "Meme Mania": ["SOLO", "DUO"],
+                "Relay Race": ["SQUAD-4-MEMBER"],
+                "Arm Wrestling": ["SOLO"],
+                "The Mind Game": ["SOLO"],
+                "Robo War": ["SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
+                "Robo Race": ["SQUAD-4-MEMBER", "SQUAD-5-MEMBER"],
+                "Hover Hunt": ["SOLO"]
+            };
+
+            function calculatePrice(eventName, participantType) {
+                eventName = eventName.toUpperCase();
+                participantType = participantType.toUpperCase();
+
+                let price = 0;
+
+                // Robo events
+                if (eventName === "ROBO RACE" || eventName === "ROBO WAR") {
+                    price = 300;
+                }
+                // Hackathon
+                else if (eventName === "HACKATHON") {
                     price = 200;
                 }
-            }
-            // Musical chair
-            else if (eventName === "MUSICAL CHAIR") {
-                price = 20;
-            }
-            // Renewable model showcase
-            else if (eventName === "RENEWABLE MODEL SHOWCASE") {
-                price = 50;
-            }
-            // Performance events
-            else if ((eventName === "DUMB CHARADES" || eventName === "MIC DROP")) {
-                if (participantType === "SOLO") {
+                // Code events
+                else if (eventName === "CODE CLASH 4.0") {
+                    price = 75;
+                }
+                // Gaming events
+                else if ((eventName === "FREE FIRE" || eventName === "BGMI")) {
+                    if (participantType === "SOLO") {
+                        price = 50;
+                    } else if (participantType === "SQUAD-4-MEMBER") {
+                        price = 200;
+                    }
+                }
+                // Musical chair
+                else if (eventName === "MUSICAL CHAIR") {
                     price = 20;
-                } else if (participantType === "DUO") {
-                    price = 40;
-                } else if (participantType === "TRIO") {
-                    price = 60;
-                } else if (participantType === "SQUAD-4-MEMBER") {
-                    price = 80;
                 }
-            }
-            // Corporate challenge
-            else if (eventName === "CORPORATE CHALLENGE SHOWDOWN") {
-                if (participantType === "SOLO") {
-                    price = 100;
-                } else {
-                    price = 200;
-                }
-            }
-            // Entrepreneurship stall
-            else if (eventName === "ENTREPRENEURSHIP STALL") {
-                if (participantType === "SOLO") {
+                // Renewable model showcase
+                else if (eventName === "RENEWABLE MODEL SHOWCASE") {
                     price = 50;
-                } else {
-                    price = 200;
                 }
-            }
-            // Technical presentation
-            else if (eventName === "TECHNICAL PRESENTATION") {
-                if (participantType === "DUO") {
-                    price = 50;
-                } else {
+                // Performance events
+                else if ((eventName === "DUMB CHARADES" || eventName === "MIC DROP")) {
+                    if (participantType === "SOLO") {
+                        price = 20;
+                    } else if (participantType === "DUO") {
+                        price = 40;
+                    } else if (participantType === "TRIO") {
+                        price = 60;
+                    } else if (participantType === "SQUAD-4-MEMBER") {
+                        price = 80;
+                    }
+                }
+                // Corporate challenge
+                else if (eventName === "CORPORATE CHALLENGE SHOWDOWN") {
+                    if (participantType === "SOLO") {
+                        price = 100;
+                    } else {
+                        price = 200;
+                    }
+                }
+                // Entrepreneurship stall
+                else if (eventName === "ENTREPRENEURSHIP STALL") {
+                    if (participantType === "SOLO") {
+                        price = 50;
+                    } else {
+                        price = 200;
+                    }
+                }
+                // Technical presentation
+                else if (eventName === "TECHNICAL PRESENTATION") {
+                    if (participantType === "DUO") {
+                        price = 50;
+                    } else {
+                        price = 30;
+                    }
+                }
+                // Dance events
+                else if (eventName === "FLASH MOB") {
+                    if (participantType === "SOLO") {
+                        price = 50;
+                    } else if (participantType === "DUO") {
+                        price = 100;
+                    } else if (participantType === "SQUAD-4-MEMBER") {
+                        price = 150;
+                    }
+                }
+                // Art events
+                else if (eventName === "ART-BYTE" || eventName === "PIXEL PERFECT") {
                     price = 30;
                 }
-            }
-            // Dance events
-            else if (eventName === "FLASH MOB") {
-                if (participantType === "SOLO") {
-                    price = 50;
-                } else if (participantType === "DUO") {
-                    price = 100;
-                } else if (participantType === "SQUAD-4-MEMBER") {
-                    price = 150;
+                // Quiz events
+                else if (eventName === "BUZZ QUEST" || eventName === "BATTLE OF WITZ") {
+                    price = 20;
                 }
-            }
-            // Art events
-            else if (eventName === "ART-BYTE" || eventName === "PIXEL PERFECT") {
-                price = 30;
-            }
-            // Quiz events
-            else if (eventName === "BUZZ QUEST" || eventName === "BATTLE OF WITZ") {
-                price = 20;
-            }
-            // Treasure hunt
-            else if (eventName === "TREASURE HUNT") {
-                price = 200;
-            }
-            // Other events (default)
-            else {
-                price = 50; 
-            }
-            
-            return price;
-        }
+                // Treasure hunt
+                else if (eventName === "TREASURE HUNT") {
+                    price = 200;
+                }
+                // Other events (default)
+                else {
+                    price = 50;
+                }
 
-    function updateParticipantsOption() {
-        const eventSelect = document.getElementById("events");
-        const numberSelect = document.getElementById("number");
-        const selectedEvent = eventSelect.value;
-        const participantsDetails = document.getElementById("participantsDetails");
+                return price;
+            }
 
-        // Clear existing options and participant details
-        numberSelect.innerHTML = '<option value="" disabled selected>Select number of participants</option>';
-        participantsDetails.innerHTML = "";
-        
-        // Reset price display
-        document.getElementById("calculatedPrice").textContent = "0";
-        document.getElementById("priceDisplay").style.display = "none";
+            function updateParticipantsOption() {
+                const eventSelect = document.getElementById("events");
+                const numberSelect = document.getElementById("number");
+                const selectedEvent = eventSelect.value;
+                const participantsDetails = document.getElementById("participantsDetails");
 
-        // Get allowed participant types for the selected event
-        const allowedTypes = eventMaxParticipants[selectedEvent] || [];
-        
-        // Add new options based on allowed types
-        allowedTypes.forEach(type => {
-            const option = document.createElement('option');
-            option.value = type.toLowerCase();
-            
-            // Format the display text
-            const displayText = {
-                'solo': '1 Participant (Solo)',
-                'duo': '2 Participants (Duo)',
-                'trio': '3 Participants (Trio)',
-                'squad-4-member': '4 Participants (Squad)',
-                'squad-5-member': '5 Participants (Squad)'
-            }[type.toLowerCase()] || type;
-            
-            option.textContent = displayText;
-            numberSelect.appendChild(option);
-        });
-    }
+                // Clear existing options and participant details
+                numberSelect.innerHTML = '<option value="" disabled selected>Select number of participants</option>';
+                participantsDetails.innerHTML = "";
 
-    function displayParticipantDetails() {
-        const numberSelect = document.getElementById("number").value;
-        const participantsDetails = document.getElementById("participantsDetails");
-            const eventSelect = document.getElementById("events").value;
-    
-            const price = calculatePrice(eventSelect, numberSelect);
-            document.getElementById("calculatedPrice").textContent = price;
-            document.getElementById("priceDisplay").style.display = "block";
-        
-        participantsDetails.innerHTML = "";
-    
-        function generatePhotoUploadInput(id) {
-            return `
+                // Reset price display
+                document.getElementById("calculatedPrice").textContent = "0";
+                document.getElementById("priceDisplay").style.display = "none";
+
+                // Get allowed participant types for the selected event
+                const allowedTypes = eventMaxParticipants[selectedEvent] || [];
+
+                // Add new options based on allowed types
+                allowedTypes.forEach(type => {
+                    const option = document.createElement('option');
+                    option.value = type.toLowerCase();
+
+                    // Format the display text
+                    const displayText = {
+                        'solo': '1 Participant (Solo)',
+                        'duo': '2 Participants (Duo)',
+                        'trio': '3 Participants (Trio)',
+                        'squad-4-member': '4 Participants (Squad)',
+                        'squad-5-member': '5 Participants (Squad)'
+                    }[type.toLowerCase()] || type;
+
+                    option.textContent = displayText;
+                    numberSelect.appendChild(option);
+                });
+            }
+
+            function displayParticipantDetails() {
+                const numberSelect = document.getElementById("number").value;
+                const participantsDetails = document.getElementById("participantsDetails");
+                const eventSelect = document.getElementById("events").value;
+
+                const price = calculatePrice(eventSelect, numberSelect);
+                document.getElementById("calculatedPrice").textContent = price;
+                document.getElementById("priceDisplay").style.display = "block";
+
+                participantsDetails.innerHTML = "";
+
+                function generatePhotoUploadInput(id) {
+                    return `
                 <div class="form-group">
                     <label for="${id}Photo">Upload Identity Card</label>
                     <div class="file-upload-container">
@@ -453,10 +441,10 @@
                             </div>
                         </div>
                 </div>`;
-        }
-    
-        function generateParticipantFields(role, id) {
-            return `
+                }
+
+                function generateParticipantFields(role, id) {
+                    return `
                 <div class="participant-section">
                 <h3>${role} Information</h3>
                 <div class="form-group">
@@ -482,182 +470,182 @@
                 </div>
                 ${generatePhotoUploadInput(id)}
                 </div>`;
-        }
-    
-        if (numberSelect === "solo") {
-            participantsDetails.innerHTML = generateParticipantFields("Participant", "solo");
-        } else {
-            let membersCount = 0;
-            if (numberSelect === "duo") membersCount = 1;
-            else if (numberSelect === "trio") membersCount = 2;
-            else if (numberSelect === "squad-4-member") membersCount = 3;
-            else if (numberSelect === "squad-5-member") membersCount = 4;
-                else if (numberSelect === "squad") membersCount = 3;
-    
-            let formContent = generateParticipantFields("Team Leader", "leader");
-            formContent += `<h3>Team Members Information</h3>`;
-    
-            for (let i = 1; i <= membersCount; i++) {
-                formContent += generateParticipantFields(`Member ${i}`, `member${i}`);
-            }
-    
-            participantsDetails.innerHTML = formContent;
-        }
-
-        // Initialize file upload handlers
-        initializeFileUploads();
-    }
-
-    // Add this new function to handle file uploads
-    function initializeFileUploads() {
-        document.querySelectorAll('.file-drop-area').forEach(dropArea => {
-            const fileInput = dropArea.querySelector('.file-input');
-            const uploadContent = dropArea.querySelector('.upload-content');
-            const preview = dropArea.querySelector('.file-preview');
-            const previewImage = preview.querySelector('.preview-image');
-            const fileName = preview.querySelector('.file-name');
-            const fileSize = preview.querySelector('.file-size');
-            const removeButton = preview.querySelector('.remove-file');
-
-            // Handle drag and drop
-            dropArea.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                dropArea.classList.add('drag-over');
-            });
-
-            dropArea.addEventListener('dragleave', () => {
-                dropArea.classList.remove('drag-over');
-            });
-
-            dropArea.addEventListener('drop', (e) => {
-                e.preventDefault();
-                dropArea.classList.remove('drag-over');
-                const file = e.dataTransfer.files[0];
-                if (file) handleFile(file);
-            });
-
-            // Handle file input change
-            fileInput.addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                if (file) handleFile(file);
-            });
-
-            // Handle file removal
-            removeButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-                resetFileUpload();
-            });
-
-            function handleFile(file) {
-                // Validate file
-                if (file.size > 5 * 1024 * 1024) {
-                    alert('File size must be less than 5MB');
-                    resetFileUpload();
-                    return;
                 }
 
-                if (!file.type.match('image.*')) {
-                    alert('Please upload an image file (JPG or PNG)');
-                    resetFileUpload();
-                    return;
+                if (numberSelect === "solo") {
+                    participantsDetails.innerHTML = generateParticipantFields("Participant", "solo");
+                } else {
+                    let membersCount = 0;
+                    if (numberSelect === "duo") membersCount = 1;
+                    else if (numberSelect === "trio") membersCount = 2;
+                    else if (numberSelect === "squad-4-member") membersCount = 3;
+                    else if (numberSelect === "squad-5-member") membersCount = 4;
+                    else if (numberSelect === "squad") membersCount = 3;
+
+                    let formContent = generateParticipantFields("Team Leader", "leader");
+                    formContent += `<h3>Team Members Information</h3>`;
+
+                    for (let i = 1; i <= membersCount; i++) {
+                        formContent += generateParticipantFields(`Member ${i}`, `member${i}`);
+                    }
+
+                    participantsDetails.innerHTML = formContent;
                 }
 
-                // Show preview
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    previewImage.src = e.target.result;
-                    fileName.textContent = file.name;
-                    fileSize.textContent = formatFileSize(file.size);
-                    uploadContent.style.display = 'none';
-                    preview.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
+                // Initialize file upload handlers
+                initializeFileUploads();
             }
 
-            function resetFileUpload() {
-                fileInput.value = '';
-                previewImage.src = '';
-                fileName.textContent = '';
-                fileSize.textContent = '';
-                uploadContent.style.display = 'block';
-                preview.style.display = 'none';
-            }
-        });
-    }
+            // Add this new function to handle file uploads
+            function initializeFileUploads() {
+                document.querySelectorAll('.file-drop-area').forEach(dropArea => {
+                    const fileInput = dropArea.querySelector('.file-input');
+                    const uploadContent = dropArea.querySelector('.upload-content');
+                    const preview = dropArea.querySelector('.file-preview');
+                    const previewImage = preview.querySelector('.preview-image');
+                    const fileName = preview.querySelector('.file-name');
+                    const fileSize = preview.querySelector('.file-size');
+                    const removeButton = preview.querySelector('.remove-file');
 
-    function formatFileSize(bytes) {
-        if (bytes < 1024) return bytes + ' bytes';
-        else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-        else return (bytes / 1048576).toFixed(1) + ' MB';
-    }
+                    // Handle drag and drop
+                    dropArea.addEventListener('dragover', (e) => {
+                        e.preventDefault();
+                        dropArea.classList.add('drag-over');
+                    });
 
-// phone number validator
+                    dropArea.addEventListener('dragleave', () => {
+                        dropArea.classList.remove('drag-over');
+                    });
 
-function validatePhoneNumber(input) {
-    const errorText = input.parentElement.querySelector('.error-text');
-    let value = input.value.replace(/\D/g, ''); // Remove non-digits
-    
-    // Ensure only numbers are entered
-    input.value = value;
-    
-    // Validation logic
-    if (value.length > 0) {
-        if (value.length < 10) {
-            input.classList.add('error');
-            errorText.textContent = 'Phone number must be 10 digits';
-            return false;
-        } else if (value.length > 10) {
-            input.value = value.slice(0, 10); // Trim to 10 digits
-        } else if (!/^[6-9]\d{9}$/.test(value)) {
-            input.classList.add('error');
-            errorText.textContent = 'Enter a valid phone number';
-            return false;
-        } else {
-            input.classList.remove('error');
-            errorText.textContent = '';
-            return true;
-        }
-    } else {
-        input.classList.remove('error');
-        errorText.textContent = '';
-    }
-  }
+                    dropArea.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        dropArea.classList.remove('drag-over');
+                        const file = e.dataTransfer.files[0];
+                        if (file) handleFile(file);
+                    });
 
-  // Add form submission validation
-  document.querySelector('form').addEventListener('submit', function(event) {
-    const phoneInput = this.querySelector('input[name="phone"]');
-    if (!validatePhoneNumber(phoneInput)) {
-        event.preventDefault();
-    }
-  });
+                    // Handle file input change
+                    fileInput.addEventListener('change', (e) => {
+                        const file = e.target.files[0];
+                        if (file) handleFile(file);
+                    });
 
-  function onlyNumbers(event) {
-    const charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-        return false;
-    }
-    return true;
-  }
+                    // Handle file removal
+                    removeButton.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        resetFileUpload();
+                    });
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const messages = document.querySelectorAll('.message');
-    
-    if (messages.length > 0) {
-        messages.forEach(message => {
-            // Remove message after 10 seconds
-            setTimeout(() => {
-                message.addEventListener('animationend', function(e) {
-                    if (e.animationName === 'fadeOut') {
-                        message.remove();
+                    function handleFile(file) {
+                        // Validate file
+                        if (file.size > 5 * 1024 * 1024) {
+                            alert('File size must be less than 5MB');
+                            resetFileUpload();
+                            return;
+                        }
+
+                        if (!file.type.match('image.*')) {
+                            alert('Please upload an image file (JPG or PNG)');
+                            resetFileUpload();
+                            return;
+                        }
+
+                        // Show preview
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            previewImage.src = e.target.result;
+                            fileName.textContent = file.name;
+                            fileSize.textContent = formatFileSize(file.size);
+                            uploadContent.style.display = 'none';
+                            preview.style.display = 'block';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+
+                    function resetFileUpload() {
+                        fileInput.value = '';
+                        previewImage.src = '';
+                        fileName.textContent = '';
+                        fileSize.textContent = '';
+                        uploadContent.style.display = 'block';
+                        preview.style.display = 'none';
                     }
                 });
-            }, 10000);
+            }
 
-            // Add close button
-            const closeBtn = document.createElement('button');
-            closeBtn.innerHTML = '×';
-            closeBtn.className = 'message-close';
-            closeBtn.style.cssText = `
+            function formatFileSize(bytes) {
+                if (bytes < 1024) return bytes + ' bytes';
+                else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+                else return (bytes / 1048576).toFixed(1) + ' MB';
+            }
+
+            // phone number validator
+
+            function validatePhoneNumber(input) {
+                const errorText = input.parentElement.querySelector('.error-text');
+                let value = input.value.replace(/\D/g, ''); // Remove non-digits
+
+                // Ensure only numbers are entered
+                input.value = value;
+
+                // Validation logic
+                if (value.length > 0) {
+                    if (value.length < 10) {
+                        input.classList.add('error');
+                        errorText.textContent = 'Phone number must be 10 digits';
+                        return false;
+                    } else if (value.length > 10) {
+                        input.value = value.slice(0, 10); // Trim to 10 digits
+                    } else if (!/^[6-9]\d{9}$/.test(value)) {
+                        input.classList.add('error');
+                        errorText.textContent = 'Enter a valid phone number';
+                        return false;
+                    } else {
+                        input.classList.remove('error');
+                        errorText.textContent = '';
+                        return true;
+                    }
+                } else {
+                    input.classList.remove('error');
+                    errorText.textContent = '';
+                }
+            }
+
+            // Add form submission validation
+            document.querySelector('form').addEventListener('submit', function (event) {
+                const phoneInput = this.querySelector('input[name="phone"]');
+                if (!validatePhoneNumber(phoneInput)) {
+                    event.preventDefault();
+                }
+            });
+
+            function onlyNumbers(event) {
+                const charCode = (event.which) ? event.which : event.keyCode;
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+                return true;
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const messages = document.querySelectorAll('.message');
+
+                if (messages.length > 0) {
+                    messages.forEach(message => {
+                        // Remove message after 10 seconds
+                        setTimeout(() => {
+                            message.addEventListener('animationend', function (e) {
+                                if (e.animationName === 'fadeOut') {
+                                    message.remove();
+                                }
+                            });
+                        }, 10000);
+
+                        // Add close button
+                        const closeBtn = document.createElement('button');
+                        closeBtn.innerHTML = '×';
+                        closeBtn.className = 'message-close';
+                        closeBtn.style.cssText = `
                 position: absolute;
                 right: 10px;
                 top: 50%;
@@ -670,130 +658,152 @@ function validatePhoneNumber(input) {
                 opacity: 0.7;
                 transition: opacity 0.3s ease;
             `;
-            
-            closeBtn.addEventListener('mouseover', () => closeBtn.style.opacity = '1');
-            closeBtn.addEventListener('mouseout', () => closeBtn.style.opacity = '0.7');
-            
-            closeBtn.addEventListener('click', () => {
-                message.style.animation = 'fadeOut 0.3s ease-in forwards';
-                message.addEventListener('animationend', function(e) {
-                    if (e.animationName === 'fadeOut') {
-                        message.remove();
+
+                        closeBtn.addEventListener('mouseover', () => closeBtn.style.opacity = '1');
+                        closeBtn.addEventListener('mouseout', () => closeBtn.style.opacity = '0.7');
+
+                        closeBtn.addEventListener('click', () => {
+                            message.style.animation = 'fadeOut 0.3s ease-in forwards';
+                            message.addEventListener('animationend', function (e) {
+                                if (e.animationName === 'fadeOut') {
+                                    message.remove();
+                                }
+                            });
+                        });
+
+                        message.appendChild(closeBtn);
+                    });
+                }
+            });
+
+
+        </script>
+        <script>
+            document.getElementById('rzp-button1').onclick = function (e) {
+                e.preventDefault();
+
+                // Get form data
+                const form = document.getElementById('payment-form');
+                const college = document.getElementById('college').value;
+                const selectedEvent = document.getElementById('events').value;
+                const participantType = document.getElementById('number').value;
+
+                // Calculate price
+                const price = calculatePrice(selectedEvent, participantType);
+
+                // Validate form before proceeding
+                if (!validateForm()) {
+                    return false;
+                }
+
+                // Prepare data to send to the server
+                const formData = new FormData(form);
+                formData.append('amount', price * 100); // Razorpay expects amount in paise
+
+                // Create order ID
+                axios.post('payment/create/orderId', {
+                    amount: price * 100, // Convert to paise
+                    event: selectedEvent,
+                    participantType: participantType,
+                    college: college
+                })
+                    .then(function (response) {
+                        var options = {
+                            "key": "<%= process.env.RAZORPAY_KEY_ID %>",
+                            "amount": response.data.amount,
+                            "currency": response.data.currency || "INR",
+                            "name": "TECHNOCRATS",
+                            "description": `Registration for ${selectedEvent}`,
+                            "image": "/image folder/image.png",
+                            "order_id": response.data.id,
+                            "handler": function (response) {
+                                // After successful payment, submit form with payment details
+                                const paymentData = {
+                                    razorpayOrderId: response.razorpay_order_id,
+                                    razorpayPaymentId: response.razorpay_payment_id,
+                                    signature: response.razorpay_signature,
+                                    event: selectedEvent,
+                                    participantType: participantType,
+                                    amount: price
+                                };
+
+                                axios.post('payment/api/payment/verify', paymentData)
+                                    .then(function (response) {
+                                        alert('Payment successful! Registration complete.');
+                                        window.location.href = '/eventPage';
+                                    })
+                                    .catch(function (error) {
+                                        console.error(error);
+                                        alert('Payment verification failed. Please contact support.');
+                                    });
+                            },
+                            "prefill": {
+                                "name": document.getElementById('soloName')?.value || document.getElementById('leaderName')?.value || "",
+                                "email": document.getElementById('soloEmail')?.value || document.getElementById('leaderEmail')?.value || "",
+                                "contact": document.getElementById('contact')?.value || "",
+                            },
+                            "notes": {
+                                "college": college,
+                                "event": selectedEvent
+                            },
+                            "theme": {
+                                "color": "#000099"
+                            }
+                        };
+
+                        var rzp1 = new Razorpay(options);
+                        rzp1.open();
+                    })
+                    .catch(function (error) {
+                        console.error('Error creating order:', error);
+                        alert('Unable to process payment at this time. Please try again later.');
+                    });
+            };
+
+            // Validate form before submission
+            function validateForm() {
+                const form = document.getElementById('payment-form');
+                const requiredFields = form.querySelectorAll('[required]');
+                let isValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!field.value) {
+                        field.classList.add('error');
+                        isValid = false;
+                    } else {
+                        field.classList.remove('error');
                     }
                 });
-            });
-            
-            message.appendChild(closeBtn);
-        });
-    }
-  });
 
+                if (!isValid) {
+                    alert('Please fill in all required fields');
+                }
 
-</script>
-  <script>
-    document.getElementById('rzp-button1').onclick = function(e) {
-  e.preventDefault();
-  
-  // Get form data
-  const form = document.getElementById('payment-form');
-  const college = document.getElementById('college').value;
-  const selectedEvent = document.getElementById('events').value;
-  const participantType = document.getElementById('number').value;
-  
-  // Calculate price
-  const price = calculatePrice(selectedEvent, participantType);
-  
-  // Validate form before proceeding
-  if (!validateForm()) {
-    return false;
-  }
-  
-  // Prepare data to send to the server
-  const formData = new FormData(form);
-  formData.append('amount', price * 100); // Razorpay expects amount in paise
-  
-  // Create order ID
-  axios.post('payment/create/orderId', {
-    amount: price * 100, // Convert to paise
-    event: selectedEvent,
-    participantType: participantType,
-    college: college
-  })
-  .then(function(response) {
-          var options = {
-            "key": "<%= process.env.RAZORPAY_KEY_ID %>",
-            "amount": response.data.amount,
-      "currency": response.data.currency || "INR",
-            "name": "TECHNOCRATS",
-      "description": `Registration for ${selectedEvent}`,
-            "image": "/image folder/image.png",
-            "order_id": response.data.id,
-            "handler": function(response) {
-        // After successful payment, submit form with payment details
-        const paymentData = {
-                razorpayOrderId: response.razorpay_order_id,
-                razorpayPaymentId: response.razorpay_payment_id,
-          signature: response.razorpay_signature,
-          event: selectedEvent,
-          participantType: participantType,
-          amount: price
-        };
-        
-        axios.post('payment/api/payment/verify', paymentData)
-        .then(function(response) {
-          alert('Payment successful! Registration complete.');
-          window.location.href = '/eventPage';
-        })
-        .catch(function(error) {
-                console.error(error);
-          alert('Payment verification failed. Please contact support.');
-              });
-            },
-            "prefill": {
-        "name": document.getElementById('soloName')?.value || document.getElementById('leaderName')?.value || "",
-        "email": document.getElementById('soloEmail')?.value || document.getElementById('leaderEmail')?.value || "",
-        "contact": document.getElementById('contact')?.value || "",
-            },
-            "notes": {
-        "college": college,
-        "event": selectedEvent
-            },
-            "theme": {
-              "color": "#000099"
+                return isValid;
             }
-          };
-    
-          var rzp1 = new Razorpay(options);
-          rzp1.open();
-        })
-  .catch(function(error) {
-    console.error('Error creating order:', error);
-    alert('Unable to process payment at this time. Please try again later.');
-        });
-    };
 
-// Validate form before submission
-function validateForm() {
-  const form = document.getElementById('payment-form');
-  const requiredFields = form.querySelectorAll('[required]');
-  let isValid = true;
-  
-  requiredFields.forEach(field => {
-    if (!field.value) {
-      field.classList.add('error');
-      isValid = false;
-    } else {
-      field.classList.remove('error');
-    }
-  });
-  
-  if (!isValid) {
-    alert('Please fill in all required fields');
-  }
-  
-  return isValid;
-}
+            // Add this to your existing file handling code
+            document.addEventListener('DOMContentLoaded', function () {
+                setTimeout(() => {
+                    document.querySelectorAll('.file-input').forEach(input => {
+                        input.addEventListener('change', function (e) {
+                            const file = e.target.files[0];
+                            if (file) {
+                                // Check file size (max 5MB)
+                                if (file.size > 5 * 1024 * 1024) {
+                                    alert('File size exceeds 5MB limit');
+                                    this.value = '';
+                                    return;
+                                }
 
+<<<<<<< HEAD
+                                const id = this.id.replace('Photo', '');
+                                const preview = document.getElementById(`${id}Preview`);
+                                const fileName = document.getElementById(`${id}FileName`);
+                                const fileSize = document.getElementById(`${id}FileSize`);
+                                const dropContent = document.getElementById(`${id}DropContent`);
+                                const previewContent = document.getElementById(`${id}PreviewContent`);
+=======
 // Add this to your existing file handling code
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => {
@@ -839,393 +849,504 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }, 100);
 });
+>>>>>>> 3dc4a4cbe8e8bdb9f3cce14439497acb61620ed3
 
-function formatFileSize(bytes) {
-  if (bytes < 1024) return bytes + ' bytes';
-  else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-  else return (bytes / 1048576).toFixed(1) + ' MB';
-}
-  </script>
-<script src="javascript/navbaar.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        function initializeFileUpload(id) {
-            const dropArea = document.getElementById(`${id}DropArea`);
-            const fileInput = dropArea.querySelector('.file-input');
-            const dropContent = dropArea.querySelector('.file-drop-content');
-            const previewContent = dropArea.querySelector('.file-preview-content');
-            const preview = dropArea.querySelector('.file-preview');
-            const fileName = dropArea.querySelector('.file-name');
-            const fileSize = dropArea.querySelector('.file-size');
-            const removeBtn = dropArea.querySelector('.remove-file');
-            const changeBtn = dropArea.querySelector('.change-file');
+                                preview.src = URL.createObjectURL(file);
 
-            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                dropArea.addEventListener(eventName, preventDefaults, false);
+                                fileName.textContent = file.name;
+                                fileSize.textContent = formatFileSize(file.size);
+
+                                dropContent.style.display = 'none';
+                                previewContent.style.display = 'block';
+
+                                const removeBtn = previewContent.querySelector('.remove-file');
+                                removeBtn.addEventListener('click', function () {
+                                    input.value = '';
+                                    dropContent.style.display = 'flex';
+                                    previewContent.style.display = 'none';
+                                });
+
+                                const changeBtn = previewContent.querySelector('.change-file');
+                                changeBtn.addEventListener('click', function () {
+                                    input.click();
+                                });
+                            }
+                        });
+                    });
+                }, 100);
             });
 
-            function preventDefaults(e) {
-                e.preventDefault();
-                e.stopPropagation();
+            function formatFileSize(bytes) {
+                if (bytes < 1024) return bytes + ' bytes';
+                else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+                else return (bytes / 1048576).toFixed(1) + ' MB';
             }
+        </script>
+        <script src="javascript/navbaar.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                function initializeFileUpload(id) {
+                    const dropArea = document.getElementById(`${id}DropArea`);
+                    const fileInput = dropArea.querySelector('.file-input');
+                    const dropContent = dropArea.querySelector('.file-drop-content');
+                    const previewContent = dropArea.querySelector('.file-preview-content');
+                    const preview = dropArea.querySelector('.file-preview');
+                    const fileName = dropArea.querySelector('.file-name');
+                    const fileSize = dropArea.querySelector('.file-size');
+                    const removeBtn = dropArea.querySelector('.remove-file');
+                    const changeBtn = dropArea.querySelector('.change-file');
 
-            // Handle file selection
-            fileInput.addEventListener('change', handleFileSelect);
-            dropArea.addEventListener('drop', handleDrop);
-            removeBtn.addEventListener('click', removeFile);
-            changeBtn.addEventListener('click', () => fileInput.click());
+                    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                        dropArea.addEventListener(eventName, preventDefaults, false);
+                    });
 
-            function handleFileSelect(e) {
-                const files = e.target.files;
-                handleFiles(files);
-            }
+                    function preventDefaults(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
 
-            function handleDrop(e) {
-                const files = e.dataTransfer.files;
-                handleFiles(files);
-            }
+                    // Handle file selection
+                    fileInput.addEventListener('change', handleFileSelect);
+                    dropArea.addEventListener('drop', handleDrop);
+                    removeBtn.addEventListener('click', removeFile);
+                    changeBtn.addEventListener('click', () => fileInput.click());
 
-            function handleFiles(files) {
-                if (files.length) {
-                    const file = files[0];
-                    if (validateFile(file)) {
-                        showPreview(file);
+                    function handleFileSelect(e) {
+                        const files = e.target.files;
+                        handleFiles(files);
+                    }
+
+                    function handleDrop(e) {
+                        const files = e.dataTransfer.files;
+                        handleFiles(files);
+                    }
+
+                    function handleFiles(files) {
+                        if (files.length) {
+                            const file = files[0];
+                            if (validateFile(file)) {
+                                showPreview(file);
+                            }
+                        }
+                    }
+
+                    function validateFile(file) {
+                        const validTypes = ['image/jpeg', 'image/png'];
+                        const maxSize = 5 * 1024 * 1024; // 5MB
+
+                        if (!validTypes.includes(file.type)) {
+                            showError(input, 'Please upload a PNG or JPG file');
+                            return false;
+                        }
+
+                        if (file.size > maxSize) {
+                            showError(input, 'File size must be less than 5MB');
+                            return false;
+                        }
+
+                        return true;
+                    }
+
+                    function showPreview(file) {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            preview.src = e.target.result;
+                            fileName.textContent = file.name;
+                            fileSize.textContent = formatFileSize(file.size);
+                            dropContent.style.opacity = '0';
+                            previewContent.classList.add('active');
+                        };
+                        reader.readAsDataURL(file);
+                    }
+
+                    function removeFile(e) {
+                        e.stopPropagation();
+                        fileInput.value = '';
+                        preview.src = '';
+                        dropContent.style.opacity = '1';
+                        previewContent.classList.remove('active');
+                    }
+
+                    function formatFileSize(bytes) {
+                        if (bytes === 0) return '0 Bytes';
+                        const k = 1024;
+                        const sizes = ['Bytes', 'KB', 'MB'];
+                        const i = Math.floor(Math.log(bytes) / Math.log(k));
+                        return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+                    }
+
+                    function showError(input, message) {
+                        const formGroup = input.closest('.form-group');
+                        const errorDiv = formGroup.querySelector('.field-error');
+                        formGroup.classList.add('error');
+                        errorDiv.textContent = message;
+                        errorDiv.style.display = 'block';
                     }
                 }
-            }
 
+                // Initialize file upload for each participant
+                // You'll need to call this function for each participant's file upload field
+                // Example: initializeFileUpload('leader');
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const formSteps = document.querySelectorAll('.form-step');
+                const progressBar = document.getElementById('progress-bar');
+                const stepIndicators = document.querySelectorAll('.step');
+
+                // Navigation button click handler
+                document.querySelectorAll('.nav-button').forEach(button => {
+                    button.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        const currentStep = parseInt(this.closest('.form-step').dataset.step);
+                        let targetStep;
+
+                        if (this.classList.contains('next-button')) {
+                            targetStep = currentStep + 1;
+                            if (!validateCurrentStep(currentStep)) return;
+                        } else if (this.classList.contains('prev-button')) {
+                            targetStep = currentStep - 1;
+                        }
+
+                        if (targetStep >= 1 && targetStep <= formSteps.length) {
+                            navigateToStep(targetStep);
+                        }
+                    });
+                });
+
+                function navigateToStep(stepNumber) {
+                    // Hide all steps
+                    formSteps.forEach(step => step.classList.remove('active'));
+
+                    // Show target step
+                    const targetStep = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
+                    targetStep.classList.add('active');
+
+                    // Update progress bar
+                    const progress = ((stepNumber - 1) / (formSteps.length - 1)) * 100;
+                    progressBar.style.width = `${progress}%`;
+
+                    // Update step indicators
+                    stepIndicators.forEach((indicator, index) => {
+                        if (index + 1 < stepNumber) {
+                            indicator.classList.add('completed');
+                            indicator.classList.remove('active');
+                        } else if (index + 1 === stepNumber) {
+                            indicator.classList.add('active');
+                            indicator.classList.remove('completed');
+                        } else {
+                            indicator.classList.remove('active', 'completed');
+                        }
+                    });
+
+                    // Scroll to top of form
+                    const formContainer = document.querySelector('.container');
+                    formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+
+                function validateCurrentStep(stepNumber) {
+                    const currentStep = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
+                    const requiredFields = currentStep.querySelectorAll('[required]');
+                    let isValid = true;
+
+                    requiredFields.forEach(field => {
+                        // Clear previous errors
+                        field.classList.remove('error');
+                        removeErrorMessage(field);
+
+                        if (!field.value) {
+                            isValid = false;
+                            showErrorForField(field, 'This field is required');
+                        } else if (field.id === 'contact') {
+                            // Validate phone number
+                            if (!/^\d{10}$/.test(field.value)) {
+                                isValid = false;
+                                showErrorForField(field, 'Please enter a valid 10-digit number');
+                            }
+                        } else if (field.type === 'email') {
+                            // Validate email
+                            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+                                isValid = false;
+                                showErrorForField(field, 'Please enter a valid email address');
+                            }
+                        }
+                    });
+
+                    return isValid;
+                }
+
+                function showErrorForField(field, message) {
+                    field.classList.add('error');
+                    const formGroup = field.closest('.form-group');
+
+                    // Remove any existing error message
+                    removeErrorMessage(field);
+
+                    // Create and add new error message
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'field-error';
+                    errorDiv.textContent = message;
+                    errorDiv.style.color = '#ff3366';
+                    errorDiv.style.fontSize = '0.8rem';
+                    errorDiv.style.marginTop = '5px';
+                    formGroup.appendChild(errorDiv);
+                }
+
+                function removeErrorMessage(field) {
+                    const formGroup = field.closest('.form-group');
+                    const existingError = formGroup.querySelector('.field-error');
+                    if (existingError) {
+                        existingError.remove();
+                    }
+                }
+
+                // Real-time validation
+                document.querySelectorAll('input, select').forEach(input => {
+                    input.addEventListener('input', function () {
+                        this.classList.remove('error');
+                        removeErrorMessage(this);
+                    });
+                });
+
+                // Initialize the form
+                navigateToStep(1);
+            });
+        </script>
+
+
+
+        <!--Progress Bar-->
+        <script>
+            const steps = document.querySelectorAll(".form-step");
+            const progressBar = document.getElementById("progress-bar");
+            const nextBtns = document.querySelectorAll(".next-btn");
+            const prevBtns = document.querySelectorAll(".prev-btn");
+            let currentStep = 0;
+
+            nextBtns.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    steps[currentStep].classList.remove("active");
+                    currentStep++;
+                    steps[currentStep].classList.add("active");
+                    updateProgressBar();
+                });
+            });
+
+            prevBtns.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    steps[currentStep].classList.remove("active");
+                    currentStep--;
+                    steps[currentStep].classList.add("active");
+                    updateProgressBar();
+                });
+            });
+
+            function updateProgressBar() {
+                progressBar.style.width = ((currentStep / (steps.length - 1)) * 100) + "%";
+            }
+        </script>
+
+<<<<<<< HEAD
+        <script>
+            function validateEnrollment(input) {
+                const value = input.value.toUpperCase();
+                const enrollmentRegex = /^[0-9]{4}[A-Z]{2}[0-9]{6}$/;
+                const errorContainer = input.parentElement.querySelector('.field-error') ||
+                    document.createElement('div');
+=======
             function validateFile(file) {
                 const validTypes = ['image/jpeg', 'image/png'];
                 const maxSize = 2 * 1024 * 1024; // 2MB
+>>>>>>> 3dc4a4cbe8e8bdb9f3cce14439497acb61620ed3
 
-                if (!validTypes.includes(file.type)) {
-                    showError(input, 'Please upload a PNG or JPG file');
+                errorContainer.className = 'field-error';
+
+                if (!value) {
+                    showFieldError(input, 'Enrollment number is required');
                     return false;
                 }
 
-                if (file.size > maxSize) {
-                    showError(input, 'File size must be less than 5MB');
+                if (!enrollmentRegex.test(value)) {
+                    showFieldError(input, 'Format: YYYY(year) BB(branch) NNNNNN(number)');
                     return false;
                 }
 
+                // Valid enrollment
+                removeFieldError(input);
                 return true;
             }
 
-            function showPreview(file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    fileName.textContent = file.name;
-                    fileSize.textContent = formatFileSize(file.size);
-                    dropContent.style.opacity = '0';
-                    previewContent.classList.add('active');
-                };
-                reader.readAsDataURL(file);
+            function showFieldError(input, message) {
+                const formGroup = input.closest('.form-group');
+                let errorDiv = formGroup.querySelector('.field-error');
+
+                if (!errorDiv) {
+                    errorDiv = document.createElement('div');
+                    errorDiv.className = 'field-error';
+                    formGroup.appendChild(errorDiv);
+                }
+
+                errorDiv.textContent = message;
+                input.classList.add('error');
             }
 
-            function removeFile(e) {
-                e.stopPropagation();
-                fileInput.value = '';
-                preview.src = '';
-                dropContent.style.opacity = '1';
-                previewContent.classList.remove('active');
+            function removeFieldError(input) {
+                const formGroup = input.closest('.form-group');
+                const errorDiv = formGroup.querySelector('.field-error');
+
+                if (errorDiv) {
+                    errorDiv.remove();
+                }
+
+                input.classList.remove('error');
             }
 
             function formatFileSize(bytes) {
-                if (bytes === 0) return '0 Bytes';
-                const k = 1024;
-                const sizes = ['Bytes', 'KB', 'MB'];
-                const i = Math.floor(Math.log(bytes) / Math.log(k));
-                return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+                if (bytes < 1024) return bytes + ' bytes';
+                if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+                return (bytes / 1048576).toFixed(1) + ' MB';
             }
 
-            function showError(input, message) {
-                const formGroup = input.closest('.form-group');
-                const errorDiv = formGroup.querySelector('.field-error');
-                formGroup.classList.add('error');
-                errorDiv.textContent = message;
-                errorDiv.style.display = 'block';
-            }
-        }
+            // Initialize everything when the document is ready
+            document.addEventListener('DOMContentLoaded', () => {
+                initializeFormNavigation();
+                document.querySelectorAll('.file-drop-area').forEach(initializeFileUpload);
 
-        // Initialize file upload for each participant
-        // You'll need to call this function for each participant's file upload field
-        // Example: initializeFileUpload('leader');
-    });
-  </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const formSteps = document.querySelectorAll('.form-step');
-    const progressBar = document.getElementById('progress-bar');
-    const stepIndicators = document.querySelectorAll('.step');
+                // Initialize event selection
+                const eventSelect = document.getElementById('events');
+                eventSelect.addEventListener('change', updateParticipantsOption);
+            });
+        </script>
+        <script>
+            // Update participants data before form submission
+            document.getElementById('payment-form').addEventListener('submit', function (e) {
+                const participants = [];
+                const participantSections = document.querySelectorAll('.participant-section');
+                participantSections.forEach(section => {
+                    const name = section.querySelector('[name$="Name"]').value;
+                    const enrollment = section.querySelector('[name$="Enrollment"]').value;
+                    const email = section.querySelector('[name$="Email"]').value;
+                    const photo = section.querySelector('[name$="Photo"]').files[0]?.name || null;
+                    const role = section.querySelector('h3').textContent.includes('Leader') ? 'leader' : 'member';
 
-    // Navigation button click handler
-    document.querySelectorAll('.nav-button').forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const currentStep = parseInt(this.closest('.form-step').dataset.step);
-            let targetStep;
+                    participants.push({ name, enrollment, email, photo, role });
+                });
 
-            if (this.classList.contains('next-button')) {
-                targetStep = currentStep + 1;
-                if (!validateCurrentStep(currentStep)) return;
-            } else if (this.classList.contains('prev-button')) {
-                targetStep = currentStep - 1;
-            }
+                document.getElementById('participantsData').value = JSON.stringify(participants);
+            });
+        </script>
+        <script>
+            document.getElementById('payment-form').addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent default form submission
 
-            if (targetStep >= 1 && targetStep <= formSteps.length) {
-                navigateToStep(targetStep);
-            }
-        });
-    });
+                // Get all participant sections
+                const participantSections = document.querySelectorAll('.participant-section');
+                const participants = [];
 
-    function navigateToStep(stepNumber) {
-        // Hide all steps
-        formSteps.forEach(step => step.classList.remove('active'));
-        
-        // Show target step
-        const targetStep = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
-        targetStep.classList.add('active');
+                // Collect data from each participant section
+                participantSections.forEach(section => {
+                    const nameInput = section.querySelector('[name$="Name"]');
+                    const enrollmentInput = section.querySelector('[name$="Enrollment"]');
+                    const emailInput = section.querySelector('[name$="Email"]');
+                    const photoInput = section.querySelector('[name$="Photo"]');
 
-        // Update progress bar
-        const progress = ((stepNumber - 1) / (formSteps.length - 1)) * 100;
-        progressBar.style.width = `${progress}%`;
+                    if (nameInput && enrollmentInput && emailInput) {
+                        const participant = {
+                            name: nameInput.value,
+                            enrollment: enrollmentInput.value,
+                            email: emailInput.value,
+                            photo: photoInput ? photoInput.files[0] : null,
+                            role: section.querySelector('h3').textContent.includes('Leader') ? 'leader' : 'member'
+                        };
+                        participants.push(participant);
+                    }
+                });
 
-        // Update step indicators
-        stepIndicators.forEach((indicator, index) => {
-            if (index + 1 < stepNumber) {
-                indicator.classList.add('completed');
-                indicator.classList.remove('active');
-            } else if (index + 1 === stepNumber) {
-                indicator.classList.add('active');
-                indicator.classList.remove('completed');
-            } else {
-                indicator.classList.remove('active', 'completed');
-            }
-        });
+                // Create FormData object
+                const formData = new FormData();
+                formData.append('college', document.getElementById('college').value);
+                formData.append('contact', document.getElementById('contact').value);
+                formData.append('event', document.getElementById('events').value);
+                formData.append('participantType', document.getElementById('number').value);
+                formData.append('participants', JSON.stringify(participants));
 
-        // Scroll to top of form
-        const formContainer = document.querySelector('.container');
-        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+                // Append each photo file to FormData
+                participants.forEach((participant, index) => {
+                    if (participant.photo) {
+                        formData.append(`photo_${index}`, participant.photo);
+                    }
+                });
 
-    function validateCurrentStep(stepNumber) {
-        const currentStep = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
-        const requiredFields = currentStep.querySelectorAll('[required]');
-        let isValid = true;
+                // Send data to server
+                fetch('/payment/create/orderId', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Handle the response and proceed with payment
+                        const options = {
+                            "key": "<%= process.env.RAZORPAY_KEY_ID %>",
+                            "amount": data.amount,
+                            "currency": data.currency || "INR",
+                            "name": "TECHNOCRATS",
+                            "description": `Registration for ${document.getElementById('events').value}`,
+                            "image": "/image folder/image.png",
+                            "order_id": data.id,
+                            "handler": function (response) {
+                                // After successful payment, submit form with payment details
+                                const paymentData = {
+                                    razorpayOrderId: response.razorpay_order_id,
+                                    razorpayPaymentId: response.razorpay_payment_id,
+                                    signature: response.razorpay_signature,
+                                    event: document.getElementById('events').value,
+                                    participantType: document.getElementById('number').value,
+                                    amount: calculatePrice(document.getElementById('events').value, document.getElementById('number').value)
+                                };
 
-        requiredFields.forEach(field => {
-            // Clear previous errors
-            field.classList.remove('error');
-            removeErrorMessage(field);
+                                // Send payment verification request
+                                fetch('/payment/api/payment/verify', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(paymentData)
+                                })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        alert('Payment successful! Registration complete.');
+                                        window.location.href = '/eventPage';
+                                    })
+                                    .catch(error => {
+                                        console.error('Payment verification error:', error);
+                                        alert('Payment verification failed. Please contact support.');
+                                    });
+                            },
+                            "prefill": {
+                                "name": document.getElementById('soloName')?.value || document.getElementById('leaderName')?.value || "",
+                                "email": document.getElementById('soloEmail')?.value || document.getElementById('leaderEmail')?.value || "",
+                                "contact": document.getElementById('contact')?.value || "",
+                            },
+                            "notes": {
+                                "college": document.getElementById('college').value,
+                                "event": document.getElementById('events').value
+                            },
+                            "theme": {
+                                "color": "#000099"
+                            }
+                        };
 
-            if (!field.value) {
-                isValid = false;
-                showErrorForField(field, 'This field is required');
-            } else if (field.id === 'contact') {
-                // Validate phone number
-                if (!/^\d{10}$/.test(field.value)) {
-                    isValid = false;
-                    showErrorForField(field, 'Please enter a valid 10-digit number');
-                }
-            } else if (field.type === 'email') {
-                // Validate email
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
-                    isValid = false;
-                    showErrorForField(field, 'Please enter a valid email address');
-                }
-            }
-        });
+                        const rzp1 = new Razorpay(options);
+                        rzp1.open();
+                    })
+                    .catch(error => {
+                        console.error('Error creating order:', error);
+                        alert('Unable to process payment at this time. Please try again later.');
+                    });
+            });
+        </script>
+</body>
 
-        return isValid;
-    }
-
-    function showErrorForField(field, message) {
-        field.classList.add('error');
-        const formGroup = field.closest('.form-group');
-        
-        // Remove any existing error message
-        removeErrorMessage(field);
-        
-        // Create and add new error message
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'field-error';
-        errorDiv.textContent = message;
-        errorDiv.style.color = '#ff3366';
-        errorDiv.style.fontSize = '0.8rem';
-        errorDiv.style.marginTop = '5px';
-        formGroup.appendChild(errorDiv);
-    }
-
-    function removeErrorMessage(field) {
-        const formGroup = field.closest('.form-group');
-        const existingError = formGroup.querySelector('.field-error');
-        if (existingError) {
-            existingError.remove();
-        }
-    }
-
-    // Real-time validation
-    document.querySelectorAll('input, select').forEach(input => {
-        input.addEventListener('input', function() {
-            this.classList.remove('error');
-            removeErrorMessage(this);
-        });
-    });
-
-    // Initialize the form
-    navigateToStep(1);
-});
-</script>
-
-
-
-<!--Progress Bar-->
-  <script>
-  const steps = document.querySelectorAll(".form-step");
-    const progressBar = document.getElementById("progress-bar");
-    const nextBtns = document.querySelectorAll(".next-btn");
-    const prevBtns = document.querySelectorAll(".prev-btn");
-    let currentStep = 0;
-
-    nextBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            steps[currentStep].classList.remove("active");
-            currentStep++;
-            steps[currentStep].classList.add("active");
-            updateProgressBar();
-        });
-    });
-
-    prevBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            steps[currentStep].classList.remove("active");
-            currentStep--;
-            steps[currentStep].classList.add("active");
-            updateProgressBar();
-        });
-    });
-
-    function updateProgressBar() {
-        progressBar.style.width = ((currentStep / (steps.length - 1)) * 100) + "%";
-    }
-    </script>
-
-<script>
-function validateEnrollment(input) {
-    const value = input.value.toUpperCase();
-    const enrollmentRegex = /^[0-9]{4}[A-Z]{2}[0-9]{6}$/;
-    const errorContainer = input.parentElement.querySelector('.field-error') || 
-                          document.createElement('div');
-    
-    errorContainer.className = 'field-error';
-    
-    if (!value) {
-        showFieldError(input, 'Enrollment number is required');
-        return false;
-    }
-    
-    if (!enrollmentRegex.test(value)) {
-        showFieldError(input, 'Format: YYYY(year) BB(branch) NNNNNN(number)');
-        return false;
-    }
-    
-    // Valid enrollment
-    removeFieldError(input);
-    return true;
-}
-
-function showFieldError(input, message) {
-    const formGroup = input.closest('.form-group');
-    let errorDiv = formGroup.querySelector('.field-error');
-    
-    if (!errorDiv) {
-        errorDiv = document.createElement('div');
-        errorDiv.className = 'field-error';
-        formGroup.appendChild(errorDiv);
-    }
-    
-    errorDiv.textContent = message;
-    input.classList.add('error');
-}
-
-function removeFieldError(input) {
-    const formGroup = input.closest('.form-group');
-    const errorDiv = formGroup.querySelector('.field-error');
-    
-    if (errorDiv) {
-        errorDiv.remove();
-    }
-    
-    input.classList.remove('error');
-}
-
-function formatFileSize(bytes) {
-    if (bytes < 1024) return bytes + ' bytes';
-    if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-    return (bytes / 1048576).toFixed(1) + ' MB';
-}
-
-// Initialize everything when the document is ready
-document.addEventListener('DOMContentLoaded', () => {
-    initializeFormNavigation();
-    document.querySelectorAll('.file-drop-area').forEach(initializeFileUpload);
-    
-    // Initialize event selection
-    const eventSelect = document.getElementById('events');
-    eventSelect.addEventListener('change', updateParticipantsOption);
-});
-</script>
-<script>
-  // Update participants data before form submission
-  document.getElementById('payment-form').addEventListener('submit', function (e) {
-    const participants = [];
-    const participantSections = document.querySelectorAll('.participant-section');
-    participantSections.forEach(section => {
-      const name = section.querySelector('[name$="Name"]').value;
-      const enrollment = section.querySelector('[name$="Enrollment"]').value;
-      const email = section.querySelector('[name$="Email"]').value;
-      const photo = section.querySelector('[name$="Photo"]').files[0]?.name || null;
-      const role = section.querySelector('h3').textContent.includes('Leader') ? 'leader' : 'member';
-
-      participants.push({ name, enrollment, email, photo, role });
-    });
-
-    document.getElementById('participantsData').value = JSON.stringify(participants);
-  });
-</script>
-<script>
-  document.getElementById('payment-form').addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent default form submission for logging
-
-    console.log('Submit event triggered'); // Debugging log
-
-    const participants = [];
-    const participantSections = document.querySelectorAll('.participant-section');
-    participantSections.forEach(section => {
-      const name = section.querySelector('[name$="Name"]').value;
-      const enrollment = section.querySelector('[name$="Enrollment"]').value;
-      const email = section.querySelector('[name$="Email"]').value;
-      const photo = section.querySelector('[name$="Photo"]').files[0]?.name || null;
-      const role = section.querySelector('h3').textContent.includes('Leader') ? 'leader' : 'member';
-
-      participants.push({ name, enrollment, email, photo, role });
-    });
-
-    const formData = {
-      college: document.getElementById('college').value,
-      contact: document.getElementById('contact').value,
-      event: document.getElementById('events').value,
-      participantType: document.getElementById('number').value,
-      participants: participants
-    };
-
-    console.log('Form Data:', formData); // Log form data
-
-    // Uncomment the next line to allow form submission after logging
-    // this.submit();
-  });
-</script>
- </body>
 </html>

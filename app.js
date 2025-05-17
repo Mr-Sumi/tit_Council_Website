@@ -12,6 +12,8 @@ const cron = require('node-cron');
 let club = require("./routes/club.route.js");
 let event = require("./routes/event.route.js");
 
+
+
 require("dotenv").config();
 connectdb();
 
