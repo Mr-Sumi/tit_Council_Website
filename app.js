@@ -11,7 +11,7 @@ const jwt = require("jsonwebtoken");
 const cron = require('node-cron');
 let club = require("./routes/club.route.js");
 let event = require("./routes/event.route.js");
-import {firebaseApp  } from './config/firebase.js';
+
 
 
 require("dotenv").config();
