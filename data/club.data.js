@@ -7,14 +7,14 @@ let details = {
         "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659739/IMG_20241031_014414_-_Adarsh_Raj_dq1pap.jpg"
       },
       "secretary": {
-        "name": "Krishna Jadhav",
-        "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659742/Krishna_Jadhav_r7rmfu.jpg"
+        "name": "Divyanshu Shinde ",
+        "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747501838/Screenshot_2025-05-05_222522_vvjv3p.png"
       },
       "assistant_secretary": {
-        "name": "Neeraj Sahu",
-        "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659744/Neeraj_Sahu_frllop.jpg"
+        "name": "Jayant singh",
+        "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747501945/WhatsApp_Image_2025-05-12_at_17.21.06_1f5cc506_cl2xck.jpg"
       },
-      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660102/Coding_club_bgg5lc.png",
+      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502249/Coding_club_ed2sbh.png",
       "mission": "To inspire, educate, and equip students with coding skills, fostering a community of innovative thinkers and collaborative problem solvers.",
       "vision": "To create a vibrant community where students excel in coding, drive technological innovation, and shape the future through impactful solutions.",
       "instagram_url": "https://www.instagram.com/tit_coding_club/profilecard/?igsh=MTFrMmc5ZnJ6dGxiMw%3D%3D"
@@ -33,7 +33,7 @@ let details = {
         "name": "ABHISEK MODI",
         "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659736/Abhishek_Modi_qefs8h.jpg"
       },
-      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660104/DRONE_SOCIETY_swy753.png",
+      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502267/DRONE_SOCIETY_ugfbt4.png",
       "mission": "Our community fosters innovation and collaboration, encouraging members to explore new applications and work together on drone-related projects, advocating for responsible drone use.",
       "vision": "Our community fosters innovation and collaboration, encouraging members to explore new applications and work together on drone-related projects, advocating for responsible drone use.",
       "instagram_url": "https://www.instagram.com/tit_coding_club/profilecard/?igsh=MTFrMmc5ZnJ6dGxiMw=="
@@ -52,7 +52,7 @@ let details = {
         "name": "Sushma Namdeo",
         "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659758/susma_namdeo_fzlf9o.jpg"
       },
-      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660107/Media_Fusion_bpqi0g.png",
+      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502257/Media_Fusion_vhlhjp.png",
       "mission": "To empower and inspire creativity among students by providing a dynamic platform for media innovation, collaboration, and expression. TIT Media Fusion is committed to delivering high-quality, engaging, and impactful media content that connects the student community, fosters diverse talents, and enhances the institute's cultural and educational presence.",
       "vision": "Our community fosters innovation and collaboration, encouraging members to explore new applications and work together on drone-related projects, advocating for responsible drone use.",
       "instagram_url": "https://www.instagram.com/tit_coding_club/profilecard/?igsh=MTFrMmc5ZnJ6dGxiMw=="
@@ -71,7 +71,7 @@ let details = {
         "name": "Unknown",
         "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png"
       },
-      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660102/CULTURAL_EvENT_jqwdmd.png",
+      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502266/CULTURAL_EvENT_abnyuq.png",
       "mission": "Our mission is to make sure everyone feels connected and appreciated through events and conversations that celebrate the variety of cultures in our college.",
       "vision": "We see a future filled with fun events and projects that help us understand and appreciate each other's cultures.",
       "instagram_url": "https://www.instagram.com/tit_cultural/profilecard/?igsh=eXJyNzJzbjVza2Jq"
@@ -90,7 +90,7 @@ let details = {
         "name": "Unknown",
         "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png"
       },
-      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660109/RObOTICS_CLUB_grvbgk.png",
+      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502262/RObOTICS_CLUB_zuu4q1.png",
       "mission": "Our mission is to inspire and unlock creativity, innovation, and passion for science and technology in young students using robotics to develop science, engineering, coding, and technology skills, as well as leadership skills.",
       "vision": "Our community fosters innovation and collaboration, encouraging members to explore new applications and work together on drone-related projects, advocating for responsible drone use.",
       "instagram_url": "https://www.instagram.com/tit_cultural/profilecard/?igsh=eXJyNzJzbjVza2Jq"
@@ -109,7 +109,7 @@ let details = {
           "name": "Unknown",
           "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png"
       },
-      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660104/ENTREpRENEURSHIp_gamch6.png",
+      "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502252/ENTREpRENEURSHIp_weamnu.png",
       "mission": "Our mission is to fuel the fire of entrepreneurship in every member. We're all about equipping folks with the confidence and chops to rock the startup scene. From practical skills to an amazing network, our club's goal is to turn dreams into thriving businesses. Join us and let's make it happen!",
       "vision": "Our community fosters innovation and collaboration, encouraging members to explore new applications and work together on drone-related projects, advocating for responsible drone use.",
       "instagram_url": "https://www.instagram.com/tit_coding_club/profilecard/?igsh=MTFrMmc5ZnJ6dGxiMw=="
@@ -128,7 +128,7 @@ let details = {
         "name": "Unknown",
         "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png"
     },
-    "club_logo": "/image folder/Club logos/LITERARY Club.png",
+    "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502256/LITERARY_Club_ooakhl.png",
     "mission": "Our mission is to empower individuals with the confidence and skills necessary for effective communication. The literary club endeavors to cultivate public speaking abilities, articulate expression, and overall communication proficiency among its members.",
     "vision": "Our vision is to foster a community that encourages innovation and collaboration, where members explore new literary ideas, enhance their communication skills, and contribute to a culture of thoughtful expression and storytelling.",
     "instagram_url": "https://www.instagram.com/tit_coding_club/profilecard/?igsh=MTFrMmc5ZnJ6dGxiMw=="
@@ -147,7 +147,7 @@ let details = {
       "name": "Unknown",
       "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png"
   },
-  "club_logo": "/image folder/Club logos/RENEwAbLE ENERGY.png",
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502261/RENEwAbLE_ENERGY_x7mjft.png",
   "mission": "The mission of the Renewable Energy Club is to promote awareness, education, and engagement in sustainable energy practices. This includes organizing events, workshops, and projects to foster a greener campus and community, as well as advocating for renewable energy solutions.",
   "vision": "Our vision is to create a future driven by clean energy, where students collaborate on innovative solutions, promote sustainability, and work towards a greener planet.",
   "instagram_url": "https://www.instagram.com/tit_cultural/profilecard/?igsh=eXJyNzJzbjVza2Jq"
@@ -156,11 +156,11 @@ let details = {
   "name": "disipline",
   "coordinator": {
       "name": "Roopak Maskare",
-      "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659751/Screenshot_2024_0715_205509_-_ROOPAK_MASKARE_gjmjia.jpg"
+      "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502251/DISCIpLINE_jt8ej5.png"
   },
   "secretary": {
-      "name": "Achal Soni",
-      "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659736/Achal_Soni_e0rajc.jpg"
+      "name": "Mahi Rahangdale",
+      "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659743/mahi_cm4ezc.png"
   },
   "assistant_secretary": {
       "name": "Mahi Rahangdale",
@@ -175,7 +175,7 @@ let details = {
   "name": "alumni",
   "coordinator": {
       "name": "Darshal Jaitwar",
-      "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659736/Darshal_Jaitwar_a5tv7o.jpg"
+      "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502264/Alumni_Relation_mp5xrs.png"
   },
   "secretary": {
       "name": "Riya Tandan",
@@ -185,7 +185,7 @@ let details = {
       "name": "Muskan Malvi",
       "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png"
   },
-  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660101/Alumni_Relation_h1lrjd.png",
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502264/Alumni_Relation_mp5xrs.png",
   "mission": "To foster a strong, supportive alumni community that bridges past and present, empowering members with lifelong connections, professional growth, and opportunities to give back.",
   "vision": "To be a vibrant, engaged alumni community that inspires collaboration, drives innovation, and makes a lasting impact on future generations.",
   "instagram_url": "https://www.instagram.com/alumni_club"
@@ -204,7 +204,7 @@ let details = {
       "name": "Unknown",
       "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png"
   },
-  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660109/Tech_WIZARDs_rvkxhk.png",
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502263/Tech_WIZARDs_obkby8.png",
   "mission": "Our mission at Tech Wizards is to innovate, create seamless experiences, and empower individuals through technology, fostering growth and positive impact in the digital world.",
   "vision": "Our community fosters innovation and collaboration, encouraging members to explore new applications and work together on tech-related projects, advocating for responsible tech use.",
   "instagram_url": "https://www.instagram.com/tit_cultural/profilecard/?igsh=eXJyNzJzbjVza2Jq"
@@ -223,7 +223,7 @@ let details = {
       "name": "Abhishek Jha",
       "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659735/Abhishek_Jha_doqwde.jpg"
   },
-  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660105/EV_xq4ao2.png",
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502268/EV_g2djgp.png",
   "mission": "To create and innovate in the field of electric vehicles, focusing on sustainable and efficient transportation solutions.",
   "vision": "To advance the development of electric vehicles, promoting eco-friendly and high-performance mobility solutions.",
   "instagram_url": "https://www.instagram.com/tit_coding_club/profilecard/?igsh=MTFrMmc5ZnJ6dGxiMw=="
@@ -242,7 +242,7 @@ let details = {
       "name": "Kavya Chhirolya",
       "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659742/KAVYA_ipjbha.jpg"
   },
-  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660107/mUSIC_SOCIETY_ghdl4z.png",
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502258/mUSIC_SOCIETY_m2wmom.png",
   "mission": "To cultivate a passion for music, provide a platform for students to express their musical talents, and foster collaboration among artists.",
   "vision": "To build a thriving musical community where students can explore, perform, and innovate in various musical genres while promoting cultural harmony.",
   "instagram_url": "https://www.instagram.com/tit_cultural/profilecard/?igsh=eXJyNzJzbjVza2Jq"
@@ -261,7 +261,7 @@ let details = {
       "name": "Jiggyasa Patle",
       "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659739/IMG-20241030-WA0000_-_Jiggyasa_Patle_mu9tou.jpg"
   },
-  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660105/DAnce_Club_eucscw.png",
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/DAnce_Club_s5g6df.png",
   "mission": "To foster a love for dance, provide a platform for students to showcase their talent, and encourage artistic expression through diverse dance forms.",
   "vision": "To create an inclusive dance community where students can learn, collaborate, and grow while spreading joy and energy through movement.",
   "instagram_url": "CORRECT_INSTAGRAM_LINK_HERE"
@@ -280,7 +280,7 @@ let details = {
       "name": "Riya Soni",
       "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png"
   },
-  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png",
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502254/IEEE_Student_Chapter_tzqiza.png",
   "mission": "To organize regular campus events focused on the latest technologies, inspiring students to join IEEE, fostering innovation, and supporting socially relevant projects.",
   "vision": "To inspire, enable, empower, and energize students by providing a platform for learning, collaboration, and showcasing their technical expertise.",
   "instagram_url": "https://www.instagram.com/tit_cultural/profilecard/?igsh=eXJyNzJzbjVza2Jq"
@@ -299,7 +299,7 @@ let details = {
       "name": "Riya Soni",
       "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png"
   },
-  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660103/cyber_COP_jhd0wg.png",
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/cyber_COP_npmtvn.png",
   "mission": "To organize regular campus events focused on the latest technologies, inspiring students to join IEEE, fostering innovation, and supporting socially relevant projects.",
   "vision": "To inspire, enable, empower, and energize students by providing a platform for learning, collaboration, and showcasing their technical expertise.",
   "instagram_url": "https://www.instagram.com/tit_cultural/profilecard/?igsh=eXJyNzJzbjVza2Jq"
