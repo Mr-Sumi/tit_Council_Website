@@ -6,6 +6,8 @@ import Clubs from './components/Clubs';
 import Home from './components/Home';
 import Mentors from './components/Mentors';
 import OfficeBearer from './components/OfficeBearer';
+import DevTeam from './components/DevelopersTeam';
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -28,6 +30,7 @@ function App() {
         <Clubs />
         <Mentors />
         <OfficeBearer />
+        <DevTeam />
       </main>
       <Footer />
     </div>

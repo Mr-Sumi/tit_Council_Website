@@ -23,25 +23,21 @@ export default function Loader() {
       "Initializing...",
       "Loading content...",
       "Almost there...",
-      "Preparing interface...",
+      "Preparing interface..."
     ];
 
     let messageIndex = 0;
     let messageTimerId = null;
     let progressAnimationId = null;
     let progressValue = 0;
-    const maxPreloadMs = 100000;
+    const maxPreloadMs = 10000;
     let preloaderFinished = false;
 
     // Letter animation delays
-    try {
-      const letterSpans = preloader.querySelectorAll(".loader-text span");
-      letterSpans.forEach((span, index) => {
-        span.style.animationDelay = `${0.08 * index}s`;
-      });
-    } catch (e) {
-      console.error("Error during letter animation:", e);
-    }
+    const letterSpans = preloader.querySelectorAll(".loader-text span");
+    letterSpans.forEach((span, index) => {
+      span.style.animationDelay = `${0.08 * index}s`;
+    });
 
     const startMessageCycle = () => {
       if (!loadingStatus) return;
@@ -49,7 +45,7 @@ export default function Loader() {
       messageTimerId = setInterval(() => {
         messageIndex = (messageIndex + 1) % loadingMessages.length;
         loadingStatus.textContent = loadingMessages[messageIndex];
-      }, 800);
+      }, 1500);
     };
 
     const setProgress = (target) => {
@@ -57,7 +53,7 @@ export default function Loader() {
       const step = () => {
         if (preloaderFinished) return;
         const delta = (target - progressValue) * 0.08;
-        progressValue += Math.max(delta, 0.2);
+        progressValue += Math.max(delta, 0.4);
         if (progressValue > target) progressValue = target;
         progressBar.style.width = progressValue + "%";
         if (Math.abs(target - progressValue) > 0.5) {
@@ -90,14 +86,10 @@ export default function Loader() {
       }, 300);
     };
 
-    window.addEventListener(
-      "load",
-      () => {
-        setProgress(100);
-        completeAndHide();
-      },
-      { once: true }
-    );
+    window.addEventListener("load", () => {
+      setProgress(100);
+      completeAndHide();
+    }, { once: true });
 
     setTimeout(() => {
       setProgress(100);
@@ -113,9 +105,10 @@ export default function Loader() {
   return (
     <div
       ref={preloaderRef}
-      className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-black to-neutral-900 z-[9999] overflow-hidden"
+      className="fixed inset-0 flex items-center justify-center bg-black z-[9999] overflow-hidden"
     >
       <div className="relative flex flex-col items-center gap-10">
+        
         {/* Loader ring */}
         <div className="relative w-40 h-40 flex items-center justify-center">
           <div className="absolute inset-0 border-4 border-transparent border-t-teal-300 border-r-teal-300 rounded-full animate-spin-slow"></div>
@@ -144,20 +137,24 @@ export default function Loader() {
             ))}
           </div>
 
-          <div className="absolute bottom-[-2px] left-0 w-full h-[2px] bg-white/5 overflow-hidden rounded-sm">
+          {/* Progress bar container */}
+          <div className="absolute bottom-[-6px] left-0 w-full h-[6px] bg-white/10 overflow-hidden rounded-full">
             <div
               ref={progressBarRef}
-              className="h-full w-0 bg-gradient-to-r from-teal-300 to-pink-500"
+              className="h-full w-0 rounded-full animate-progressShimmer"
+              style={{
+                backgroundImage: "linear-gradient(90deg, #14b8a6, #ec4899, #14b8a6)",
+                backgroundSize: "200% 100%"
+              }}
             ></div>
           </div>
         </div>
 
-        {/* Loading status - fixed: wrap animated content to avoid transform conflicts with Tailwind translate utilities */}
+        {/* Loading status */}
         <div
           ref={loadingStatusRef}
-          className="relative mt-2 bottom-8 left-1/4 -translate-x-1/2 text-white/60 text-[16px] tracking-[2px] uppercase"
-        >
-        </div>
+          className="mt-2 text-white/60 text-[16px] tracking-[2px] uppercase"
+        ></div>
       </div>
 
       {/* Animations */}
@@ -189,13 +186,14 @@ export default function Loader() {
         @keyframes revealText { to { opacity: 1; transform: translateY(0); } }
         .animate-revealText { animation: revealText 0.45s ease forwards; }
 
-        /* Fixed: animate only translateY + opacity so it doesn't conflict with translateX applied by Tailwind on parent */
-        @keyframes fadeInUpInline {
-          from { opacity: 0; transform: translateY(8px); }
-          to { opacity: 1; transform: translateY(0); }
+        /* New shimmer animation for progress bar */
+        @keyframes progressShimmer {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
         }
-        .animate-fadeInUpInline { animation: fadeInUpInline 0.45s ease-out forwards 0.4s; }
-
+        .animate-progressShimmer {
+          animation: progressShimmer 2s linear infinite;
+        }
         `}
       </style>
     </div>

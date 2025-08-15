@@ -30,34 +30,32 @@ export default function Clubs() {
       </header>
 
       <section className="w-full px-4">
-        <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 auto-rows-fr">
+        <div className="grid xs:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
           {clubsData.map((club) => (
             <a
               key={club.name}
               href={club.link}
               aria-label={club.name}
-              className="group relative bg-[#111] rounded-3xl overflow-hidden transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-[1.02] shadow-sm focus:outline-none focus:ring-4 focus:ring-[#C8101A]/25"
+              className="group relative bg-[#111] rounded-3xl overflow-hidden transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-[1.02] shadow-md"
             >
-              {/* make card square */}
-              <div className="aspect-square flex flex-col items-center justify-center p-4">
-                {/* centered small image */}
+              <div className="relative w-full aspect-square flex items-center justify-center p-4">
                 <img
                   src={club.img}
                   alt={club.name}
                   loading="lazy"
-                  className="h-60 object-contain transition-all duration-300 z-10 group-hover:scale-110 group-hover:blur-sm"
+                  className="max-h-45 max-w-full object-contain transition-transform duration-300 z-10 group-hover:scale-110 group-hover:blur-sm"
                 />
-
-                {/* white overlay that fades in */}
-                <div className="absolute inset-0 bg-black group-hover:bg-zinc-900 transition-colors duration-250 pointer-events-none" />
-
-                {/* centered text shown on hover */}
-                <div className="absolute inset-0 flex items-center bg-black/40 justify-center px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-25 z-20">
+      
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300 z-10" />
+      
+                <div className="absolute inset-0 flex items-center justify-center px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-white leading-tight">
+                    <p className="text-2xl font-bold text-white leading-tight">
                       {club.name}
                     </p>
-                    <span className="block text-xl text-white mt-4">Student Council</span>
+                    <span className="block text-lg text-white mt-2">
+                      Student Council
+                    </span>
                   </div>
                 </div>
               </div>
@@ -65,6 +63,7 @@ export default function Clubs() {
           ))}
         </div>
       </section>
+
     </main>
   );
 }
