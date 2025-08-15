@@ -5,11 +5,14 @@ export default {
       "./src/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-      extend: {},
+      extend: {
+        fontFamily: {
+          Bebrush: ['Bebrush', 'sans-serif'],
+          GilroyBlack: ['Gilroy-black', 'sans-serif'],
+          GilroyMedium: ['GilroyMedium', 'sans-serif'],
+        }
+      },
     },
-    daisyui: {
-        themes: ["light", "dark"],
-      },      
-    plugins: [require('daisyui')],
+    plugins: [],
   }
   

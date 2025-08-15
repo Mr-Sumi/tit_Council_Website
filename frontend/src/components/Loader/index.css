@@ -1,0 +1,198 @@
+/* Loader - cleaned version */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.loader-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Ring and rotating borders */
+.loader-ring {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader-ring::before,
+.loader-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid transparent;
+  border-radius: 50%;
+}
+.loader-ring::before {
+  border-top-color: #4ecdc4;
+  border-right-color: #4ecdc4;
+  animation: spinClockwise 2s linear infinite;
+}
+.loader-ring::after {
+  border-bottom-color: #ff3366;
+  border-left-color: #ff3366;
+  animation: spinCounterClockwise 2s linear infinite;
+}
+
+/* Logo */
+.logo-container {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(78,205,196,0.2);
+  animation: logoGlow 2s ease-in-out infinite;
+}
+.logo-container img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 0 8px rgba(78,205,196,0.3));
+  animation: logoFloat 3s ease-in-out infinite;
+  opacity: 0;
+  animation-name: fadeInImage, logoFloat;
+  animation-duration: 0.3s, 3s;
+  animation-fill-mode: forwards, none;
+  animation-timing-function: ease, ease-in-out;
+}
+
+/* Text container and letters */
+.loader-text-container {
+  position: relative;
+  padding: 1rem 2rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.05);
+  opacity: 0;
+  animation: appearScale 0.45s ease forwards 0.25s;
+}
+.loader-text {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.loader-text span {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(10px);
+  text-shadow: 0 0 10px rgba(78,205,196,0.3);
+  /* GSAP will handle smoother animation; CSS fallback uses revealText */
+  animation: revealText 0.45s ease forwards;
+}
+
+/* Progress bar */
+.loading-progress {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #4ecdc4, #ff3366);
+}
+
+/* Loading status text */
+.loading-status {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInUp 0.45s ease-out forwards 0.4s;
+}
+
+/* Exit state */
+.preloader.fade-out {
+  animation: fadeOut 0.6s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .loader-ring::before,
+  .loader-ring::after,
+  .logo-container,
+  .logo-container img {
+    animation: none;
+  }
+  .loader-text span {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Responsive adjustments (consolidated) */
+@media (max-width: 768px) {
+  .loader-ring { width: 140px; height: 140px; }
+  .logo-container { width: 105px; height: 105px; }
+  .logo-container img { width: 78.75px; height: 78.75px; }
+  .loader-text span { font-size: 16px; }
+}
+@media (max-width: 480px) {
+  .loader-ring { width: 120px; height: 120px; }
+  .logo-container { width: 90px; height: 90px; }
+  .logo-container img { width: 67.5px; height: 67.5px; }
+  .loader-text span { font-size: 14px; }
+  .loader-text-container { padding: 0.75rem 1.5rem; }
+}
+
+/* Keyframes */
+@keyframes spinClockwise { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spinCounterClockwise { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+@keyframes logoFloat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes logoGlow { 0%,100% { box-shadow: 0 0 20px rgba(78,205,196,0.2); } 50% { box-shadow: 0 0 40px rgba(78,205,196,0.4); } }
+@keyframes revealText { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes appearScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+@keyframes fadeInImage { from { opacity: 1;  -webkit-transform: scale(0.92); -moz-transform: scale(0.92); -ms-transform: scale(0.92); -o-transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+
+/* Minor extras */
+.logo-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.03);
+  border-radius: 50%;
+  opacity: 0;
+  animation: loadingPulse 1.2s ease infinite;
+}
+@keyframes loadingPulse { 0%,100%{opacity:0} 50%{opacity:1} }
