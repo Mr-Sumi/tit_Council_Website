@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Loader from './components/Loader/Loader';
+import Loader from './components/Loader';
 import Clubs from './components/Clubs';
 import Home from './components/Home';
 import Mentors from './components/Mentors';
@@ -21,9 +21,9 @@ function App() {
   }
 
   return (
-    <div className="App h-screen">
+    <div className="App h-screen bg-gradient-to-b from-[#000] to-[#0f1724]">
       <Header />
-      <main>
+      <main className="bg-gradient-to-b from-[#000] to-[#0f1724]">
         <Home />
         <Clubs />
         <Mentors />

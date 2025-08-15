@@ -2,17 +2,10 @@
 export default {
     content: [
       "./index.html",
-      "./src/**/*.{js,ts,jsx,tsx}",
+      "./src/**/*.{js,jsx,ts,tsx,html}",
     ],
     theme: {
-      extend: {
-        fontFamily: {
-          Bebrush: ['Bebrush', 'sans-serif'],
-          GilroyBlack: ['Gilroy-black', 'sans-serif'],
-          GilroyMedium: ['GilroyMedium', 'sans-serif'],
-        }
-      },
+      extend: {},
     },
     plugins: [],
   }
-  
