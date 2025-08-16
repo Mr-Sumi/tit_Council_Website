@@ -1,6 +1,6 @@
 import React from "react";
 import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
-import councilData from "../data/Council-data.json"; // ✅ import JSON
+import councilData from "../data/officebearer.json";
 
 const SocialIcon = ({ href, children, label }) => (
   <a
@@ -15,14 +15,14 @@ const SocialIcon = ({ href, children, label }) => (
 );
 
 const OfficeBearer = () => {
-  const members = councilData.teamMembers || []; // ✅ pull leaders (or TEAM if that’s what you want)
+  const members = councilData.teamMembers || [];
 
   return (
-    <section className="w-full">
-      <div className="min-h-screen text-white flex flex-col items-center px-4">
+    <section className="w-full flex justify-center">
+      <div className="max-w-[90vw] mt-20 mb-10 min-h-screen text-white flex flex-col items-center px-4">
         
         {/* Section Header */}
-        <header className="w-full max-w-6xl text-center mb-8">
+        <header className="text-center mb-12">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-wide">
             OFFICE BEARER
           </h1>
@@ -30,14 +30,14 @@ const OfficeBearer = () => {
         </header>
 
         {/* Responsive Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 auto-rows-fr w-full">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-fr justify-items-center">
           {members.map((m, i) => (
             <article
               key={i}
-              className="group rounded-2xl border border-zinc-800 bg-zinc-900/50 p-5 shadow-md hover:scale-102 transition-transform"
+              className="group rounded-2xl border border-zinc-800 bg-zinc-900/50 p-5 shadow-md hover:scale-102 transition-transform flex flex-col items-center text-center"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="aspect-square w-full overflow-hidden rounded-3xl border border-zinc-800">
+              <div className="aspect-square w-40 overflow-hidden rounded-3xl border border-zinc-800">
                 <img
                   src={m.img}
                   alt={m.name}
@@ -46,41 +46,42 @@ const OfficeBearer = () => {
                 />
               </div>
 
-              <h3 className="mt-4 text-2xl text-center font-semibold text-zinc-100">
+              <h3 className="mt-4 text-2xl font-semibold text-zinc-100">
                 {m.name}
               </h3>
-              <p className="text-lg text-center text-emerald-400 font-medium">
+              <p className="text-lg text-emerald-400 font-medium">
                 {m.role}
               </p>
 
               {m.quote && (
-                <p className="mt-3 text-center text-lg italic text-zinc-400 leading-relaxed">
+                <p className="mt-3 text-lg italic text-zinc-400 leading-relaxed">
                   “{m.quote}”
                 </p>
               )}
 
-              <div className="mt-5 flex items-center justify-center gap-3">
-                {m.social?.twitter && (
-                  <SocialIcon href={m.social.twitter} label="Twitter">
-                    <FaTwitter className="text-zinc-200 group-hover:text-emerald-400 transition-colors" />
-                  </SocialIcon>
-                )}
-                {m.social?.linkedin && (
-                  <SocialIcon href={m.social.linkedin} label="LinkedIn">
-                    <FaLinkedin className="text-zinc-200 group-hover:text-emerald-400 transition-colors" />
-                  </SocialIcon>
-                )}
-                {m.social?.instagram && (
-                  <SocialIcon href={m.social.instagram} label="Instagram">
-                    <FaInstagram className="text-zinc-200 group-hover:text-emerald-400 transition-colors" />
-                  </SocialIcon>
-                )}
-                {m.social?.github && (
-                  <SocialIcon href={m.social.github} label="GitHub">
-                    <FaGithub className="text-zinc-200 group-hover:text-emerald-400 transition-colors" />
-                  </SocialIcon>
-                )}
-              </div>
+            <div className="mt-5 flex items-center justify-center gap-3">
+              {m.social?.twitter && m.social.twitter !== "#" && (
+                <SocialIcon href={m.social.twitter} label="Twitter">
+                  <FaTwitter className="text-zinc-200 group-hover:text-emerald-400 transition-colors" />
+                </SocialIcon>
+              )}
+              {m.social?.linkedin && m.social.linkedin !== "#" && (
+                <SocialIcon href={m.social.linkedin} label="LinkedIn">
+                  <FaLinkedin className="text-zinc-200 group-hover:text-emerald-400 transition-colors" />
+                </SocialIcon>
+              )}
+              {m.social?.instagram && m.social.instagram !== "#" && (
+                <SocialIcon href={m.social.instagram} label="Instagram">
+                  <FaInstagram className="text-zinc-200 group-hover:text-emerald-400 transition-colors" />
+                </SocialIcon>
+              )}
+              {m.social?.github && m.social.github !== "#" && (
+                <SocialIcon href={m.social.github} label="GitHub">
+                  <FaGithub className="text-zinc-200 group-hover:text-emerald-400 transition-colors" />
+                </SocialIcon>
+              )}
+            </div>
+
             </article>
           ))}
         </div>

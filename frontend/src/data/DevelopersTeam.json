@@ -1,0 +1,83 @@
+{
+    "developers": [
+      {
+        "name": "Rishabh Tomar",
+        "role": "Frontend Developer & Team Lead",
+        "quote": "Guiding UI with clean code.",
+        "img": "/image folder/club members/Rishabh Tomar.jpg",
+        "social": {
+          "twitter": "https://x.com/Rishabh03tomar",
+          "instagram": "https://www.instagram.com/_._.rishabh_._/",
+          "github": "https://github.com/RishabhTomar9",
+          "linkedin": "https://www.linkedin.com/in/rishabhtomar99/",
+          "portfolio": "https://portfolio-nxt8349.web.app/"
+        }
+      },
+      {
+        "name": "Adarsh Raj",
+        "role": "Backend Developer & Database Expert",
+        "quote": "APIs that just won't quit.",
+        "img": "/image folder/club members/IMG_20241031_014414 - Adarsh Raj.jpg",
+        "social": {
+          "twitter": "https://x.com/Adarshsrivastw?t=FzrgtJ2fH4Gz9tE60ZXKNg&s=08",
+          "instagram": "https://www.instagram.com/adarsh95765/",
+          "github": "https://github.com/Adarshrajsrivastwa",
+          "linkedin": "https://www.linkedin.com/in/adarsh-raj-srivastwa/",
+          "portfolio": "#"
+        }
+      },
+      {
+        "name": "Krishna Jadhav",
+        "role": "Full Stack Developer & Database Expert",
+        "quote": "Ship fast, learn faster.",
+        "img": "/image folder/club members/Krishna Jadhav.jpg",
+        "social": {
+          "twitter": "https://x.com/KrishnaJad73973?t=evDT17yonQONRIn6mVYU7w&s=09",
+          "instagram": "https://www.instagram.com/asynchronous_krishna/",
+          "github": "https://github.com/Jadhav-Krishna",
+          "linkedin": "https://www.linkedin.com/in/krishna-jadhav-23866b287/",
+          "portfolio": "#"
+        }
+      },
+      {
+        "name": "Samiksha Suryawanshi",
+        "role": "Full Stack Developer & Design Lead",
+        "quote": "Elegant UX, robust builds.",
+        "img": "/image folder/club members/Samiksha.jpg",
+        "social": {
+          "twitter": "#",
+          "instagram": "https://www.instagram.com/__rishikkaaa.__/",
+          "github": "https://github.com/samikshasuryawanshi",
+          "linkedin": "https://www.linkedin.com/in/samiksha-suryawanshi-b05b4b278/",
+          "portfolio": "https://my-portfolio-xi-seven-68.vercel.app/"
+        }
+      },
+      {
+        "name": "Pratul Kumar",
+        "role": "Designer & Data Manager",
+        "quote": "Consistency beats complexity.",
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659738/Harsh_Raj_Singh_f5uhvp.jpg",
+        "social": {
+          "twitter": "#",
+          "instagram": "https://www.instagram.com/pratul._.pandey/",
+          "github": "https://github.com/Pratul-Kumar",
+          "linkedin": "https://www.linkedin.com/in/pratul-k-21nov05/",
+          "portfolio": "#"
+        }
+      },
+      {
+        "name": "Palak Bhargav",
+        "role": "Frontend Developer & UX Designer",
+        "quote": "Pixel-perfect and accessible.",
+        "img": "/image folder/club members/palak.jpg",
+        "social": {
+          "twitter": "https://x.com/PalakBhargav220",
+          "instagram": "https://www.instagram.com/___palak__1025/",
+          "github": "https://github.com/Palak20051025x",
+          "linkedin": "https://linkedin.com/in/palak-bhargav-413767278",
+          "portfolio": "#"
+        }
+      }
+    ]
+  }
+  

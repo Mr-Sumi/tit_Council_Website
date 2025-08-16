@@ -1,14 +1,20 @@
 import React from "react";
-import councilData from "../data/Council-data.json"
-
+import councilData from "../data/Clubs.json"
+import { motion } from "framer-motion";
 
 export default function Clubs() {
   return (
-    <main className="min-h-screen text-white flex flex-col items-center py-12 px-4">
+    <main className="min-h-screen text-white flex flex-col items-center py-12 px-4 mt-20 mb-6">
       <header className="w-full max-w-6xl text-center mb-8 px-4">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-wide">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-zinc-800 via-white to-indigo-800 bg-clip-text text-transparent mb-6"
+          >
           Our Clubs &amp; Societies
-        </h1>
+        </motion.h2>
         <div className="mx-auto mt-3 w-40 h-1 rounded-full bg-gradient-to-r from-[#C8101A] via-[#FF4F01] to-[#FFF9D5] shadow-md" />
       </header>
 

@@ -1,14 +1,21 @@
 import React from "react";
-import councilData from "../data/Council-data.json"
+import councilData from "../data/Mentors-Data.json"
+import { motion } from "framer-motion";
 
 export default function Mentors() {
   return (
-    <div className="min-h-screen text-white flex flex-col items-center py-12 px-4">
+    <div className="min-h-screen text-white flex flex-col items-center py-20 px-4">
       {/* Main Mentors */}
       <header className="w-full max-w-6xl text-center mb-8 px-4">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-wide">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-zinc-800 via-white to-indigo-800 bg-clip-text text-transparent mb-6"
+          >
           Our Mentors Heads
-        </h1>
+        </motion.h2>
         <div className="mx-auto mt-3 w-40 h-1 rounded-full bg-gradient-to-r from-[#C8101A] via-[#FF4F01] to-[#FFF9D5] shadow-md" />
       </header>
 
@@ -22,7 +29,7 @@ export default function Mentors() {
               <img
                 src={mentor.img}
                 alt={mentor.name}
-                className="h-24 rounded-full object-cover border-4 border-teal-400 mx-auto mb-4"
+                className="h-26 rounded-full object-cover border-4 border-teal-400 mx-auto mb-4"
               />
               <h3 className="text-2xl font-semibold text-white mb-1">
                 {mentor.name}
@@ -43,9 +50,15 @@ export default function Mentors() {
       {/* Sub Mentors */}
       <div className="mx-auto mt-10 flex flex-col items-center">
         <header className="w-full max-w-6xl text-center mb-8 px-4">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-wide">
-            Our Mentors
-          </h1>
+          <motion.h3
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-zinc-800 via-white to-indigo-800 bg-clip-text text-transparent mb-6"
+          >
+          Our Mentors
+        </motion.h3>
           <div className="mx-auto mt-3 w-40 h-1 rounded-full bg-gradient-to-r from-[#C8101A] via-[#FF4F01] to-[#FFF9D5] shadow-md" />
         </header>
 
@@ -58,7 +71,7 @@ export default function Mentors() {
               <img
                 src={mentor.img}
                 alt={mentor.name}
-                className="h-24 rounded-full object-cover border-4 border-teal-400 mx-auto mb-4"
+                className="h-26 rounded-full object-contain border-4 border-teal-400 mx-auto mb-4"
               />
               <h3 className="text-2xl font-semibold text-white">
                 {mentor.name}

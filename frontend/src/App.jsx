@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Mentors from "./components/Mentors";
 import OfficeBearer from "./components/OfficeBearer";
 import DevTeam from "./components/DevelopersTeam";
+import JoinCouncil from "./components/form/JoinCouncil";
 // import ClubDetail from "./components/ClubDetail";
 // import EventPage from "./components/EventPage";
 // import Login from "./components/Login";
@@ -30,7 +31,7 @@ function App() {
   }
 
   return (
-    <div className="App min-h-screen bg-gradient-to-b from-[#000] to-[#0f1724] flex flex-col">
+    <div className="App min-h-screen bg-gradient-to-b from-[#000] to-[#0f1724] flex flex-col scrollbar-hide">
       <Header />
 
       {/* ✅ Routing Setup */}
@@ -48,7 +49,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/userPage" element={<UserPage />} /> */}
           <Route path="/gallery" element={<Gallery />} />
-          {/* you can add Gallery here later */}
+          <Route path="/join" element={<JoinCouncil />} />
         </Routes>
       </main>
 
