@@ -1,30 +1,6 @@
 import React from "react";
 import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
-
-const teamMembers = [
-  {
-    name: "Sahil Kumar",
-    role: "Club Advisor",
-    quote: "Guiding the next generation of leaders",
-    img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659749/sahil_bhaiya_sgoxuk.jpg",
-    social: { twitter: "#", linkedin: "#", instagram: "#", github: "#" },
-  },
-  {
-    name: "Shruti Sarawagi",
-    role: "Chief Committee Officer",
-    quote: "Building bridges between ideas and action",
-    img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659755/sHRUTI_did_nndgof.jpg",
-    social: { twitter: "#", linkedin: "#", instagram: "#", github: "#" },
-  },
-  {
-    name: "Harsh Raj Singh",
-    role: "Inter College Relationship Officer",
-    quote: "Connecting colleges, building networks",
-    img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659738/Harsh_Raj_Singh_f5uhvp.jpg",
-    social: { twitter: "#", linkedin: "#", instagram: "#", github: "#" },
-  },
-  // You can keep adding the rest...
-];
+import councilData from "../data/Council-data.json"; // ✅ import JSON
 
 const SocialIcon = ({ href, children, label }) => (
   <a
@@ -38,7 +14,9 @@ const SocialIcon = ({ href, children, label }) => (
   </a>
 );
 
-const OfficeBearer = ({ members = teamMembers }) => {
+const OfficeBearer = () => {
+  const members = councilData.teamMembers || []; // ✅ pull leaders (or TEAM if that’s what you want)
+
   return (
     <section className="w-full">
       <div className="min-h-screen text-white flex flex-col items-center px-4">

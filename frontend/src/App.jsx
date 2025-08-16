@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Loader from './components/Loader';
-import Clubs from './components/Clubs';
-import Home from './components/Home';
-import Mentors from './components/Mentors';
-import OfficeBearer from './components/OfficeBearer';
-import DevTeam from './components/DevelopersTeam';
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom"; // ✅ for routing
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Loader from "./components/Loader";
+import Clubs from "./components/Clubs";
+import Home from "./components/Home";
+import Mentors from "./components/Mentors";
+import OfficeBearer from "./components/OfficeBearer";
+import DevTeam from "./components/DevelopersTeam";
+// import ClubDetail from "./components/ClubDetail";
+// import EventPage from "./components/EventPage";
+// import Login from "./components/Login";
+// import UserPage from "./components/UserPage";
+import Gallery from "./components/Gallery";
+import ScrollToTop from "./hooks/ScrollToTop";
 
 
 function App() {
@@ -23,15 +30,28 @@ function App() {
   }
 
   return (
-    <div className="App h-screen bg-gradient-to-b from-[#000] to-[#0f1724]">
+    <div className="App min-h-screen bg-gradient-to-b from-[#000] to-[#0f1724] flex flex-col">
       <Header />
-      <main className="bg-gradient-to-b from-[#000] to-[#0f1724]">
-        <Home />
-        <Clubs />
-        <Mentors />
-        <OfficeBearer />
-        <DevTeam />
+
+      {/* ✅ Routing Setup */}
+      <main className="flex-grow bg-gradient-to-b from-[#000] to-[#0f1724] mt-16">
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/clubs" element={<Clubs />} />
+          <Route path="/mentors" element={<Mentors />} />
+          <Route path="/team" element={<OfficeBearer />} />
+          <Route path="/developers" element={<DevTeam />} />
+          {/* <Route path="/club/:clubName" element={<ClubDetail />} />
+          <Route path="/club/:clubName/detail" element={<ClubDetail />} />
+          <Route path="/eventPage" element={<EventPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/userPage" element={<UserPage />} /> */}
+          <Route path="/gallery" element={<Gallery />} />
+          {/* you can add Gallery here later */}
+        </Routes>
       </main>
+
       <Footer />
     </div>
   );

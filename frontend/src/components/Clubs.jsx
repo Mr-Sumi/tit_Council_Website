@@ -1,23 +1,6 @@
 import React from "react";
+import councilData from "../data/Council-data.json"
 
-const clubsData = [
-  { name: "CODING CLUB", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502249/Coding_club_ed2sbh.png", link: "/club/coding" },
-  { name: "CYBER COP", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/cyber_COP_npmtvn.png", link: "/club/cyberCop" },
-  { name: "DRONE SOCIETY", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502267/DRONE_SOCIETY_ugfbt4.png", link: "/club/drone" },
-  { name: "MEDIA FUSION", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502257/Media_Fusion_vhlhjp.png", link: "/club/media" },
-  { name: "CULTURAL CLUB", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502266/CULTURAL_EvENT_abnyuq.png", link: "/club/Cultural" },
-  { name: "ROBOTICS CLUB", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502262/RObOTICS_CLUB_zuu4q1.png", link: "/club/Robotics" },
-  { name: "ENTREPRENEURSHIP CLUB", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502252/ENTREpRENEURSHIp_weamnu.png", link: "/club/entrepreneurship" },
-  { name: "LITERARY CLUB", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502256/LITERARY_Club_ooakhl.png", link: "/club/Literary" },
-  { name: "RENEWABLE ENERGY CLUB", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502261/RENEwAbLE_ENERGY_x7mjft.png", link: "/club/Renewable" },
-  { name: "DISCIPLINE CLUB", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502251/DISCIpLINE_jt8ej5.png", link: "/club/Disipline" },
-  { name: "ALUMNI RELATION COMMITTEE", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502264/Alumni_Relation_mp5xrs.png", link: "/club/Alumni" },
-  { name: "TECH WIZARDS", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502263/Tech_WIZARDs_obkby8.png", link: "/club/Tech" },
-  { name: "EV CLUB", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502268/EV_g2djgp.png", link: "/club/EV" },
-  { name: "MUSIC SOCIETY", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502258/mUSIC_SOCIETY_m2wmom.png", link: "/club/music" },
-  { name: "DANCE CLUB", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/DAnce_Club_s5g6df.png", link: "/club/Dance" },
-  { name: "IEEE STUDENT CHAPTER", img: "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502254/IEEE_Student_Chapter_tzqiza.png", link: "/club/IEEE" }
-];
 
 export default function Clubs() {
   return (
@@ -31,7 +14,7 @@ export default function Clubs() {
 
       <section className="w-full px-4">
         <div className="grid xs:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
-          {clubsData.map((club) => (
+          {councilData.clubsData.map((club) => (
             <a
               key={club.name}
               href={club.link}

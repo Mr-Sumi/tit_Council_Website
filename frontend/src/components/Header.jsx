@@ -1,20 +1,27 @@
 import { useState } from "react";
-import {
-  RiMenuLine,
-  RiCloseLine,
-  RiUser3Line,
-} from "react-icons/ri";
-import useHideOnScroll from "../hooks/useHideOnScroll"; // ✅ import custom hook
+import { RiMenuLine, RiCloseLine } from "react-icons/ri";
+import { NavLink } from "react-router-dom"; // ✅ use NavLink for active styling
+import useHideOnScroll from "../hooks/useHideOnScroll";
 
-export default function Header({ isLoggedIn }) {
+export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const showNav = useHideOnScroll(5); // ✅ threshold in px
+  const showNav = useHideOnScroll(5);
+
+  const links = [
+    { name: "Home", href: "/" },
+    { name: "Clubs", href: "/clubs" },
+    { name: "Mentors", href: "/mentors" },
+    { name: "Team", href: "/team" },
+    { name: "Gallery", href: "/gallery" },
+  ];
 
   return (
     <>
       {/* Navbar */}
       <nav
-        className={`fixed top-0 left-0 w-full flex justify-between items-center h-[11vh] px-5 lg:px-10 bg-gradient-to-r from-[#121212] via-[#232323] to-[#121212] text-white shadow-lg transition-all duration-300 z-50 ${
+        className={`fixed top-0 left-0 w-full flex justify-between items-center h-[11vh] px-5 lg:px-10 
+        bg-gradient-to-r from-[#121212] via-[#232323] to-[#121212] text-white shadow-lg 
+        transition-all duration-300 z-50 ${
           showNav ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -30,112 +37,55 @@ export default function Header({ isLoggedIn }) {
           </h1>
         </div>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-8 font-medium">
-          <NavLink href="/" label="Home" />
-          <NavLink href="/members" label="Members" />
-          <NavLink href="/clubs" label="Clubs" />
-          <NavLink href="/faculty" label="Mentors" />
-          <NavLink href="/gallery" label="Event Gallery" />
-
-          {isLoggedIn ? (
-            <a
-              href="/userPage"
-              className="w-10 h-10 flex items-center justify-center rounded-md bg-white/10 border border-white/20 hover:bg-red-500 transition-all duration-300"
-            >
-              <RiUser3Line size={20} />
-            </a>
-          ) : (
-            <a
-              href="/login"
-              className="px-4 py-2 rounded-md bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-300"
-            >
-              Login
-            </a>
-          )}
+        {/* Desktop Nav Links */}
+        <ul className="hidden md:flex gap-8 font-medium text-gray-200">
+          {links.map((link) => (
+            <li key={link.name}>
+              <NavLink
+                to={link.href}
+                className={({ isActive }) =>
+                  `transition-colors duration-300 ${
+                    isActive ? "text-red-500 font-semibold" : "hover:text-red-400"
+                  }`
+                }
+              >
+                {link.name}
+              </NavLink>
+            </li>
+          ))}
         </ul>
 
         {/* Mobile Menu Button */}
         <button
           className="md:hidden text-2xl"
-          onClick={() => setMenuOpen(true)}
+          onClick={() => setMenuOpen(!menuOpen)}
         >
-          <RiMenuLine />
+          {menuOpen ? <RiCloseLine /> : <RiMenuLine />}
         </button>
       </nav>
 
-      {/* Mobile Slide Menu */}
+      {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 h-screen w-full sm:w-2/3 bg-gradient-to-br from-[#23233e] to-[#1a1a2e] z-50 transform transition-transform duration-500 ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 h-full w-2/3 sm:w-1/3 bg-[#1a1a1a] shadow-lg z-40 transform transition-transform duration-300 
+        ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
-        {/* Close Button */}
-        <div className="flex justify-end p-4">
-          <button
-            className="text-3xl hover:rotate-90 transition-transform"
-            onClick={() => setMenuOpen(false)}
-          >
-            <RiCloseLine />
-          </button>
+        <div className="flex flex-col items-center mt-20 gap-6 text-lg font-medium text-gray-200">
+          {links.map((link) => (
+            <NavLink
+              key={link.name}
+              to={link.href}
+              className={({ isActive }) =>
+                `transition-colors duration-300 ${
+                  isActive ? "text-red-500 font-semibold" : "hover:text-red-400"
+                }`
+              }
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.name}
+            </NavLink>
+          ))}
         </div>
-
-        {/* Mobile Links */}
-        <ul className="flex flex-col gap-6 mt-10 px-8 text-lg font-medium">
-          <MobileNavLink href="/" label="Home" setMenuOpen={setMenuOpen} />
-          <MobileNavLink href="/members" label="Members" setMenuOpen={setMenuOpen} />
-          <MobileNavLink href="/clubs" label="Clubs" setMenuOpen={setMenuOpen} />
-          <MobileNavLink href="/faculty" label="Mentors" setMenuOpen={setMenuOpen} />
-          <MobileNavLink href="/gallery" label="Event Gallery" setMenuOpen={setMenuOpen} />
-
-          {isLoggedIn ? (
-            <a
-              href="/userPage"
-              className="flex items-center gap-2 bg-white/10 border border-white/20 rounded-md px-4 py-2 hover:bg-red-500 transition-all"
-              onClick={() => setMenuOpen(false)}
-            >
-              <RiUser3Line size={20} /> User Profile
-            </a>
-          ) : (
-            <a
-              href="/login"
-              className="bg-white/10 border border-white/20 rounded-md px-4 py-2 hover:bg-white/20 transition-all"
-              onClick={() => setMenuOpen(false)}
-            >
-              Login
-            </a>
-          )}
-        </ul>
       </div>
     </>
-  );
-}
-
-// Desktop Nav Link
-function NavLink({ href, label }) {
-  return (
-    <li>
-      <a
-        href={href}
-        className="relative px-3 py-2 rounded-lg transition-all duration-300 hover:text-red-500 after:absolute after:inset-0 after:bg-red-500/10 after:rounded-lg after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
-      >
-        {label}
-      </a>
-    </li>
-  );
-}
-
-// Mobile Nav Link
-function MobileNavLink({ href, label, setMenuOpen }) {
-  return (
-    <li>
-      <a
-        href={href}
-        onClick={() => setMenuOpen(false)}
-        className="block text-white hover:text-red-400 transition-colors duration-300"
-      >
-        {label}
-      </a>
-    </li>
   );
 }
