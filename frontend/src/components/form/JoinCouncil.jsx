@@ -6,12 +6,13 @@ import {
   FaVenusMars, FaBuilding, FaLayerGroup, FaCalendarAlt 
 } from 'react-icons/fa';
 import { MdDelete } from "react-icons/md";
+import axios from 'axios';
 
 const JoinCouncilForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "+91",
+    phone: "",
     enrollment: "",
     dob: "",
     gender: "",
@@ -79,10 +80,23 @@ const JoinCouncilForm = () => {
     if (!/^[6-9][0-9]{9}$/.test(phoneNumber)) return setAlert({ open: true, message: "Invalid phone number.", type: "error" });
     if (!emailRegex.test(formData.email)) return setAlert({ open: true, message: "Invalid email address.", type: "error" });
 
-    let res = await fetch("http://localhost:3000/council/apply", {
-       method: "POST",
-       body: formData,
-})
+    if (files.length === 0) return setAlert({ open: true, message: "Please upload at least one file.", type: "warning" });
+
+    const formDataWithFiles = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach((v) => formDataWithFiles.append(key, v));
+      } else {
+        formDataWithFiles.append(key, value);
+      }
+    });
+    files.forEach((file) => formDataWithFiles.append("files", file));
+
+    let res = await axios.post("http://localhost:3000/council/apply", formDataWithFiles, {
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
 
 console.log(res);
   };
