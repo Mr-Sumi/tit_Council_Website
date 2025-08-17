@@ -19,8 +19,8 @@ export default function Clubs() {
       </header>
 
       <section className="w-full px-4">
-        <div className="grid xs:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
-          {councilData.clubsData.map((club) => (
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-8">           
+         {councilData.clubsData.map((club) => (
             <a
               key={club.name}
               href={club.link}

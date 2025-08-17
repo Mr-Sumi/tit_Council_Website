@@ -76,16 +76,16 @@ export default function HeroSection() {
       {/* Glass Card */}
       <div ref={contentRef} className="relative z-10 flex flex-col justify-center items-center h-full text-center px-6">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="backdrop-blur-2xl bg-white/10 p-12 rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.3)] border border-white/20 max-w-4xl"
+          // initial={{ opacity: 0, y: 50 }}
+          // animate={{ opacity: 1, y: 0 }}
+          // transition={{ duration: 1, ease: "easeOut" }}
+          // className="backdrop-blur-2xl bg-white/10 p-12 rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.3)] border border-white/20 max-w-4xl"
         >
           <motion.h1
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-200 via-white to-indigo-400 bg-clip-text text-transparent flex items-center justify-center gap-3"
+            className="text-8xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-200 via-white to-indigo-400 bg-clip-text text-transparent flex items-center justify-center gap-3"
           >
             STUDENT COUNCIL
           </motion.h1>

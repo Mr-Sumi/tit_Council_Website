@@ -1,50 +1,44 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Loader from "../components/Loader";
 
-export default function ScrollToTop() {
+export default function ScrollToTop({ duration = 700 }) {
   const { pathname } = useLocation();
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
-    const scrollToTop = () => {
-      setIsScrolling(true); // show loader
+    if (typeof window === "undefined") return;
 
-      const start = window.scrollY;
-      const duration = 700; // ms
-      const startTime = performance.now();
+    // Start scroll
+    setIsScrolling(true);
 
-      const easeInOutCubic = (t) =>
-        t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const start = window.scrollY;
+    const startTime = performance.now();
 
-      const animateScroll = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = easeInOutCubic(progress);
+    const easeInOutCubic = (t) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-        window.scrollTo(0, start * (1 - eased));
+    const animateScroll = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutCubic(progress);
 
-        if (elapsed < duration) {
-          requestAnimationFrame(animateScroll);
-        } else {
-          setIsScrolling(false); // hide loader
-        }
-      };
+      window.scrollTo(0, start * (1 - eased));
 
-      requestAnimationFrame(animateScroll);
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      } else {
+        // Scroll done, hide overlay after a short delay (like loader)
+        setTimeout(() => setIsScrolling(false), 100);
+      }
     };
 
-    scrollToTop();
-  }, [pathname]);
+    requestAnimationFrame(animateScroll);
+  }, [pathname, duration]);
 
-  return (
-    <>
-      {isScrolling && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-[9999]">
-          {/* Simple spinner */}
-          <Loader />
-        </div>
-      )}
-    </>
-  );
+  return isScrolling ? (
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-black/50 z-[9999]">
+      {/* Spinner overlay */}
+      <div className="w-16 h-16 border-4 border-t-[#FF4F01] border-gray-200 rounded-full animate-spin"></div>
+    </div>
+  ) : null;
 }

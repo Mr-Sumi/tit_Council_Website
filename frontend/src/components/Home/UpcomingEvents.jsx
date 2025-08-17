@@ -7,7 +7,7 @@ const events = [
 
 export default function UpcomingEvents() {
   return (
-    <section className="py-20 bg-transparent">
+    <section>
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-4xl font-bold mb-12 text-center">Upcoming Events</h2>
         <div className="grid md:grid-cols-2 gap-10">
