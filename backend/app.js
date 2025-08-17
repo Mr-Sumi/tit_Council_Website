@@ -11,7 +11,8 @@ const jwt = require("jsonwebtoken");
 const cron = require('node-cron');
 let club = require("./routes/club.route.js");
 let event = require("./routes/event.route.js");
-
+let council=require("./routes/councilRoutes.js");
+let cors=require("cors");
 
 
 require("dotenv").config();
@@ -27,6 +28,15 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    credentials: true, 
+  })
+);
 
 app.use(
   session({
@@ -54,6 +64,7 @@ app.use("/auth", authRouter);
 app.use("/club", club);
 app.use("/event", event);
 app.use("/payment", payment);
+app.use("/council", council);
 
 const fetchAllImages = require('./routes/fetchAllImages');
 

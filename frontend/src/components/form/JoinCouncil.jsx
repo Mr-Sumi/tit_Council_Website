@@ -70,7 +70,7 @@ const JoinCouncilForm = () => {
     setFiles(selected);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const phoneNumber = formData.phone.replace("+91", "");
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -79,14 +79,12 @@ const JoinCouncilForm = () => {
     if (!/^[6-9][0-9]{9}$/.test(phoneNumber)) return setAlert({ open: true, message: "Invalid phone number.", type: "error" });
     if (!emailRegex.test(formData.email)) return setAlert({ open: true, message: "Invalid email address.", type: "error" });
 
-    console.log({ ...formData, files });
-    setAlert({ open: true, message: "Form submitted successfully!", type: "success" });
+    let res = await fetch("http://localhost:3000/council/apply", {
+       method: "POST",
+       body: formData,
+})
 
-    setFormData({
-      name: "", email: "", phone: "+91", enrollment: "", dob: "", gender: "", college: "",
-      department: "", year: "", club: "", skills: [], skillInput: "", motivation: "", terms: false
-    });
-    setFiles([]);
+console.log(res);
   };
 
   const departments = ["CSE","CSE AIML","CSE AI","CSE DS","CSE AIDS","CSE Cyber","CSE IoT","IT","EX","EC","ME","CE","B.Pharm","MBA","Law"];
