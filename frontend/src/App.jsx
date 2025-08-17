@@ -4,13 +4,16 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Clubs from "./components/Clubs";
+import ClubDetails from "./components/ClubDetails";
 import Home from "./components/Home";
 import Mentors from "./components/Mentors";
 import OfficeBearer from "./components/OfficeBearer";
 import DevTeam from "./components/DevelopersTeam";
 import JoinCouncil from "./components/form/JoinCouncil";
+import SuggestionForm from "./components/form/Suggestion"
+import IdeaSubmissionForm from "./components/form/IdeaSubmission"
 import Gallery from "./components/Gallery";
-import AuthForm from "./components/AuthForm";
+import AuthForm from "./components/form/AuthForm";
 import ScrollToTop from "./hooks/ScrollToTop"; 
 import { AuthProvider } from "./context/AuthContext";
 
@@ -38,11 +41,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/clubs" element={<Clubs />} />
+            <Route path="/club/:clubName" element={<ClubDetails />} />
             <Route path="/mentors" element={<Mentors />} />
             <Route path="/team" element={<OfficeBearer />} />
             <Route path="/developers" element={<DevTeam />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/join" element={<JoinCouncil />} />
+            <Route path="/suggestion" element={<SuggestionForm />} />
+            <Route path="/ideas" element={<IdeaSubmissionForm />} />
             <Route path="/login" element={<AuthForm />} />
           </Routes>
 

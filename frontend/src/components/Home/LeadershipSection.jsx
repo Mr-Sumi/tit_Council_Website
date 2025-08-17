@@ -127,18 +127,20 @@ export default function LeadershipSection() {
       <div
         key={name}
         ref={el => (membersRef.current[idx] = el)}
-        className="p-6 md:p-8 rounded-3xl border border-white/20 bg-gray-800/40 shadow-lg flex flex-col sm:flex-row items-center sm:items-start gap-6"
+        className="p-4 sm:p-6 md:p-8 lg:p-10 rounded-3xl border border-white/20 shadow-lg flex flex-col sm:flex-row items-center sm:items-start gap-6"
       >
         {/* Left: Image + Socials */}
-        <div className="flex flex-col items-center sm:items-start">
-          <div className="w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-2xl overflow-hidden shadow-lg">
+        <div className="flex flex-col items-center sm:items-start w-full sm:w-auto">
+          <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-2xl overflow-hidden shadow-lg">
             <img
               src={img}
               alt={name}
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="flex flex-row flex-wrap gap-3 sm:gap-4 mt-3 text-lg sm:text-xl md:text-2xl text-gray-300 justify-center sm:justify-start">
+
+          {/* Socials */}
+          <div className="flex flex-wrap gap-3 sm:gap-4 mt-3 text-lg sm:text-xl md:text-2xl text-gray-300 justify-center sm:justify-start">
             {Object.entries(socials).map(([key, url]) =>
               url ? (
                 <a
@@ -156,28 +158,31 @@ export default function LeadershipSection() {
           </div>
         </div>
 
-        {/* Right: Info */}
-        <div className="flex-1 flex flex-col justify-center text-center sm:text-left gap-3">
-          <h3 className="text-base sm:text-lg md:text-xl font-semibold uppercase tracking-wider text-yellow-400">
-            {role}
-          </h3>
-          <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-white">
+        {/* Right: Text Info */}
+        <div className="flex-1 flex flex-col p-4 sm:p-6 md:p-8 lg:p-10">
+          <h2 className="text-2xl sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-white leading-tight">
             {name}
           </h2>
-          <p className="italic text-xs sm:text-sm md:text-base text-white max-h-40 sm:max-h-48 overflow-y-auto">
+
+          <h3 className="mt-2 text-md sm:text-lg md:text-xl font-bold uppercase tracking-wider text-yellow-400">
+            {role}
+          </h3>
+
+          <p className="mt-4 italic text-sm sm:text-sm md:text-md lg:text-lg text-white max-h-40 sm:max-h-48 md:max-h-56 lg:max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-yellow-400 scrollbar-track-gray-700">
             {msg}
           </p>
         </div>
       </div>
+
     );
   };
 
   return (
-    <section className="py-20 sm:py-24 bg-gradient-to-b from-gray-900 to-gray-800 relative overflow-hidden">
+    <section className="py-5 bg-gradient-to-b from-gray-900 to-gray-800 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-radial from-indigo-600/20 via-purple-500/10 to-transparent pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-8">Student Council</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-8">Council Deputies</h2>
 
         {/* President */}
         {president && <div className="mb-10">{renderPresident(president)}</div>}
@@ -185,7 +190,7 @@ export default function LeadershipSection() {
         <div className="w-full h-[1px] bg-white/20 my-6"></div>
 
         {/* Deputies */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-6 p-4 sm:p-6 md:p-8 lg:p-10">
           {otherMembers.map((member, idx) => renderMemberCard(member, idx))}
         </div>
       </div>
