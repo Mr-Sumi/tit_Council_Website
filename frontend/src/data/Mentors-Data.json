@@ -1,0 +1,62 @@
+{
+    "mentorsHeads": [
+      {
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660416/Prof._Dr._Shashi_K._Jain_suhcb0.png",
+        "name": "Prof.(Dr.) Shashi K. Jain",
+        "role": "COUNCIL HEAD",
+        "quote": "Empowering students to lead and innovate"
+      },
+      {
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660404/Dr._Kavita_Burse_wja9mi.png",
+        "name": "Dr. Kavita Burse",
+        "role": "PROFESSIONAL DEVELOPMENT MENTOR",
+        "quote": "Fostering professional growth and excellence"
+      },
+      {
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660413/Prof._Pankaj_Patel_rnk5pf.png",
+        "name": "Prof. Pankaj Patel",
+        "role": "COUNCIL SUPERVISOR",
+        "quote": "Guiding with wisdom and experience"
+      },
+      {
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660404/Dr._Vivek_Sharma_xqtrai.png",
+        "name": "Dr. Vivek Sharma",
+        "role": "COUNCIL MENTOR",
+        "quote": "Nurturing leadership potential"
+      },
+      {
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660402/Dr._Anula_Khare_zcwprd.png",
+        "name": "Dr. Anula Khare",
+        "role": "COUNCIL ADVISOR",
+        "quote": "Building bridges to success"
+      },
+      {
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660406/Prof_Sumit_Vashishtha_qknwnh.png",
+        "name": "Dr. Sumit Vashishtha",
+        "role": "FACULTY COMMITTEE HEAD",
+        "quote": "Leading through collaboration"
+      }
+    ],
+
+
+    
+    "subMentors": [
+      {
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660405/Dr.Kiran_Pandey_xxbxst.png",
+        "name": "Prof. Divyank Mishra"
+      },
+      {
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660402/Dr._Anurag_Paliwal_wzrh7j.png",
+        "name": "Prof. Himanshu Shroti"
+      },
+      {
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743666290/Prof._Kavita_Singh_jbhmpg.png",
+        "name": "Prof. Pragya Tripathi"
+      },
+      {
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743666290/Prof._Kavita_Singh_jbhmpg.png",
+        "name": "Prof. Kuldeep Pahihar"
+      }
+    ]
+  }
+  

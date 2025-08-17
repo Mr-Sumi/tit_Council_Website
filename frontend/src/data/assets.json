@@ -1,0 +1,13 @@
+{
+    "videos": {
+      "homeHero": "https://res.cloudinary.com/dlk5kntmy/video/upload/home_page_video_gfsiig.mp4"
+    },
+    "images": {
+      "codingClub": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502249/Coding_club_ed2sbh.png",
+      "cyberCop": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/cyber_cop.png"
+    },
+    "logos": {
+      "councilLogo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502420/Student_council_vjzt0j.png"
+    }
+  }
+  

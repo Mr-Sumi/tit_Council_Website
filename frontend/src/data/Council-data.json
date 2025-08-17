@@ -1,0 +1,132 @@
+{
+  "clubsData": [
+    {
+      "name": "CODING CLUB",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502249/Coding_club_ed2sbh.png",
+      "link": "/club/coding",
+      "description": "The Coding Club is a platform for students to learn and practice coding. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
+    },
+    {
+      "name": "CYBER COP",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/cyber_COP_npmtvn.png",
+      "link": "/club/cyberCop",
+      "description": "The Cyber Cop is a platform for students to learn and practice cyber security. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
+    }
+  ],
+
+  "TEAM": [
+    {
+      "name": "Rishabh Tomar",
+      "role": "Frontend Developer & Team Lead",
+      "quote": "Guiding UI with clean code.",
+      "img": "/image folder/club members/Rishabh Tomar.jpg",
+      "social": {
+        "twitter": "https://x.com/Rishabh03tomar",
+        "instagram": "https://www.instagram.com/_._.rishabh_._/",
+        "github": "https://github.com/RishabhTomar9",
+        "linkedin": "https://www.linkedin.com/in/rishabhtomar99/",
+        "portfolio": "https://portfolio-nxt8349.web.app/"
+      }
+    }
+  ],
+
+  "mentorsHeads": [
+    {
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660416/Prof._Dr._Shashi_K._Jain_suhcb0.png",
+      "name": "Prof.(Dr.) Shashi K. Jain",
+      "role": "COUNCIL HEAD",
+      "quote": "Empowering students to lead and innovate"
+    }
+  ],
+
+  "subMentors": [
+    {
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743660405/Dr.Kiran_Pandey_xxbxst.png",
+      "name": "Dr.Kiran Pandey"
+    }
+  ],
+
+  "teamMembers": [
+    {
+      "name": "Sahil Kumar",
+      "role": "Club Advisor",
+      "quote": "Guiding the next generation of leaders",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659749/sahil_bhaiya_sgoxuk.jpg",
+      "social": {
+        "twitter": "#",
+        "linkedin": "#",
+        "instagram": "#",
+        "github": "#"
+      }
+    }
+  ],
+
+  "clubDetailData": {
+    "clubs": [
+      {
+        "name": "coding",
+        "coordinator": {
+          "name": "Adarsh Raj",
+          "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659739/IMG_20241031_014414_-_Adarsh_Raj_dq1pap.jpg"
+        },
+        "secretary": {
+          "name": "Divyanshu Shinde",
+          "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747501838/Screenshot_2025-05-05_222522_vvjv3p.png"
+        },
+        "assistant_secretary": {
+          "name": "Jayant Singh",
+          "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747501945/WhatsApp_Image_2025-05-12_at_17.21.06_1f5cc506_cl2xck.jpg"
+        },
+        "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502249/Coding_club_ed2sbh.png",
+        "mission": "To inspire, educate, and equip students with coding skills, fostering a community of innovative thinkers and collaborative problem solvers.",
+        "vision": "To create a vibrant community where students excel in coding, drive technological innovation, and shape the future through impactful solutions.",
+        "instagram_url": "https://www.instagram.com/tit_coding_club/profilecard/?igsh=MTFrMmc5ZnJ6dGxiMw=="
+      }
+    ]
+  },
+
+  "LEADERS": [
+    {
+      "role": "Council President",
+      "name": "Prabhat Kumar",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659746/Prabhat_kumar_h7yvpf.jpg",
+      "msg": "I warmly welcome you as we begin another promising year of dedication and service. Together, we will build an inclusive and innovative environment where every student voice matters.",
+      "socials": {
+        "linkedin": "#",
+        "instagram": "#",
+        "email": "prabhat@example.com",
+        "twitter": "#",
+        "facebook": "#",
+        "github": "#"
+      }
+    },
+    {
+      "role": "President",
+      "name": "Prabhat Kumar",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659746/Prabhat_kumar_h7yvpf.jpg",
+      "msg": "I warmly welcome you as we begin another promising year of dedication and service. Together, we will build an inclusive and innovative environment where every student voice matters.",
+      "socials": {
+        "linkedin": "#",
+        "instagram": "#",
+        "email": "prabhat@example.com",
+        "twitter": "#",
+        "facebook": "#",
+        "github": "#"
+      }
+    },
+    {
+      "role": "Council Vice-President",
+      "name": "Prabhat Kumar",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659746/Prabhat_kumar_h7yvpf.jpg",
+      "msg": "I warmly welcome you as we begin another promising year of dedication and service. Together, we will build an inclusive and innovative environment where every student voice matters.",
+      "socials": {
+        "linkedin": "#",
+        "instagram": "#",
+        "email": "prabhat@example.com",
+        "twitter": "#",
+        "facebook": "#",
+        "github": "#"
+      }
+    }
+  ]
+}
