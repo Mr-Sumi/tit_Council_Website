@@ -65,8 +65,8 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-transparent relative overflow-hidden">
-      <div className="max-w-[85vw] mx-auto px-6 text-justify relative z-10">
+    <section ref={sectionRef} className="mt-[3rem] bg-transparent relative overflow-hidden">
+      <div className="max-w-[85vw] mx-auto px-6 text-center relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ export default function AboutSection() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-white text-2xl"
+          className="text-white text-sm md:text-lg"
         >
           The Student Council plays a vital role in creating a vibrant, inclusive, and innovative campus environment. Serving as the essential bridge between students and the administration, we work tirelessly to ensure that every student’s voice is heard and valued. Our mission is to empower leadership, encourage active participation, and foster meaningful collaboration across all campus communities. We organize events, support cultural initiatives, and promote diversity, ensuring that every student feels represented and engaged. By nurturing creativity, teamwork, and responsibility, the Student Council helps shape a campus culture where innovation, inclusivity, and growth thrive.
         </motion.p>
@@ -94,7 +94,7 @@ export default function AboutSection() {
               key={idx}
               className="relative text-center p-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg overflow-hidden"
             >
-              <div className="text-6xl mb-4 flex justify-center text-white">
+              <div className="text-5xl mb-4 flex justify-center text-white">
                 {item.icon}
               </div>
               <h3 className="font-bold text-xl text-white tracking-wide mb-2">

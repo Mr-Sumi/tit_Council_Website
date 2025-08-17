@@ -20,7 +20,7 @@ export default function Mentors() {
       </header>
 
       <div className="mx-auto">
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 auto-rows-fr">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 auto-rows-fr">
           {councilData.mentorsHeads.map((mentor, idx) => (
             <div
               key={idx}
@@ -29,7 +29,7 @@ export default function Mentors() {
               <img
                 src={mentor.img}
                 alt={mentor.name}
-                className="h-26 rounded-full object-cover border-4 border-teal-400 mx-auto mb-4"
+                className="h-25 rounded-full object-cover border-4 border-teal-400 mx-auto mb-4"
               />
               <h3 className="text-2xl font-semibold text-white mb-1">
                 {mentor.name}

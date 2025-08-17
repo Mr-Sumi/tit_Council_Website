@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import councilData from "../data/Clubs.json"
 import { motion } from "framer-motion";
 
@@ -21,9 +22,9 @@ export default function Clubs() {
       <section className="w-full px-4">
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-8">           
          {councilData.clubsData.map((club) => (
-            <a
+            <Link
               key={club.name}
-              href={club.link}
+              to={club.link}
               aria-label={club.name}
               className="group relative bg-[#111] rounded-3xl overflow-hidden transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-[1.02] shadow-md"
             >
@@ -48,7 +49,7 @@ export default function Clubs() {
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
