@@ -1,82 +1,81 @@
 {
-    "teamMembers": [
-      {
-        "name": "Prabhat Kumar",
-        "role": "Club Mentor",
-        "quote": "Building bridges between ideas and action",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659746/Prabhat_kumar_h7yvpf.jpg",
-        "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
-      },
-      {
-        "name": "Sahil Kumar",
-        "role": "Club Advisor",
-        "quote": "Guiding the next generation of leaders",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659749/sahil_bhaiya_sgoxuk.jpg",
-        "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
-      },
-      {
-        "name": "Shubham Raj",
-        "role": "Chief Committee Officer",
-        "quote": "Building bridges between ideas and action",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659754/Shubham_raj_ptynkn.jpg",
-        "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
-      },
-      {
-        "name": "Suryansh Shukla",
-        "role": "Academic Council Officer",
-        "quote": "Connecting colleges, building networks",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755342817/Picsart_25-06-10_20-49-51-684_-_Suryansh_Shukla_drjkjz.jpg",
-        "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/suryansh495", "instagram": "#", "github": "#" }
-      },
-      {
-        "name": "Abhishek Modi",
-        "role": "Asst.Academic Council Officer",
-        "quote": "Connecting colleges, building networks",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755342899/IMG-20250428-WA0092_2_-_Abhishek_Modi_imitfk.jpg",
-        "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/abhishek-modi-8ba0bb257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "instagram": "#", "github": "#" }
-      },
-      {
-        "name": "Ujjwal Mishra",
-        "role": "Inter College Relationship Officer",
-        "quote": "Connecting colleges, building networks",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755343011/IMG20250514201256_-_Ujjwal_Mishra_igoimo.jpg",
-        "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/ujjwal-mishra1712?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "instagram": "#", "github": "#" }
-      },
-      {
-        "name": "Namrata Khapre",
-        "role": "Public Relationship Officer",
-        "quote": "Connecting colleges, building networks",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659740/IMG-20241030-WA0004_-_Namrata_Khapre_wmtfys.jpg",
-        "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/namrata-khapre-739b66258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "instagram": "#", "github": "#" }
-      },
-      {
-        "name": "Shivam Choubey",
-        "role": "Asst.Academic Council Officer",
-        "quote": "Connecting colleges, building networks",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659741/IMG-20241031-WA0009_-_SHIVAM_CHOUBEY_ncxlfd.jpg",
-        "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/shivam-choubey%F0%9F%87%AE%F0%9F%87%B3-553483257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "instagram": "#", "github": "#" }
-      },
-      {
-        "name": "Dipal Turkar",
-        "role": "Asst.Academic Council Officer",
-        "quote": "Connecting colleges, building networks",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659737/Deepal_Turkar_ockdvg.jpg",
-        "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/deepal-turkar-712b33258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "instagram": "#", "github": "#" }
-      },
-      {
-        "name": "Abhinandan Kumar",
-        "role": "Joint Secretary Pharmacy",
-        "quote": "Connecting colleges, building networks",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755344445/20250514_124602_copy_2700x3600_-_Abhinandan_Kumar_q1fsq9.jpg",
-        "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/abhinandan-kumar-831b60277", "instagram": "#", "github": "#" }
-      },
-      {
-        "name": "Komal Kumari",
-        "role": "Asst. Joint Secretary Pharmacy",
-        "quote": "Connecting colleges, building networks",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755344398/294b50ae-8c14-4c5b-8e03-7f036367128c.png",
-        "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
-      }
-    ]
-  }
-  
+  "teamMembers": [
+    {
+      "name": "Prabhat Kumar",
+      "role": "Club Mentor",
+      "quote": "Transforming ideas into impactful actions with true vision.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659746/Prabhat_kumar_h7yvpf.jpg",
+      "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
+    },
+    {
+      "name": "Sahil Kumar",
+      "role": "Club Advisor",
+      "quote": "Guiding bright minds toward leadership, wisdom, and excellence.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659749/sahil_bhaiya_sgoxuk.jpg",
+      "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
+    },
+    {
+      "name": "Shubham Raj",
+      "role": "Chief Committee Officer",
+      "quote": "Turning collaboration into meaningful progress for lasting success.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659754/Shubham_raj_ptynkn.jpg",
+      "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
+    },
+    {
+      "name": "Suryansh Shukla",
+      "role": "Academic Council Officer",
+      "quote": "Driving academic growth through excellence, vision, and dedication.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755342817/Picsart_25-06-10_20-49-51-684_-_Suryansh_Shukla_drjkjz.jpg",
+      "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/suryansh495", "instagram": "#", "github": "#" }
+    },
+    {
+      "name": "Abhishek Modi",
+      "role": "Asst.Academic Council Officer",
+      "quote": "Supporting education with passion, integrity, vision, and growth.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755342899/IMG-20250428-WA0092_2_-_Abhishek_Modi_imitfk.jpg",
+      "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/abhishek-modi-8ba0bb257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "instagram": "#", "github": "#" }
+    },
+    {
+      "name": "Ujjwal Mishra",
+      "role": "Inter College Relationship Officer",
+      "quote": "Building stronger networks, unity, and collaboration across campuses.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755343011/IMG20250514201256_-_Ujjwal_Mishra_igoimo.jpg",
+      "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/ujjwal-mishra1712?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "instagram": "#", "github": "#" }
+    },
+    {
+      "name": "Namrata Khapre",
+      "role": "Public Relationship Officer",
+      "quote": "Connecting council and community with clarity, trust, and collaboration.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659740/IMG-20241030-WA0004_-_Namrata_Khapre_wmtfys.jpg",
+      "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/namrata-khapre-739b66258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "instagram": "#", "github": "#" }
+    },
+    {
+      "name": "Shivam Choubey",
+      "role": "Club Editor",
+      "quote": "Preserving memories and inspiring journeys through impactful storytelling.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659741/IMG-20241031-WA0009_-_SHIVAM_CHOUBEY_ncxlfd.jpg",
+      "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/shivam-choubey%F0%9F%87%AE%F0%9F%87%B3-553483257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "instagram": "#", "github": "#" }
+    },
+    {
+      "name": "Dipal Turkar",
+      "role": "Treasurer",
+      "quote": "Managing council resources responsibly with transparency, balance, and dedication.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659737/Deepal_Turkar_ockdvg.jpg",
+      "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/deepal-turkar-712b33258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "instagram": "#", "github": "#" }
+    },
+    {
+      "name": "Abhinandan Kumar",
+      "role": "Joint Secretary Pharmacy",
+      "quote": "Creating meaningful connections through collaboration, trust, and shared goals.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755344445/20250514_124602_copy_2700x3600_-_Abhinandan_Kumar_q1fsq9.jpg",
+      "social": { "twitter": "#", "linkedin": "https://www.linkedin.com/in/abhinandan-kumar-831b60277", "instagram": "#", "github": "#" }
+    },
+    {
+      "name": "Komal Kumari",
+      "role": "Asst. Joint Secretary Pharmacy",
+      "quote": "Fostering teamwork and growth through collaboration and consistent dedication.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755344398/294b50ae-8c14-4c5b-8e03-7f036367128c.png",
+      "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
+    }
+  ]
+}
