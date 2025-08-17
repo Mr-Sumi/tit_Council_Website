@@ -9,7 +9,7 @@ import MentorsHead from "./Home/MentorsHead";
 
 export default function Home() {
   return (
-    <main className="font-sans text-white bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 min-h-screen overflow-y-auto">
+    <main className="font-sans min-h-screen overflow-y-hidden">
       <HeroSection />
       <AboutSection />
       {/* <JoinCouncilSection /> */}

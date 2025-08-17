@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { motion } from "framer-motion";
+import {FaUser} from "react-icons/fa"
 
 export default function AuthForm() {
   const [loading, setLoading] = useState(false);
@@ -74,7 +75,7 @@ export default function AuthForm() {
             className="mt-8 text-center"
           >
             <img
-              src={auth.currentUser.photoURL || "https://via.placeholder.com/80"}
+              src={auth.currentUser.photoURL || <FaUser />}
               alt="Profile"
               className="w-20 h-20 rounded-full mx-auto shadow-lg border-2 border-white/40"
             />
