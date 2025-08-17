@@ -4,7 +4,7 @@
         "name": "Rishabh Tomar",
         "role": "Frontend Developer & Team Lead",
         "quote": "Guiding UI with clean code.",
-        "img": "/image folder/club members/Rishabh Tomar.jpg",
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659748/Rishabh_Tomar_kbjo6t.jpg",
         "social": {
           "twitter": "https://x.com/Rishabh03tomar",
           "instagram": "https://www.instagram.com/_._.rishabh_._/",
@@ -30,7 +30,7 @@
         "name": "Krishna Jadhav",
         "role": "Full Stack Developer & Database Expert",
         "quote": "Ship fast, learn faster.",
-        "img": "/image folder/club members/Krishna Jadhav.jpg",
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659742/Krishna_Jadhav_r7rmfu.jpg",
         "social": {
           "twitter": "https://x.com/KrishnaJad73973?t=evDT17yonQONRIn6mVYU7w&s=09",
           "instagram": "https://www.instagram.com/asynchronous_krishna/",
@@ -43,7 +43,7 @@
         "name": "Samiksha Suryawanshi",
         "role": "Full Stack Developer & Design Lead",
         "quote": "Elegant UX, robust builds.",
-        "img": "/image folder/club members/Samiksha.jpg",
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659750/Samiksha_z6uc1a.jpg",
         "social": {
           "twitter": "#",
           "instagram": "https://www.instagram.com/__rishikkaaa.__/",
@@ -54,9 +54,9 @@
       },
       {
         "name": "Pratul Kumar",
-        "role": "Designer & Data Manager",
+        "role": "Data Distribution Specialist",
         "quote": "Consistency beats complexity.",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659738/Harsh_Raj_Singh_f5uhvp.jpg",
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747503210/Pratul_Kumar_yddnjw.jpg",
         "social": {
           "twitter": "#",
           "instagram": "https://www.instagram.com/pratul._.pandey/",
