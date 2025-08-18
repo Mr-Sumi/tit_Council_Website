@@ -83,7 +83,7 @@ export default function UserLogin() {
             <input
               type="password"
               name="password"
-              placeholder="DOB (YYYY-MM-DD)"
+              placeholder="DOB (DDMMYYYY)"
               value={formData.password}
               onChange={handleChange}
               required
@@ -107,7 +107,7 @@ export default function UserLogin() {
 
         {/* Note */}
         <p className="text-center text-gray-300 mt-4 text-sm">
-          👉 Use your Date of Birth as password (YYYY-MM-DD)
+          👉 Use your Date of Birth as password (DDMMYYYY)
         </p>
 
         {/* Register Redirect */}
