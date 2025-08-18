@@ -1,6 +1,7 @@
 import React from "react";
 import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
 import councilData from "../data/officebearer.json";
+import { motion } from "framer-motion";
 
 const SocialIcon = ({ href, children, label }) => (
   <a
@@ -19,15 +20,21 @@ const OfficeBearer = () => {
 
   return (
     <section className="w-full flex justify-center">
-      <div className="max-w-[90vw] mt-20 mb-10 min-h-screen text-white flex flex-col items-center px-4">
+      <div className="max-w-[90vw] mt-8 mb-10 min-h-screen text-white flex flex-col items-center px-4">
         
         {/* Section Header */}
-        <header className="text-center mb-12">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-wide">
-            OFFICE BEARER
-          </h1>
-          <div className="mx-auto mt-3 w-40 h-1 rounded-full bg-gradient-to-r from-[#C8101A] via-[#FF4F01] to-[#FFF9D5] shadow-md" />
-        </header>
+        <header className="w-full max-w-6xl text-center mb-8 px-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-zinc-800 via-white to-indigo-800 bg-clip-text text-transparent mb-6"
+          >
+          OFFICE BEARER
+        </motion.h2>
+        <div className="mx-auto mt-3 w-40 h-1 rounded-full bg-gradient-to-r from-[#C8101A] via-[#FF4F01] to-[#FFF9D5] shadow-md" />
+      </header>
 
         {/* Responsive Grid */}
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-fr justify-items-center">
