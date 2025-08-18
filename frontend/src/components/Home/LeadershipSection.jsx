@@ -137,40 +137,66 @@ export default function LeadershipSection() {
 
   const renderMemberCard = (member, idx) => {
     const { img, name, role, socials, msg } = member;
+  
     return (
       <div
         key={name}
-        ref={(el) => (membersRef.current[idx] = el)}
-        className="p-4 sm:p-6 md:p-8 lg:p-10 rounded-3xl border border-white/20 shadow-lg flex flex-col items-center text-center gap-6"
+        ref={el => (membersRef.current[idx] = el)}
+        className="p-4 sm:p-6 md:p-8 lg:p-10 rounded-3xl border border-white/20 shadow-lg flex flex-col sm:flex-row items-center sm:items-start gap-6"
       >
-        {/* Top: Image + Socials */}
-        <div className="flex flex-col items-center w-full">
+        {/* Left: Image + Socials */}
+        <div className="flex flex-col items-center sm:items-start w-full sm:w-auto">
           <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-2xl overflow-hidden shadow-lg">
-            <img src={img} alt={name} className="w-full h-full object-cover" />
+            <img
+              src={img}
+              alt={name}
+              className="w-full h-full object-cover"
+            />
           </div>
-          {renderSocialLinks(socials, name, "text-yellow-400")}
+
+          {/* Socials */}
+          <div className="flex flex-wrap gap-3 sm:gap-4 mt-3 text-lg sm:text-xl md:text-2xl text-gray-300 justify-center sm:justify-start">
+            {Object.entries(socials).map(([key, url]) =>
+              url ? (
+                <a
+                  key={key}
+                  href={key === "email" ? `mailto:${url}` : url}
+                  target={key === "email" ? "_self" : "_blank"}
+                  rel="noreferrer"
+                  aria-label={`${key} profile of ${name}`}
+                  className="hover:text-yellow-400 transition-colors duration-200"
+                >
+                  {iconsMap[key]}
+                </a>
+              ) : null
+            )}
+          </div>
         </div>
 
-        {/* Bottom: Text Info */}
-        <div className="flex flex-col items-center w-full">
+        {/* Right: Text Info */}
+        <div className="flex-1 flex flex-col p-4 sm:p-6 md:p-8 lg:p-10">
           <h2 className="text-2xl sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-white leading-tight">
             {name}
           </h2>
-
-          <h3 className="mt-2 text-md sm:text-lg md:text-xl font-bold uppercase tracking-wider text-yellow-400">
+  
+          {/* Role Badge */}
+          <span className="inline-block mt-2 px-3 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider 
+                           bg-gradient-to-r from-yellow-400 to-pink-500 
+                           text-black rounded-full shadow-md">
             {role}
           </h3>
 
-          <p className="mt-4 italic text-sm sm:text-sm md:text-md lg:text-lg text-white max-h-40 sm:max-h-48 md:max-h-56 lg:max-h-64 overflow-y-auto scrollbar-hide">
+          <p className="mt-4 italic text-sm sm:text-sm md:text-md lg:text-lg text-white max-h-40 sm:max-h-48 md:max-h-56 lg:max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-yellow-400 scrollbar-track-gray-700">
             {msg}
           </p>
         </div>
       </div>
     );
   };
+  
 
   return (
-    <section className="py-5 bg-gradient-to-b from-gray-900 to-gray-800 relative overflow-hidden">
+    <section className="py-5  relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-radial from-indigo-600/20 via-purple-500/10 to-transparent pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">

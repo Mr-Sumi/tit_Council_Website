@@ -66,7 +66,7 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="mt-[3rem] bg-transparent relative overflow-hidden">
+    <section ref={sectionRef} className="mt-[3rem] relative overflow-hidden">
       <div className="max-w-[85vw] mx-auto px-6 text-center relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

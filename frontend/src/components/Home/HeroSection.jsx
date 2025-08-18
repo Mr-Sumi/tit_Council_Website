@@ -62,7 +62,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/90"></div>
 
       {/* Floating Glow Orbs */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden">
         {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
@@ -72,7 +72,7 @@ export default function HeroSection() {
             transition={{ duration: 25, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Glass Card */}
       <div ref={contentRef} className="relative z-10 flex flex-col justify-center items-center h-full text-center px-2">
