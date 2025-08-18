@@ -160,14 +160,16 @@ const JoinCouncilForm = () => {
           <div>
             <label className="block mb-1">Phone Number</label>
             <div className="flex items-center bg-gray-900 rounded-md border border-gray-600 px-3">
-              <FaPhoneAlt className="text-gray-400 mr-2"/>
+              <FaPhoneAlt className="text-gray-400 mr-2" />
+              <span className="text-gray-400 mr-1">+91</span>
               <input
                 name="phone"
                 type="tel"
-                placeholder="+91XXXXXXXXXX"
-                value={formData.phone ? `+91${formData.phone}` : "+91"}
+                placeholder="XXXXXXXXXX"
+                value={formData.phone}
                 onChange={handleChange}
                 required
+                maxLength={10}
                 className="bg-transparent w-full py-2 focus:outline-none"
               />
             </div>

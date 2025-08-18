@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import mentorsData from "../../data/Mentors-data.json";
+import mentorsData from "../../data/Mentors-Data.json";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react"; // optional icons
 
@@ -73,7 +73,7 @@ export default function MentorsHead() {
           {/* Horizontal Scrollable Carousel */}
           <div
             ref={carouselRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory py-4 px-2 scrollbar-hide"
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory py-4 px-2 scrollbar-hide scrollbar-y-hide"
           >
             {displayedMentors.map((mentor, idx) => (
               <div
