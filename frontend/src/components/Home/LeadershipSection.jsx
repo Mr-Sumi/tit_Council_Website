@@ -173,7 +173,7 @@ export default function LeadershipSection() {
   };
 
   return (
-    <section className="py-5 bg-gradient-to-b from-gray-900 to-gray-800 relative overflow-hidden">
+    <section className="py-5 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-radial from-indigo-600/20 via-purple-500/10 to-transparent pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
