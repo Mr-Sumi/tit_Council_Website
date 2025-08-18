@@ -9,7 +9,7 @@ export default function UpcomingEvents() {
   return (
     <section>
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-bold mb-12 text-center">Upcoming Events</h2>
+        <h2 className="text-5xl font-extrabold mb-12 text-center text-white">Upcoming Events</h2>
         <div className="grid md:grid-cols-2 gap-10">
           {events.map((event, idx) => (
             <motion.div

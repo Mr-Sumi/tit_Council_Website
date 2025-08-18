@@ -19,7 +19,7 @@ export default function ClubsSection() {
           className="clubs-intro mb-12"
         >
           <h2
-            className="text-4xl font-bold"
+            className="text-5xl font-extrabold"
           >
             Explore Our Clubs
           </h2>
