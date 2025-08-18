@@ -53,7 +53,7 @@ export default function Gallery() {
   };
 
   return (
-    <section className="py-16 px-6">
+    <section className="py-16 px-6 bg-black">
       <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-12">
         Event Gallery
       </h2>
