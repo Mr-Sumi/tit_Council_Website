@@ -7,7 +7,6 @@ import {
   FaVenusMars, FaBuilding, FaLayerGroup, FaCalendarAlt, FaUniversity
 } from 'react-icons/fa';
 import { MdDelete } from "react-icons/md";
-import axios from 'axios';
 
 const JoinCouncilForm = () => {
   const [formData, setFormData] = useState({

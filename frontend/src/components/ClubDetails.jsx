@@ -21,7 +21,7 @@ export default function ClubDetails() {
   if (!club) return <ErrorPage />;
 
   return (
-    <main className="p-6 md:p-12 max-w-6xl mx-auto text-white mt-20">
+    <main className="p-6 md:p-12 max-w-6xl mx-auto text-white mt-5">
       {/* Back Button */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}

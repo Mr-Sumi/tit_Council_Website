@@ -53,20 +53,7 @@ const OfficeBearer = () => {
                 />
               </div>
 
-              <h3 className="mt-4 text-2xl font-semibold text-zinc-100">
-                {m.name}
-              </h3>
-              <p className="text-lg text-emerald-400 font-medium">
-                {m.role}
-              </p>
-
-              {m.quote && (
-                <p className="mt-3 text-lg italic text-zinc-400 leading-relaxed">
-                  “{m.quote}”
-                </p>
-              )}
-
-            <div className="mt-5 flex items-center justify-center gap-3">
+              <div className="mt-5 flex items-center justify-center gap-3">
               {m.social?.twitter && m.social.twitter !== "#" && (
                 <SocialIcon href={m.social.twitter} label="Twitter">
                   <FaTwitter className="text-zinc-200 group-hover:text-emerald-400 transition-colors" />
@@ -88,6 +75,19 @@ const OfficeBearer = () => {
                 </SocialIcon>
               )}
             </div>
+
+              <h3 className="mt-4 text-2xl font-semibold text-zinc-100">
+                {m.name}
+              </h3>
+              <p className="text-lg text-emerald-400 font-medium">
+                {m.role}
+              </p>
+
+              {m.quote && (
+                <p className="mt-3 text-lg italic text-zinc-400 leading-relaxed">
+                  “{m.quote}”
+                </p>
+              )}
 
             </article>
           ))}
