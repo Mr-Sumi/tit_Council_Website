@@ -1,31 +1,36 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useRef, useEffect } from "react";
-import { FaUsers, FaLightbulb, FaStar } from "react-icons/fa";
+import { FaUsers, FaLightbulb, FaStar, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
 export default function JoinCouncilSection() {
   const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(false);
 
-  const handleMouseEnter = () => {
+  const toggleMute = () => {
     if (videoRef.current) {
-      videoRef.current.play();
-      videoRef.current.style.filter = "brightness(1.15) contrast(1.1)";
-      videoRef.current.style.transform = "scale(1.05)";
-      videoRef.current.style.transition =
-        "filter 0.6s ease, transform 0.6s ease";
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
     }
   };
 
-  const handleMouseLeave = () => {
+  // Try autoplay with sound, fallback to muted if blocked
+  useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.style.filter = "brightness(1) contrast(1)";
-      videoRef.current.style.transform = "scale(1)";
+      videoRef.current.muted = false; // try with sound
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Fallback: mute if autoplay with sound is blocked
+          videoRef.current.muted = true;
+          setIsMuted(true);
+          videoRef.current.play();
+        });
+      }
     }
-  };
+  }, []);
 
-  // Auto-play when in viewport
+  // Auto-pause when out of viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -49,22 +54,26 @@ export default function JoinCouncilSection() {
         {/* Video Side */}
         <motion.div
           className="relative w-full group"
-          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
           <video
             ref={videoRef}
             src="https://res.cloudinary.com/dlk5kntmy/video/upload/v1755428052/STU_FINAL_eululp.mp4"
-            className="w-full h-[60vh] object-cover rounded-3xl shadow-2xl cursor-pointer"
+            className="w-full h-[60vh] object-cover rounded-3xl shadow-2xl"
             loop
-            muted
             playsInline
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
           />
 
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent rounded-3xl pointer-events-none"></div>
+
+          {/* Mute Button */}
+          <button
+            onClick={toggleMute}
+            className="absolute top-4 right-4 bg-black/60 p-3 rounded-full text-white hover:bg-black/80 transition"
+          >
+            {isMuted ? <FaVolumeMute size={18} /> : <FaVolumeUp size={18} />}
+          </button>
 
           {/* Overlay Text */}
           <div className="absolute bottom-8 left-6 sm:left-10 text-white space-y-3">
@@ -76,7 +85,7 @@ export default function JoinCouncilSection() {
             </p>
             <Link
               to="/join"
-              className="inline-block bg-gradient-to-r from-pink-500 to-indigo-500 px-6 py-2 sm:px-8 sm:py-3 font-semibold rounded-full shadow-lg hover:scale-110 hover:shadow-pink-500/40 transition-transform duration-300"
+              className="inline-block bg-gradient-to-r from-pink-500 to-indigo-500 px-6 py-2 sm:px-8 sm:py-3 font-semibold rounded-full"
             >
               Join Now
             </Link>
@@ -120,7 +129,7 @@ export default function JoinCouncilSection() {
           </ul>
           <Link
             to="/join"
-            className="inline-block bg-gradient-to-r from-pink-500 to-indigo-500 px-8 py-3 font-semibold rounded-full shadow-lg hover:scale-105 hover:shadow-indigo-500/40 transition-transform duration-300"
+            className="inline-block bg-gradient-to-r from-pink-500 to-indigo-500 px-8 py-3 font-semibold rounded-full shadow-lg hover:scale-102 hover:shadow-indigo-500/40 transition-transform duration-300"
           >
             🌟 Unlock Your Potential — Join the Council Today
           </Link>
