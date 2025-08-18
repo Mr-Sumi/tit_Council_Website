@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { User, IdCard, School, Calendar, Users } from "lucide-react";
 import { RiCheckLine } from "react-icons/ri";

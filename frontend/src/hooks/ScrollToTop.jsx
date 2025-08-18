@@ -39,7 +39,7 @@ export default function ScrollToTop({ duration = 700 }) {
   return isScrolling ? (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-black/50 z-[9999]">
       {/* Spinner overlay */}
-      <div className="w-16 h-16 border-4 border-t-[#FF4F01] border-gray-200 rounded-full animate-spin"></div>
+      {/* <div className="w-16 h-16 border-4 border-t-[#FF4F01] border-gray-200 rounded-full animate-spin"></div> */}
     </div>
   ) : null;
 }

@@ -52,7 +52,7 @@ function App() {
             <Route path="/join" element={<JoinCouncil />} />
             <Route path="/suggestion" element={<SuggestionForm />} />
             <Route path="/ideas" element={<IdeaSubmissionForm />} />
-            <Route path="/login" element={<Login/>} />
+            <Route path="/login" element={<Login />} />
             <Route path="/userProfile" element={<UserProfile />} />
             <Route path="/userProfileRegistration" element={<UserProfileRegistration />} />
           </Routes>
