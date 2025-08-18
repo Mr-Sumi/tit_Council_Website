@@ -97,7 +97,7 @@ export default function UserProfileRegistration() {
 
         {/* ID Card Upload */}
         <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
-          <label className="relative w-[20vw] h-[20vh] border-2 border-dashed border-gray-500 rounded-xl flex items-center justify-center overflow-hidden bg-gray-800 cursor-pointer hover:border-pink-400 transition-all duration-300 group">
+          <label className="relative w-[15vw] h-[40vh] border-2 border-dashed border-gray-500 rounded-xl flex items-center justify-center overflow-hidden bg-gray-800 cursor-pointer hover:border-pink-400 transition-all duration-300 group">
             {idCardPhoto ? (
               <img
                 src={idCardPhoto}
