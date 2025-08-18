@@ -95,23 +95,20 @@ export default function Gallery() {
   };
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-12 flex flex-col items-center">
-      <header className="w-full max-w-6xl text-center mb-8 px-4">
-        <motion.h2
+    <section className="py-10 px-4 sm:px-6 lg:px-12">
+
+      <header className="mb-8 text-center">
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-zinc-800 via-white to-indigo-800 bg-clip-text text-transparent mb-6"
-          >
-          Event Gallery
-        </motion.h2>
-        <div className="mx-auto mt-3 w-40 h-1 rounded-full bg-gradient-to-r from-[#C8101A] via-[#FF4F01] to-[#FFF9D5] shadow-md" />
-      </header>
-    <section className="py-16 px-6 bg-black">
-      <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-12">
-        Event Gallery
-      </h2>
+        >
+          Event Gallary
+        </motion.h1>
+          <div className="mx-auto mt-3 w-80 h-1 rounded-full bg-gradient-to-r from-[#C8101A] via-[#FF4F01] to-[#FFF9D5] shadow-md" />
+        </header>
 
       {/* Grid */}
       <div className="sm:columns-3 md:columns-4 lg:columns-5 gap-4 space-y-4">
@@ -154,13 +151,13 @@ export default function Gallery() {
               <motion.button
                 whileTap={{ scale: 1.3 }}
                 onClick={(e) => toggleLike(e, img.id)}
-                className="flex items-center gap-1 text-white bg-black/30 backdrop-blur-sm px-4 py-2 rounded transition hover:text-red-500"
+                className="flex items-center gap-1 text-white bg-black/30 backdrop-blur-sm px-2 py-1 rounded transition hover:text-red-500"
               >
                 <Heart
-                  size={35}
+                  size={18}
                   className={likes[img.id] > 0 ? "text-red-500 fill-red-500" : "fill-current"}
                 />
-                <span className="text-2xl">{likes[img.id] || 0}</span>
+                <span className="text-sm">{likes[img.id] || 0}</span>
               </motion.button>
             </div>
           </motion.div>
