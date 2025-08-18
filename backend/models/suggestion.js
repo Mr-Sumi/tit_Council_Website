@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const suggestionSchema = new mongoose.Schema(
   {
@@ -42,7 +42,6 @@ const suggestionSchema = new mongoose.Schema(
   }
 );
 
-// ✅ Prevent OverwriteModelError (important with Nodemon/Hot reload)
 const Suggestion =
   mongoose.models.Suggestion || mongoose.model("Suggestion", suggestionSchema);
 
