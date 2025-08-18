@@ -7,6 +7,7 @@ import {
   FaVenusMars, FaBuilding, FaLayerGroup, FaCalendarAlt, FaUniversity
 } from 'react-icons/fa';
 import { MdDelete } from "react-icons/md";
+import axios from 'axios';
 
 const JoinCouncilForm = () => {
   const [formData, setFormData] = useState({
@@ -79,7 +80,6 @@ const JoinCouncilForm = () => {
     if (!formData.terms) return setAlert({ open: true, message: "Please accept the terms & conditions.", type: "warning" });
     if (!/^[6-9][0-9]{9}$/.test(formData.phone)) return setAlert({ open: true, message: "Invalid phone number.", type: "error" });
     if (!emailRegex.test(formData.email)) return setAlert({ open: true, message: "Invalid email address.", type: "error" });
-
     try {
       const submitData = new FormData();
       for (const key in formData) {
@@ -101,6 +101,23 @@ const JoinCouncilForm = () => {
       console.error(err);
       setAlert({ open: true, message: "Failed to submit. Try again.", type: "error" });
     }
+    if (files.length === 0) return setAlert({ open: true, message: "Please upload at least one file.", type: "warning" });
+
+    const formDataWithFiles = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach((v) => formDataWithFiles.append(key, v));
+      } else {
+        formDataWithFiles.append(key, value);
+      }
+    });
+    files.forEach((file) => formDataWithFiles.append("files", file));
+
+    let res = await axios.post("http://localhost:3000/council/apply", formDataWithFiles, {
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
   };
 
   const departments = ["CSE","CSE AIML","CSE AI","CSE DS","CSE AIDS","CSE Cyber","CSE IoT","IT","EX","EC","ME","CE","B.Pharm","MBA","Law"];

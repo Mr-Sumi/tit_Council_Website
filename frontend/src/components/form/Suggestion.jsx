@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, User, IdCard, School, MessageSquare, Lightbulb } from "lucide-react";
+import axios from "axios";
 
 export default function SuggestionForm() {
   const [formData, setFormData] = useState({
@@ -15,11 +16,16 @@ export default function SuggestionForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitted:", formData);
-    alert("✅ Suggestion submitted successfully!");
-    setFormData({ name: "", enrollment: "", college: "", problem: "", solution: "" });
+    const res = await axios.post("http://localhost:3000/suggestion", formData);
+    if (res.data.success) {
+      alert("✅ Suggestion submitted successfully!");
+      setFormData({ name: "", enrollment: "", college: "", problem: "", solution: "" });
+    } else {
+      alert("❌ Error submitting suggestion.");
+    }
   };
 
   return (

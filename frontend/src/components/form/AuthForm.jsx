@@ -13,7 +13,25 @@ export default function AuthForm() {
     setLoading(true);
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
+      await signInWithPopup(auth, provider);[]
+
+      console.log(auth.currentUser.email);
+
+      let response = await fetch("http://localhost:3000/auth/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: auth.currentUser.email,
+        }),
+      });
+
+      let data=await response.json();
+
+      console.log(data);
+
+
       navigate("/"); // redirect after success
     } catch (err) {
       alert(err.message);
