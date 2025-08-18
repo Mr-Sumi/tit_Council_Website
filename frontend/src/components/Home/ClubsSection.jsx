@@ -23,7 +23,7 @@ export default function ClubsSection() {
           >
             Explore Our Clubs
           </h2>
-          <p className="mt-6 text-gray-300 mx-auto text-2xl leading-relaxed">
+          <p className="mt-6 text-gray-300 mx-auto text-md md:text-xl leading-relaxed">
           Join vibrant communities that ignite your passions and fuel your growth. Our clubs give you the chance to master new skills, lead exciting projects, and connect with like-minded peers. Explore opportunities that inspire creativity, collaboration, and leadership, while building memories and friendships that last a lifetime.
           </p>
         </motion.div>
