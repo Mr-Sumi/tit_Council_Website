@@ -69,37 +69,69 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  console.log("Login attempt:", req.body);
   try {
-    const { enrollmentno, dob } = req.body;
+    let enrollmentno = req.body.collegeId;
+    let dob = req.body.password;
 
+
+    // Validate input
     if (!enrollmentno || !dob) {
-      req.flash('error_msg', 'Email and password are required');
-      return res.redirect('/login');
+      return res.status(400).json({
+        success: false,
+        message: "Enrollment number and DOB are required",
+      });
     }
 
-    let user = await userModel.findOne({ enrollment: enrollmentno }).select("+password");
+    // Find user
+    const user = await userModel.findOne({ enrollment: enrollmentno });
     if (!user) {
-      req.flash('error_msg', 'Please register first');
-      return res.redirect('/login');
-    } 
+      return res.status(404).json({
+        success: false,
+        message: "User not found. Please register first",
+      });
+    }
 
+    // Compare hashed DOB
+    const dobPlain = dob.split("-").reverse().join(""); // convert format if needed
+    const result = await bcrypt.compare(dobPlain, user.dob);
+    if (!result) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid credentials",
+      });
+    }
 
-    const result = await bcrypt.compare(dob, user.dob);
-      if (!result) {
-        req.flash('error_msg', 'Email or password did not match');
-        return res.redirect('/login');
-      }
-      let { username, enrollment, email, phone } = user;
-      let token = jwt.sign({username,enrollment,email,phone}, process.env.JWT_SECRET);
-      res.cookie("token", token);
-      req.flash('success_msg', 'You are now logged in');
-      res.redirect("/");
-    ;
+    // Generate JWT
+    const { username, enrollment, email, phone } = user;
+    const token = jwt.sign(
+      { id: user._id, username, enrollment, email, phone },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    // Set cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Login successful",
+      user: { id: user._id, username, enrollment, email, phone },
+      token,
+    });
   } catch (err) {
-    req.flash('error_msg', err.message);
-    res.redirect('/login');
+    console.error("Login error:", err.message);
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
   }
 });
+
 
 router.get("/logout", (req, res) => {
   try {

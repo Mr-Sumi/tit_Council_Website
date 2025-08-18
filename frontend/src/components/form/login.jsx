@@ -24,10 +24,10 @@ export default function UserLogin() {
     setError("");
 
     try {
-      const res = await fetch("", {
+      const res = await fetch("http://localhost:3000/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
+        credentials: "include", // important if backend sets cookies
         body: JSON.stringify(formData),
       });
 
@@ -35,10 +35,11 @@ export default function UserLogin() {
         setSuccessModal(true);
         setTimeout(() => {
           setSuccessModal(false);
-          navigate("/dashboard"); // after login
+          navigate("/"); // after login
         }, 1500);
       } else {
-        setError("Invalid College ID or password.");
+        const data = await res.json().catch(() => ({}));
+        setError(data.message || "Invalid College ID or password.");
       }
     } catch (err) {
       console.error("Error:", err);
