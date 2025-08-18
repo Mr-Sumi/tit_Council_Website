@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useRef } from "react";
 import { FaLinkedinIn, FaInstagram, FaTwitter, FaFacebookF, FaGithub } from "react-icons/fa";
 import { RiMailLine } from "react-icons/ri";

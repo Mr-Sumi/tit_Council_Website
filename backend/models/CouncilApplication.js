@@ -12,13 +12,11 @@ const councilSchema = new mongoose.Schema({
     required: true,
     unique: true, // Prevent duplicate registrations
     lowercase: true,
-    match: [/^\S+@\S+\.\S+$/, "Invalid email address"],
   },
 
   phone: {
     type: String,
     required: true,
-    match: [/^\+91[6-9][0-9]{9}$/, "Invalid Indian phone number"],
   },
 
   enrollment: {

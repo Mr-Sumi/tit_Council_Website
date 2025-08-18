@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowLeft, ArrowRight, Download, Share2, Heart } from "lucide-react";

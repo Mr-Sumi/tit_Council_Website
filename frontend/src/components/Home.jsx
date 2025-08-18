@@ -1,3 +1,4 @@
+import React from "react";
 import HeroSection from "../components/Home/HeroSection";
 import AboutSection from "../components/Home/AboutSection";
 import LeadershipSection from "../components/Home/LeadershipSection";
