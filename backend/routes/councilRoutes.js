@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { upload } = require("../config/multer"); // <-- Cloudinary + multer setup
+const { upload } = require("../config/multer");
 const CouncilApplication = require("../models/CouncilApplication");
 
-// ✅ Submit Application with files (max 3)
 router.post("/apply", upload.array("files", 3), async (req, res) => {
   try {
     const {
@@ -22,30 +21,31 @@ router.post("/apply", upload.array("files", 3), async (req, res) => {
       terms,
     } = req.body;
 
-    // ✅ Convert skills (string -> array)
     let parsedSkills = [];
     if (skills) {
       if (typeof skills === "string") {
-        parsedSkills = skills.split(",").map((s) => s.trim());
+        try {
+          parsedSkills = JSON.parse(skills);
+        } catch {
+          parsedSkills = skills.split(",").map((s) => s.trim());
+        }
       } else if (Array.isArray(skills)) {
         parsedSkills = skills;
       }
     }
 
-    // ✅ Collect uploaded file data from Cloudinary
     const uploadedFiles = Array.isArray(req.files)
       ? req.files.map((file) => ({
-          url: file.path,                       // Cloudinary file URL
-          public_id: file.filename || file.public_id, // safer fallback
-          original_name: file.originalname,     // user's uploaded file name
-          format: file.format,
-          resource_type: file.resource_type,
+          url: file.path,                   // Cloudinary URL
+          public_id: file.filename,         // Cloudinary public_id
+          original_name: file.originalname, // user's original filename
+          format: file.mimetype.split("/")[1],       // e.g. pdf, png
+          resource_type: file.mimetype.split("/")[0] // e.g. application, image
         }))
       : [];
 
     console.log("✅ Processed Files:", uploadedFiles);
 
-    // ✅ Save to MongoDB
     const application = new CouncilApplication({
       name,
       email,
@@ -59,7 +59,7 @@ router.post("/apply", upload.array("files", 3), async (req, res) => {
       club,
       skills: parsedSkills,
       motivation,
-      terms: terms === "true" || terms === true, // normalize to boolean
+      terms: terms === "true" || terms === true || terms === "on", // normalize
       files: uploadedFiles,
     });
 

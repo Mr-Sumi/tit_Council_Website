@@ -13,10 +13,10 @@ const storage = new CloudinaryStorage({
   params: async (req, file) => ({
     folder: "uploads",
     format: file.mimetype === "application/pdf" ? "pdf" : undefined,
-    public_id: file.originalname.split(".")[0],
+    public_id: `${file.originalname.split(".")[0]}-${Date.now()}`,
   }),
 });
 
 const upload = multer({ storage });
 
-module.exports = { upload };   // ✅ important
+module.exports = { upload };
