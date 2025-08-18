@@ -21,6 +21,8 @@ router.post("/apply", upload.array("files", 3), async (req, res) => {
       terms,
     } = req.body;
 
+    console.log(req.body);
+
     let parsedSkills = [];
     if (skills) {
       if (typeof skills === "string") {
