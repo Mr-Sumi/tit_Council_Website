@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaUsers, FaLightbulb, FaHandsHelping } from "react-icons/fa";
