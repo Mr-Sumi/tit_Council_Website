@@ -110,18 +110,18 @@ export default function HeroSection() {
               href="/clubs"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-8 py-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white font-medium shadow-lg transition-all duration-300 hover:shadow-indigo-500/40"
+              className="flex items-center gap-2 px-8 py-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white font-medium shadow-lg transition-all duration-300"
             >
               <Compass className="w-5 h-5" /> Explore Clubs
             </motion.a>
 
             <motion.a
-              href="/team"
+              href="/join"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-8 py-3 rounded-full bg-white/20 hover:bg-white/30 text-white font-medium shadow-lg transition-all duration-300 hover:shadow-white/40"
+              className="flex items-center gap-2 px-8 py-3 rounded-full bg-white/90 hover:bg-white text-black font-bold transition-all duration-300"
             >
-              <Users className="w-5 h-5" /> Meet Our Team
+              <Users className="w-5 h-5" /> Join Student Council
             </motion.a>
           </motion.div>
         </motion.div>

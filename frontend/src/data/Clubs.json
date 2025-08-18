@@ -15,13 +15,13 @@
       {
         "name": "Cultural & Event Cell",
         "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502266/CULTURAL_EvENT_abnyuq.png",
-        "link": "/club/Cultural",
+        "link": "/club/cultural",
         "description": "The Cultural & Event Cell is a platform for students to learn and practice cultural technology. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
       },
       {
         "name": "Cyber Cop Cell",
         "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/cyber_COP_npmtvn.png",
-        "link": "/club/cyberCop",
+        "link": "/club/cyber",
         "description": "The Cyber Cop Cell is a platform for students to learn and practice cyber security. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
       },
       {
@@ -39,13 +39,13 @@
       {
         "name": "ELITE (Excellence & Leadership in Integrity, Tact, and Ethics)",
         "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755432324/EV_2_ds7qci.png",
-        "link": "/club/Disipline",
+        "link": "/club/elite",
         "description": "ELITE is a platform for students to learn and practice discipline and leadership. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
       },
       {
         "name": "E.V. Club",
         "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502268/EV_g2djgp.png",
-        "link": "/club/EV",
+        "link": "/club/e.v.",
         "description": "The E.V. Club is a platform for students to learn and practice EV technology. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
       },
       {
@@ -99,7 +99,7 @@
       {
         "name": "Robotics Club",
         "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502262/RObOTICS_CLUB_zuu4q1.png",
-        "link": "/club/Robotics",
+        "link": "/club/robotics",
         "description": "The Robotics Club is a platform for students to learn and practice robotics. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
       },
       {
