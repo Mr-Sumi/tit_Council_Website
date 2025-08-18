@@ -3,12 +3,8 @@
 @tailwind utilities;
 
 /* global.css or index.css */
-.scrollbar-hide::-webkit-scrollbar {
-    display: none; /* Hide Chrome, Safari and Opera scrollbar */
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  body::-webkit-scrollbar{
+    display: none;
   }
   
 
@@ -26,3 +22,7 @@
     animation: scroll 10s linear infinite;
   }
   
+  /* Conical / triangular shape */
+.clip-cone {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}

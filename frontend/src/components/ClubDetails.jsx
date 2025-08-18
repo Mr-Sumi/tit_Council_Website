@@ -21,7 +21,7 @@ export default function ClubDetails() {
   if (!club) return <ErrorPage />;
 
   return (
-    <main className="p-6 md:p-12 max-w-6xl mx-auto text-white mt-20">
+    <main className="p-6 md:p-12 max-w-6xl mx-auto text-white mt-5">
       {/* Back Button */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -50,9 +50,10 @@ export default function ClubDetails() {
           alt={club.name}
           className="h-28 w-28 rounded-2xl shadow-xl ring-4 ring-white/20"
         />
-        <h1 className="text-5xl font-extrabold bg-gradient-to-r from-pink-500 via-yellow-400 to-red-500 bg-clip-text text-transparent drop-shadow-md">
+        <h1 className="text-7xl font-extrabold text-white/90">
           {club.name}
         </h1>
+        <div className="bg-white/80 w-full h-1 rounded-3xl"></div>
       </motion.div>
 
       {/* Mission & Vision */}

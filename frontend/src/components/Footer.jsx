@@ -95,10 +95,10 @@ export default function Footer() {
                 Madhya Pradesh, India
               </span>
             </li>
-            <li className="flex gap-3 items-center group">
+            {/* <li className="flex gap-3 items-center group">
               <FaPhoneAlt className="text-[#FF4F01] group-hover:scale-125 transition-transform duration-300" />
               <span>+91 9113149346</span>
-            </li>
+            </li> */}
             <li className="flex gap-3 items-center group">
               <FaEnvelope className="text-[#FF4F01] group-hover:scale-125 transition-transform duration-300" />
               <span>studentcouncil@technocratsgroup.edu.in</span>
