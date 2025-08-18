@@ -123,24 +123,34 @@ export default function LeadershipSection() {
 
   const renderMemberCard = (member, idx) => {
     const { img, name, role, socials, msg } = member;
+  
     return (
       <div
         key={name}
-        ref={el => (membersRef.current[idx] = el)}
-        className="p-4 sm:p-6 md:p-8 lg:p-10 rounded-3xl border border-white/20 shadow-lg flex flex-col sm:flex-row items-center sm:items-start gap-6"
+        ref={(el) => (membersRef.current[idx] = el)}
+        className="relative w-full max-w-4xl mx-auto p-6 sm:p-8 
+                   rounded-3xl bg-white/10 backdrop-blur-md 
+                   border border-white/20 
+                   flex flex-col md:flex-row items-center md:items-start gap-6 "
       >
+        {/* Animated Gradient Border */}
+        <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r from-yellow-400 via-pink-500 to-indigo-500 opacity-0 hover:opacity-100 blur-md transition duration-500 pointer-events-none"></div>
+  
         {/* Left: Image + Socials */}
-        <div className="flex flex-col items-center sm:items-start w-full sm:w-auto">
-          <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-2xl overflow-hidden shadow-lg">
+        <div className="relative z-10 flex flex-col items-center md:items-start w-full md:w-auto flex-shrink-0">
+          <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-56 lg:h-56 
+                          rounded-2xl overflow-hidden shadow-lg ring-2 ring-white/10">
             <img
               src={img}
               alt={name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
             />
           </div>
-
+  
           {/* Socials */}
-          <div className="flex flex-wrap gap-3 sm:gap-4 mt-3 text-lg sm:text-xl md:text-2xl text-gray-300 justify-center sm:justify-start">
+          <div className="flex flex-wrap gap-3 sm:gap-4 mt-4 
+                          text-lg sm:text-xl md:text-2xl text-gray-300 
+                          justify-center md:justify-start">
             {Object.entries(socials).map(([key, url]) =>
               url ? (
                 <a
@@ -157,28 +167,35 @@ export default function LeadershipSection() {
             )}
           </div>
         </div>
-
+  
         {/* Right: Text Info */}
-        <div className="flex-1 flex flex-col p-4 sm:p-6 md:p-8 lg:p-10">
-          <h2 className="text-2xl sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-white leading-tight">
+        <div className="relative z-10 flex-1 flex flex-col text-center md:text-left">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
             {name}
           </h2>
-
-          <h3 className="mt-2 text-md sm:text-lg md:text-xl font-bold uppercase tracking-wider text-yellow-400">
+  
+          {/* Role Badge */}
+          <span className="inline-block mt-2 px-3 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider 
+                           bg-gradient-to-r from-yellow-400 to-pink-500 
+                           text-black rounded-full shadow-md">
             {role}
-          </h3>
+          </span>
+  
+          {/* Message with fade clamp */}
+          <div className="relative mt-4 max-h-32 sm:max-h-40 md:max-h-48 overflow-hidden group">
+            <p className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed">
+              {msg}
+            </p>
 
-          <p className="mt-4 italic text-sm sm:text-sm md:text-md lg:text-lg text-white max-h-40 sm:max-h-48 md:max-h-56 lg:max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-yellow-400 scrollbar-track-gray-700">
-            {msg}
-          </p>
+          </div>
         </div>
       </div>
-
     );
   };
+  
 
   return (
-    <section className="py-5 bg-gradient-to-b from-gray-900 to-gray-800 relative overflow-hidden">
+    <section className="py-5  relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-radial from-indigo-600/20 via-purple-500/10 to-transparent pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">

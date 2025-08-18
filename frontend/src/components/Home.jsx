@@ -5,14 +5,14 @@ import ClubsSection from "../components/Home/ClubsSection";
 import UpcomingEvents from "../components/Home/UpcomingEvents";
 import GetInvolved from "../components/Home/GetInvolved";
 import MentorsHead from "./Home/MentorsHead";
-// import JoinCouncilSection from "./Home/JoinCouncilSection"
+import JoinCouncilSection from "./Home/JoinCouncilSection"
 
 export default function Home() {
   return (
     <main className="font-sans min-h-screen overflow-y-hidden">
       <HeroSection />
       <AboutSection />
-      {/* <JoinCouncilSection /> */}
+      <JoinCouncilSection />
       <LeadershipSection />
       <MentorsHead />
       <ClubsSection />

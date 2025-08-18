@@ -7,7 +7,7 @@ export default function ClubsSection() {
   return (
     <section
       id="clubs"
-      className="featured-clubs py-16 bg-gradient-to-b from-gray-900 to-black text-white relative overflow-hidden"
+      className="featured-clubs py-16 text-white relative overflow-hidden"
     >
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Section Header */}
