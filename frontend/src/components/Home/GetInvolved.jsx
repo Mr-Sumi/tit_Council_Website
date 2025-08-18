@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { FaUserPlus, FaLightbulb, FaHandsHelping } from "react-icons/fa";
+import { AiOutlineSolution } from "react-icons/ai";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,8 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const items = [
   { icon: <FaUserPlus className="text-indigo-400" />, title: "Join the Council", desc: "Interested in leadership roles? Apply now!", link: "/join" },
-  { icon: <FaLightbulb className="text-yellow-400" />, title: "Submit Your Ideas", desc: "Have an idea for an event or initiative? Let us know!" },
-  { icon: <FaHandsHelping className="text-green-400" />, title: "Volunteer for Events", desc: "Support the council by helping organize activities." },
+  { icon: <AiOutlineSolution className="text-green-400" />, title: "Suggestion Box", desc: "Any Problem or Suggestion? Let us know!", link:"/suggestion" },
+  { icon: <FaLightbulb className="text-yellow-400" />, title: "Ideas & Innovation", desc: "Have an idea for an event or initiative? Let us know!.", link:"/ideas"},
 ];
 
 export default function GetInvolved() {

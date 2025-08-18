@@ -5,12 +5,14 @@ import ClubsSection from "../components/Home/ClubsSection";
 import UpcomingEvents from "../components/Home/UpcomingEvents";
 import GetInvolved from "../components/Home/GetInvolved";
 import MentorsHead from "./Home/MentorsHead";
+// import JoinCouncilSection from "./Home/JoinCouncilSection"
 
 export default function Home() {
   return (
     <main className="font-sans text-white bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 min-h-screen overflow-y-auto">
       <HeroSection />
       <AboutSection />
+      {/* <JoinCouncilSection /> */}
       <LeadershipSection />
       <MentorsHead />
       <ClubsSection />

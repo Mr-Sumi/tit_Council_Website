@@ -11,7 +11,9 @@ const jwt = require("jsonwebtoken");
 const cron = require('node-cron');
 let club = require("./routes/club.route.js");
 let event = require("./routes/event.route.js");
-
+let council=require("./routes/councilRoutes.js");
+let suggestion=require("./routes/suggestionRoutes.js")
+let cors=require("cors");
 
 
 require("dotenv").config();
@@ -27,6 +29,15 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    credentials: true, 
+  })
+);
 
 app.use(
   session({
@@ -54,83 +65,10 @@ app.use("/auth", authRouter);
 app.use("/club", club);
 app.use("/event", event);
 app.use("/payment", payment);
-
-const fetchAllImages = require('./routes/fetchAllImages');
-
-// Run once every day at midnight
-cron.schedule('0 0 * * *', () => {
-  console.log('📸 Fetching updated Cloudinary images...');
-  fetchAllImages();
-});
-
-// Serve public files
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Home route
-app.get("/", (req, res) => {
-  req.cookies.token
-    ? res.render("student council", { isLoggedIn: true })
-    : res.render("student council", { isLoggedIn: false });
-});
-
-// Member routes
-app.get("/members", (req, res) => {
-  res.render("OurTeam", { title: "Member Page" });
-});
-
-app.get("/login", (req, res) => {
-  res.render("login", { title: "Login Page" });
-});
-// Faculty route
-app.get("/faculty", (req, res) => {
-  res.render("FaculityPage", { title: "Faculty Page" });
-});
-
-// Clubs route
-app.get("/clubs", (req, res) => {
-  res.render("Ourclubs", { title: "Clubs Page" });
-});
-
-// Gallery route
-app.get("/gallery", (req, res) => {
-  res.render("Gallery", { title: "Gallery Page" });
-});
-
-app.get("/Dev", (req, res) => {
-  res.render("Dev team", { title: "Developer Page" });
-});
-
-// Form route
-app.get("/form", (req, res) => {
-  res.render("form", { title: "Form Page" });
-});
-
-//join council route
-app.get("/views/forms/Join council form", (req, res) => {
-  res.render("join", { title: "Join Student Council" });
-});
-
-app.get("/eventPage", (req, res) => {
-  res.render("Events", { isLoggedIn: true });
-});
-
-app.get("/userPage", isLoggedIn, async (req, res) => {
-  const { enrollment, username, email, phone } = jwt.verify(
-    req.cookies.token,
-    process.env.JWT_SECRET
-  );
-  res.render("user", { enrollment, username, email, phone });
-});
-
-app.get("/error", (req, res) => {
-  res.render("error", { title: "error:404" });
-});
+app.use("/council", council);
+app.use("/suggestion", suggestion);
 
 
-app.use((req, res, next) => {
-  res.status(404).render("error", { title: "Page Not Found" });
-  next();
-});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
