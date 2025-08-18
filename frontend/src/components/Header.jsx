@@ -3,7 +3,6 @@ import { RiMenuLine, RiCloseLine, RiUser3Line } from "react-icons/ri";
 import { NavLink, useNavigate } from "react-router-dom";
 import useHideOnScroll from "../hooks/useHideOnScroll";
 import assets from "../data/assets.json";
-import { auth } from "../firebase";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,13 +19,29 @@ export default function Header() {
     { name: "Gallery", href: "/gallery" },
   ];
 
+  // user fetch from backend
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe();
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/auth/auth-check", { credentials: "include" });
+
+        console.log(res.status);
+        if (res.ok) {
+          const data = await res.json();
+          setUser(data);
+        } else {
+          setUser(null);
+        }
+      } catch (err) {
+        console.error("Error fetching user:", err);
+        setUser(null);
+      }
+    };
+
+    fetchUser();
   }, []);
 
+  // handle resize
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 768);
@@ -36,6 +51,7 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // body scroll lock for mobile menu
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
@@ -71,7 +87,9 @@ export default function Header() {
                     to={link.href}
                     className={({ isActive }) =>
                       `transition-colors duration-300 text-xl relative px-1 ${
-                        isActive ? "text-red-500 text-2xl font-bold" : "hover:text-red-400"
+                        isActive
+                          ? "text-red-500 text-2xl font-bold"
+                          : "hover:text-red-400"
                       }`
                     }
                   >
@@ -89,9 +107,9 @@ export default function Header() {
                   onClick={() => navigate("/userProfile")}
                   className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                 >
-                  {user.photoURL ? (
+                  {user.avatar ? (
                     <img
-                      src={user.photoURL}
+                      src={user.avatar}
                       alt="User"
                       className="w-full h-full rounded-full object-cover"
                     />
@@ -121,12 +139,12 @@ export default function Header() {
             {menuOpen ? <RiCloseLine /> : <RiMenuLine />}
           </button>
         )}
-        
       </nav>
 
       {/* Mobile Sidebar */}
       {!isDesktop && (
         <>
+          {/* Overlay */}
           <div
             className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300 ${
               menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
@@ -134,6 +152,7 @@ export default function Header() {
             onClick={() => setMenuOpen(false)}
           ></div>
 
+          {/* Sidebar */}
           <div
             className={`fixed top-0 right-0 h-full w-4/5 sm:w-2/3 md:w-1/2 bg-[#111] shadow-2xl z-50 
             transform transition-transform duration-500 ${
@@ -164,9 +183,9 @@ export default function Header() {
                   }}
                   className="flex items-center gap-2 px-5 py-2 bg-white/10 hover:bg-white/20 rounded-lg font-medium transition-colors"
                 >
-                  {user.photoURL ? (
+                  {user.avatar ? (
                     <img
-                      src={user.photoURL}
+                      src={user.avatar}
                       alt="User"
                       className="w-8 h-8 mr-4 rounded-full object-cover"
                     />
@@ -178,7 +197,7 @@ export default function Header() {
               ) : (
                 <button
                   onClick={() => {
-                    navigate("/login");
+                    navigate("/login"); // ✅ यहाँ पर login click होते ही redirect होगा
                     setMenuOpen(false);
                   }}
                   className="flex items-center gap-2 px-6 py-2 bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg font-semibold transition-colors"

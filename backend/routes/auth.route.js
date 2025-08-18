@@ -6,6 +6,24 @@ const moment = require("moment");
 const userModel = require("../models/user.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
+const authMiddleware = async (req, res, next) => {
+  try {
+    const token = req.cookies.token || req.headers["authorization"]?.split(" ")[1];
+
+    if (!token) {
+      return res.status(401).json({ success: false, message: "No token, authorization denied" });
+    }
+
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded; // attach decoded payload to request
+    next();
+  } catch (err) {
+    console.error("Auth error:", err.message);
+    return res.status(401).json({ success: false, message: "Invalid or expired token" });
+  }
+};
+
 
 router.post("/register", async (req, res) => {
   try {
@@ -84,44 +102,44 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  res.cookie('token', "");
-  req.flash('success_msg', 'You are now logged out');
-  res.redirect("/login");
+  try {
+    // Clear the JWT cookie
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "You are now logged out",
+    });
+  } catch (err) {
+    console.error("Logout error:", err.message);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to logout",
+    });
+  }
 });
 
 
-router.post("/user", async (req, res) => {
+
+router.get("/auth-check", authMiddleware, async (req, res) => {
   try {
-    const { email } = req.body;
-
-    if (!email) {
-      return res.status(400).json({ error: "Email is required" });
-    }
-
-    // Find user by email
-    const user = await userModel.findOne({ email }).select("-dob -__v");
+    const user = await userModel.findById(req.user.id).select("-dob"); // exclude hashed dob
     if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      return res.status(404).json({ success: false, message: "User not found" });
     }
 
-    // Generate JWT token
-    const { username, enrollment, phone } = user;
-    const token = jwt.sign(
-      { username, enrollment, email, phone },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" } // optional expiry
-    );
-
-    // Send cookie + response
-    res.cookie("token", token, {
-      httpOnly: true,  // prevent JS access
-      secure: process.env.NODE_ENV === "production", // only https in prod
-      sameSite: "strict"
+    return res.status(200).json({
+      success: true,
+      message: "User is authenticated",
+      user,
     });
-
-    res.json({ username, enrollment, email, phone });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("Auth check error:", err.message);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 });
 

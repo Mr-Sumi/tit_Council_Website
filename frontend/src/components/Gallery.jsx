@@ -70,13 +70,11 @@ export default function Gallery() {
   const toggleLike = (e, id) => {
     e.stopPropagation();
 
-    // Trigger animation always
     setAnimatingHearts((prev) => ({ ...prev, [id]: true }));
     setTimeout(() => {
       setAnimatingHearts((prev) => ({ ...prev, [id]: false }));
     }, 600);
 
-    // If already liked from this device, don't increase count
     if (likedImages[id]) return;
 
     setLikes((prev) => {
@@ -103,12 +101,12 @@ export default function Gallery() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-zinc-800 via-white to-indigo-800 bg-clip-text text-transparent mb-6"
-          >
+        >
           Event Gallery
         </motion.h2>
         <div className="mx-auto mt-3 w-40 h-1 rounded-full bg-gradient-to-r from-[#C8101A] via-[#FF4F01] to-[#FFF9D5] shadow-md" />
       </header>
-    <section className="py-16 px-6 bg-black">
+
       <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-12">
         Event Gallery
       </h2>

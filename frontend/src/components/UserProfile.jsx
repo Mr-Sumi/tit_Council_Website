@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Camera, Mail, Phone, MapPin, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase"; // ✅ Firebase auth
 
 export default function UserProfilePage() {
   const [profilePhoto, setProfilePhoto] = useState(null);
@@ -16,9 +15,23 @@ export default function UserProfilePage() {
   };
 
   const handleLogout = async () => {
-    await auth.signOut();
-    navigate("/login");
-  };
+    console.log("Logging out...");
+  try {
+    const res = await fetch("http://localhost:3000/auth/logout", {
+      method: "GET",
+      credentials: "include", // important so cookies are sent
+    });
+
+    if (res.ok) {
+      navigate("/");
+    } else {
+      console.error("Logout failed");
+    }
+  } catch (err) {
+    console.error("Error during logout:", err);
+  }
+};
+
 
   const user = {
     name: "John Doe",

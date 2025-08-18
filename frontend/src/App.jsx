@@ -17,6 +17,7 @@ import SuggestionForm from "./components/form/Suggestion"
 import AuthForm from "./components/form/AuthForm";
 import UserProfileRegistration from "./components/form/UserProfileRegistration"
 import ScrollToTop from "./hooks/ScrollToTop"; 
+import Login from "./components/form/login"
 import { AuthProvider } from "./context/AuthContext";
 
 
@@ -51,7 +52,7 @@ function App() {
             <Route path="/join" element={<JoinCouncil />} />
             <Route path="/suggestion" element={<SuggestionForm />} />
             <Route path="/ideas" element={<IdeaSubmissionForm />} />
-            <Route path="/login" element={<AuthForm />} />
+            <Route path="/login" element={<Login/>} />
             <Route path="/userProfile" element={<UserProfile />} />
             <Route path="/userProfileRegistration" element={<UserProfileRegistration />} />
           </Routes>
