@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Clubs() {
   return (
-    <main className="min-h-screen text-white flex flex-col items-center py-12 px-4 mb-6">
+    <main className="min-h-screen text-white flex flex-col items-center py-12 px-4  mb-6">
       <header className="w-full max-w-6xl text-center mb-8 px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

@@ -31,16 +31,16 @@
         "description": "The Dance Society is a platform for students to learn and practice dance. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
       },
       {
-        "name": "ELITE (Excellence & Leadership in Integrity, Tact, and Ethics)",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502251/DISCIpLINE_jt8ej5.png",
-        "link": "/club/Disipline",
-        "description": "ELITE is a platform for students to learn and practice discipline and leadership. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
-      },
-      {
         "name": "Drone Society",
         "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502267/DRONE_SOCIETY_ugfbt4.png",
         "link": "/club/drone",
         "description": "The Drone Society is a platform for students to learn and practice drone technology. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
+      },
+      {
+        "name": "ELITE (Excellence & Leadership in Integrity, Tact, and Ethics)",
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755432324/EV_2_ds7qci.png",
+        "link": "/club/Disipline",
+        "description": "ELITE is a platform for students to learn and practice discipline and leadership. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
       },
       {
         "name": "E.V. Club",
@@ -50,7 +50,7 @@
       },
       {
         "name": "Environment Club",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502261/RENEwAbLE_ENERGY_x7mjft.png",
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348666/ENVIRONMENT_cLUB_byfpyp.png",
         "link": "/club/Environment",
         "description": "The Environment Club is a platform for students to learn and practice environmental sustainability. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
       },
@@ -86,7 +86,7 @@
       },
       {
         "name": "NSS Unit",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502258/mUSIC_SOCIETY_m2wmom.png",
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502259/NSS_UNIT_qkyao0.png",
         "link": "/club/nss",
         "description": "The NSS Unit is a platform for students to learn and practice social service. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
       },
@@ -110,7 +110,7 @@
       },
       {
         "name": "WINGS (Women Inspiring Growth & Success)",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502263/Tech_WIZARDs_obkby8.png",
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348790/WINGS_odrbj6.png",
         "link": "/club/WINGS",
         "description": "WINGS is a platform for women to inspire growth and success. It is a place where students can come together to learn and grow. It is a place where students can come together to learn and grow."
       }

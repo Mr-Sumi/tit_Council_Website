@@ -108,6 +108,10 @@ export default function Gallery() {
         </motion.h2>
         <div className="mx-auto mt-3 w-40 h-1 rounded-full bg-gradient-to-r from-[#C8101A] via-[#FF4F01] to-[#FFF9D5] shadow-md" />
       </header>
+    <section className="py-16 px-6 bg-black">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-12">
+        Event Gallery
+      </h2>
 
       {/* Grid */}
       <div className="sm:columns-3 md:columns-4 lg:columns-5 gap-4 space-y-4">
