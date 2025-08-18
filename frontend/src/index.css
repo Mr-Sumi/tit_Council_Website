@@ -26,3 +26,7 @@
     animation: scroll 10s linear infinite;
   }
   
+  /* Conical / triangular shape */
+.clip-cone {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}

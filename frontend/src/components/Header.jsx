@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
-import {
-  RiMenuLine,
-  RiCloseLine,
-  RiUser3Line,
-  RiLogoutBoxRLine,
-} from "react-icons/ri";
+import { RiMenuLine, RiCloseLine, RiUser3Line } from "react-icons/ri";
 import { NavLink, useNavigate } from "react-router-dom";
 import useHideOnScroll from "../hooks/useHideOnScroll";
 import assets from "../data/assets.json";
-import { auth } from "../firebase"; // ✅ Firebase auth
+import { auth } from "../firebase";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,20 +20,12 @@ export default function Header() {
     { name: "Gallery", href: "/gallery" },
   ];
 
-  // ✅ Listen for auth state changes
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       setUser(currentUser);
     });
     return () => unsubscribe();
   }, []);
-
-  // ✅ Handle logout
-  const handleLogout = async () => {
-    await auth.signOut();
-    setMenuOpen(false);
-    navigate("/");
-  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,88 +36,75 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // ✅ Lock body scroll when mobile sidebar is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
 
   return (
     <>
-      {/* Navbar */}
       <nav
-        className={`fixed top-0 left-0 w-full flex justify-between items-center 
-        h-[10vh] px-4 sm:px-6 lg:px-12
-        bg-black/30 backdrop-blur-md text-white border-b border-white/10
+        className={`relative fixed top-0 left-0 w-full flex justify-between items-center 
+        h-[12vh] px-6 lg:px-12
+        bg-gradient-to-r from-black/40 via-black/30 to-black/40 backdrop-blur-md text-white border-b border-white/10
         transition-all duration-500 z-50
         ${showNav ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}
       >
         {/* Logo */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-3 sm:gap-4">
           <img
             src={assets.logos.councilLogo}
             alt="Council Logo"
-            className="h-10 sm:h-12 w-auto object-contain hover:scale-110 transition-transform duration-300"
+            className="h-12 sm:h-14 w-auto object-contain hover:scale-110 transition-transform duration-300"
           />
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-wide text-red-500 uppercase">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-wide text-red-500 uppercase">
             Student Council
           </h1>
         </div>
 
-        {/* Links (Desktop) */}
+        {/* Desktop Links */}
         {isDesktop && (
-          <div className="flex items-center gap-6 lg:gap-10">
-            <ul className="flex gap-6 lg:gap-10 font-medium text-gray-200 text-sm sm:text-base lg:text-lg">
+          <div className="flex items-center gap-8 lg:gap-12">
+            <ul className="flex gap-8 lg:gap-12 font-medium text-gray-200 text-base lg:text-lg">
               {links.map((link) => (
                 <li key={link.name} className="relative group">
                   <NavLink
                     to={link.href}
                     className={({ isActive }) =>
-                      `transition-colors duration-300 ${
-                        isActive
-                          ? "text-red-500 font-semibold"
-                          : "hover:text-red-400"
+                      `transition-colors duration-300 text-xl relative px-1 ${
+                        isActive ? "text-red-500 text-2xl font-bold" : "hover:text-red-400"
                       }`
                     }
                   >
                     {link.name}
+                    <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-red-500 transition-all duration-300 group-hover:w-full"></span>
                   </NavLink>
-                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-red-500 transition-all duration-300 group-hover:w-full"></span>
                 </li>
               ))}
             </ul>
 
-            {/* ✅ Auth Section */}
-            <div className="ml-4">
+            {/* Auth Section */}
+            <div className="ml-6">
               {user ? (
-                <div className="flex items-center gap-3 lg:gap-4">
-                  <button
-                    onClick={() => navigate("/profile")}
-                    className="flex items-center justify-center w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                  >
-                    {user.photoURL ? (
-                      <img
-                        src={user.photoURL}
-                        alt="User"
-                        className="w-full h-full rounded-full object-cover"
-                      />
-                    ) : (
-                      <RiUser3Line className="text-lg lg:text-xl" />
-                    )}
-                  </button>
-                  <button
-                    onClick={handleLogout}
-                    className="flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-red-500 hover:bg-red-600 rounded-lg font-medium transition-colors text-sm lg:text-base"
-                  >
-                    <RiLogoutBoxRLine className="text-lg lg:text-xl" />
-                    Logout
-                  </button>
-                </div>
+                <button
+                  onClick={() => navigate("/userProfile")}
+                  className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                >
+                  {user.photoURL ? (
+                    <img
+                      src={user.photoURL}
+                      alt="User"
+                      className="w-full h-full rounded-full object-cover"
+                    />
+                  ) : (
+                    <RiUser3Line className="text-xl lg:text-2xl" />
+                  )}
+                </button>
               ) : (
                 <button
                   onClick={() => navigate("/login")}
-                  className="flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-white/10 hover:bg-white/20 rounded-lg font-medium transition-colors text-sm lg:text-base"
+                  className="flex items-center gap-2 px-4 py-2 lg:px-5 lg:py-2.5 bg-white/10 hover:bg-white/20 rounded-lg font-medium transition-colors text-base lg:text-lg"
                 >
-                  <RiUser3Line className="text-lg lg:text-xl" />
+                  <RiUser3Line className="text-xl lg:text-2xl" />
                   Login
                 </button>
               )}
@@ -141,12 +115,13 @@ export default function Header() {
         {/* Mobile Menu Button */}
         {!isDesktop && (
           <button
-            className="text-2xl sm:text-3xl focus:outline-none hover:text-red-500 transition-colors"
+            className="text-3xl sm:text-4xl focus:outline-none hover:text-red-500 transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <RiCloseLine /> : <RiMenuLine />}
           </button>
         )}
+        
       </nav>
 
       {/* Mobile Sidebar */}
@@ -165,16 +140,14 @@ export default function Header() {
               menuOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            <div className="flex flex-col items-center mt-20 sm:mt-24 gap-6 sm:gap-8 text-base sm:text-lg font-medium text-gray-200">
+            <div className="flex flex-col items-center mt-24 gap-6 text-base sm:text-lg font-medium text-gray-200">
               {links.map((link) => (
                 <NavLink
                   key={link.name}
                   to={link.href}
                   className={({ isActive }) =>
                     `transition-colors duration-300 ${
-                      isActive
-                        ? "text-red-500 font-semibold"
-                        : "hover:text-red-400"
+                      isActive ? "text-red-500 font-semibold" : "hover:text-red-400"
                     }`
                   }
                   onClick={() => setMenuOpen(false)}
@@ -183,35 +156,25 @@ export default function Header() {
                 </NavLink>
               ))}
 
-              {/* ✅ Auth in Sidebar */}
               {user ? (
-                <>
-                  <button
-                    onClick={() => {
-                      navigate("/profile");
-                      setMenuOpen(false);
-                    }}
-                    className="flex items-center gap-2 px-5 py-2 bg-white/10 hover:bg-white/20 rounded-lg font-medium transition-colors"
-                  >
-                    {user.photoURL ? (
-                      <img
-                        src={user.photoURL}
-                        alt="User"
-                        className="w-8 h-8 rounded-full object-cover"
-                      />
-                    ) : (
-                      <RiUser3Line className="text-xl" />
-                    )}
-                    Profile
-                  </button>
-                  <button
-                    onClick={handleLogout}
-                    className="flex items-center gap-2 px-5 py-2 bg-red-500 hover:bg-red-600 rounded-lg font-medium transition-colors"
-                  >
-                    <RiLogoutBoxRLine className="text-xl" />
-                    Logout
-                  </button>
-                </>
+                <button
+                  onClick={() => {
+                    navigate("/userProfile");
+                    setMenuOpen(false);
+                  }}
+                  className="flex items-center gap-2 px-5 py-2 bg-white/10 hover:bg-white/20 rounded-lg font-medium transition-colors"
+                >
+                  {user.photoURL ? (
+                    <img
+                      src={user.photoURL}
+                      alt="User"
+                      className="w-8 h-8 mr-4 rounded-full object-cover"
+                    />
+                  ) : (
+                    <RiUser3Line className="text-xl" />
+                  )}
+                  Profile
+                </button>
               ) : (
                 <button
                   onClick={() => {
