@@ -1,4 +1,7 @@
-import React,{ useState } from "react";
+
+import React from "react";updt
+import { useState } from "react";
+import React,{ useState } from "react",
 import { motion } from "framer-motion";
 import { Users, Lock } from "lucide-react";
 import { RiCheckLine } from "react-icons/ri";
