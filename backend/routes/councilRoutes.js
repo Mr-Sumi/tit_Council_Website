@@ -43,8 +43,6 @@ router.post("/apply", upload.array("files", 3), async (req, res) => {
         }))
       : [];
 
-    console.log("✅ Processed Files:", uploadedFiles);
-
     // ✅ Save to MongoDB
     const application = new CouncilApplication({
       name,

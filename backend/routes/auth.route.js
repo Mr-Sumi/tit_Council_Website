@@ -176,6 +176,23 @@ router.get("/auth-check", authMiddleware, async (req, res) => {
 });
 
 
+router.get("/me", authMiddleware, async (req, res) => {
+  try {
+    const user = await userModel.findById(req.user.id).select("-dob"); // dob remove
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    return res.status(200).json({
+      success: true,
+      user,
+    });
+  } catch (err) {
+    console.error("Profile fetch error:", err.message);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+});
+
 
 
 module.exports = router;

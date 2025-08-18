@@ -1,10 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Camera, Mail, Phone, MapPin, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function UserProfilePage() {
   const [profilePhoto, setProfilePhoto] = useState(null);
+  const [user, setUser] = useState(null);   // user state
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  // Fetch user profile on mount
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/auth/me", {
+          method: "GET",
+          credentials: "include", // send cookies
+        });
+        if (res.ok) {
+          const data = await res.json();
+          console.log("User profile fetched successfully:", data);
+          setUser(data.user);
+        } else {
+          console.error("Failed to fetch user profile");
+          navigate("/login"); // if unauthorized, redirect
+        }
+      } catch (err) {
+        console.error("Error fetching profile:", err);
+        navigate("/auth/login");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, [navigate]);
 
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
@@ -16,33 +45,37 @@ export default function UserProfilePage() {
 
   const handleLogout = async () => {
     console.log("Logging out...");
-  try {
-    const res = await fetch("http://localhost:3000/auth/logout", {
-      method: "GET",
-      credentials: "include", // important so cookies are sent
-    });
+    try {
+      const res = await fetch("http://localhost:3000/auth/logout", {
+        method: "GET",
+        credentials: "include", // send cookies
+      });
 
-    if (res.ok) {
-      navigate("/");
-    } else {
-      console.error("Logout failed");
+      if (res.ok) {
+        navigate("/");
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (err) {
+      console.error("Error during logout:", err);
     }
-  } catch (err) {
-    console.error("Error during logout:", err);
-  }
-};
-
-
-  const user = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    phone: "+91 9876543210",
-    college: "ABC College",
-    branch: "Computer Science",
-    dob: "01 Jan 2000",
-    gender: "Male",
-    bio: "Passionate about coding, student council member, and innovation enthusiast.",
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen text-white">
+        Loading profile...
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="flex justify-center items-center h-screen text-white">
+        User not found
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex justify-center p-6 py-20">
@@ -71,8 +104,10 @@ export default function UserProfilePage() {
 
           {/* Name & Basic Info */}
           <div className="flex-1 text-center sm:text-left">
-            <h1 className="text-3xl font-bold text-white">{user.name}</h1>
-            <p className="text-white/70 mt-1">{user.branch} | {user.college}</p>
+            <h1 className="text-3xl font-bold text-white">{user.username}</h1>
+            <p className="text-white/70 mt-1">
+              {user.branch || "Branch N/A"} | {user.college || "College N/A"}
+            </p>
           </div>
         </div>
 
@@ -88,17 +123,19 @@ export default function UserProfilePage() {
           </div>
           <div className="flex items-center gap-2 bg-white/10 p-3 rounded-xl border border-white/20">
             <MapPin className="text-purple-400" />
-            <span className="text-white">{user.college}</span>
+            <span className="text-white">{user.college || "Not Provided"}</span>
           </div>
           <div className="flex items-center gap-2 bg-white/10 p-3 rounded-xl border border-white/20">
-            <span className="text-white">{user.dob} | {user.gender}</span>
+            <span className="text-white">
+              {user.dob || "DOB N/A"} | {user.gender || "Gender N/A"}
+            </span>
           </div>
         </div>
 
         {/* About / Bio */}
         <div className="bg-white/10 p-4 rounded-2xl border border-white/20">
           <h2 className="text-xl font-semibold text-white mb-2">About</h2>
-          <p className="text-white/70">{user.bio}</p>
+          <p className="text-white/70">{user.bio || "No bio provided."}</p>
         </div>
 
         {/* Actions */}
