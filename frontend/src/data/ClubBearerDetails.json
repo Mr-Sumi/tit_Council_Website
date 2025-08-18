@@ -2,13 +2,13 @@
     "clubs": [
       {
         "name": "Alumni Relation Committee",
-        "coordinator": { "name": "Darshal Jaitwar", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659736/Darshal_Jaitwar_a5tv7o.jpg" },
-        "secretary": { "name": "Priyanshu Modi", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755346447/IMG-20250816-WA0024_-_Priyanshu_Modi_iguju5.jpg" },
-        "assistant_secretary": { "name": "Harsh Tiwari", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505754/Harsh_Tiwari_ez8kwh.jpg" },
-        "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502264/Alumni_Relation_mp5xrs.png",
-        "mission": "To inspire, educate, and equip students with coding skills, fostering a community of innovative thinkers and collaborative problem solvers.",
-        "vision": "To create a vibrant community where students excel in coding, drive technological innovation, and shape the future through impactful solutions.",
-        "instagram_url": "https://www.instagram.com/alumnirelationcommittee_tit?igsh=NHVjbzZnZ2R1NDY5"
+  "coordinator": { "name": "Darshal Jaitwar", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659736/Darshal_Jaitwar_a5tv7o.jpg" },
+  "secretary": { "name": "Priyanshu Modi", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755346447/IMG-20250816-WA0024_-_Priyanshu_Modi_iguju5.jpg" },
+  "assistant_secretary": { "name": "Harsh Tiwari", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505754/Harsh_Tiwari_ez8kwh.jpg" },
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502264/Alumni_Relation_mp5xrs.png",
+  "mission": "To foster lifelong relationships between alumni and the institution, supporting student growth and community engagement.",
+  "vision": "To build a strong, supportive alumni network that inspires current students and advances the institution’s legacy.",
+  "instagram_url": "https://www.instagram.com/alumnirelationcommittee_tit?igsh=NHVjbzZnZ2R1NDY5"
       },
       {
         "name": "Coding Club",
@@ -22,6 +22,7 @@
       },
       {
         "name": "Cultural & Event Cell",
+<<<<<<< HEAD
         "coordinator": { "name": "Madhur Verma", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505753/Madhur_Verma_iuilhk.jpg" },
         "secretary": { "name": "Yash Gupta", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505765/Yash_Gupta_pw1znt.jpg" },
   "assistant_secretary": { "name": "Unknown", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502266/CULTURAL_EvENT_abnyuq.png" },
@@ -29,6 +30,15 @@
         "mission": "To make sure everyone feels connected and appreciated through events and celebrations of diverse cultures in our college.",
         "vision": "To create fun, inclusive events and projects that help us understand and celebrate cultural diversity.",
         "instagram_url": "https://www.instagram.com/tit_cultural/profilecard/?igsh=eXJyNzJzbjVza2Jq"
+=======
+  "coordinator": { "name": "Madhur Verma", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505753/Madhur_Verma_iuilhk.jpg" },
+  "secretary": { "name": "Yash Gupta", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505765/Yash_Gupta_pw1znt.jpg" },
+  "assistant_secretary": { "name": "Unknown", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502266/CULTURAL_EvENT_abnyuq.png" },
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502266/CULTURAL_EvENT_abnyuq.png",
+  "mission": "To celebrate and promote cultural diversity by organizing engaging events and fostering creativity on campus.",
+  "vision": "To be the heart of campus life, uniting students through vibrant cultural experiences and memorable events.",
+  "instagram_url": "https://www.instagram.com/tit_cultural/profilecard/?igsh=eXJyNzJzbjVza2Jq"
+>>>>>>> 6bff94fa55a0bd1b7207366b5396233282206c32
       },
       {
         "name": "Cyber Cop Cell",
@@ -36,8 +46,8 @@
         "secretary": { "name": "Priyanka Priyadarshini", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505753/Priyanka_priydarshini_c4ndgh.jpg" },
         "assistant_secretary": { "name": "Alok Raj", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755347635/clg_photo_-_Alok_Raj_thiel8.jpg" },
         "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/cyber_COP_npmtvn.png",
-        "mission": "To ensure online safety awareness and cybersecurity among students.",
-        "vision": "To create a secure digital campus community.",
+        "mission": "To promote cybersecurity awareness and empower students to protect themselves in the digital world.",
+        "vision": "To establish a digitally safe and informed campus community.",
         "instagram_url": "https://www.instagram.com/cybercopcell?igsh=OXAxc3QxeHo3andv"
       },
       {
@@ -134,13 +144,19 @@
         "name": "Music Society",
         "coordinator": { "name": "Surya Soni", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755347678/85ed227c-55a3-4a34-ac6c-9908b3f5e5ef.png" },
         "secretary": { "name": "Lochan Singoria", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755347752/IMG_20250430_214046_-_Lochan_Singoria_1_mspncu.jpg" },
+<<<<<<< HEAD
   "assistant_secretary": { "name": "Ankur Anand", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502258/Music_Society_kd8iyt.png" },
         "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502258/Music_Society_kd8iyt.png",
+=======
+  "assistant_secretary": { "name": "Ankur Anand", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755347808/IMG_20250514_194853_-_Ankur_Anand_seigjl.jpg" },
+        "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502258/mUSIC_SOCIETY_m2wmom.png",
+>>>>>>> 6bff94fa55a0bd1b7207366b5396233282206c32
         "mission": "To foster musical talent and appreciation among students.",
         "vision": "To create a vibrant community celebrating diverse musical expressions.",
         "instagram_url": "https://www.instagram.com/music_club_tit?igsh=MTNkbzIzNm1kZ2tz"
       },
       {
+<<<<<<< HEAD
         "name": "NSS Unit",
         "coordinator": {"name": "Roopak Masakare", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659751/Screenshot_2024_0715_205509_-_ROOPAK_MASKARE_gjmjia.jpg"},
         "secretary": {"name": "Abhishek Shukla","photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755347632/IMG_5687_-_Abhishek_Shukla_fdprxe.jpg"},
@@ -156,12 +172,43 @@
         "secretary": { "name": "Ankit Soni", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348012/Ankit_Soni_1_1_1_jycicm.jpg" },
   "assistant_secretary": { "name": "Neha Pandey", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502262/Renewable_Energy_Club_rih4yq.png" },
         "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502262/Renewable_Energy_Club_rih4yq.png",
+=======
+        "name": "NSS",
+        "coordinator": { "name": "Roopak Maskre", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659751/Screenshot_2024_0715_205509_-_ROOPAK_MASKARE_gjmjia.jpg" },
+        "secretary": { "name": "Abhishek Shukla", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755347632/IMG_5687_-_Abhishek_Shukla_fdprxe.jpg" },
+  "assistant_secretary": { "name": "Aarya Swami", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755347912/IMG-20250430-WA0030_-_Aarya_Swami_nkabmq.jpg" },
+        "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502259/NSS_UNIT_qkyao0.png",
+        "mission": "To promote social service, community engagement, and volunteerism.",
+        "vision": "To inspire students to contribute positively to society.",
+        "instagram_url": "https://www.instagram.com/nss_tit?igsh=MTRrcGZ5aG1lZ3Zlbg=="
+      },
+      {
+        "name": "Renewable Energy Club",
+        "coordinator": { "name": "Hemant Khapariya", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502259/NSS_UNIT_qkyao0.png" },
+        "secretary": { "name": "Pranav Kumar", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348149/IMG-20250506-WA0002_-_Pranav_Singh_bxh1qy.jpg" },
+  "assistant_secretary": { "name": "", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502259/NSS_UNIT_qkyao0.png" },
+        "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502259/NSS_UNIT_qkyao0.png",
+>>>>>>> 6bff94fa55a0bd1b7207366b5396233282206c32
         "mission": "To promote renewable energy technologies and awareness.",
         "vision": "To lead initiatives in sustainable energy solutions.",
         "instagram_url": "https://www.instagram.com/renewableenergy_club_tit?igsh=MTJ4bTR3ZjA1bjJ6"
       },
+            {
+              "name": "Robotics Club",
+              "coordinator": {"name": "Saurabh Kumar Jha","photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755347628/1747222466523_-_Sourabh_Kumar_Jha_c1gtyo.jpg"},
+              "secretary": {
+                "name": "Ayan Khan", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/c_crop,ar_3:4/v1755348149/Screenshot_2024-09-19-23-56-47-277_com.miui.gallery_-_Ayan_Khan_r5duvm.jpg" },
+              "assistant_secretary": {
+                "name": "Sakshi Pandey", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502262/RObOTICS_CLUB_zuu4q1.png"  },
+              "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502262/RObOTICS_CLUB_zuu4q1.png",
+              "mission": "To foster innovation and learning in robotics and automation.",
+              "vision": "To be a center of excellence in robotics education and research.",
+              "instagram_url": "https://www.instagram.com/tit_robotics?igsh=OXVzbjMxMDI2Z21q"
+            },
+
       {
         "name": "Tech Wizard Club",
+<<<<<<< HEAD
         "coordinator": { "name": "Aditya Verma", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348092/Aditya_Verma_1_1_1_xyfljp.jpg" },
         "secretary": { "name": "Sahil Sharma", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348113/Sahil_Sharma_1_1_1_wz7vbc.jpg" },
   "assistant_secretary": { "name": "Ritika Joshi", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502263/Tech_Wizard_Club_ug2x8y.png" },
@@ -169,11 +216,24 @@
         "mission": "To enhance technical skills and foster innovation among students.",
         "vision": "To build a technologically empowered student community.",
         "instagram_url": "https://www.instagram.com/tech_wizard_club_tit?igsh=MTJ4bTR3ZjA1bjJ6"
+=======
+        "coordinator": { "name": "Priyanshu Kumar", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755346450/IMG_20250815_165807_-_Priyanshu_Kumar_ldyoki.jpg" },
+        "secretary": { "name": "Rishu Kumar", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502263/Tech_WIZARDs_obkby8.png" },
+        "assistant_secretary": { "name": "Himanshu Kumar", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755346448/Snapchat-1424682138_-_Himanshu_Kumar_igd4sk.jpg" },
+        "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502263/Tech_WIZARDs_obkby8.png",
+        "mission": "To empower students with advanced technical skills and knowledge.",
+        "vision": "To be a hub for tech enthusiasts and innovators.",
+        "instagram_url": "https://www.instagram.com/tech_wizard_tit?igsh=dGNkOWV5cjl6ODRn"
+>>>>>>> 6bff94fa55a0bd1b7207366b5396233282206c32
       },
       {
         "name": "WINGS (Women in Growth & Skill)",
         "coordinator": { "name": "Palak Soni", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348790/WINGS_odrbj6.png" },
+<<<<<<< HEAD
         "secretary": { "name": "  ", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348790/WINGS_odrbj6.png" },
+=======
+        "secretary": { "name": " ", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348790/WINGS_odrbj6.png" },
+>>>>>>> 6bff94fa55a0bd1b7207366b5396233282206c32
   "assistant_secretary": { "name": " ", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348790/WINGS_odrbj6.png" },
         "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348790/WINGS_odrbj6.png",
         "mission": "To empower women and develop leadership skills among female students.",
