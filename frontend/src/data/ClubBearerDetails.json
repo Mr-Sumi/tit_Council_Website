@@ -2,13 +2,13 @@
     "clubs": [
       {
         "name": "Alumni Relation Committee",
-        "coordinator": { "name": "Darshal Jaitwar", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659736/Darshal_Jaitwar_a5tv7o.jpg" },
-        "secretary": { "name": "Priyanshu Modi", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755346447/IMG-20250816-WA0024_-_Priyanshu_Modi_iguju5.jpg" },
-        "assistant_secretary": { "name": "Harsh Tiwari", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505754/Harsh_Tiwari_ez8kwh.jpg" },
-        "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502264/Alumni_Relation_mp5xrs.png",
-        "mission": "To inspire, educate, and equip students with coding skills, fostering a community of innovative thinkers and collaborative problem solvers.",
-        "vision": "To create a vibrant community where students excel in coding, drive technological innovation, and shape the future through impactful solutions.",
-        "instagram_url": "https://www.instagram.com/alumnirelationcommittee_tit?igsh=NHVjbzZnZ2R1NDY5"
+  "coordinator": { "name": "Darshal Jaitwar", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659736/Darshal_Jaitwar_a5tv7o.jpg" },
+  "secretary": { "name": "Priyanshu Modi", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755346447/IMG-20250816-WA0024_-_Priyanshu_Modi_iguju5.jpg" },
+  "assistant_secretary": { "name": "Harsh Tiwari", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505754/Harsh_Tiwari_ez8kwh.jpg" },
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502264/Alumni_Relation_mp5xrs.png",
+  "mission": "To foster lifelong relationships between alumni and the institution, supporting student growth and community engagement.",
+  "vision": "To build a strong, supportive alumni network that inspires current students and advances the institution’s legacy.",
+  "instagram_url": "https://www.instagram.com/alumnirelationcommittee_tit?igsh=NHVjbzZnZ2R1NDY5"
       },
       {
         "name": "Coding Club",
@@ -22,23 +22,23 @@
       },
       {
         "name": "Cultural & Event Cell",
-        "coordinator": { "name": "Madhur Verma", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505753/Madhur_Verma_iuilhk.jpg" },
-        "secretary": { "name": "Yash Gupta", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505765/Yash_Gupta_pw1znt.jpg" },
-        "assistant_secretary": { "name": "Unknown", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png" },
-        "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502266/CULTURAL_EvENT_abnyuq.png",
-        "mission": "To make sure everyone feels connected and appreciated through events and celebrations of diverse cultures in our college.",
-        "vision": "To create fun, inclusive events and projects that help us understand and celebrate cultural diversity.",
-        "instagram_url": "https://www.instagram.com/tit_cultural/profilecard/?igsh=eXJyNzJzbjVza2Jq"
+  "coordinator": { "name": "Madhur Verma", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505753/Madhur_Verma_iuilhk.jpg" },
+  "secretary": { "name": "Yash Gupta", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505765/Yash_Gupta_pw1znt.jpg" },
+  "assistant_secretary": { "name": "Unknown", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743668588/image_brk5nr.png" },
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502266/CULTURAL_EvENT_abnyuq.png",
+  "mission": "To celebrate and promote cultural diversity by organizing engaging events and fostering creativity on campus.",
+  "vision": "To be the heart of campus life, uniting students through vibrant cultural experiences and memorable events.",
+  "instagram_url": "https://www.instagram.com/tit_cultural/profilecard/?igsh=eXJyNzJzbjVza2Jq"
       },
       {
         "name": "Cyber Cop Cell",
-        "coordinator": { "name": "Krishna Jadav", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659742/Krishna_Jadhav_r7rmfu.jpg" },
-        "secretary": { "name": "Priyanka Priyadarshini", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505753/Priyanka_priydarshini_c4ndgh.jpg" },
-        "assistant_secretary": { "name": "Alok Raj", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755347635/clg_photo_-_Alok_Raj_thiel8.jpg" },
-        "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/cyber_COP_npmtvn.png",
-        "mission": "To ensure online safety awareness and cybersecurity among students.",
-        "vision": "To create a secure digital campus community.",
-        "instagram_url": "https://www.instagram.com/cybercopcell?igsh=OXAxc3QxeHo3andv"
+  "coordinator": { "name": "Krishna Jadav", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659742/Krishna_Jadhav_r7rmfu.jpg" },
+  "secretary": { "name": "Priyanka Priyadarshini", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747505753/Priyanka_priydarshini_c4ndgh.jpg" },
+  "assistant_secretary": { "name": "Alok Raj", "photo_src": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755347635/clg_photo_-_Alok_Raj_thiel8.jpg" },
+  "club_logo": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/cyber_COP_npmtvn.png",
+  "mission": "To promote cybersecurity awareness and empower students to protect themselves in the digital world.",
+  "vision": "To establish a digitally safe and informed campus community.",
+  "instagram_url": "https://www.instagram.com/cybercopcell?igsh=OXAxc3QxeHo3andv"
       },
       {
         "name": "Dance Society",
