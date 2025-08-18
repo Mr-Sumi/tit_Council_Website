@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
 const events = [
-  { title: "Saffron Sundown", date: "April 15, 2025", desc: "Join us for an electrifying tech fest...", link: "/eventPage" },
-  { title: "Hackathon 2025", date: "May 5, 2025", desc: "Showcase your coding skills...", link: "/eventPage" },
+  { title: "Code Clash", date: "To be Announced", desc: "", link: "#" },
+  { title: "Cultural Fest", date: "To be Announced", desc: "", link: "#" },
 ];
 
 export default function UpcomingEvents() {

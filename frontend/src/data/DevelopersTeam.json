@@ -17,7 +17,7 @@
         "name": "Adarsh Raj",
         "role": "Backend Developer & Database Expert",
         "quote": "APIs that just won't quit.",
-        "img": "/image folder/club members/IMG_20241031_014414 - Adarsh Raj.jpg",
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659739/IMG_20241031_014414_-_Adarsh_Raj_dq1pap.jpg",
         "social": {
           "twitter": "https://x.com/Adarshsrivastw?t=FzrgtJ2fH4Gz9tE60ZXKNg&s=08",
           "instagram": "https://www.instagram.com/adarsh95765/",
@@ -69,7 +69,7 @@
         "name": "Palak Bhargav",
         "role": "Frontend Developer & UX Designer",
         "quote": "Pixel-perfect and accessible.",
-        "img": "/image folder/club members/palak.jpg",
+        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755538233/palak_bhargav_tm8bhk.jpg",
         "social": {
           "twitter": "https://x.com/PalakBhargav220",
           "instagram": "https://www.instagram.com/___palak__1025/",
