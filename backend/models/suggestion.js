@@ -45,4 +45,4 @@ const suggestionSchema = new mongoose.Schema(
 const Suggestion =
   mongoose.models.Suggestion || mongoose.model("Suggestion", suggestionSchema);
 
-export default Suggestion;
+exports.default = Suggestion;
