@@ -89,4 +89,43 @@ router.get("/logout", (req, res) => {
   res.redirect("/login");
 });
 
+
+router.post("/user", async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ error: "Email is required" });
+    }
+
+    // Find user by email
+    const user = await userModel.findOne({ email }).select("-dob -__v");
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Generate JWT token
+    const { username, enrollment, phone } = user;
+    const token = jwt.sign(
+      { username, enrollment, email, phone },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" } // optional expiry
+    );
+
+    // Send cookie + response
+    res.cookie("token", token, {
+      httpOnly: true,  // prevent JS access
+      secure: process.env.NODE_ENV === "production", // only https in prod
+      sameSite: "strict"
+    });
+
+    res.json({ username, enrollment, email, phone });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+
+
 module.exports = router;
