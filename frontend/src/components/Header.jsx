@@ -70,7 +70,7 @@ export default function Header() {
     <>
       <nav
         className={`fixed top-0 left-0 w-full flex justify-between items-center 
-        h-[12vh] px-6 lg:px-12
+        h-[12vh] px-6 lg:px-12 uppercase
         bg-gradient-to-r from-black/80 via-gray-900/70 to-black/80 backdrop-blur-xl text-white border-b border-white/20
         shadow-2xl shadow-black/30
         transition-all duration-700 ease-in-out z-50
@@ -165,7 +165,7 @@ export default function Header() {
 
           {/* Sidebar */}
           <div
-            className={`fixed top-0 right-0 h-full w-4/5 sm:w-2/3 md:w-1/2 bg-gradient-to-b from-gray-900/95 via-black/90 to-gray-900/95 backdrop-blur-xl shadow-2xl shadow-black/50 z-50 
+            className={`fixed top-0 right-0 h-full w-4/5 sm:w-2/3 md:w-1/2 bg-gradient-to-b from-gray-900/95 via-black/90 to-gray-900/95 backdrop-blur-xl shadow-2xl shadow-black/50 z-50 uppercase
             transform transition-transform duration-500 ${
               menuOpen ? "translate-x-0" : "translate-x-full"
             }`}

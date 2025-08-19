@@ -53,7 +53,7 @@ function App() {
       <AuthProvider>
         <Header />
         <ScrollToTop />
-        <main className="flex-grow bg-gradient-to-b from-[#000] to-[#0f1724] relative">
+        <main className="flex-grow bg-gradient-to-b from-[#000] to-[#0f1724] relative pt-25">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/clubs" element={<Clubs />} />
