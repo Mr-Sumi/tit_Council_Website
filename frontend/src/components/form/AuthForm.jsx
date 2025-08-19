@@ -17,7 +17,7 @@ export default function AuthForm() {
 
       console.log(auth.currentUser.email);
 
-      let response = await fetch("http://Api.atudentcouncil.info/auth/user", {
+      let response = await fetch("https://Api.atudentcouncil.info/auth/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
