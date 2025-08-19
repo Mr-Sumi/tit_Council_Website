@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import useHideOnScroll from "../hooks/useHideOnScroll";
 import assets from "../data/assets.json";
 
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(() =>
@@ -77,7 +78,10 @@ export default function Header() {
         ${showNav ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}
       >
         {/* Logo */}
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div 
+          className="flex items-center gap-3 sm:gap-4 cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           <img
             src={assets.logos.councilLogo}
             alt="Council Logo"
@@ -87,6 +91,7 @@ export default function Header() {
             Student Council
           </h1>
         </div>
+
 
         {/* Desktop Links */}
         {isDesktop && (
