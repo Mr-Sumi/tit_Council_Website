@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { RiMenuLine, RiCloseLine, RiUser3Line } from "react-icons/ri";
 import { NavLink, useNavigate } from "react-router-dom";
 import useHideOnScroll from "../hooks/useHideOnScroll";
@@ -7,7 +6,9 @@ import assets from "../data/assets.json";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth >= 768 : true
+  );
   const [user, setUser] = useState(null);
   const showNav = useHideOnScroll(5);
   const navigate = useNavigate();
@@ -20,13 +21,15 @@ export default function Header() {
     { name: "Gallery", href: "/gallery" },
   ];
 
-  // user fetch from backend
+  // ✅ fetch user from backend
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("https://Api.atudentcouncil.info/auth/auth-check", { credentials: "include" });
+        const res = await fetch(
+          "https://api.atudentcouncil.info/auth/auth-check",
+          { credentials: "include" }
+        );
 
-        console.log(res.status);
         if (res.ok) {
           const data = await res.json();
           setUser(data);
@@ -42,28 +45,35 @@ export default function Header() {
     fetchUser();
   }, []);
 
-  // handle resize
+  // ✅ handle resize
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
-      if (window.innerWidth >= 768) setMenuOpen(false);
+      const desktop = window.innerWidth >= 768;
+      setIsDesktop(desktop);
+      if (desktop) setMenuOpen(false);
     };
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // body scroll lock for mobile menu
+  // ✅ body scroll lock for mobile menu
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+    if (menuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
   }, [menuOpen]);
 
   return (
     <>
       <nav
-        className={`relative fixed top-0 left-0 w-full flex justify-between items-center 
+        className={`fixed top-0 left-0 w-full flex justify-between items-center 
         h-[12vh] px-6 lg:px-12
-        bg-gradient-to-r from-black/40 via-black/30 to-black/40 backdrop-blur-md text-white border-b border-white/10
-        transition-all duration-500 z-50
+        bg-gradient-to-r from-black/80 via-gray-900/70 to-black/80 backdrop-blur-xl text-white border-b border-white/20
+        shadow-2xl shadow-black/30
+        transition-all duration-700 ease-in-out z-50
         ${showNav ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}
       >
         {/* Logo */}
@@ -155,7 +165,7 @@ export default function Header() {
 
           {/* Sidebar */}
           <div
-            className={`fixed top-0 right-0 h-full w-4/5 sm:w-2/3 md:w-1/2 bg-[#111] shadow-2xl z-50 
+            className={`fixed top-0 right-0 h-full w-4/5 sm:w-2/3 md:w-1/2 bg-gradient-to-b from-gray-900/95 via-black/90 to-gray-900/95 backdrop-blur-xl shadow-2xl shadow-black/50 z-50 
             transform transition-transform duration-500 ${
               menuOpen ? "translate-x-0" : "translate-x-full"
             }`}
@@ -198,7 +208,7 @@ export default function Header() {
               ) : (
                 <button
                   onClick={() => {
-                    navigate("/login"); // ✅ यहाँ पर login click होते ही redirect होगा
+                    navigate("/login");
                     setMenuOpen(false);
                   }}
                   className="flex items-center gap-2 px-6 py-2 bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg font-semibold transition-colors"
