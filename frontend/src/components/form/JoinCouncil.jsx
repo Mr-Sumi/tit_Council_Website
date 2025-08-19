@@ -106,9 +106,15 @@ const handleSubmit = async (e) => {
     files.forEach((file) => formDataWithFiles.append("files", file));
 
     // ✅ Send request before showing success
-    await axios.post("https://api.studentcouncil.info/council/apply", formDataWithFiles, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+  await axios.post(
+  "https://api.studentcouncil.info/council/apply",
+  formDataWithFiles,
+  {
+    headers: { "Content-Type": "multipart/form-data" },
+    withCredentials: true, // 🔑 important for cookies/session
+  }
+);
+
 
     setAlert({ open: true, message: "Form submitted successfully!", type: "success" });
 
