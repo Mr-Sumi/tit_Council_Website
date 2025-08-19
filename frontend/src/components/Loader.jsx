@@ -30,7 +30,7 @@ export default function Loader() {
     let messageTimerId = null;
     let progressAnimationId = null;
     let progressValue = 0;
-    const maxPreloadMs = 10000;
+    const maxPreloadMs = 5000; // Reduced from 10s to 5s
     let preloaderFinished = false;
 
     // Letter animation delays
@@ -86,19 +86,41 @@ export default function Loader() {
       }, 300);
     };
 
-    window.addEventListener("load", () => {
-      setProgress(100);
-      completeAndHide();
-    }, { once: true });
+    // Multiple completion triggers to prevent getting stuck
+    const completeTriggers = [
+      // Window load event
+      () => window.addEventListener("load", () => {
+        setProgress(100);
+        completeAndHide();
+      }, { once: true }),
+      
+      // DOMContentLoaded as backup
+      () => document.addEventListener("DOMContentLoaded", () => {
+        setProgress(95);
+      }, { once: true }),
+      
+      // Timeout fallback
+      () => setTimeout(() => {
+        setProgress(100);
+        completeAndHide();
+      }, maxPreloadMs),
+      
+      // Additional safety timeout
+      () => setTimeout(() => {
+        if (!preloaderFinished) {
+          console.warn("Loader timeout reached, forcing completion");
+          completeAndHide();
+        }
+      }, maxPreloadMs + 2000)
+    ];
 
-    setTimeout(() => {
-      setProgress(100);
-      completeAndHide();
-    }, maxPreloadMs);
+    // Execute all completion triggers
+    completeTriggers.forEach(trigger => trigger());
 
     return () => {
       clearInterval(messageTimerId);
       cancelAnimationFrame(progressAnimationId);
+      unlockScroll();
     };
   }, []);
 
@@ -120,6 +142,10 @@ export default function Loader() {
               src="https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502420/Student_council_vjzt0j.png"
               alt="Student Council Logo"
               className="w-[90px] h-[90px] object-contain drop-shadow-[0_0_8px_rgba(78,205,196,0.3)] opacity-0 animate-fadeInImage"
+              onError={(e) => {
+                console.warn("Failed to load loader logo");
+                e.target.style.display = "none";
+              }}
             />
           </div>
         </div>

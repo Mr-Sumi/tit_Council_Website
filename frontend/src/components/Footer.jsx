@@ -27,11 +27,11 @@ export default function Footer() {
       <div className="relative z-10 max-w-[90vw] w-[95%] mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* About Us */}
         <div>
-          <h3 className="flex items-center gap-2 text-white text-xl font-bold uppercase tracking-wide relative pb-3 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-14 after:h-[3px] after:bg-gradient-to-r after:from-[#C8101A] after:to-[#FF4F01]">
+          <h3 className="flex items-center gap-2 text-white text-xl font-bold uppercase tracking-wide relative pb-3 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-40 after:h-[3px] after:bg-gradient-to-r after:from-[#C8101A] after:to-[#FF4F01]">
             <FaInfo className="text-[#FF4F01]" />
             About Us
           </h3>
-          <p className="text-gray-400 text-sm leading-relaxed mt-4">
+          <p className="text-gray-400 text-lg leading-relaxed mt-4">
             The Student Council is dedicated to fostering leadership, organizing
             engaging events, and creating memorable experiences for all
             students. Join us in making a difference in our college community.
@@ -68,7 +68,7 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h3 className="flex items-center gap-2 text-white text-xl font-bold uppercase tracking-wide relative pb-3 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-14 after:h-[3px] after:bg-gradient-to-r after:from-[#FF4F01] after:to-[#FFF9D5]">
+          <h3 className="flex items-center gap-2 text-white text-xl font-bold uppercase tracking-wide relative pb-3 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-45 after:h-[3px] after:bg-gradient-to-r after:from-[#C8101A] after:to-[#FF4F01]">
             <PiLinkSimpleBold className="text-[#FF4F01]" />
             Quick Links
           </h3>
@@ -84,11 +84,11 @@ export default function Footer() {
 
         {/* Contact Info */}
         <div>
-          <h3 className="flex items-center gap-2 text-white text-xl font-bold uppercase tracking-wide relative pb-3 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-14 after:h-[3px] after:bg-gradient-to-r after:from-[#C8101A] after:to-[#FF4F01]">
+          <h3 className="flex items-center gap-2 text-white text-xl font-bold uppercase tracking-wide relative pb-3 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-55 after:h-[3px] after:bg-gradient-to-r after:from-[#C8101A] after:to-[#FF4F01]">
             <FaPhoneAlt className="text-[#FF4F01]" />
             Contact Info
           </h3>
-          <ul className="mt-5 space-y-4 text-sm">
+          <ul className="mt-5 space-y-4 text-xl">
             <li className="flex gap-3 items-start group">
               <FaMapMarkerAlt className="text-[#FF4F01] flex-shrink-0 mt-1 group-hover:scale-125 transition-transform duration-300" />
               <span>
@@ -146,10 +146,8 @@ function SocialIcon({ href, icon }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-11 h-11 flex items-center justify-center rounded-full border border-white/10 
-                 bg-white/5 text-gray-300 hover:text-white hover:bg-gradient-to-r 
-                 hover:from-[#C8101A] hover:via-[#FF4F01] hover:to-[#FFF9D5] 
-                 transition-all duration-500 hover:scale-110 shadow-md"
+      className="w-13 h-13 flex items-center justify-center rounded-full border border-white/10 
+                 bg-white/15 text-gray-300 hover:text-black hover:bg-white/80"
     >
       {icon}
     </a>

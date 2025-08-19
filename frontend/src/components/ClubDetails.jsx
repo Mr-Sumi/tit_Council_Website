@@ -87,10 +87,10 @@ export default function ClubDetails() {
           className="h-32 w-32 rounded-2xl shadow-xl ring-4 ring-indigo-500/30 hover:ring-pink-400 transition-all duration-300"
         />
         <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-3 text-white">
             {club.name}
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-indigo-400 to-pink-400 rounded-full"></div>
+          <div className="w-[30vw] h-1 bg-gradient-to-r from-indigo-400 to-pink-400 rounded-full"></div>
         </div>
       </motion.div>
 
@@ -130,9 +130,9 @@ export default function ClubDetails() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="flex items-center justify-center gap-2 text-3xl font-bold text-center mb-10 bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent"
+        className="flex items-center justify-center gap-2 text-4xl font-bold text-center mb-10 bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent"
       >
-        <Users size={28} /> Office Bearers
+        <Users size={28} /> Club Bearers
       </motion.h2>
 
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 mb-14">
@@ -148,7 +148,7 @@ export default function ClubDetails() {
             <img
               src={club[role].photo_src}
               alt={club[role].name}
-              className="h-28 w-28 rounded-full mx-auto shadow-md border-4 border-indigo-500/40 hover:border-pink-400 transition-all"
+              className="h-40 w-40 rounded-full mx-auto shadow-md border-4 border-indigo-500/40 hover:border-pink-400 transition-all"
             />
             <h3 className="mt-4 font-bold text-lg text-white">
               {club[role].name}
