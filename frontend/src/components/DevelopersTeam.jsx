@@ -22,7 +22,7 @@ const SocialIcon = ({ href, label, children }) => {
 
 const Card = ({ member }) => {
   return (
-    <div className="group rounded-2xl border border-white/10 bg-neutral-900 p-5 shadow-sm transition hover:shadow-[0_12px_30px_-12px_rgba(45,212,191,0.35)]">
+    <div className="group rounded-2xl border border-white/10 bg-neutral-900 p-5 shadow-sm transition hover:shadow-[0_12px_30px_-12px_rgba(45,212,191,0.35)] flex flex-col items-center text-center">
       <div className="relative overflow-hidden rounded-2xl aspect-square bg-neutral-800">
         <img
           src={member.img}
@@ -62,7 +62,7 @@ const Card = ({ member }) => {
 
 export default function DevTeam() {
   return (
-    <main className="min-h-screen text-white mt-20 mb-6">
+    <main className="min-h-screen text-white py-12 mt-20 mb-6">
       <section className="mx-auto px-4">
         <header className="mb-8 text-center">
         <motion.h1
