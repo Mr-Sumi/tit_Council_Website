@@ -24,7 +24,7 @@ export default function Header() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:3000/auth/auth-check", { credentials: "include" });
+        const res = await fetch("http://Api.atudentcouncil.info/auth/auth-check", { credentials: "include" });
 
         console.log(res.status);
         if (res.ok) {

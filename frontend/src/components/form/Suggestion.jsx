@@ -21,7 +21,7 @@ export default function SuggestionForm() {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/suggestion", formData);
+      const res = await axios.post("http://Api.atudentcouncil.info/suggestion", formData);
 
       if (res.data?.success) {
         alert("✅ Suggestion submitted successfully!");
