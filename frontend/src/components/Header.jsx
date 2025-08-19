@@ -26,7 +26,7 @@ export default function Header() {
     const fetchUser = async () => {
       try {
         const res = await fetch(
-          "https://api.atudentcouncil.info/auth/auth-check",
+          "http://api.studentcouncil.info/auth/auth-check",
           { credentials: "include" }
         );
 

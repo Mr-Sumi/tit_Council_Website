@@ -7,7 +7,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://Api.atudentcouncil.info/auth/google/callback",
+      callbackURL: "http://api.studentcouncil.info/auth/google/callback",
     },
     async function (accessToken, refreshToken, profile, cb) {
       try {
