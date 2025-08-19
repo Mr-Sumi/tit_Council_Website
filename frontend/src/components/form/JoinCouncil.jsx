@@ -106,7 +106,7 @@ const handleSubmit = async (e) => {
     files.forEach((file) => formDataWithFiles.append("files", file));
 
     // ✅ Send request before showing success
-    await axios.post("http://api.studentcouncil.info/council/apply", formDataWithFiles, {
+    await axios.post("https://api.studentcouncil.info/council/apply", formDataWithFiles, {
       headers: { "Content-Type": "multipart/form-data" },
     });
 

@@ -12,7 +12,7 @@ export default function UserProfilePage() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch("http://api.studentcouncil.info/auth/me", {
+        const res = await fetch("https://api.studentcouncil.info/auth/me", {
           method: "GET",
           credentials: "include", // send cookies
         });
@@ -46,7 +46,7 @@ export default function UserProfilePage() {
   const handleLogout = async () => {
     console.log("Logging out...");
     try {
-      const res = await fetch("http://api.studentcouncil.info/auth/logout", {
+      const res = await fetch("https://api.studentcouncil.info/auth/logout", {
         method: "GET",
         credentials: "include", // send cookies
       });

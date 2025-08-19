@@ -21,7 +21,7 @@ export default function SuggestionForm() {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await axios.post("http://api.studentcouncil.info/suggestion", formData);
+      const res = await axios.post("https://api.studentcouncil.info/suggestion", formData);
 
       if (res.data?.success) {
         alert("✅ Suggestion submitted successfully!");
