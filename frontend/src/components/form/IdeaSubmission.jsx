@@ -26,7 +26,6 @@ export default function IdeaSubmissionForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted Idea:", formData);
     alert("🚀 Idea submitted successfully!");
     setFormData({
       name: "",

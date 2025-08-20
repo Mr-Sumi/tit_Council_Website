@@ -84,7 +84,7 @@ export default function JoinCouncilSection() {
               Join the Council today and shape the future of our campus culture!
             </p>
             <Link
-              to="https://docs.google.com/forms/d/e/1FAIpQLScX61CeLx6bFYetT3H5oHfVMvhEJV6JAbBkSqBqjSwGwECHhg/viewform"
+              to="/join"
               className="inline-block bg-gradient-to-r from-pink-500 to-indigo-500 px-6 py-2 sm:px-8 sm:py-3 font-semibold rounded-full"
             >
               Join Now
