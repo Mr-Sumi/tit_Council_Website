@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
@@ -7,7 +8,7 @@ export default function ClubsSection() {
   return (
     <section
       id="clubs"
-      className="featured-clubs py-16 bg-gradient-to-b from-gray-900 to-black text-white relative overflow-hidden"
+      className="featured-clubs py-16 text-white relative overflow-hidden"
     >
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Section Header */}
@@ -19,7 +20,7 @@ export default function ClubsSection() {
           className="clubs-intro mb-12"
         >
           <h2
-            className="text-4xl font-bold"
+            className="text-5xl font-extrabold"
           >
             Explore Our Clubs
           </h2>

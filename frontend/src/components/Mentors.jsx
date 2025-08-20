@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Mentors() {
   return (
-    <div className="min-h-screen text-white flex flex-col items-center py-20 px-4">
+    <div className="min-h-screen text-white flex flex-col items-center py-10 px-4">
       {/* Main Mentors */}
       <header className="w-full max-w-6xl text-center mb-8 px-4">
         <motion.h2
@@ -12,7 +12,7 @@ export default function Mentors() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-zinc-800 via-white to-indigo-800 bg-clip-text text-transparent mb-6"
+          className="text-4xl md:text-6xl uppercase font-extrabold tracking-tight bg-gradient-to-r from-zinc-800 via-white to-indigo-800 bg-clip-text text-transparent mb-6"
           >
           Our Mentors Heads
         </motion.h2>
@@ -29,7 +29,7 @@ export default function Mentors() {
               <img
                 src={mentor.img}
                 alt={mentor.name}
-                className="h-25 rounded-full object-cover border-4 border-teal-400 mx-auto mb-4"
+                className="h-45 rounded-full object-cover border-4 border-teal-400 mx-auto mb-4"
               />
               <h3 className="text-2xl font-semibold text-white mb-1">
                 {mentor.name}
@@ -55,7 +55,7 @@ export default function Mentors() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-zinc-800 via-white to-indigo-800 bg-clip-text text-transparent mb-6"
+          className="text-4xl md:text-6xl uppercase font-extrabold tracking-tight bg-gradient-to-r from-zinc-800 via-white to-indigo-800 bg-clip-text text-transparent mb-6"
           >
           Our Mentors
         </motion.h3>
@@ -71,7 +71,7 @@ export default function Mentors() {
               <img
                 src={mentor.img}
                 alt={mentor.name}
-                className="h-26 rounded-full object-contain border-4 border-teal-400 mx-auto mb-4"
+                className="h-45 rounded-full object-contain border-4 border-teal-400 mx-auto mb-4"
               />
               <h3 className="text-2xl font-semibold text-white">
                 {mentor.name}

@@ -12,7 +12,7 @@ const JoinCouncilForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "", // store only digits
+    phone: "",
     enrollment: "",
     dob: "",
     gender: "",
@@ -74,49 +74,65 @@ const JoinCouncilForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!formData.terms) return setAlert({ open: true, message: "Please accept the terms & conditions.", type: "warning" });
-    if (!/^[6-9][0-9]{9}$/.test(formData.phone)) return setAlert({ open: true, message: "Invalid phone number.", type: "error" });
-    if (!emailRegex.test(formData.email)) return setAlert({ open: true, message: "Invalid email address.", type: "error" });
-    try {
-      const submitData = new FormData();
-      for (const key in formData) {
-        if (key !== "skillInput") submitData.append(key, formData[key]);
-      }
-      files.forEach((file, index) => submitData.append(`file${index + 1}`, file));
+    if (!formData.terms) 
+      return setAlert({ open: true, message: "Please accept the terms & conditions.", type: "warning" });
+    
+    if (!/^[6-9][0-9]{9}$/.test(formData.phone)) 
+      return setAlert({ open: true, message: "Invalid phone number.", type: "error" });
+    
+    if (!emailRegex.test(formData.email)) 
+      return setAlert({ open: true, message: "Invalid email address.", type: "error" });
+    
+    if (files.length === 0) 
+      return setAlert({ open: true, message: "Please upload at least one file.", type: "warning" });
 
-      await axios.post("http://localhost:3000/join-council", submitData, {
-        headers: { "Content-Type": "multipart/form-data" }
+    try {
+      const formDataWithFiles = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        if (key !== "skillInput") {
+          if (Array.isArray(value)) {
+            value.forEach((v) => formDataWithFiles.append(key, v));
+          } else {
+            formDataWithFiles.append(key, value);
+          }
+        }
       });
+
+      files.forEach((file) => formDataWithFiles.append("files", file));
+
+      await axios.post(
+        "https://api.studentcouncil.info/council/apply",
+        formDataWithFiles,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
 
       setAlert({ open: true, message: "Form submitted successfully!", type: "success" });
+
       setFormData({
-        name: "", email: "", phone: "", enrollment: "", dob: "", gender: "", college: "",
-        department: "", year: "", club: "", skills: [], skillInput: "", motivation: "", terms: false
+        name: "",
+        email: "",
+        phone: "",
+        enrollment: "",
+        dob: "",
+        gender: "",
+        college: "",
+        department: "",
+        year: "",
+        club: "",
+        skills: [],
+        skillInput: "",
+        motivation: "",
+        terms: false,
       });
       setFiles([]);
+
     } catch (err) {
       console.error(err);
       setAlert({ open: true, message: "Failed to submit. Try again.", type: "error" });
     }
-    if (files.length === 0) return setAlert({ open: true, message: "Please upload at least one file.", type: "warning" });
-
-    const formDataWithFiles = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
-        value.forEach((v) => formDataWithFiles.append(key, v));
-      } else {
-        formDataWithFiles.append(key, value);
-      }
-    });
-    files.forEach((file) => formDataWithFiles.append("files", file));
-
-    let res = await axios.post("http://localhost:3000/council/apply", formDataWithFiles, {
-  headers: {
-    "Content-Type": "multipart/form-data",
-  },
-});
   };
 
   const departments = ["CSE","CSE AIML","CSE AI","CSE DS","CSE AIDS","CSE Cyber","CSE IoT","IT","EX","EC","ME","CE","B.Pharm","MBA","Law"];
@@ -160,14 +176,16 @@ const JoinCouncilForm = () => {
           <div>
             <label className="block mb-1">Phone Number</label>
             <div className="flex items-center bg-gray-900 rounded-md border border-gray-600 px-3">
-              <FaPhoneAlt className="text-gray-400 mr-2"/>
+              <FaPhoneAlt className="text-gray-400 mr-2" />
+              <span className="text-gray-400 mr-1">+91</span>
               <input
                 name="phone"
                 type="tel"
-                placeholder="+91XXXXXXXXXX"
-                value={formData.phone ? `+91${formData.phone}` : "+91"}
+                placeholder="XXXXXXXXXX"
+                value={formData.phone}
                 onChange={handleChange}
                 required
+                maxLength={10}
                 className="bg-transparent w-full py-2 focus:outline-none"
               />
             </div>
@@ -219,7 +237,6 @@ const JoinCouncilForm = () => {
               </div>
             </div>
           </div>
-
 
           {/* College */}
           <div>
@@ -327,7 +344,6 @@ const JoinCouncilForm = () => {
               </span>
               <input type="file" multiple onChange={handleFileChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
             </label>
-
           </div>
 
           {/* Terms */}
@@ -343,7 +359,6 @@ const JoinCouncilForm = () => {
               I accept all terms and conditions
             </label>
           </div>
-
 
           {/* Submit */}
           <button type="submit" className="w-full font-bold py-2 rounded-md text-gray-900 bg-white/90 hover:bg-white">

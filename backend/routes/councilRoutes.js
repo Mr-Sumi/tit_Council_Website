@@ -1,9 +1,10 @@
+// routes/council.route.js
 const express = require("express");
 const router = express.Router();
-const { upload } = require("../config/multer"); // <-- Cloudinary + multer setup
+const { upload } = require("../config/multer");
 const CouncilApplication = require("../models/CouncilApplication");
 
-// ✅ Submit Application with files (max 3)
+// POST /council/apply
 router.post("/apply", upload.array("files", 3), async (req, res) => {
   try {
     const {
@@ -22,30 +23,37 @@ router.post("/apply", upload.array("files", 3), async (req, res) => {
       terms,
     } = req.body;
 
-    // ✅ Convert skills (string -> array)
+    console.log("📥 Incoming Body:", req.body);
+    console.log("📂 Incoming Files:", req.files);
+
+    // Parse skills safely
     let parsedSkills = [];
     if (skills) {
       if (typeof skills === "string") {
-        parsedSkills = skills.split(",").map((s) => s.trim());
+        try {
+          parsedSkills = JSON.parse(skills); // if frontend sent JSON.stringify
+        } catch {
+          parsedSkills = skills.split(",").map((s) => s.trim()); // fallback
+        }
       } else if (Array.isArray(skills)) {
         parsedSkills = skills;
       }
     }
 
-    // ✅ Collect uploaded file data from Cloudinary
-    const uploadedFiles = Array.isArray(req.files)
-      ? req.files.map((file) => ({
-          url: file.path,                       // Cloudinary file URL
-          public_id: file.filename || file.public_id, // safer fallback
-          original_name: file.originalname,     // user's uploaded file name
-          format: file.format,
-          resource_type: file.resource_type,
-        }))
-      : [];
+    // Normalize uploaded files
+    const uploadedFiles = (req.files || []).map((file) => ({
+      url: file.path, // Cloudinary URL
+      public_id: file.filename || file.public_id,
+      original_name: file.originalname,
+      format: file.mimetype?.split("/")[1] || "",
+      resource_type: file.mimetype?.split("/")[0] || "",
+    }));
 
-    console.log("✅ Processed Files:", uploadedFiles);
+    // Normalize terms checkbox
+    const acceptedTerms =
+      terms === true || terms === "true" || terms === "on" ? true : false;
 
-    // ✅ Save to MongoDB
+    // Create application document
     const application = new CouncilApplication({
       name,
       email,
@@ -59,7 +67,7 @@ router.post("/apply", upload.array("files", 3), async (req, res) => {
       club,
       skills: parsedSkills,
       motivation,
-      terms: terms === "true" || terms === true, // normalize to boolean
+      terms: acceptedTerms,
       files: uploadedFiles,
     });
 
@@ -74,7 +82,7 @@ router.post("/apply", upload.array("files", 3), async (req, res) => {
     console.error("❌ Error saving application:", err);
     res.status(500).json({
       success: false,
-      message: "Server error",
+      message: "Server error while saving application",
       error: err.message,
     });
   }

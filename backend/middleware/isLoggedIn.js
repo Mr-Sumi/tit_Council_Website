@@ -1,7 +1,7 @@
 // middleware/isLoggedIn.js
-import dotenv from "dotenv";
-import jwt from "jsonwebtoken";
-import userModel from "../models/user.model.js";
+const dotenv = require("dotenv");
+const jwt = require("jsonwebtoken");
+const userModel = require("../models/user.model");
 
 dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -31,4 +31,4 @@ const isLoggedIn = async (req, res, next) => {
   }
 };
 
-export default isLoggedIn;
+module.exports = isLoggedIn;

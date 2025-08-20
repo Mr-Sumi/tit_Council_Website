@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -19,28 +19,41 @@ import UserProfileRegistration from "./components/form/UserProfileRegistration"
 import ScrollToTop from "./hooks/ScrollToTop"; 
 import Login from "./components/form/login"
 import { AuthProvider } from "./context/AuthContext";
+import { useLoadingState } from "./hooks/useLoadingState";
 
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const { loading, stopLoading } = useLoadingState(true, 3000);
 
-  useEffect(() => {
-    const handleLoad = () => setLoading(false);
+  React.useEffect(() => {
+    // Simplified loading logic with timeout fallback
+    const timer = setTimeout(() => {
+      stopLoading();
+    }, 3000); // Maximum 3 seconds loading time
+
+    const handleLoad = () => {
+      clearTimeout(timer);
+      stopLoading();
+    };
 
     if (document.readyState === "complete") {
-      setLoading(false);
+      clearTimeout(timer);
+      stopLoading();
     } else {
       window.addEventListener("load", handleLoad);
-      return () => window.removeEventListener("load", handleLoad);
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener("load", handleLoad);
+      };
     }
-  }, []);
+  }, [stopLoading]);
 
   return (
     <div className="App min-h-screen bg-gradient-to-b from-[#000] to-[#0f1724] flex flex-col">
       <AuthProvider>
         <Header />
         <ScrollToTop />
-        <main className="flex-grow bg-gradient-to-b from-[#000] to-[#0f1724] relative">
+        <main className="flex-grow bg-gradient-to-b from-[#000] to-[#0f1724] relative pt-25">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/clubs" element={<Clubs />} />
@@ -52,7 +65,7 @@ function App() {
             <Route path="/join" element={<JoinCouncil />} />
             <Route path="/suggestion" element={<SuggestionForm />} />
             <Route path="/ideas" element={<IdeaSubmissionForm />} />
-            <Route path="/login" element={<Login/>} />
+            <Route path="/login" element={<Login />} />
             <Route path="/userProfile" element={<UserProfile />} />
             <Route path="/userProfileRegistration" element={<UserProfileRegistration />} />
           </Routes>

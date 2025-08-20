@@ -5,16 +5,23 @@ export default function useHideOnScroll(threshold = 5) {
   const lastScrollY = useRef(0);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (Math.abs(currentScrollY - lastScrollY.current) < threshold) {
-        return; // ignore small scrolls
+      // Always show nav near top
+      if (currentScrollY <= 50) {
+        setShowNav(true);
+        lastScrollY.current = currentScrollY;
+        return;
       }
 
-      if (currentScrollY === 0) {
-        setShowNav(true);
-      } else if (currentScrollY > lastScrollY.current) {
+      // Ignore small scrolls
+      if (Math.abs(currentScrollY - lastScrollY.current) < threshold) return;
+
+      // NORMAL LOGIC: scroll down → hide, scroll up → show
+      if (currentScrollY > lastScrollY.current) {
         setShowNav(false); // scrolling down
       } else {
         setShowNav(true); // scrolling up
@@ -23,8 +30,18 @@ export default function useHideOnScroll(threshold = 5) {
       lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [threshold]);
 
   return showNav;

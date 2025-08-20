@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Compass, Users } from "lucide-react";
@@ -61,7 +62,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/90"></div>
 
       {/* Floating Glow Orbs */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden">
         {[...Array(4)].map((_, i) => (
           <motion.div
             key={i}
@@ -71,7 +72,7 @@ export default function HeroSection() {
             transition={{ duration: 25, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Glass Card */}
       <div ref={contentRef} className="relative z-10 flex flex-col justify-center items-center h-full text-center px-2">
@@ -110,18 +111,18 @@ export default function HeroSection() {
               href="/clubs"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-8 py-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white font-medium shadow-lg transition-all duration-300 hover:shadow-indigo-500/40"
+              className="flex items-center gap-2 px-8 py-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white font-medium shadow-lg transition-all duration-300"
             >
               <Compass className="w-5 h-5" /> Explore Clubs
             </motion.a>
 
             <motion.a
-              href="/team"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScX61CeLx6bFYetT3H5oHfVMvhEJV6JAbBkSqBqjSwGwECHhg/viewform"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-8 py-3 rounded-full bg-white/20 hover:bg-white/30 text-white font-medium shadow-lg transition-all duration-300 hover:shadow-white/40"
+              className="flex items-center gap-2 px-8 py-3 rounded-full bg-white/90 hover:bg-white text-black font-bold transition-all duration-300"
             >
-              <Users className="w-5 h-5" /> Meet Our Team
+              <Users className="w-5 h-5" /> Join Student Council
             </motion.a>
           </motion.div>
         </motion.div>
