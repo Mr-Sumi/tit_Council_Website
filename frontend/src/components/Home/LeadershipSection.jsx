@@ -177,7 +177,7 @@ export default function LeadershipSection() {
       <div className="absolute inset-0 bg-gradient-radial from-indigo-600/20 via-purple-500/10 to-transparent pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-8">Council Deputies</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-8">Council Leaders</h2>
 
         {/* President */}
         {president && <div className="mb-10">{renderPresident(president)}</div>}
