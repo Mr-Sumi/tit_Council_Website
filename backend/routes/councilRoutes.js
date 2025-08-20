@@ -3,16 +3,17 @@ const express = require("express");
 const router = express.Router();
 const CouncilApplication = require("../models/CouncilApplication");
 const nodemailer = require("nodemailer");
+require("dotenv").config(); // Load environment variables
 
-// Nodemailer transporter
+// Nodemailer transporter (use env vars for credentials)
 const transporter = nodemailer.createTransport({
   service: "gmail",
   host: "smtp.gmail.com",
   port: 587,
   secure: false,
   auth: {
-    user: "noreplystudentcounciltit@gmail.com",
-    pass: "gnrl hopc pmpw akba", // use app password, not personal
+    user: process.env.SMTP_USER, // from .env
+    pass: process.env.SMTP_PASS, // from .env
   },
 });
 
@@ -60,7 +61,7 @@ router.post("/apply", async (req, res) => {
     const mailOptions = {
       from: {
         name: "Student Council",
-        address: "noreplystudentcounciltit@gmail.com",
+        address: process.env.SMTP_USER, // safer
       },
       to: email,
       subject: "Welcome to Student Council – Application Received",
