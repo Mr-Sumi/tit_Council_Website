@@ -12,8 +12,8 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: process.env.SMTP_USER, // from .env
-    pass: process.env.SMTP_PASS, // from .env
+    user: "noreplystudentcounciltit@gmail.com", // from .env
+    pass: "gnrl hopc pmpw akba", // from .env
   },
 });
 
@@ -61,7 +61,7 @@ router.post("/apply", async (req, res) => {
     const mailOptions = {
       from: {
         name: "Student Council",
-        address: process.env.SMTP_USER, // safer
+        address: "noreplystudentcounciltit@gmail.com", // safer
       },
       to: email,
       subject: "Welcome to Student Council – Application Received",
