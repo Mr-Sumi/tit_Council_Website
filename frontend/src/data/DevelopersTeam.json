@@ -2,7 +2,7 @@
     "developers": [
       {
         "name": "Rishabh Tomar",
-        "role": "Frontend Developer & Team Lead",
+        "role": "Frontend Developer",
         "quote": "Guiding UI with clean code.",
         "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659748/Rishabh_Tomar_kbjo6t.jpg",
         "social": {
@@ -41,7 +41,7 @@
       },
       {
         "name": "Samiksha Suryawanshi",
-        "role": "Full Stack Developer & Design Lead",
+        "role": "Full Stack Developer",
         "quote": "Elegant UX, robust builds.",
         "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659750/Samiksha_z6uc1a.jpg",
         "social": {
