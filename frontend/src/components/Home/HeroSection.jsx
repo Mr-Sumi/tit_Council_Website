@@ -117,7 +117,7 @@ export default function HeroSection() {
             </motion.a>
 
             <motion.a
-              href="/join"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScX61CeLx6bFYetT3H5oHfVMvhEJV6JAbBkSqBqjSwGwECHhg/viewform"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 px-8 py-3 rounded-full bg-white/90 hover:bg-white text-black font-bold transition-all duration-300"
