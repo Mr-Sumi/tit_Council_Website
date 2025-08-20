@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     user: "noreplystudentcounciltit@gmail.com", // from .env
-    pass: "gnrl hopc pmpw akba", // from .env
+    pass: "bxer didc uyyt jtrr", // from .env
   },
 });
 
