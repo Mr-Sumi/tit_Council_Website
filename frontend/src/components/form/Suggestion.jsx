@@ -23,7 +23,7 @@ export default function SuggestionForm() {
 
     // Just show success alert without API
     setTimeout(() => {
-     showSuccess(" Suggestion submitted successfully!");
+     showSuccess(" Suggestion submitted successfully! ");
       setFormData({ name: "", enrollment: "", college: "", problem: "", solution: "" });
       setLoading(false);
     }, 500); // optional delay to simulate loading
