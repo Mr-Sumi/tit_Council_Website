@@ -2,6 +2,19 @@
 const express = require("express");
 const router = express.Router();
 const CouncilApplication = require("../models/CouncilApplication");
+const nodemailer = require("nodemailer");
+
+// Nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: "noreplystudentcounciltit@gmail.com",
+    pass: "gnrl hopc pmpw akba", // use app password, not personal
+  },
+});
 
 // POST /council/apply
 router.post("/apply", async (req, res) => {
@@ -20,8 +33,6 @@ router.post("/apply", async (req, res) => {
       motivation,
       terms,
     } = req.body;
-
-    console.log("📥 Incoming Body:", req.body);
 
     // Normalize terms checkbox
     const acceptedTerms =
@@ -45,9 +56,31 @@ router.post("/apply", async (req, res) => {
 
     await application.save();
 
+    // Send confirmation email
+    const mailOptions = {
+      from: {
+        name: "Student Council",
+        address: "noreplystudentcounciltit@gmail.com",
+      },
+      to: email,
+      subject: "Welcome to Student Council – Application Received",
+      html: `
+        <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+          <h2>Hi ${name},</h2>
+          <p>Thank you for showing your interest in joining the <strong>Student Council</strong>.</p>
+          <p>We have received your application for the <strong>${club}</strong> club. Our team will review your details and contact you as soon as possible.</p>
+          <p style="color: #e74c3c;"><em>Please do not reply to this email – it is auto-generated.</em></p>
+          <br/>
+          <p>Best Regards,<br/>Student Council Team</p>
+        </div>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
     res.status(201).json({
       success: true,
-      message: "✅ Application submitted successfully!",
+      message: "✅ Application submitted successfully! Confirmation email sent.",
       data: application,
     });
   } catch (err) {
