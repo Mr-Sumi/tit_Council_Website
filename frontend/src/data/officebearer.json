@@ -15,6 +15,13 @@
       "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
     },
     {
+      "name": "Shubham Raj",
+      "role": "Chief Committee Officer",
+      "quote": "Building strong teams and transforming collaboration into success.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659754/Shubham_raj_ptynkn.jpg",
+      "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
+    },
+    {
       "name": "Harsh Raj Singh",
       "role": "President",
       "quote": "Inspiring innovation, fostering collaboration, and leading with purpose.",
@@ -55,13 +62,6 @@
         "facebook": "#",
         "github": "https://github.com/Vedanttsingh-03"
       }
-    },
-    {
-      "name": "Shubham Raj",
-      "role": "Chief Committee Officer",
-      "quote": "Building strong teams and transforming collaboration into success.",
-      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659754/Shubham_raj_ptynkn.jpg",
-      "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
     },
     {
       "name": "Suryansh Shukla",
