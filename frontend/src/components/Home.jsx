@@ -18,7 +18,7 @@ export default function Home() {
       <MentorsHead />
       <ClubsSection />
       <UpcomingEvents />
-      {/* <GetInvolved /> */}
+      <GetInvolved />
     </main>
   );
 }

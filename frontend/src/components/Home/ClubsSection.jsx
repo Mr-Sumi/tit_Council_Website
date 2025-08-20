@@ -20,7 +20,7 @@ export default function ClubsSection() {
           className="clubs-intro mb-12"
         >
           <h2
-            className="text-5xl font-extrabold"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-8"
           >
             Explore Our Clubs
           </h2>
@@ -35,7 +35,7 @@ export default function ClubsSection() {
           className="relative block group"
         >
           {/* Scrollable Clubs */}
-          <div className="overflow-hidden relative border-2 rounded-3xl">
+          <div className="overflow-hidden relative ">
             <div className="flex gap-6 py-6 animate-scroll whitespace-nowrap">
               {clubsJson.clubsData.concat(clubsJson.clubsData).map((club, index) => (
                 <div
@@ -53,7 +53,7 @@ export default function ClubsSection() {
           </div>
 
           {/* Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-400 z-20 pointer-events-none rounded-3xl">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-400 z-20 pointer-events-none">
             <div className="text-center pointer-events-auto">
               <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-white">
                 Ready to Find Your Perfect Club?

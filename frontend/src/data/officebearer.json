@@ -15,19 +15,19 @@
       "social": { "twitter": "#", "linkedin": "#", "instagram": "#", "github": "#" }
     },
     {
-        "role": "President",
-        "name": "Harsh Raj Singh",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659738/Harsh_Raj_Singh_f5uhvp.jpg",
-        "msg": "As President, my goal is to spark innovation, uplift student voices, and cultivate leadership at every level. Let’s work side by side to make our council a true foundation for growth and success. ",
-        "socials": {
-          "linkedin": "https://www.linkedin.com/in/harshrs252/",
-          "instagram": "https://www.instagram.com/harshchandel_1?igsh=MTc3aGZtMWJ4Z2R3eg==",
-          "email": "harshrajsingh252@gmail.com",
-          "twitter": "#",
-          "facebook": "#",
-          "github": "https://github.com/HRScodes"
-        }
-      },
+      "name": "Harsh Raj Singh",
+      "role": "President",
+      "quote": "Inspiring innovation, fostering collaboration, and leading with purpose.",
+      "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1743659738/Harsh_Raj_Singh_f5uhvp.jpg",
+      "social": {
+        "linkedin": "https://www.linkedin.com/in/harshrs252/",
+        "instagram": "https://www.instagram.com/harshchandel_1?igsh=MTc3aGZtMWJ4Z2R3eg==",
+        "email": "harshrajsingh252@gmail.com",
+        "twitter": "#",
+        "facebook": "#",
+        "github": "https://github.com/HRScodes"
+      }
+    },
     {
       "name": "Pratul Kumar",
       "role": "Vice President",

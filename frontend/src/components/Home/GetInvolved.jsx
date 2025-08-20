@@ -39,9 +39,9 @@ export default function GetInvolved() {
   }, []);
 
   return (
-    <section className="py-20 text-white">
+    <section className="py-20 text-white flex flex-col items-center text-center">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 tracking-wide">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-8">
           Get Involved
         </h2>
         <div className="grid md:grid-cols-3 gap-10 text-center">

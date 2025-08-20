@@ -18,11 +18,11 @@ const events = [
 
 export default function UpcomingEvents() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-5 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 text-center">
         {/* Header */}
         <motion.h2
-          className="text-5xl md:text-6xl font-extrabold mb-20 text-white"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-8"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

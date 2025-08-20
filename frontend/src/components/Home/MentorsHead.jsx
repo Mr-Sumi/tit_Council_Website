@@ -47,7 +47,7 @@ export default function MentorsHead() {
   return (
     <section className="relative py-5 overflow-hidden">
       <div className="mx-auto px-6 text-center relative z-10">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-12">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-8">
           Mentors
         </h2>
 
