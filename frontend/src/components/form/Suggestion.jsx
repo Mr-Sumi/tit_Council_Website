@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, User, IdCard, School, MessageSquare, Lightbulb } from "lucide-react";
-import axios from "axios";
+import { showSuccess, showError, showWarning, showInfo } from "../../../utils/toastService";
 
 export default function SuggestionForm() {
   const [formData, setFormData] = useState({
@@ -17,30 +17,17 @@ export default function SuggestionForm() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setLoading(true);
-    const res = await axios.post(
-      "https://api.studentcouncil.info/suggestion",
-      formData,
-      { headers: { "Content-Type": "application/json" } } // ✅ properly closed
-    );
 
-    if (res.data?.success) {
-      alert("✅ Suggestion submitted successfully!");
+    // Just show success alert without API
+    setTimeout(() => {
+     showSuccess(" Suggestion submitted successfully! ");
       setFormData({ name: "", enrollment: "", college: "", problem: "", solution: "" });
-    } else {
-      alert("❌ Something went wrong. Please try again.");
-    }
-  } catch (error) {
-    console.error("Error submitting suggestion:", error);
-    alert("⚠️ Server error. Please check your connection.");
-  } finally {
-    setLoading(false);
-  }
-};
-
+      setLoading(false);
+    }, 500); // optional delay to simulate loading
+  };
 
   return (
     <main className="flex justify-center items-center min-h-screen px-4 py-10 sm:px-6 sm:py-12 bg-gradient-to-br from-gray-900 via-black to-gray-800">

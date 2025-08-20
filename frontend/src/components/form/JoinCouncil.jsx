@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import axios from "axios";
 import clubsJson from '../../data/Clubs.json';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { 
   FaUser, FaEnvelope, FaPhoneAlt, FaIdCard, FaBirthdayCake, 
   FaVenusMars, FaBuilding, FaLayerGroup, FaCalendarAlt, FaUniversity
@@ -23,15 +25,6 @@ const JoinCouncilForm = () => {
     terms: false,
   });
 
-  const [alert, setAlert] = useState({ open: false, message: "", type: "info" });
-
-  useEffect(() => {
-    if (alert.open) {
-      const timer = setTimeout(() => setAlert({ ...alert, open: false }), 4000);
-      return () => clearTimeout(timer);
-    }
-  }, [alert]);
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -48,14 +41,9 @@ const JoinCouncilForm = () => {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!formData.terms) 
-      return setAlert({ open: true, message: "Please accept the terms & conditions.", type: "warning" });
-    
-    if (!/^[6-9][0-9]{9}$/.test(formData.phone)) 
-      return setAlert({ open: true, message: "Invalid phone number.", type: "error" });
-    
-    if (!emailRegex.test(formData.email)) 
-      return setAlert({ open: true, message: "Invalid email address.", type: "error" });
+    if (!formData.terms) return toast.warning("Please accept the terms & conditions.");
+    if (!/^[6-9][0-9]{9}$/.test(formData.phone)) return toast.error("Invalid phone number.");
+    if (!emailRegex.test(formData.email)) return toast.error("Invalid email address.");
 
     try {
       await axios.post(
@@ -64,7 +52,7 @@ const JoinCouncilForm = () => {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      setAlert({ open: true, message: "Form submitted successfully!", type: "success" });
+      toast.success("Form submitted successfully!");
 
       // Reset form
       setFormData({
@@ -84,7 +72,7 @@ const JoinCouncilForm = () => {
 
     } catch (err) {
       console.error(err);
-      setAlert({ open: true, message: "Failed to submit. Try again.", type: "error" });
+      toast.error("Failed to submit. Try again.");
     }
   };
 
@@ -144,7 +132,7 @@ const JoinCouncilForm = () => {
             </div>
           </div>
 
-          {/* Enrollment */}
+          {/* Enrollment Number */}
           <div>
             <label className="block mb-1">Enrollment Number</label>
             <div className="flex items-center bg-gray-900 rounded-md border border-gray-600 px-3">
@@ -266,14 +254,21 @@ const JoinCouncilForm = () => {
           <button type="submit" className="w-full font-bold py-2 rounded-md text-gray-900 bg-white/90 hover:bg-white">
             Submit Application
           </button>
-
-          {/* Alert */}
-          {alert.open && (
-            <div className={`mt-3 p-2 rounded-md text-center ${alert.type === "success" ? "bg-green-500" : alert.type === "error" ? "bg-red-500" : "bg-yellow-400 text-black"}`}>
-              {alert.message}
-            </div>
-          )}
         </form>
+
+        {/* Toast Container */}
+        <ToastContainer 
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </section>
     </div>
   );

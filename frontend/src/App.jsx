@@ -20,6 +20,8 @@ import ScrollToTop from "./hooks/ScrollToTop";
 import Login from "./components/form/login"
 import { AuthProvider } from "./context/AuthContext";
 import { useLoadingState } from "./hooks/useLoadingState";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function App() {
@@ -78,6 +80,20 @@ function App() {
         </main>
         <Footer />
       </AuthProvider>
+
+         <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
+
     </div>
   );
 }
