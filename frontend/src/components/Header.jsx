@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { RiMenuLine, RiCloseLine, RiUser3Line } from "react-icons/ri";
+import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 import { NavLink, useNavigate } from "react-router-dom";
 import useHideOnScroll from "../hooks/useHideOnScroll";
 import assets from "../data/assets.json";
@@ -68,38 +68,25 @@ export default function Header() {
 
         {/* Desktop Links */}
         {isDesktop && (
-          <div className="flex items-center gap-8 lg:gap-12">
-            <ul className="flex gap-8 lg:gap-12 font-medium text-gray-200 text-base lg:text-lg">
-              {links.map((link) => (
-                <li key={link.name} className="relative group">
-                  <NavLink
-                    to={link.href}
-                    className={({ isActive }) =>
-                      `transition-colors duration-300 text-xl relative px-1 ${
-                        isActive
-                          ? "text-red-500 text-2xl font-bold"
-                          : "hover:text-red-400"
-                      }`
-                    }
-                  >
-                    {link.name}
-                    <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-red-500 transition-all duration-300 group-hover:w-full"></span>
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-
-            {/* Always show Login button */}
-            <div className="ml-6">
-              <button
-                onClick={() => navigate("/login")}
-                className="flex items-center gap-2 px-4 py-2 lg:px-5 lg:py-2.5 bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg font-semibold transition-colors text-base lg:text-lg"
-              >
-                <RiUser3Line className="text-xl lg:text-2xl" />
-                Login
-              </button>
-            </div>
-          </div>
+          <ul className="flex items-center gap-8 lg:gap-12 font-medium text-gray-200 text-base lg:text-lg">
+            {links.map((link) => (
+              <li key={link.name} className="relative group">
+                <NavLink
+                  to={link.href}
+                  className={({ isActive }) =>
+                    `transition-colors duration-300 text-xl relative px-1 ${
+                      isActive
+                        ? "text-red-500 text-2xl font-bold"
+                        : "hover:text-red-400"
+                    }`
+                  }
+                >
+                  {link.name}
+                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
         )}
 
         {/* Mobile Menu Button */}
@@ -146,18 +133,6 @@ export default function Header() {
                   {link.name}
                 </NavLink>
               ))}
-
-              {/* Always show Login button in mobile */}
-              <button
-                onClick={() => {
-                  navigate("/login");
-                  setMenuOpen(false);
-                }}
-                className="flex items-center gap-2 px-6 py-2 bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg font-semibold transition-colors"
-              >
-                <RiUser3Line className="text-xl" />
-                Login
-              </button>
             </div>
           </div>
         </>
