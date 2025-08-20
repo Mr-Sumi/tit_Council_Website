@@ -40,7 +40,7 @@ export default function Clubs() {
       
                 <div className="absolute inset-0 flex items-center justify-center px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-white leading-tight">
+                    <p className="text-2xl font-bold text-white leading-tight uppercase">
                       {club.name}
                     </p>
                     <span className="block text-lg text-white mt-2">

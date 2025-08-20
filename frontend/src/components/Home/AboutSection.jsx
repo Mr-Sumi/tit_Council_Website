@@ -35,8 +35,8 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-white"
-        >
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-8"
+          >
           About Us
         </motion.h2>
 

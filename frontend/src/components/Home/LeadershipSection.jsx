@@ -108,7 +108,7 @@ export default function LeadershipSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-snug bg-gradient-to-r from-zinc-900 via-white to-black/80 bg-clip-text text-transparent"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-snug bg-gradient-to-t from-z-900 via-white to-black/80 bg-clip-text text-transparent"
           >
             {name}
           </motion.h1>
