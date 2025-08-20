@@ -1,5 +1,6 @@
 import React,{ useState } from "react";
 import { motion } from "framer-motion";
+import { showSuccess, showError, showWarning, showInfo } from "../../../utils/toastService";
 import {
   User,
   IdCard,
@@ -26,7 +27,7 @@ export default function IdeaSubmissionForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("🚀 Idea submitted successfully!");
+   showSuccess("🚀 Idea submitted successfully!");
     setFormData({
       name: "",
       enrollment: "",

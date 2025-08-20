@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, User, IdCard, School, MessageSquare, Lightbulb } from "lucide-react";
+import { showSuccess, showError, showWarning, showInfo } from "../../../utils/toastService";
 
 export default function SuggestionForm() {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ export default function SuggestionForm() {
 
     // Just show success alert without API
     setTimeout(() => {
-      alert("✅ Suggestion submitted successfully!");
+     showSuccess(" Suggestion submitted successfully!");
       setFormData({ name: "", enrollment: "", college: "", problem: "", solution: "" });
       setLoading(false);
     }, 500); // optional delay to simulate loading
