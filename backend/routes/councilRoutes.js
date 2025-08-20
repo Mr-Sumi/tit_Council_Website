@@ -26,12 +26,12 @@ router.post("/apply", upload.array("files", 3), async (req, res) => {
     console.log("📥 Incoming Body:", req.body);
     console.log("📂 Incoming Files:", req.files);
 
-    // ✅ Parse skills safely
+    // Parse skills safely
     let parsedSkills = [];
     if (skills) {
       if (typeof skills === "string") {
         try {
-          parsedSkills = JSON.parse(skills); // case: frontend sent JSON.stringify
+          parsedSkills = JSON.parse(skills); // if frontend sent JSON.stringify
         } catch {
           parsedSkills = skills.split(",").map((s) => s.trim()); // fallback
         }
@@ -40,22 +40,20 @@ router.post("/apply", upload.array("files", 3), async (req, res) => {
       }
     }
 
-    // ✅ Normalize file data (Cloudinary / Multer-Storage-Cloudinary)
+    // Normalize uploaded files
     const uploadedFiles = (req.files || []).map((file) => ({
-      url: file.path, // Cloudinary secure_url
-      public_id: file.filename || file.public_id, // Cloudinary public_id
+      url: file.path, // Cloudinary URL
+      public_id: file.filename || file.public_id,
       original_name: file.originalname,
       format: file.mimetype?.split("/")[1] || "",
       resource_type: file.mimetype?.split("/")[0] || "",
     }));
 
-    console.log("✅ Processed Files:", uploadedFiles);
-
-    // ✅ Normalize terms
+    // Normalize terms checkbox
     const acceptedTerms =
       terms === true || terms === "true" || terms === "on" ? true : false;
 
-    // ✅ Create application document
+    // Create application document
     const application = new CouncilApplication({
       name,
       email,

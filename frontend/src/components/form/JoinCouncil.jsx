@@ -12,7 +12,7 @@ const JoinCouncilForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "", // store only digits
+    phone: "",
     enrollment: "",
     dob: "",
     gender: "",
@@ -72,76 +72,68 @@ const JoinCouncilForm = () => {
     setFiles(selected);
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // ✅ Validate inputs first
-  if (!formData.terms) 
-    return setAlert({ open: true, message: "Please accept the terms & conditions.", type: "warning" });
-  
-  if (!/^[6-9][0-9]{9}$/.test(formData.phone)) 
-    return setAlert({ open: true, message: "Invalid phone number.", type: "error" });
-  
-  if (!emailRegex.test(formData.email)) 
-    return setAlert({ open: true, message: "Invalid email address.", type: "error" });
-  
-  if (files.length === 0) 
-    return setAlert({ open: true, message: "Please upload at least one file.", type: "warning" });
+    if (!formData.terms) 
+      return setAlert({ open: true, message: "Please accept the terms & conditions.", type: "warning" });
+    
+    if (!/^[6-9][0-9]{9}$/.test(formData.phone)) 
+      return setAlert({ open: true, message: "Invalid phone number.", type: "error" });
+    
+    if (!emailRegex.test(formData.email)) 
+      return setAlert({ open: true, message: "Invalid email address.", type: "error" });
+    
+    if (files.length === 0) 
+      return setAlert({ open: true, message: "Please upload at least one file.", type: "warning" });
 
-  try {
-    // ✅ Prepare form data correctly
-    const formDataWithFiles = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      if (key !== "skillInput") {
-        if (Array.isArray(value)) {
-          value.forEach((v) => formDataWithFiles.append(key, v));
-        } else {
-          formDataWithFiles.append(key, value);
+    try {
+      const formDataWithFiles = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        if (key !== "skillInput") {
+          if (Array.isArray(value)) {
+            value.forEach((v) => formDataWithFiles.append(key, v));
+          } else {
+            formDataWithFiles.append(key, value);
+          }
         }
-      }
-    });
+      });
 
-    files.forEach((file) => formDataWithFiles.append("files", file));
+      files.forEach((file) => formDataWithFiles.append("files", file));
 
-    // ✅ Send request before showing success
-  await axios.post(
-  "https://api.studentcouncil.info/council/apply",
-  formDataWithFiles,
-  {
-    headers: { "Content-Type": "multipart/form-data" },
-  }
-);
+      await axios.post(
+        "https://api.studentcouncil.info/council/apply",
+        formDataWithFiles,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
 
+      setAlert({ open: true, message: "Form submitted successfully!", type: "success" });
 
-    setAlert({ open: true, message: "Form submitted successfully!", type: "success" });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        enrollment: "",
+        dob: "",
+        gender: "",
+        college: "",
+        department: "",
+        year: "",
+        club: "",
+        skills: [],
+        skillInput: "",
+        motivation: "",
+        terms: false,
+      });
+      setFiles([]);
 
-    // ✅ Reset only after success
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      enrollment: "",
-      dob: "",
-      gender: "",
-      college: "",
-      department: "",
-      year: "",
-      club: "",
-      skills: [],
-      skillInput: "",
-      motivation: "",
-      terms: false,
-    });
-    setFiles([]);
-
-  } catch (err) {
-    console.error(err);
-    setAlert({ open: true, message: "Failed to submit. Try again.", type: "error" });
-  }
-};
-
+    } catch (err) {
+      console.error(err);
+      setAlert({ open: true, message: "Failed to submit. Try again.", type: "error" });
+    }
+  };
 
   const departments = ["CSE","CSE AIML","CSE AI","CSE DS","CSE AIDS","CSE Cyber","CSE IoT","IT","EX","EC","ME","CE","B.Pharm","MBA","Law"];
   const years = ["1st Year", "2nd Year", "3rd Year", "4th Year"];
@@ -245,7 +237,6 @@ const handleSubmit = async (e) => {
               </div>
             </div>
           </div>
-
 
           {/* College */}
           <div>
@@ -353,7 +344,6 @@ const handleSubmit = async (e) => {
               </span>
               <input type="file" multiple onChange={handleFileChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
             </label>
-
           </div>
 
           {/* Terms */}
@@ -369,7 +359,6 @@ const handleSubmit = async (e) => {
               I accept all terms and conditions
             </label>
           </div>
-
 
           {/* Submit */}
           <button type="submit" className="w-full font-bold py-2 rounded-md text-gray-900 bg-white/90 hover:bg-white">
