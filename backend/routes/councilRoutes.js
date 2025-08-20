@@ -1,11 +1,10 @@
 // routes/council.route.js
 const express = require("express");
 const router = express.Router();
-const { upload } = require("../config/multer");
 const CouncilApplication = require("../models/CouncilApplication");
 
 // POST /council/apply
-router.post("/apply", upload.array("files", 3), async (req, res) => {
+router.post("/apply", async (req, res) => {
   try {
     const {
       name,
@@ -18,36 +17,11 @@ router.post("/apply", upload.array("files", 3), async (req, res) => {
       department,
       year,
       club,
-      skills,
       motivation,
       terms,
     } = req.body;
 
     console.log("📥 Incoming Body:", req.body);
-    console.log("📂 Incoming Files:", req.files);
-
-    // Parse skills safely
-    let parsedSkills = [];
-    if (skills) {
-      if (typeof skills === "string") {
-        try {
-          parsedSkills = JSON.parse(skills); // if frontend sent JSON.stringify
-        } catch {
-          parsedSkills = skills.split(",").map((s) => s.trim()); // fallback
-        }
-      } else if (Array.isArray(skills)) {
-        parsedSkills = skills;
-      }
-    }
-
-    // Normalize uploaded files
-    const uploadedFiles = (req.files || []).map((file) => ({
-      url: file.path, // Cloudinary URL
-      public_id: file.filename || file.public_id,
-      original_name: file.originalname,
-      format: file.mimetype?.split("/")[1] || "",
-      resource_type: file.mimetype?.split("/")[0] || "",
-    }));
 
     // Normalize terms checkbox
     const acceptedTerms =
@@ -65,10 +39,8 @@ router.post("/apply", upload.array("files", 3), async (req, res) => {
       department,
       year,
       club,
-      skills: parsedSkills,
       motivation,
       terms: acceptedTerms,
-      files: uploadedFiles,
     });
 
     await application.save();
