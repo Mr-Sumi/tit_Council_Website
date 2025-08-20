@@ -111,7 +111,6 @@ const handleSubmit = async (e) => {
   formDataWithFiles,
   {
     headers: { "Content-Type": "multipart/form-data" },
-    withCredentials: true, // 🔑 important for cookies/session
   }
 );
 
