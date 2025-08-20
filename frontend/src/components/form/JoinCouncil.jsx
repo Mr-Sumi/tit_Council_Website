@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
 import clubsJson from '../../data/Clubs.json';
@@ -10,6 +11,7 @@ import {
 } from 'react-icons/fa';
 
 const JoinCouncilForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -69,6 +71,10 @@ const JoinCouncilForm = () => {
         motivation: "",
         terms: false,
       });
+
+      setTimeout(() => {
+        navigate("/"); 
+      }, 1500);
 
     } catch (err) {
       console.error(err);
