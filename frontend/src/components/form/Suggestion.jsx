@@ -17,25 +17,30 @@ export default function SuggestionForm() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      setLoading(true);
-      const res = await axios.post("https://api.studentcouncil.info/suggestion", formData);
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    setLoading(true);
+    const res = await axios.post(
+      "https://api.studentcouncil.info/suggestion",
+      formData,
+      { headers: { "Content-Type": "application/json" } } // ✅ properly closed
+    );
 
-      if (res.data?.success) {
-        alert("✅ Suggestion submitted successfully!");
-        setFormData({ name: "", enrollment: "", college: "", problem: "", solution: "" });
-      } else {
-        alert("❌ Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error submitting suggestion:", error);
-      alert("⚠️ Server error. Please check your connection.");
-    } finally {
-      setLoading(false);
+    if (res.data?.success) {
+      alert("✅ Suggestion submitted successfully!");
+      setFormData({ name: "", enrollment: "", college: "", problem: "", solution: "" });
+    } else {
+      alert("❌ Something went wrong. Please try again.");
     }
-  };
+  } catch (error) {
+    console.error("Error submitting suggestion:", error);
+    alert("⚠️ Server error. Please check your connection.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <main className="flex justify-center items-center min-h-screen px-4 py-10 sm:px-6 sm:py-12 bg-gradient-to-br from-gray-900 via-black to-gray-800">
