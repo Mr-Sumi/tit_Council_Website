@@ -4,13 +4,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import useHideOnScroll from "../hooks/useHideOnScroll";
 import assets from "../data/assets.json";
 
-
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(() =>
     typeof window !== "undefined" ? window.innerWidth >= 768 : true
   );
-  const [user, setUser] = useState(null);
   const showNav = useHideOnScroll(5);
   const navigate = useNavigate();
 
@@ -22,31 +20,7 @@ export default function Header() {
     { name: "Gallery", href: "/gallery" },
   ];
 
-  // ✅ fetch user from backend
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await fetch(
-          "https://api.studentcouncil.info/auth/auth-check",
-          { credentials: "include" }
-        );
-
-        if (res.ok) {
-          const data = await res.json();
-          setUser(data);
-        } else {
-          setUser(null);
-        }
-      } catch (err) {
-        console.error("Error fetching user:", err);
-        setUser(null);
-      }
-    };
-
-    fetchUser();
-  }, []);
-
-  // ✅ handle resize
+  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       const desktop = window.innerWidth >= 768;
@@ -58,7 +32,7 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // ✅ body scroll lock for mobile menu
+  // Body scroll lock for mobile menu
   useEffect(() => {
     if (menuOpen) {
       document.body.classList.add("overflow-hidden");
@@ -92,7 +66,6 @@ export default function Header() {
           </h1>
         </div>
 
-
         {/* Desktop Links */}
         {isDesktop && (
           <div className="flex items-center gap-8 lg:gap-12">
@@ -116,32 +89,15 @@ export default function Header() {
               ))}
             </ul>
 
-            {/* Auth Section */}
+            {/* Always show Login button */}
             <div className="ml-6">
-              {user ? (
-                <button
-                  onClick={() => navigate("/userProfile")}
-                  className="flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                >
-                  {user.avatar ? (
-                    <img
-                      src={user.avatar}
-                      alt="User"
-                      className="w-full h-full rounded-full object-cover"
-                    />
-                  ) : (
-                    <RiUser3Line className="text-xl lg:text-2xl" />
-                  )}
-                </button>
-              ) : (
-                <button
-                  onClick={() => navigate("/login")}
-                  className="flex items-center gap-2 px-4 py-2 lg:px-5 lg:py-2.5 bg-white/10 hover:bg-white/20 rounded-lg font-medium transition-colors text-base lg:text-lg"
-                >
-                  <RiUser3Line className="text-xl lg:text-2xl" />
-                  Login
-                </button>
-              )}
+              <button
+                onClick={() => navigate("/login")}
+                className="flex items-center gap-2 px-4 py-2 lg:px-5 lg:py-2.5 bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg font-semibold transition-colors text-base lg:text-lg"
+              >
+                <RiUser3Line className="text-xl lg:text-2xl" />
+                Login
+              </button>
             </div>
           </div>
         )}
@@ -191,37 +147,17 @@ export default function Header() {
                 </NavLink>
               ))}
 
-              {user ? (
-                <button
-                  onClick={() => {
-                    navigate("/userProfile");
-                    setMenuOpen(false);
-                  }}
-                  className="flex items-center gap-2 px-5 py-2 bg-white/10 hover:bg-white/20 rounded-lg font-medium transition-colors"
-                >
-                  {user.avatar ? (
-                    <img
-                      src={user.avatar}
-                      alt="User"
-                      className="w-8 h-8 mr-4 rounded-full object-cover"
-                    />
-                  ) : (
-                    <RiUser3Line className="text-xl" />
-                  )}
-                  Profile
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    navigate("/login");
-                    setMenuOpen(false);
-                  }}
-                  className="flex items-center gap-2 px-6 py-2 bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg font-semibold transition-colors"
-                >
-                  <RiUser3Line className="text-xl" />
-                  Login
-                </button>
-              )}
+              {/* Always show Login button in mobile */}
+              <button
+                onClick={() => {
+                  navigate("/login");
+                  setMenuOpen(false);
+                }}
+                className="flex items-center gap-2 px-6 py-2 bg-yellow-400 hover:bg-yellow-500 text-black rounded-lg font-semibold transition-colors"
+              >
+                <RiUser3Line className="text-xl" />
+                Login
+              </button>
             </div>
           </div>
         </>
