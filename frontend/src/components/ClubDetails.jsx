@@ -11,8 +11,9 @@ export default function ClubDetails() {
 
   // Fetch JSON with caching
   useEffect(() => {
+    // Fetch JSON with caching
     const cachedData = localStorage.getItem("clubsData");
-
+  
     if (cachedData) {
       setClubsData(JSON.parse(cachedData));
       setLoading(false);
@@ -29,7 +30,20 @@ export default function ClubDetails() {
         })
         .finally(() => setLoading(false));
     }
+  
+    // ✅ Clear specific cache when exiting page
+    const handleUnload = () => {
+      localStorage.removeItem("clubsData"); // clears only clubsData
+      localStorage.clear(); // (optional) clears everything
+    };
+  
+    window.addEventListener("beforeunload", handleUnload);
+  
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+    };
   }, []);
+  
 
   if (loading) {
     return (
