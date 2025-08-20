@@ -3,10 +3,9 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import clubsJson from '../../data/Clubs.json';
 import { 
-  FaFileUpload, FaUser, FaEnvelope, FaPhoneAlt, FaIdCard, FaBirthdayCake, 
+  FaUser, FaEnvelope, FaPhoneAlt, FaIdCard, FaBirthdayCake, 
   FaVenusMars, FaBuilding, FaLayerGroup, FaCalendarAlt, FaUniversity
 } from 'react-icons/fa';
-import { MdDelete } from "react-icons/md";
 
 const JoinCouncilForm = () => {
   const [formData, setFormData] = useState({
@@ -20,13 +19,10 @@ const JoinCouncilForm = () => {
     department: "",
     year: "",
     club: "",
-    skills: [],
-    skillInput: "",
     motivation: "",
     terms: false,
   });
 
-  const [files, setFiles] = useState([]);
   const [alert, setAlert] = useState({ open: false, message: "", type: "info" });
 
   useEffect(() => {
@@ -42,34 +38,9 @@ const JoinCouncilForm = () => {
     if (name === "phone") {
       const numeric = value.replace(/\D/g, "").slice(0, 10);
       setFormData(prev => ({ ...prev, phone: numeric }));
-    } else if (name === "skillInput") {
-      setFormData(prev => ({ ...prev, skillInput: value }));
     } else {
       setFormData(prev => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
     }
-  };
-
-  const addSkill = () => {
-    const skill = formData.skillInput.trim();
-    if (skill && !formData.skills.includes(skill) && formData.skills.length < 15) {
-      setFormData(prev => ({ ...prev, skills: [...prev.skills, skill], skillInput: "" }));
-    }
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' || e.key === ',') {
-      e.preventDefault();
-      addSkill();
-    }
-  };
-
-  const removeSkill = (skill) => {
-    setFormData(prev => ({ ...prev, skills: prev.skills.filter(s => s !== skill) }));
-  };
-
-  const handleFileChange = (e) => {
-    const selected = Array.from(e.target.files).slice(0, 3);
-    setFiles(selected);
   };
 
   const handleSubmit = async (e) => {
@@ -85,32 +56,17 @@ const JoinCouncilForm = () => {
     
     if (!emailRegex.test(formData.email)) 
       return setAlert({ open: true, message: "Invalid email address.", type: "error" });
-    
-    if (files.length === 0) 
-      return setAlert({ open: true, message: "Please upload at least one file.", type: "warning" });
 
     try {
-      const formDataWithFiles = new FormData();
-      Object.entries(formData).forEach(([key, value]) => {
-        if (key !== "skillInput") {
-          if (Array.isArray(value)) {
-            value.forEach((v) => formDataWithFiles.append(key, v));
-          } else {
-            formDataWithFiles.append(key, value);
-          }
-        }
-      });
-
-      files.forEach((file) => formDataWithFiles.append("files", file));
-
       await axios.post(
         "https://api.studentcouncil.info/council/apply",
-        formDataWithFiles,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        formData,
+        { headers: { "Content-Type": "application/json" } }
       );
 
       setAlert({ open: true, message: "Form submitted successfully!", type: "success" });
 
+      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -122,12 +78,9 @@ const JoinCouncilForm = () => {
         department: "",
         year: "",
         club: "",
-        skills: [],
-        skillInput: "",
         motivation: "",
         terms: false,
       });
-      setFiles([]);
 
     } catch (err) {
       console.error(err);
@@ -289,61 +242,10 @@ const JoinCouncilForm = () => {
             </div>
           </div>
 
-          {/* Skills */}
-          <div>
-            <label className="block mb-1">Skills (click Enter to add, max 15)</label>
-            <div className="flex flex-wrap gap-2 bg-gray-900 border border-gray-600 rounded-md p-2">
-              {formData.skills.map(skill => (
-                <span
-                  key={skill}
-                  className="px-2 py-1 rounded-full flex items-center gap-1 bg-gradient-to-r from-[#FF4F01] to-[#FFF9D5] text-gray-900"
-                >
-                  {skill} 
-                  <button type="button" onClick={() => removeSkill(skill)} className="hover:text-red-600">
-                    <MdDelete size={16} />
-                  </button>
-                </span>
-              ))}
-              {formData.skills.length < 15 && (
-                <input
-                  type="text"
-                  name="skillInput"
-                  value={formData.skillInput}
-                  onChange={handleChange}
-                  onKeyDown={handleKeyDown}
-                  placeholder="Type a skill and press Enter"
-                  className="bg-transparent focus:outline-none flex-1 py-1"
-                />
-              )}
-            </div>
-            {formData.skills.length >= 15 && (
-              <p className="text-yellow-400 text-sm mt-1">Maximum 15 skills allowed</p>
-            )}
-          </div>
-
           {/* Motivation */}
           <div>
             <label className="block mb-1">Why do you want to join?</label>
             <textarea name="motivation" rows={4} value={formData.motivation} onChange={handleChange} required placeholder="Your motivation here..." className="w-full bg-gray-900 border border-gray-600 rounded-md p-2 focus:outline-none"></textarea>
-          </div>
-
-          {/* File Upload */}
-          <div 
-            className="relative"
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => {
-              e.preventDefault();
-              const droppedFiles = Array.from(e.dataTransfer.files).slice(0, 3);
-              setFiles(droppedFiles);
-            }}
-          >
-            <label className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-gray-600 p-6 rounded-xl cursor-pointer transition-all hover:border-gradient-to-r hover:from-[#FF4F01] hover:to-[#FFF9D5] hover:bg-gray-800">
-              <FaFileUpload className="text-3xl text-[#FF4F01]" />
-              <span className="text-gray-300 text-center">
-                {files.length ? files.map(f => f.name).join(", ") : "Drag & drop or Click to Upload ID Card/Photo Proof"}
-              </span>
-              <input type="file" multiple onChange={handleFileChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
-            </label>
           </div>
 
           {/* Terms */}

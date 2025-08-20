@@ -62,31 +62,11 @@ const councilSchema = new mongoose.Schema({
     required: true,
   },
 
-  skills: {
-    type: [String],
-    validate: {
-      validator: function (arr) {
-        return arr.length <= 15;
-      },
-      message: "Maximum 15 skills allowed",
-    },
-    default: [],
-  },
-
   motivation: {
     type: String,
     required: true,
-    maxlength: 1000, // keep reasonable length
+    maxlength: 1000,
   },
-
-  files: [
-    {
-      filename: { type: String },
-      path: { type: String },   // Cloudinary URL will be saved here
-      mimetype: { type: String },
-      size: { type: Number },
-    },
-  ],
 
   terms: {
     type: Boolean,
