@@ -17,7 +17,8 @@ import SuggestionForm from "./components/form/Suggestion"
 import AuthForm from "./components/form/AuthForm";
 import UserProfileRegistration from "./components/form/UserProfileRegistration"
 import ScrollToTop from "./hooks/ScrollToTop"; 
-import Login from "./components/form/login"
+import Login from "./components/form/login";
+import SIH from "./Pages/SIH"
 import { AuthProvider } from "./context/AuthContext";
 import { useLoadingState } from "./hooks/useLoadingState";
 import { ToastContainer } from "react-toastify";
@@ -70,6 +71,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/userProfile" element={<UserProfile />} />
             <Route path="/userProfileRegistration" element={<UserProfileRegistration />} />
+            <Route path="/sih" element={<SIH />} />
           </Routes>
 
           {loading && (
