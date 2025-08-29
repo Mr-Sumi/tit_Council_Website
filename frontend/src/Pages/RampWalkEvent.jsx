@@ -21,7 +21,14 @@ export default function RampWalkEvent() {
       {/* Description */}
       <p className="text-gray-300 text-lg leading-relaxed text-center mb-6">
         Time to shine on the runway! 🌟 Join our Ramp Walk and show off your
-        confidence, style, and personality.
+        confidence, style, and personality.  
+        <motion.span
+          className="text-pink-400 font-semibold block mt-2 flex items-center justify-center gap-2"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          👑 Winners will be crowned as Mr. & Ms. Fresher! 👑
+        </motion.span>
       </p>
 
       {/* Features */}

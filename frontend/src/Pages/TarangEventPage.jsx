@@ -259,11 +259,11 @@ export default function TarangEventPage() {
                   Student Coordinators
                 </h3>
                 <p className="text-gray-300 text-lg mb-8">
-                  For any queries or updates regarding Tarang Hackathon
+                  For any queries or updates regarding Tarang 
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-4">update 
                 {[
                   { name: "Madhur Verma", phone: "74708 11264" },
                   { name: "Yash Gupta", phone: "91426 50931" },
