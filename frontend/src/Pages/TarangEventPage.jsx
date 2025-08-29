@@ -106,12 +106,12 @@ export default function TarangEventPage() {
           >
             <div className="flex items-center gap-3 group">
               <Calendar className="w-6 h-6 text-slate-300 group-hover:text-white transition-colors duration-300" />
-              <span className="text-xl font-medium">Coming Soon</span>
+              <span className="text-xl font-medium">Register fast</span>
             </div>
             <div className="hidden md:block w-px h-8 bg-slate-600"></div>
             <div className="flex items-center gap-3 group">
               <Clock className="w-6 h-6 text-slate-300 group-hover:text-white transition-colors duration-300" />
-              <span className="text-xl">Entries Close: Saturday, 30-08-2025</span>
+              <span className="text-xl">Entries Close: Monday, 01-09-2025(11:59 PM)</span>
             </div>
           </div>
         </div>
