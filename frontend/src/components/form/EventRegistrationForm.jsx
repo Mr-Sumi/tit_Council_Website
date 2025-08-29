@@ -13,7 +13,7 @@ const EventRegistration = () => {
   });
 
   const eventFees = {
-    Ram: 50,
+    "Ramp Walk": 50,
     Dance: { Solo: 50, Duo: 70, Group: 100 },
     "Open Mic": 50,
     Music: 40,
@@ -106,7 +106,7 @@ const EventRegistration = () => {
             required
           >
             <option value="">Select Event</option>
-            <option value="Ramp walk">Ramp Walk</option>
+            <option value="Ramp Walk">Ramp Walk</option>
             <option value="Dance">Dance</option>
             <option value="Open Mic">Open Mic</option>
             <option value="Music">Music</option>
