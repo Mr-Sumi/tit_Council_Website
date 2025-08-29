@@ -25,7 +25,11 @@ import { useLoadingState } from "./hooks/useLoadingState";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Taragform from "./components/form/EventRegistrationForm.jsx"
-
+import DanceDetails from "./Pages/DanceEvent.jsx"
+import OpenMicEvent from "./Pages/OpenMicEvent.jsx"
+import MysteryGame from "./Pages/MysteryGame.jsx"
+import MusicEvent from "./Pages/MusicEvent.jsx"
+import RampWalkEvent from "./Pages/RampWalkEvent.jsx"
 
 function App() {
   const { loading, stopLoading } = useLoadingState(true, 3000);
@@ -76,6 +80,11 @@ function App() {
             <Route path="/sih" element={<SIH />} />
             <Route path="/tarang" element={<Tarang />} />
             <Route path="/tarangForm" element={<Taragform />} />
+            <Route path="/danceDetails" element={<DanceDetails />} />
+            <Route path="/openMic" element={<OpenMicEvent />} />
+            <Route path="/mysteryGame" element={<MysteryGame />} />
+            <Route path="/musicEvent" element={<MusicEvent />} />
+            <Route path="/rampWalk" element={<RampWalkEvent />} />
           </Routes>
 
           {loading && (

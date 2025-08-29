@@ -12,11 +12,11 @@ export default function TarangEventPage() {
   }, []);
 
   const categories = [
-    { name: "Ramp Walk", icon: Star, delay: "0ms" },
-    { name: "Dance", icon: Users, delay: "100ms" },
-    { name: "Open Mic", icon: Mic, delay: "200ms" },
-    { name: "Music", icon: Music, delay: "300ms" },
-    { name: "Fun Games", icon: Clock, delay: "400ms" },
+    { name: "Ramp Walk", icon: Star, delay: "0ms", path: "/rampWalk" },
+    { name: "Dance", icon: Users, delay: "100ms", path: "/danceDetails" },
+    { name: "Open Mic", icon: Mic, delay: "200ms", path: "/openMic" },
+    { name: "Music", icon: Music, delay: "300ms", path: "/musicEvent" },
+    { name: "Fun Games", icon: Clock, delay: "400ms", path: "/mysteryGame" },
   ];
 
   return (
@@ -165,6 +165,7 @@ export default function TarangEventPage() {
                   }}
                   onMouseEnter={() => setHoveredCategory(index)}
                   onMouseLeave={() => setHoveredCategory(null)}
+                  onClick={() => navigate(category.path)} // ✅ Navigate on click
                 >
                   <div className="text-center relative">
                     <div className="mb-6 relative">
