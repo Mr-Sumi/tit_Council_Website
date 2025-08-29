@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Registration = require("../models/Registration");
+const Registration = require("../models/EventRegistration");
 
 // POST - Create Registration
 router.post("/event", async (req, res) => {

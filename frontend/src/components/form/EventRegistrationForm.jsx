@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -6,10 +6,10 @@ const EventRegistration = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    utrNo: "",
+    utrNumber: "", // ✅ matches backend
     event: "",
-    category: "", // Only for Dance
-    members: [{ name: "", email: "", phone: "" }],
+    category: "", // only for Dance
+    members: [{ name: "", email: "", phone: "", enrollmentNo: "" }], // ✅ matches backend
   });
 
   const eventFees = {
@@ -19,24 +19,24 @@ const EventRegistration = () => {
     Music: 40,
   };
 
-  // Function to determine member count based on event
+  // Determine required members
   const getRequiredMembers = () => {
     if (formData.event === "Dance") {
       if (formData.category === "Solo") return 1;
       if (formData.category === "Duo") return 2;
       if (formData.category === "Group") return 4;
     }
-    return 1; // default for other events
+    return 1;
   };
 
-  // Update members array dynamically
+  // Adjust members dynamically
   const updateMembersArray = () => {
     const required = getRequiredMembers();
     let updated = [...formData.members];
 
     if (updated.length < required) {
       while (updated.length < required) {
-        updated.push({ name: "", email: "", phone: "" });
+        updated.push({ name: "", email: "", phone: "", enrollmentNo: "" });
       }
     } else if (updated.length > required) {
       updated = updated.slice(0, required);
@@ -56,23 +56,33 @@ const EventRegistration = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await fetch("https://studentcouncil.info/registration/event", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData), 
-    });
-    console.log(data);
-    const data = await response.json();
-    alert(data.message);
-  } catch (error) {
-    console.error("Error:", error);
-  }
-};
+    e.preventDefault();
+    console.log("Submitting form data:", formData);
 
+    try {
+      const response = await fetch("https://api.studentcouncil.info/registration/event", { // ✅ backend port
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+        credentials: "include",
+      });
 
-  React.useEffect(() => {
+      const data = await response.json();
+      console.log("Response:", data);
+
+      if (response.ok) {
+        alert(data.message || "Registration successful!");
+        navigate("/"); // redirect after success (optional)
+      } else {
+        alert(data.error || "Something went wrong!");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Network error, please try again.");
+    }
+  };
+
+  useEffect(() => {
     updateMembersArray();
   }, [formData.event, formData.category]);
 
@@ -84,7 +94,7 @@ const EventRegistration = () => {
         transition={{ duration: 0.8 }}
         className="bg-gray-900 p-8 rounded-2xl shadow-lg max-w-2xl w-full"
       >
-        <h2 className="text-2xl font-bold text-center mb-6">Tarang Registration</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Tarang Registration form</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Event Selection */}
@@ -96,7 +106,7 @@ const EventRegistration = () => {
             required
           >
             <option value="">Select Event</option>
-            <option value="Ram">Ram</option>
+            <option value="Ramp walk">Ramp Walk</option>
             <option value="Dance">Dance</option>
             <option value="Open Mic">Open Mic</option>
             <option value="Music">Music</option>
@@ -153,6 +163,15 @@ const EventRegistration = () => {
                   className="w-full px-3 py-2 rounded bg-gray-700 text-white"
                   required
                 />
+                <input
+                  type="text"
+                  name="enrollmentNo"
+                  placeholder="Enrollment No."
+                  value={member.enrollmentNo}
+                  onChange={(e) => handleMemberChange(index, e)}
+                  className="w-full px-3 py-2 rounded bg-gray-700 text-white"
+                  required
+                />
               </div>
             ))}
           </div>
@@ -177,9 +196,9 @@ const EventRegistration = () => {
           {/* UTR No */}
           <input
             type="text"
-            name="utrNo"
+            name="utrNumber" // ✅ matches backend
             placeholder="Enter UTR No."
-            value={formData.utrNo}
+            value={formData.utrNumber}
             onChange={handleChange}
             className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white"
             required

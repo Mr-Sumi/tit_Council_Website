@@ -34,9 +34,9 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "https://studentcouncil.info",
-    methods: ["GET", "POST", "PUT", "DELETE"], 
-    credentials: true, 
+    origin: ["https://studentcouncil.info", "http://localhost:5173"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
 

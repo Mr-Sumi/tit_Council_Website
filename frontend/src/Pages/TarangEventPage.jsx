@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { Calendar, Users, Music, Mic, Star, Clock, Phone } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Calendar, Users, Music, Mic, Star, Clock, Phone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function TarangEventPage() {
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   const categories = [
-    { name: 'Ramp Walk', icon: Star, delay: '0ms' },
-    { name: 'Dance', icon: Users, delay: '100ms' },
-    { name: 'Open Mic', icon: Mic, delay: '200ms' },
-    { name: 'Music', icon: Music, delay: '300ms' },
-    { name: 'Fun Games', icon: Clock, delay: '400ms' }
+    { name: "Ramp Walk", icon: Star, delay: "0ms" },
+    { name: "Dance", icon: Users, delay: "100ms" },
+    { name: "Open Mic", icon: Mic, delay: "200ms" },
+    { name: "Music", icon: Music, delay: "300ms" },
+    { name: "Fun Games", icon: Clock, delay: "400ms" },
   ];
 
   return (
@@ -46,13 +48,13 @@ export default function TarangEventPage() {
             d="M0,400 Q300,300 600,400 T1200,400 L1200,800 L0,800 Z"
             fill="url(#waveGradient2)"
             className="animate-pulse"
-            style={{ animationDelay: '1s' }}
+            style={{ animationDelay: "1s" }}
           />
           <path
             d="M0,600 Q300,500 600,600 T1200,600 L1200,800 L0,800 Z"
             fill="url(#waveGradient1)"
             className="animate-pulse"
-            style={{ animationDelay: '2s' }}
+            style={{ animationDelay: "2s" }}
           />
         </svg>
       </div>
@@ -67,7 +69,7 @@ export default function TarangEventPage() {
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 3}s`
+              animationDuration: `${2 + Math.random() * 3}s`,
             }}
           />
         ))}
@@ -77,7 +79,7 @@ export default function TarangEventPage() {
         {/* Header */}
         <div
           className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <div className="mb-8">
@@ -90,7 +92,7 @@ export default function TarangEventPage() {
             </p>
             <p
               className="text-lg text-slate-400 max-w-2xl mx-auto animate-fade-in"
-              style={{ animationDelay: '0.3s' }}
+              style={{ animationDelay: "0.3s" }}
             >
               A Cultural Celebration of Performance & Passion
             </p>
@@ -99,7 +101,7 @@ export default function TarangEventPage() {
           {/* Event Details */}
           <div
             className={`flex flex-col md:flex-row justify-center items-center gap-8 mb-12 transition-all duration-1000 delay-300 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
             }`}
           >
             <div className="flex items-center gap-3 group">
@@ -117,11 +119,14 @@ export default function TarangEventPage() {
         {/* Registration Button */}
         <div
           className={`text-center mb-16 transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
           }`}
         >
-          <button className="group relative px-12 py-6 text-2xl font-bold bg-gradient-to-r from-slate-100 via-white to-slate-200 text-slate-900 rounded-full hover:from-slate-200 hover:via-gray-100 hover:to-slate-300 transition-all duration-500 transform hover:scale-110 shadow-2xl hover:shadow-slate-500/25 animate-bounce">
-            <span className="relative z-10">REGISTRATION STARTING SOON</span>
+          <button
+            onClick={() => navigate("/tarangForm")}
+            className="group relative px-12 py-6 text-2xl font-bold bg-gradient-to-r from-slate-100 via-white to-slate-200 text-slate-900 rounded-full hover:from-slate-200 hover:via-gray-100 hover:to-slate-300 transition-all duration-500 transform hover:scale-110 shadow-2xl hover:shadow-slate-500/25 animate-bounce"
+          >
+            <span className="relative z-10">REGISTER NOW</span>
             <div className="absolute inset-0 bg-gradient-to-r from-slate-300 via-gray-200 to-slate-400 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
             <div className="absolute -inset-1 bg-gradient-to-r from-slate-400 via-gray-300 to-slate-500 rounded-full opacity-0 group-hover:opacity-20 blur-lg transition-opacity duration-500"></div>
           </button>
@@ -134,7 +139,7 @@ export default function TarangEventPage() {
         <div className="mb-16">
           <h2
             className={`text-4xl font-bold text-center mb-12 transition-all duration-1000 delay-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
             }`}
           >
             Performance Categories
@@ -151,12 +156,12 @@ export default function TarangEventPage() {
                   key={category.name}
                   className={`group relative bg-gradient-to-br from-slate-800 via-gray-800 to-zinc-800 border border-slate-600 rounded-2xl p-8 hover:border-slate-400 hover:shadow-2xl hover:shadow-slate-500/20 transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2 ${
                     isVisible
-                      ? 'opacity-100 translate-y-0'
-                      : 'opacity-0 translate-y-8'
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-8"
                   }`}
                   style={{
                     transitionDelay: `${800 + index * 100}ms`,
-                    animationDelay: category.delay
+                    animationDelay: category.delay,
                   }}
                   onMouseEnter={() => setHoveredCategory(index)}
                   onMouseLeave={() => setHoveredCategory(null)}
@@ -187,9 +192,9 @@ export default function TarangEventPage() {
         {/* Important Notes */}
         <div
           className={`bg-gradient-to-r from-slate-800 via-gray-800 to-zinc-800 border border-slate-600 rounded-3xl p-10 max-w-4xl mx-auto mb-16 hover:border-slate-500 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-500/10 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
-          style={{ transitionDelay: '1.3s' }}
+          style={{ transitionDelay: "1.3s" }}
         >
           <h3 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-slate-200 to-white bg-clip-text text-transparent">
             Important Notes
@@ -221,7 +226,7 @@ export default function TarangEventPage() {
         {/* About Tarang */}
         <div
           className={`text-center max-w-4xl mx-auto transition-all duration-1000 delay-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <h3 className="text-3xl font-bold mb-8 bg-gradient-to-r from-slate-200 to-white bg-clip-text text-transparent">
@@ -253,15 +258,14 @@ export default function TarangEventPage() {
                   Student Coordinators
                 </h3>
                 <p className="text-gray-300 text-lg mb-8">
-                  For any queries or updates regarding Tarang
-                  Hackathon
+                  For any queries or updates regarding Tarang Hackathon
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
                 {[
-                  { name: 'Madhur verma ', phone: '62058 40092' },
-                  { name: 'Yash Gupta', phone: '91426 50931' }
+                  { name: "Madhur Verma", phone: "74708 11264" },
+                  { name: "Yash Gupta", phone: "91426 50931" },
                 ].map((contact, index) => (
                   <div
                     key={index}
@@ -291,7 +295,7 @@ export default function TarangEventPage() {
         {/* Footer Wave */}
         <div
           className={`mt-20 text-center transition-all duration-1000 delay-1200 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <div className="text-8xl text-slate-600 font-light animate-pulse hover:text-slate-500 transition-colors duration-500">
@@ -299,7 +303,7 @@ export default function TarangEventPage() {
           </div>
           <p
             className="text-slate-500 mt-4 animate-fade-in"
-            style={{ animationDelay: '1.5s' }}
+            style={{ animationDelay: "1.5s" }}
           >
             Let your talent create waves
           </p>
