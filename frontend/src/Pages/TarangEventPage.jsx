@@ -263,7 +263,7 @@ export default function TarangEventPage() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">update 
+              <div className="grid md:grid-cols-2 gap-4">
                 {[
                   { name: "Madhur Verma", phone: "74708 11264" },
                   { name: "Yash Gupta", phone: "91426 50931" },
