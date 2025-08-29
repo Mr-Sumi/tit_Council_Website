@@ -24,6 +24,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { useLoadingState } from "./hooks/useLoadingState";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Taragform from "./components/form/EventRegistrationForm.jsx"
 
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
             <Route path="/userProfileRegistration" element={<UserProfileRegistration />} />
             <Route path="/sih" element={<SIH />} />
             <Route path="/tarang" element={<Tarang />} />
+            <Route path="/tarangForm" element={<Taragform />} />
           </Routes>
 
           {loading && (

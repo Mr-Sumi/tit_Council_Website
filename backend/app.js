@@ -13,6 +13,7 @@ let club = require("./routes/club.route.js");
 let event = require("./routes/event.route.js");
 let council=require("./routes/councilRoutes.js");
 let suggestion=require("./routes/suggestionRoutes.js")
+let registration=require("./routes/registrationRoutes.js")
 let cors=require("cors");
 
 
@@ -68,6 +69,7 @@ app.use("/event", event);
 app.use("/payment", payment);
 app.use("/council", council);
 app.use("/suggestion", suggestion);
+app.use("/registration", registration);
 
 
 
