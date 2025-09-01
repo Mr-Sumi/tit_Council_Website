@@ -12,7 +12,7 @@ export default function TarangEventPage() {
   }, []);
 
   const categories = [
-    { name: "Ramp Walk", icon: Star, delay: "0ms", path: "/rampWalk" },
+    { name: "Ramp Walk (Traditional only)", icon: Star, delay: "0ms", path: "/rampWalk" },
     { name: "Dance", icon: Users, delay: "100ms", path: "/danceDetails" },
     { name: "Open Mic", icon: Mic, delay: "200ms", path: "/openMic" },
     { name: "Music", icon: Music, delay: "300ms", path: "/musicEvent" },

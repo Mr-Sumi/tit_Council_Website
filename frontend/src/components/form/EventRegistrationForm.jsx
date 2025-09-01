@@ -106,7 +106,7 @@ const EventRegistration = () => {
             required
           >
             <option value="">Select Event</option>
-            <option value="Ramp Walk">Ramp Walk</option>
+            <option value="Ramp Walk">Ramp Walk(Traditional only)</option>
             <option value="Dance">Dance</option>
             <option value="Open Mic">Open Mic</option>
             <option value="Music">Music</option>

@@ -15,7 +15,7 @@ export default function RampWalkEvent() {
     >
       {/* Title */}
       <h2 className="text-4xl font-extrabold text-center mb-6">
-        💃 Ramp Walk – Walk with Confidence & Style! 🕺
+        💃 Ramp Walk(Traditional only) – Walk with Confidence & Style! 🕺
       </h2>
 
       {/* Description */}
