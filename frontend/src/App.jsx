@@ -79,12 +79,12 @@ function App() {
             <Route path="/userProfileRegistration" element={<UserProfileRegistration />} />
             <Route path="/sih" element={<SIH />} />
             <Route path="/tarang" element={<Tarang />} />
-            <Route path="/tarangForm" element={<Taragform />} />
+            {/* <Route path="/tarangForm" element={<Taragform />} />
             <Route path="/danceDetails" element={<DanceDetails />} />
             <Route path="/openMic" element={<OpenMicEvent />} />
             <Route path="/mysteryGame" element={<MysteryGame />} />
             <Route path="/musicEvent" element={<MusicEvent />} />
-            <Route path="/rampWalk" element={<RampWalkEvent />} />
+            <Route path="/rampWalk" element={<RampWalkEvent />} /> */}
           </Routes>
 
           {loading && (

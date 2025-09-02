@@ -57,7 +57,7 @@ export default function Header() {
           onClick={() => navigate("/")}
         >
           <img
-            src={assets.logos.councilLogo}
+            src="/clublogo/Student_council_vjzt0j.png"
             alt="Council Logo"
             className="h-12 sm:h-14 w-auto object-contain hover:scale-110 transition-transform duration-300"
           />

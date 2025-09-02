@@ -2,97 +2,97 @@
     "clubsData": [
       {
         "name": "Alumni Relation Committee",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502264/Alumni_Relation_mp5xrs.png",
+        "img": "/clublogo/Alumni_Relation_mp5xrs.png",
         "link": "/club/alumni"
         },
       {
         "name": "Coding Club",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502249/Coding_club_ed2sbh.png",
+        "img": "/clublogo/Coding_club_ed2sbh.png",
         "link": "/club/coding"
       },
       {
         "name": "Cultural & Event Cell",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502266/CULTURAL_EvENT_abnyuq.png",
+        "img": "/clublogo/CULTURAL_EvENT_abnyuq.png",
         "link": "/club/cultural"
       },
       {
         "name": "Cyber Cop Cell",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/cyber_COP_npmtvn.png",
+        "img": "/clublogo/cyber_COP_npmtvn.png",
         "link": "/club/cyber"
       },
       {
         "name": "Dance Society",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502250/DAnce_Club_s5g6df.png",
+        "img": "/clublogo/DAnce_Club_s5g6df.png",
         "link": "/club/dance"
       },
       {
         "name": "Drone Society",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502267/DRONE_SOCIETY_ugfbt4.png",
+        "img": "/clublogo/DRONE_SOCIETY_ugfbt4.png",
         "link": "/club/drone"
       },
       {
         "name": "ELITE (Excellence & Leadership in Integrity, Tact, and Ethics)",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755432324/EV_2_ds7qci.png",
+        "img": "/clublogo/elite.png",
         "link": "/club/elite"
       },
       {
         "name": "E.V. Club",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502268/EV_g2djgp.png",
+        "img": "/clublogo/EV.png",
         "link": "/club/e.v."
       },
       {
         "name": "Environment Club",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348666/ENVIRONMENT_cLUB_byfpyp.png",
+        "img": "/clublogo/ENVIRONMENT_cLUB_byfpyp.png",
         "link": "/club/Environment"
       },
       {
         "name": "Entrepreneurship Cell",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502252/ENTREpRENEURSHIp_weamnu.png",
+        "img": "/clublogo/ENTREpRENEURSHIp_weamnu.png",
         "link": "/club/entrepreneurship"
       },
       {
         "name": "IEEE Student Chapter",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502254/IEEE_Student_Chapter_tzqiza.png",
+        "img": "/clublogo/IEEE_Student_Chapter_tzqiza.png",
         "link": "/club/ieee"
       },
       {
         "name": "Literary Club",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502256/LITERARY_Club_ooakhl.png",
+        "img": "/clublogo/LITERARY_Club_ooakhl.png",
         "link": "/club/literary"
       },
       {
         "name": "Media Fusion Society",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502257/Media_Fusion_vhlhjp.png",
+        "img": "/clublogo/Media_Fusion_vhlhjp.png",
         "link": "/club/media"
       },
       {
         "name": "Music Society",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502258/mUSIC_SOCIETY_m2wmom.png",
+        "img": "/clublogo/mUSIC_SOCIETY_m2wmom.png",
         "link": "/club/music"
       },
       {
         "name": "NSS Unit",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502259/NSS_UNIT_qkyao0.png",
+        "img": "/clublogo/NSS_UNIT_qkyao0.png",
         "link": "/club/nss"
       },
       {
         "name": "Renewable Energy Club",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502261/RENEwAbLE_ENERGY_x7mjft.png",
+        "img": "/clublogo/RENEwAbLE_ENERGY_x7mjft.png",
         "link": "/club/renewable"
       },
       {
         "name": "Robotics Club",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502262/RObOTICS_CLUB_zuu4q1.png",
+        "img": "/clublogo/RObOTICS_CLUB_zuu4q1.png",
         "link": "/club/robotics"
       },
       {
         "name": "Tech Wizard Club",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1747502263/Tech_WIZARDs_obkby8.png",
+        "img": "/clublogo/Tech_WIZARDs_obkby8.png",
         "link": "/club/tech"
       },
       {
         "name": "WINGS (Women Inspiring Growth & Success)",
-        "img": "https://res.cloudinary.com/dlk5kntmy/image/upload/v1755348790/WINGS_odrbj6.png",
+        "img": "/clublogo/WINGS_odrbj6.png",
         "link": "/club/wings"
       }
     ]

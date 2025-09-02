@@ -94,6 +94,7 @@ export default function ClubDetails() {
       >
         <img
           src={club.club_logo}
+          //src="/clublogo/Alumni_Relation_mp5xrs.png"
           alt={club.name}
           className="h-45 w-45 rounded-2xl shadow-xl ring-4 ring-indigo-500/30 hover:ring-white/30 transition-all duration-300"
         />

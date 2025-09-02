@@ -123,10 +123,10 @@ export default function TarangEventPage() {
           }`}
         >
           <button
-            onClick={() => navigate("/tarangForm")}
+            onClick={() => navigate("/tarang")}
             className="group relative px-12 py-6 text-2xl font-bold bg-gradient-to-r from-slate-100 via-white to-slate-200 text-slate-900 rounded-full hover:from-slate-200 hover:via-gray-100 hover:to-slate-300 transition-all duration-500 transform hover:scale-110 shadow-2xl hover:shadow-slate-500/25 animate-bounce"
           >
-            <span className="relative z-10">REGISTER NOW</span>
+            <span className="relative z-10">REGISTER close</span>
             <div className="absolute inset-0 bg-gradient-to-r from-slate-300 via-gray-200 to-slate-400 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
             <div className="absolute -inset-1 bg-gradient-to-r from-slate-400 via-gray-300 to-slate-500 rounded-full opacity-0 group-hover:opacity-20 blur-lg transition-opacity duration-500"></div>
           </button>
