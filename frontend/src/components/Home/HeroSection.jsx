@@ -11,9 +11,7 @@ export default function HeroSection() {
   const videoRef = useRef(null);
   const contentRef = useRef(null);
 
-  // Tarang first, then SIH
-  const [showTarangPopup, setShowTarangPopup] = useState(true);
-  const [showSIHPopup, setShowSIHPopup] = useState(false);
+  const [showSIHPopup, setShowSIHPopup] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -47,86 +45,11 @@ export default function HeroSection() {
   }, []);
 
   // Handlers
-  const handleTarangClick = () => (window.location.href = "/tarang");
   const handleSIHClick = () => (window.location.href = "/sih");
-
-  const closeTarangPopup = () => {
-    setShowTarangPopup(false);
-    setShowSIHPopup(true); // Show SIH after Tarang closes
-  };
-
   const closeSIHPopup = () => setShowSIHPopup(false);
 
   return (
     <>
-      {/* ---------- Tarang Popup ---------- */}
-      <AnimatePresence>
-        {showTarangPopup && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={closeTarangPopup}
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0, y: 50 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.8, opacity: 0, y: 50 }}
-              transition={{ type: "spring", duration: 0.5 }}
-              className="relative bg-gradient-to-br from-indigo-900 via-black to-indigo-800 p-8 rounded-2xl shadow-2xl max-w-md w-full border border-white/10 overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button
-                onClick={closeTarangPopup}
-                className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-10 hover:rotate-90 transform duration-300"
-              >
-                <X className="w-6 h-6" />
-              </button>
-
-              {/* Content */}
-              <div className="text-center relative z-10">
-                <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                  className="w-16 h-16 bg-gradient-to-br from-indigo-300 to-indigo-500 text-black rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
-                >
-                  🎶
-                </motion.div>
-
-                <motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-2xl font-bold text-white mb-4"
-                >
-                  Tarang – The Waves of Talent
-                </motion.h3>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="text-gray-300 mb-6 leading-relaxed"
-                >
-                  A cultural fest full of music, dance, and creativity. Come and
-                  showcase your hidden talents!
-                </motion.p>
-
-                <motion.button
-                  onClick={handleTarangClick}
-                  className="w-full bg-white text-black font-bold py-3 px-6 rounded-xl shadow-lg hover:bg-gray-100"
-                >
-                  Explore Tarang →
-                </motion.button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* ---------- SIH Popup ---------- */}
       <AnimatePresence>
         {showSIHPopup && (
