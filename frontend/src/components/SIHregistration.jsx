@@ -66,7 +66,7 @@ const SIHregistration = () => {
     const data = { teamName, category, description, members };
 
     try {
-      const res = await fetch("http://localhost:5000/api/registration", {
+      const res = await fetch("https://api.studentcouncil.info/api/registration", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -81,7 +81,7 @@ const SIHregistration = () => {
         setMembers([
           { role: "leader", name: "", email: "", phone: "", gender: "", institution: "", skills: "" },
         ]);
-        fetchTeams(); // refresh after submit
+        fetchTeams(); 
       } else {
         alert("Error: " + result.message);
       }
@@ -94,7 +94,7 @@ const SIHregistration = () => {
   // Fetch teams (GET)
   const fetchTeams = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/registration");
+      const res = await fetch("https://api.studentcouncil.info/api/registration");
       const result = await res.json();
       if (result.success) {
         setRegisteredTeams(result.data);
