@@ -19,6 +19,7 @@ import UserProfileRegistration from "./components/form/UserProfileRegistration"
 import ScrollToTop from "./hooks/ScrollToTop"; 
 import Login from "./components/form/login";
 import SIH from "./Pages/SIH"
+import SIHregistration from "./components/SIHregistration"
 import Tarang from "./Pages/TarangEventPage"
 import { AuthProvider } from "./context/AuthContext";
 import { useLoadingState } from "./hooks/useLoadingState";
@@ -78,6 +79,7 @@ function App() {
             <Route path="/userProfile" element={<UserProfile />} />
             <Route path="/userProfileRegistration" element={<UserProfileRegistration />} />
             <Route path="/sih" element={<SIH />} />
+            <Route path="/sih/registration" element={<SIHregistration />} />
             <Route path="/tarang" element={<Tarang />} />
             {/* <Route path="/tarangForm" element={<Taragform />} />
             <Route path="/danceDetails" element={<DanceDetails />} />

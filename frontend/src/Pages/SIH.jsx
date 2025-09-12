@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Users, Trophy, Mail, Phone, FileText, Code, Heart, Wifi, Globe, Zap, Clock, ChevronDown, Download, ExternalLink } from 'lucide-react';
 import Navbar from "../components/Header"
+import { Link } from 'react-router-dom';
 const HackathonWebsite = () => {
   const [activeSection, setActiveSection] = useState('');
 
@@ -92,8 +93,8 @@ const HackathonWebsite = () => {
           
           <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 rounded-2xl p-8 mb-8 backdrop-blur-sm">
             <div className="text-4xl mb-4">🚀</div>
-            <h3 className="text-2xl font-bold mb-4 text-orange-400">Registration Starting Soon!</h3>
-            <p className="text-lg text-gray-300">Get ready to showcase your innovation skills. Team registration will begin shortly.</p>
+            <Link to="/sih/registration" className="text-2xl bg-amber-900 p-3 py-1 rounded-full font-bold mb-4 text-orange-400">Start Registration</Link>
+            <p className="text-lg mt-2 text-gray-300">Get ready to showcase your innovation skills. Team registration will begin shortly.</p>
           </div>
           
           <div className="animate-bounce">
