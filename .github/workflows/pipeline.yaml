@@ -40,7 +40,7 @@ jobs:
       with:
         host: ${{ secrets.SERVER_IP }}
         username: StudentCouncil
-        key: ${{ secrets.SERVER_PASS }}
+        password: ${{ secrets.SERVER_PASS }}
         source: "frontend.tar.gz"
         target: "/tmp/"
 
@@ -49,7 +49,7 @@ jobs:
       with:
         host: ${{ secrets.SERVER_IP }}
         username: StudentCouncil
-        key: ${{ secrets.SERVER_PASS }}
+        password: ${{ secrets.SERVER_PASS }}
         script: |
           echo "Cleaning unnecessary files..."
           
