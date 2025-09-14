@@ -39,7 +39,7 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.SERVER_IP }}
-        username: ${{ secrets.StudentCouncil }}
+        username: StudentCouncil
         key: ${{ secrets.SERVER_PASS }}
         source: "frontend.tar.gz"
         target: "/tmp/"
@@ -48,7 +48,7 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SERVER_IP }}
-        username: ${{ secrets.StudentCouncil }}
+        username: StudentCouncil
         key: ${{ secrets.SERVER_PASS }}
         script: |
           echo "Cleaning unnecessary files..."
