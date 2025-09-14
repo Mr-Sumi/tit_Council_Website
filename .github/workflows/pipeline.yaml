@@ -1,0 +1,75 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Build, Clean, and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install frontend dependencies
+      working-directory: ./frontend
+      run: npm install
+
+    - name: Build frontend
+      working-directory: ./frontend
+      run: npm run build
+
+    - name: Install backend dependencies
+      working-directory: ./backend
+      run: npm install
+
+    - name: Archive frontend files
+      run: |
+        tar czf frontend.tar.gz -C frontend/dist .
+
+    - name: Copy frontend files to server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.4.187.188.38 }}
+        username: ${{ secrets.StudentCouncil }}
+        key: ${{ secrets.Qwerty2026## }}
+        source: "frontend.tar.gz"
+        target: "/tmp/"
+
+    - name: Clean, Deploy and Restart Backend
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.4.187.188.38 }}
+        username: ${{ secrets.StudentCouncil }}
+        key: ${{ secrets.Qwerty2026## }}
+        script: |
+          echo "Cleaning unnecessary files..."
+          
+          # Clean old frontend files
+          sudo rm -rf /var/www/studentcouncil.info/*
+
+          # Optionally clean backend cache, logs, temp files — adjust these paths as needed
+          sudo rm -rf /home/StudentCouncil/backend/tmp/*
+          sudo rm -rf /home/StudentCouncil/backend/cache/*
+          sudo rm -rf /home/StudentCouncil/backend/logs/*
+
+          # Extract new frontend files
+          sudo tar xzf /tmp/frontend.tar.gz -C /var/www/studentcouncil.info
+          sudo chown -R www-data:www-data /var/www/studentcouncil.info
+
+          echo "Installing backend dependencies..."
+          cd ./backend
+          npm install
+
+          echo "Restarting backend using PM2..."
+          pm2 reload all
+
+          echo "Deployment complete!"
