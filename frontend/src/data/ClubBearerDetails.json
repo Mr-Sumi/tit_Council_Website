@@ -168,6 +168,7 @@
       "name": "Renewable Energy Club",
       "coordinator": { "name": "Hemant Khaparihye", "photo_src": "/images/Clubs/Renewable/coordinator.png" },
       "secretary": { "name": "Pranav Kumar", "photo_src": "/images/Clubs/Renewable/secretary.jpg" },
+      "assistant_secretary": { "name": "Golu Kumar", "photo_src": "/images/Club logos/RENEwAbLE_ENERGY_x7mjft.png" },
       "club_logo": "/images/Club logos/RENEwAbLE_ENERGY_x7mjft.png",
       "mission": "To promote renewable energy technologies and awareness.",
       "vision": "To lead initiatives in sustainable energy solutions.",
